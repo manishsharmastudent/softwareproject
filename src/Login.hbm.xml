@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="Login" table="LOGIN">
+      <meta attribute="class-description">
+         This class contains the Login detail.
+      </meta>
+      <id name="id" type="int" column="loginId">
+         <generator class="native"/>
+      </id>
+      <property name="loginNaam" column="loginNaam" type="string"/>
+      <property name="loginWachtwoord" column="loginWachtwoord" type="string"/>
+      <property name="lastChanged" column="lastChanged" type="date"/>
+	<property name="rolId" column="rolId" type="int"/>
+	<property name="active" column="active" type="boolean"/>
+	<property name="stationId" column="stationId" type="int"/>
+   </class>
+</hibernate-mapping>

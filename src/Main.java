@@ -7,6 +7,9 @@ import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -19,7 +22,9 @@ public class Main {
     static {
         try {
             Configuration configuration = new Configuration();
+            configuration.addAnnotatedClass(Login.class);
             configuration.configure();
+
 
             serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             ourSessionFactory = configuration.buildSessionFactory(serviceRegistry);
@@ -35,7 +40,7 @@ public class Main {
     public static void main(final String[] args) throws Exception {
         final Session session = getSession();
         try {
-            System.out.println("querying all the managed entities...");
+       /*     System.out.println("querying all the managed entities...");
             final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
             for (Object key : metadataMap.keySet()) {
                 final ClassMetadata classMetadata = (ClassMetadata) metadataMap.get(key);
@@ -46,8 +51,18 @@ public class Main {
                     System.out.println("  " + o);
                 }
             }
-        } finally {
+    */
+            System.out.println("manish test");
+
+      //      Login l = new Login("Manish", "password", 1, new Date(), true, 1 );
+        //    int id = (int) session.save(l);
+          //  System.out.println("id = " + id);
+        }
+
+
+        finally {
             session.close();
         }
     }
+
 }
