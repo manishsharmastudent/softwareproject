@@ -10,10 +10,12 @@ import java.time.LocalDateTime;
 public class TimeTest {
     public static void main(String args[]) {
 
-        LocalDateTime d = TimeParser.getTime("2016-06-01T13:04:28");
-        LocalDateTime d2 = TimeParser.getTime("2016-06-01T13:05:30");
+        LocalDateTime d = TimeParser.getTime("2016-06-01T13:33:28");
+        LocalDateTime d2 = TimeParser.getTime("2016-06-01T13:25:53");
 
         System.out.println(TimeParser.getDelay(d,d2));
+
+
 
     }
 }

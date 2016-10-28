@@ -75,7 +75,7 @@ public class TimeParser {
                 urenDelay -= 1;
                 minutenDelay = 60 + minutenDelay;
             }
-
+            return "+" + ((urenDelay < 10)?"0":"") + urenDelay + ":" + ((minutenDelay < 10)?"0":"") + minutenDelay + ":" + ((secondenDelay < 10)?"0":"") + secondenDelay;
         }
 
         if (actual.isBefore(departure)){
@@ -101,9 +101,11 @@ public class TimeParser {
                 minutenDelay = 60 + minutenDelay;
             }
 
+            return "-" + ((urenDelay < 10)?"0":"") + urenDelay + ":" + ((minutenDelay < 10)?"0":"") + minutenDelay + ":" + ((secondenDelay < 10)?"0":"") + secondenDelay;
+
         }
 
-        return "Uren: " + urenDelay + "\n" + "Minuten: " + minutenDelay + "\n" + "Seconden: " + secondenDelay;
+        return ((urenDelay < 10)?"0":"") + urenDelay + ":" + ((minutenDelay < 10)?"0":"") + minutenDelay + ":" + ((secondenDelay < 10)?"0":"") + secondenDelay;
 
     }
 }

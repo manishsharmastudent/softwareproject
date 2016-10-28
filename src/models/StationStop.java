@@ -1,20 +1,22 @@
 package models;
 
+import parsers.TimeParser;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class StationStop {
 
 	private String name;
-
-	private Time time;
-
+	private LocalDateTime Arrival;
+    private LocalDateTime ActualArrival;
+    private LocalDateTime Departure;
+    private LocalDateTime ActualDeparture;
     private int arrivalPlatform;
-
     private int departurePlatform;
-
     private String coordinates;
 
     public StationStop(String name, int arrivalPlatform, int departurePlatform, String coordinates) {
@@ -35,13 +37,36 @@ public class StationStop {
         this.name = name;
     }
 
-    public Time getTime ()
-    {
-        return time;
+    public LocalDateTime getArrival() {
+        return Arrival;
     }
 
-    public void setTime (String timeString)
-    {
+    public void setArrival(String arrival) {
+        Arrival = TimeParser.getTime(arrival);
+    }
+
+    public LocalDateTime getActualArrival() {
+        return ActualArrival;
+    }
+
+    public void setActualArrival(String actualArrival) {
+        ActualArrival = TimeParser.getTime(actualArrival);
+    }
+
+    public LocalDateTime getDeparture() {
+        return Departure;
+    }
+
+    public void setDeparture(String departure) {
+        Departure = TimeParser.getTime(departure);
+    }
+
+    public LocalDateTime getActualDeparture() {
+        return ActualDeparture;
+    }
+
+    public void setActualDeparture(String actualDeparture) {
+        ActualDeparture = TimeParser.getTime(actualDeparture);
     }
 
     public int getArrivalPlatform ()
@@ -63,17 +88,7 @@ public class StationStop {
     {
         this.departurePlatform = departurePlatform;
     }
-/*
-    public null getPlatform ()
-    {
-        return platform;
-    }
 
-    public void setPlatform (null Platform)
-    {
-        this.platform = platform;
-    }
-*/
     public String getCoordinates ()
     {
         return coordinates;
@@ -83,10 +98,9 @@ public class StationStop {
     {
         this.coordinates = coordinates;
     }
-/*
-    @Override
-    public String toString()
-    {
+
+    public String getDelay(){
+        return TimeParser.getDelay(getDeparture(),getActualDeparture());
     }
-	*/
+
 }
