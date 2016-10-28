@@ -11,9 +11,7 @@ public class Route {
 	private List<Trein> treinen;
 	
 
-	public Route() {
-
-	}
+	public Route() {}
 
 	public Route(String departure, String arrival) {
 		super();
@@ -45,7 +43,6 @@ public class Route {
 		this.treinLijn = treinLijn;
 	}
 
-	
 	public void setTreinen(List<Trein> lst) {
 		treinen = lst;
 	}

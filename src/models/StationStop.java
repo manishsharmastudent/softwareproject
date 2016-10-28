@@ -7,15 +7,6 @@ import java.util.Date;
 
 public class StationStop {
 
-	public StationStop(String name, int arrivalPlatform, int departurePlatform, String coordinates) {
-		super();
-		this.name = name;
-		this.arrivalPlatform = arrivalPlatform;
-		this.departurePlatform = departurePlatform;
-		this.coordinates = coordinates;
-	}
-
-	private DateFormat dFormat;
 	private String name;
 
 	private Time time;
@@ -25,6 +16,14 @@ public class StationStop {
     private int departurePlatform;
 
     private String coordinates;
+
+    public StationStop(String name, int arrivalPlatform, int departurePlatform, String coordinates) {
+        super();
+        this.name = name;
+        this.arrivalPlatform = arrivalPlatform;
+        this.departurePlatform = departurePlatform;
+        this.coordinates = coordinates;
+    }
 
     public String getName ()
     {
@@ -36,22 +35,13 @@ public class StationStop {
         this.name = name;
     }
 
-   public Time getTime ()
+    public Time getTime ()
     {
         return time;
     }
 
     public void setTime (String timeString)
     {
-		if(timeString.length() == 19)
-			dFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"); 
-        	Date startDate;
-        	try {
-				startDate = dFormat.parse(timeString);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
     }
 
     public int getArrivalPlatform ()
