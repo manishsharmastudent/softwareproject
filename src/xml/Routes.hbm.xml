@@ -11,7 +11,8 @@
       <id name="routeId" type="int" column="routeId">
          <generator class="native"/>
       </id>
-       <property name="bestemmingId" column="bestemmingId" type="int"/>
+       <many-to-one name="bestemming" column="bestemmingId" class="model.Station" not-null="true"/>
+       <many-to-one name="vertrek" column="vertrekId" class="model.Station" not-null="true"/>
        <property name="vertrekId" column="vertrekId" type="int"/>
    </class>
 </hibernate-mapping>

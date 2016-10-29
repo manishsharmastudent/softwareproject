@@ -6,12 +6,12 @@
 <hibernate-mapping>
    <class name="model.TypeKaart" table="TYPES">
       <meta attribute="class-description">
-         This class contains the Login detail.
+         This class contains the Type Kaarten detail.
       </meta>
       <id name="id" type="string" column="typeId">
          <generator class="native"/>
       </id>
-      <property name="korting" column="kortingId" type="string"/>
+      <many-to-one name="korting" column="korting" class="model.Korting" unique="true" not-null="true"/>
       <property name="naam" column="naam" type="string"/>
       <property name="omschrijving" column="omschrijving" type="string"/>
    </class>

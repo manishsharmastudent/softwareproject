@@ -9,18 +9,18 @@ public class Login {
     private int id;
     private String  loginNaam;
     private String loginWachtwoord;
-    private int rolId;
+    //private Rol rol;
     private Date lastChanged;
     private boolean active;
     private int stationId;
 
-    public int getRolId() {
-        return rolId;
-    }
+    /*public Rol getRolId() {
+        return this.rol;
+    }*/
 
-    public void setRolId(int rolId) {
-        this.rolId = rolId;
-    }
+   /* public void setRolId(Rol rol) {
+        this.rol = rol;
+    }*/
 
     public String getLoginNaam() {
         return loginNaam;
@@ -73,7 +73,7 @@ public class Login {
     public Login( String loginNaam, String loginWachtwoord, int rolId, Date lastChanged, boolean active, int stationId) {
         this.loginNaam = loginNaam;
         this.loginWachtwoord = loginWachtwoord;
-        this.rolId = rolId;
+        //this.rol = rol;
         this.lastChanged = lastChanged;
         this.active = active;
         this.stationId = stationId;
