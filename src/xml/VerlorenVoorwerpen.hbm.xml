@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="model.VerlorenVoorwerp" table="VERLOREN_VOORWERP">
+      <meta attribute="class-description">
+         This class contains the Login detail.
+      </meta>
+      <id name="id" type="string" column="voorwerpId">
+         <generator class="native"/>
+      </id>
+      <property name="active" column="active" type="boolean"/>
+      <many-to-one name="klant" column="klantId" class="model.Klant" not-null="true"/>
+      <property name="kleur" column="kleur" type="string"/>
+      <many-to-one name="route" column="routeId" class="model.Route"/>
+      <many-to-one name="trein" column="treinId" class="model.Trein"/>
+      <property name="type" column="type" type="string"/>
+      <property name="voorwerp" column="voorwerp" type="string"/>
+   </class>
+</hibernate-mapping>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
  "-//Hibernate/Hibernate Mapping DTD//EN"
- "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="sp2.Login" table="LOGIN">
+   <class name="model.Login" table="LOGIN">
       <meta attribute="class-description">
          This class contains the Login detail.
       </meta>
@@ -14,8 +14,8 @@
       <property name="loginNaam" column="loginNaam" type="string"/>
       <property name="loginWachtwoord" column="loginWachtwoord" type="string"/>
       <property name="lastChanged" column="lastChanged" type="date"/>
-	<property name="rolId" column="rolId" type="int"/>
+       <many-to-one name="rol" column="rolId" class="model.Rol" unique="false" not-null="true"/>
 	<property name="active" column="active" type="boolean"/>
-	<property name="stationId" column="stationId" type="int"/>
+       <one-to-one name="station" column="stationId" cascade="save-update"/>
    </class>
 </hibernate-mapping>

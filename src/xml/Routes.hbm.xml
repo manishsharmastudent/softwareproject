@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="model.Route" table="ROUTES">
+      <meta attribute="class-description">
+         This class contains the Abonnement detail.
+      </meta>
+      <id name="routeId" type="int" column="routeId">
+         <generator class="native"/>
+      </id>
+       <many-to-one name="bestemming" column="bestemmingId" class="model.Station" not-null="true"/>
+       <many-to-one name="vertrek" column="vertrekId" class="model.Station" not-null="true"/>
+       <property name="vertrekId" column="vertrekId" type="int"/>
+   </class>
+</hibernate-mapping>

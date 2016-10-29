@@ -1,5 +1,6 @@
-package sp2;
-
+import hibernate.ManageLogin;
+import hibernate.SessionFactorySingleton;
+import model.Login;
 import org.hibernate.SessionFactory;
 
 import java.util.Date;
@@ -14,6 +15,7 @@ public class Main {
 
         ManageLogin ML = new ManageLogin();
         Login l = new Login("Rik", "password", 1, new Date(), true, 1 );
+        System.out.println(ML.checkLogin(l.getLoginNaam(), l.getLoginWachtwoord()));
         //   int id=  ML.addLogin(l);
         ML.listLogins();
         //  System.out.println("id = " + id);
