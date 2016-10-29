@@ -4,18 +4,15 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="model.Abonnement" table="ABONNEMENTEN">
+   <class name="model.Korting" table="KORTINGEN">
       <meta attribute="class-description">
-         This class contains the Abonnement detail.
+         This class contains the Kortingen detail.
       </meta>
-      <id name="abonnementId" type="int" column="abonnementId">
+      <id name="kortingId" type="int" column="kortingId">
          <generator class="native"/>
       </id>
-       <property name="route" column="aboRouteId" type="int"/>
        <property name="active" column="active" type="boolean"/>
        <property name="beginDatum" column="beginDatum" type="date"/>
-       <property name="vervalDatum" column="eindDatum" type="date"/>
-       <property name="klant" column="klantId" type="int"/>
-       <property name="korting" column="kortingId" type="int"/>
+       <property name="omschrijving" column="omschrijving" type="string"/>
    </class>
 </hibernate-mapping>

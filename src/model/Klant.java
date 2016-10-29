@@ -7,10 +7,9 @@ public class Klant {
 	private String adres;
 	private int postcode;
 	private String stad;
-	
-	public String getRijkstregister(){
-		return this.rijksregisterNummer;
-	}
+	private boolean active;
+
+	public String getRijksregisterNummer(){ return this.rijksregisterNummer; }
 	public String getVoornaam(){
 		return this.voornaam;
 	}
@@ -26,10 +25,10 @@ public class Klant {
 	public String getStad(){
 		return this.stad;
 	}
-	
-	public boolean setRijkstregister(String rijksRegister)
-	{
-		this.rijksregisterNummer = rijksRegister;
+	public boolean getActive(){ return this.active; }
+
+	public boolean setRijksregisterNummer(String rijksregisterNummer){
+		this.rijksregisterNummer = rijksregisterNummer;
 		return true;
 	}
 	public boolean setVoornaam(String voornaam){
@@ -53,6 +52,9 @@ public class Klant {
 		this.stad = stad;
 		return true;
 	}
-
+	public boolean setActive(boolean active){
+		this.active = active;
+		return true;
+	}
 	
 }
