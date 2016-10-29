@@ -4,11 +4,26 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url"/>
-        <property name="connection.driver_class"/>
-        <property name="connection.username"/>
-        <property name="connection.password"/>
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+        <property name="hibernate.connection.driver_class">
+            com.mysql.jdbc.Driver
+        </property>
+
+        <!-- Assume test is the database name -->
+        <property name="hibernate.connection.url">
+            jdbc:mysql://dt5.ehb.be/SP2GR10
+        </property>
+        <property name="hibernate.connection.username">
+            SP2GR10
+        </property>
+        <property name="hibernate.connection.password">
+            ipR6Y1
+        </property>
+
+        <!-- List of XML mapping files -->
+        <mapping resource="Login.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>
