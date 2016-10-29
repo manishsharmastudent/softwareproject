@@ -26,7 +26,7 @@ public class Klant {
 		return this.stad;
 	}
 	
-	public boolean setRijkstregister(String rijksregister)
+	public boolean setRijkstregister(String rijksRegister)
 	{
 		this.rijksregisterNummer = rijksRegister;
 		return true;

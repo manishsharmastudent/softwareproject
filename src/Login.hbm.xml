@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="sp2.Login" table="LOGIN">
+   <class name="model.Login" table="LOGIN">
       <meta attribute="class-description">
          This class contains the Login detail.
       </meta>

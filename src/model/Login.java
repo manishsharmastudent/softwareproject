@@ -1,4 +1,4 @@
-package sp2;
+package model;
 
 import java.util.Date;
 

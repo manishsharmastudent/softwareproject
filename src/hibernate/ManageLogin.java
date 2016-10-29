@@ -1,4 +1,4 @@
-package sp2;
+package hibernate;
 
 import java.util.List;
 import java.util.Iterator;
@@ -7,6 +7,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
+import model.Login;
+import org.hibernate.query.Query;
 
 public class ManageLogin {
 
@@ -56,6 +58,30 @@ public class ManageLogin {
         }
     }
 
-
-
+    /* Look if the login is right */
+    public boolean checkLogin(String loginNaam, String loginWachtwoord){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        List logins = null;
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Login WHERE loginNaam = :loginNaam AND loginWachtwoord = :loginWachtwoord";
+            Query query = session.createQuery(hql);
+            query.setParameter("loginNaam", loginNaam);
+            query.setParameter("loginWachtwoord", loginWachtwoord);
+            logins = query.list();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        if (logins.isEmpty()){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }
