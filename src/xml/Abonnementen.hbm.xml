@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="model.Abonnement" table="ABONNEMENTEN">
+      <meta attribute="class-description">
+         This class contains the Abonnement detail.
+      </meta>
+      <id name="id" type="int" column="abonnementId">
+         <generator class="native"/>
+      </id>
+       <property name="route" column="aboRouteId" type="int"/>
+       <property name="active" column="active" type="boolean"/>
+       <property name="beginDatum" column="beginDatum" type="date"/>
+       <property name="vervalDatum" column="eindDatum" type="date"/>
+       <property name="klant" column="klantId" type="int"/>
+       <property name="korting" column="kortingId" type="int"/>
+   </class>
+</hibernate-mapping>

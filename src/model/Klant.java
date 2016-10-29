@@ -1,3 +1,4 @@
+package model;
 
 public class Klant {
 	private String rijksregisterNummer;

@@ -1,10 +1,17 @@
 package model;
 
 public class TypeKaart {
+	private int id;
 	private String naam;
 	private String omschrijving;
 	private Korting korting;
 
+	public int getId(){
+		return this.id;
+	}
+	public void setId(int id){
+		this.id = id;
+	}
 	public String getNaam()
 	{
 		return this.naam;
