@@ -10,50 +10,97 @@ public class Abonnement {
     private Korting korting;
     private Date beginDatum;
     private Date vervalDatum;
-    //private Route route;
+    private Route route;
     private Klant klant;
-    // private Float prijs;
+    private Float prijs;
     private boolean active;
-    public int getAbonnementId(){
-        return this.abonnementId;
-    }
-    public Korting getKorting(){
-        return this.korting;
-    }
-    public Date getBeginDatum(){
-        return this.beginDatum;
-    }
-    public Date getVervalDatum(){
-        return this.vervalDatum;
-    }
-    public Klant getKlant(){
-        return this.klant;
-    }
-    public boolean getActive(){
-        return this.active;
-    }
-    public boolean setAbonnementId(int id){
-        this.abonnementId = id;
-        return true;
-    }
-    public boolean setKorting(Korting korting){
+
+
+    public Abonnement(int abonnementId, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs, boolean active) {
+        this.abonnementId = abonnementId;
         this.korting = korting;
-        return true;
-    }
-    public boolean setBeginDatum(Date datum){
-        this.beginDatum = datum;
-        return true;
-    }
-    public boolean setVervalDatum(Date datum){
-        this.vervalDatum = datum;
-        return true;
-    }
-    public boolean setKlant(Klant k){
-        this.klant = k;
-        return true;
-    }
-    public boolean setActive(boolean active){
+        this.beginDatum = beginDatum;
+        this.vervalDatum = vervalDatum;
+        this.route = route;
+        this.klant = klant;
+        this.prijs = prijs;
         this.active = active;
-        return true;
+    }
+
+    public Abonnement(boolean active, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs) {
+        this.active = active;
+        this.korting = korting;
+        this.beginDatum = beginDatum;
+        this.vervalDatum = vervalDatum;
+        this.route = route;
+        this.klant = klant;
+        this.prijs = prijs;
+    }
+
+    public int getAbonnementId() {
+        return abonnementId;
+    }
+
+    public void setAbonnementId(int abonnementId) {
+        this.abonnementId = abonnementId;
+    }
+
+    public Korting getKorting() {
+        return korting;
+    }
+
+    public void setKorting(Korting korting) {
+        this.korting = korting;
+    }
+
+    public Date getBeginDatum() {
+        return beginDatum;
+    }
+
+    public void setBeginDatum(Date beginDatum) {
+        this.beginDatum = beginDatum;
+    }
+
+    public Date getVervalDatum() {
+        return vervalDatum;
+    }
+
+    public void setVervalDatum(Date vervalDatum) {
+        this.vervalDatum = vervalDatum;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
+    public Klant getKlant() {
+        return klant;
+    }
+
+    public void setKlant(Klant klant) {
+        this.klant = klant;
+    }
+
+    public Float getPrijs() {
+        return prijs;
+    }
+
+    public void setPrijs(Float prijs) {
+        this.prijs = prijs;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Abonnement() {
     }
 }

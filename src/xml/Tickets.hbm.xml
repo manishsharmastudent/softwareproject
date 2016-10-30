@@ -16,6 +16,6 @@
        <property name="eindDatum" column="eindDatum" type="date"/>
        <property name="klasse" column="klasse" type="int"/>
        <many-to-one name="route" column="routeId" class="model.Route" not-null="true"/>
-       <many-to-one name="type" column="typeId" class="model.TypeKaart" not-null="true"/>
+       <many-to-one name="typeKaart" column="typeId" class="model.TypeKaart" not-null="true"/>
    </class>
 </hibernate-mapping>

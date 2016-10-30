@@ -9,34 +9,55 @@ public class Korting {
 	private String omschrijving;
 	private boolean active;
 
-	public int getKortingId(){ return this.kortingId; }
-	public int getKortingType(){
-		return this.kortingType;
-	}
-	public Date getBeginDatum(){ return this.beginDatum; }
-	public String getOmschrijving(){
-		return this.omschrijving;
-	}
-	public boolean getActive(){ return this.active; }
-
-	public boolean setKortingId(int id){
-		this.kortingId = id;
-		return true;
-	}
-	public boolean setKortingType(int kortingType) {
+	public Korting(int kortingId, int kortingType, Date beginDatum, String omschrijving, boolean active) {
+		this.kortingId = kortingId;
 		this.kortingType = kortingType;
-		return true;
-	}
-	public boolean setBeginDatum(Date datum){
-		this.beginDatum = datum;
-		return true;
-	}
-	public boolean setOmschrijving(String omschrijving) {
+		this.beginDatum = beginDatum;
 		this.omschrijving = omschrijving;
-		return true;
-	}
-	public boolean setActive(boolean active){
 		this.active = active;
-		return true;
+	}
+
+	public int getKortingId() {
+		return kortingId;
+	}
+
+	public void setKortingId(int kortingId) {
+		this.kortingId = kortingId;
+	}
+
+	public int getKortingType() {
+		return kortingType;
+	}
+
+	public void setKortingType(int kortingType) {
+		this.kortingType = kortingType;
+	}
+
+	public Date getBeginDatum() {
+		return beginDatum;
+	}
+
+	public void setBeginDatum(Date beginDatum) {
+		this.beginDatum = beginDatum;
+	}
+
+	public String getOmschrijving() {
+		return omschrijving;
+	}
+
+	public void setOmschrijving(String omschrijving) {
+		this.omschrijving = omschrijving;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public Korting() {
+
 	}
 }

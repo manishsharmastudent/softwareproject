@@ -11,7 +11,7 @@
       <id name="rolId" type="int" column="rolId">
          <generator class="native"/>
       </id>
-       <property name="beschrijving" column="rolBeschrijving" type="string"/>
+       <property name="rolBeschrijving" column="rolBeschrijving" type="string"/>
        <property name="active" column="active" type="boolean"/>
    </class>
 </hibernate-mapping>

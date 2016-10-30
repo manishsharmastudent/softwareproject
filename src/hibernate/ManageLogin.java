@@ -25,6 +25,7 @@ public class ManageLogin {
             tx = session.beginTransaction();
 
             LoginID = (Integer) session.save(l);
+
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -82,6 +83,27 @@ public class ManageLogin {
         }
         else {
             return true;
+        }
+    }
+
+
+    /* Method to UPDATE wachtwoord for login */
+    public void updateWachtwoord(Integer loginId, String loginWachtwoord ){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            Login login =
+                    (Login)session.get(Login.class, loginId);
+            login.setLoginWachtwoord( loginWachtwoord );
+            session.update(login);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
         }
     }
 }

@@ -9,18 +9,28 @@ public class Login {
     private int id;
     private String  loginNaam;
     private String loginWachtwoord;
-    //private Rol rol;
+    private Rol rol;
     private Date lastChanged;
     private boolean active;
-    private int stationId;
+    private Station station;
 
-    /*public Rol getRolId() {
-        return this.rol;
-    }*/
-
-   /* public void setRolId(Rol rol) {
+    public Login(int id, String loginNaam, String loginWachtwoord, Rol rol, Date lastChanged, boolean active, Station station) {
+        this.id = id;
+        this.loginNaam = loginNaam;
+        this.loginWachtwoord = loginWachtwoord;
         this.rol = rol;
-    }*/
+        this.lastChanged = lastChanged;
+        this.active = active;
+        this.station = station;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getLoginNaam() {
         return loginNaam;
@@ -38,20 +48,20 @@ public class Login {
         this.loginWachtwoord = loginWachtwoord;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
     public Date getLastChanged() {
         return lastChanged;
     }
 
     public void setLastChanged(Date lastChanged) {
         this.lastChanged = lastChanged;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public boolean isActive() {
@@ -62,22 +72,14 @@ public class Login {
         this.active = active;
     }
 
-    public int getStationId() {
-        return stationId;
+    public Station getStation() {
+        return station;
     }
 
-    public void setStationId(int stationId) {
-        this.stationId = stationId;
+    public void setStation(Station station) {
+        this.station = station;
     }
 
-    public Login( String loginNaam, String loginWachtwoord, int rolId, Date lastChanged, boolean active, int stationId) {
-        this.loginNaam = loginNaam;
-        this.loginWachtwoord = loginWachtwoord;
-        //this.rol = rol;
-        this.lastChanged = lastChanged;
-        this.active = active;
-        this.stationId = stationId;
+    public Login() {
     }
-
-    public Login() {};
 }

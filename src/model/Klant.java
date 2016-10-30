@@ -9,6 +9,25 @@ public class Klant {
 	private String stad;
 	private boolean active;
 
+	public Klant() {
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public Klant(String rijksregisterNummer, String voornaam, String achternaam, String adres, int postcode, String stad, boolean active) {
+
+		this.rijksregisterNummer = rijksregisterNummer;
+		this.voornaam = voornaam;
+		this.achternaam = achternaam;
+		this.adres = adres;
+		this.postcode = postcode;
+		this.stad = stad;
+		this.active = active;
+
+	}
+
 	public String getRijksregisterNummer(){ return this.rijksregisterNummer; }
 	public String getVoornaam(){
 		return this.voornaam;

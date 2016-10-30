@@ -16,6 +16,6 @@
       <property name="lastChanged" column="lastChanged" type="date"/>
        <many-to-one name="rol" column="rolId" class="model.Rol" unique="false" not-null="true"/>
 	<property name="active" column="active" type="boolean"/>
-       <one-to-one name="station" column="stationId" cascade="save-update"/>
+       <many-to-one name="station" column="stationId"  unique="true" class = "model.Station" cascade="save-update"/>
    </class>
 </hibernate-mapping>
