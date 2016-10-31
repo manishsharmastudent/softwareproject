@@ -1,5 +1,8 @@
 import hibernate.ManageAbonnement;
 import hibernate.ManageLogin;
+import hibernate.ManageRoute;
+import hibernate.ManageStation;
+
 import hibernate.SessionFactorySingleton;
 import model.*;
 import org.hibernate.SessionFactory;
@@ -13,8 +16,8 @@ public class Main {
 
     public static void main(String[] args) {
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-
-
+        ManageStation MS = new ManageStation();
+        ManageRoute MR = new ManageRoute();
         ManageAbonnement MA = new ManageAbonnement();
         Korting k = new Korting(1,0,new Date(),"test korting", true);
         Station s = new Station(1,"test","leuven");
@@ -23,9 +26,12 @@ public class Main {
         Klant klant = new Klant("95103150548","Manish","Sharma","tiensevest 14",3000,"Leuven",true);
         Abonnement a = new Abonnement(0,k, new Date(), new Date(),r, klant, Float.valueOf(55),true);
       //  int id = MA.addAbonnement(a);
-        MA.listAbonnementen();
-        MA.updateRoute(4,r);
-
+        //MA.listAbonnementen();
+        //MA.updateRoute(4,r);
+        MR.addRoute(r);
+        MR.listRoutes();
+        MS.addStation(s);
+        MS.listStations();
        // Login l = new Login(0,"Test","testwachtwoord", new Rol(true,1,"test door manish"), new Date(), true, new Station(1,"test","leuven"));
 
         ManageLogin ML = new ManageLogin();
