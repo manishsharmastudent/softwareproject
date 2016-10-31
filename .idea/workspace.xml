@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/hibernate/ManageStation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-    </list>
+    <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="" />
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -735,7 +731,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1477909309667</updated>
-      <workItem from="1477909311009" duration="3606000" />
+      <workItem from="1477909311009" duration="3637000" />
     </task>
     <task id="LOCAL-00001" summary="Mergen van master">
       <created>1477909378042</created>
@@ -744,11 +740,18 @@
       <option name="project" value="LOCAL" />
       <updated>1477909378042</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Mergen van master&#10;Manageklasses maken voor Station en Route">
+      <created>1477913166419</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1477913166419</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3606000" />
+    <option name="totallyTimeSpent" value="3637000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -797,7 +800,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mergen van master" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mergen van master" />
+    <MESSAGE value="Mergen van master&#10;Manageklasses maken voor Station en Route" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mergen van master&#10;Manageklasses maken voor Station en Route" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
