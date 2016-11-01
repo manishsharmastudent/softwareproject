@@ -22,15 +22,17 @@ public class Trein {
         return treinId;
     }
 
-    public void setTreinId(int treinId) {
+    public boolean setTreinId(int treinId) {
         this.treinId = treinId;
+        return true;
     }
 
     public String getTreinNaam() {
         return treinNaam;
     }
 
-    public void setTreinNaam(String treinNaam) {
+    public boolean setTreinNaam(String treinNaam) {
         this.treinNaam = treinNaam;
+        return true;
     }
 }
