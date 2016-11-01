@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Controller/KlantController.java" afterPath="$PROJECT_DIR$/src/controller/KlantController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Controller/LoginController.java" afterPath="$PROJECT_DIR$/src/controller/LoginController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Controller/TreinController.java" afterPath="$PROJECT_DIR$/src/controller/TreinController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -103,8 +99,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+            <state relative-caret-position="110">
+              <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -728,7 +724,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1477909309667</updated>
-      <workItem from="1477909311009" duration="8743000" />
+      <workItem from="1477909311009" duration="9384000" />
     </task>
     <task id="LOCAL-00001" summary="Mergen van master">
       <created>1477909378042</created>
@@ -758,11 +754,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478002138279</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Mergen van master&#10;Manageklasses maken voor Station en Route&#10;Maken van alle View klasses&#10;Maken van KlantController, LoginController, TreinController&#10;Aanpassen van naam package controller">
+      <created>1478002205048</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1478002205048</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8743000" />
+    <option name="totallyTimeSpent" value="9384000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -813,7 +816,8 @@
     <MESSAGE value="Mergen van master" />
     <MESSAGE value="Mergen van master&#10;Manageklasses maken voor Station en Route" />
     <MESSAGE value="Mergen van master&#10;Manageklasses maken voor Station en Route&#10;Maken van alle View klasses&#10;Maken van KlantController, LoginController, TreinController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mergen van master&#10;Manageklasses maken voor Station en Route&#10;Maken van alle View klasses&#10;Maken van KlantController, LoginController, TreinController" />
+    <MESSAGE value="Mergen van master&#10;Manageklasses maken voor Station en Route&#10;Maken van alle View klasses&#10;Maken van KlantController, LoginController, TreinController&#10;Aanpassen van naam package controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mergen van master&#10;Manageklasses maken voor Station en Route&#10;Maken van alle View klasses&#10;Maken van KlantController, LoginController, TreinController&#10;Aanpassen van naam package controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1075,8 +1079,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+        <state relative-caret-position="110">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
