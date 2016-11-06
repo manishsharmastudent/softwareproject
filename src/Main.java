@@ -1,53 +1,67 @@
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.metadata.ClassMetadata;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import controller.*;
+import view.*;
+import model.*;
 
-import java.util.Map;
+import hibernate.SessionFactorySingleton;
+import org.hibernate.SessionFactory;
 
 /**
  * Created by Manish on 10/10/2016.
  */
 public class Main {
-    private static final SessionFactory ourSessionFactory;
-    private static final ServiceRegistry serviceRegistry;
 
-    static {
-        try {
-            Configuration configuration = new Configuration();
-            configuration.configure();
+    public static void main(String[] args) {
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
+        KlantView KView = new KlantView("Klant", true);
+        KlantController KC = new KlantController(k1, KView);
+        KC.showKlant();
+        //ManageStation MS = new ManageStation();
+        //ManageRoute MR = new ManageRoute();
+        //ManageAbonnement MA = new ManageAbonnement();
+        //Korting k = new Korting(1,0,new Date(),"test korting", true);
+        //Station s = new Station(1,"test","leuven");
+        //Route r = new Route(1,s,s);
+        //Route ro = new Route(2,s,s);
+        //Klant klant = new Klant("95103150548","Manish","Sharma","tiensevest 14",3000,"Leuven",true);
+        //Abonnement a = new Abonnement(0,k, new Date(), new Date(),r, klant, Float.valueOf(55),true);
+      //  int id = MA.addAbonnement(a);
+        //MA.listAbonnementen();
+        //MA.updateRoute(4,r);
+        //MR.addRoute(r);
+        //MR.listRoutes();
+        //MS.addStation(s);
+        //MS.listStations();
+       // Login l = new Login(0,"Test","testwachtwoord", new Rol(true,1,"test door manish"), new Date(), true, new Station(1,"test","leuven"));
 
-            serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-            ourSessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        } catch (Throwable ex) {
-            throw new ExceptionInInitializerError(ex);
-        }
+        //ManageLogin ML = new ManageLogin();
+
+        //System.out.println(ML.checkLogin(l.getLoginNaam(), l.getLoginWachtwoord()));
+        //  int id=  ML.addLogin(l);
+
+
+     //   ML.updateWachtwoord(1,"Changed!"); // Werkt!
+
+       // ML.listLogins();
+      //   System.out.println("id = " + id);
+      /* Add few Login records in database
+        Integer empID1 = ME.addLogin("Zara", "Ali", 1000);
+        Integer empID2 = ME.addLogin("Daisy", "Das", 5000);
+        Integer empID3 = ME.addLogin("John", "Paul", 10000); */
+
+      /* List down all the Logins */
+        //    ME.listLogins();
+
+      /* Update Login's records */
+        //  ME.updateLogin(empID1, 5000);
+
+      /* Delete an Login from the database */
+        //   ME.deleteLogin(empID2);
+
+      /* List down new list of the Logins */
+        //   ME.listLogins();
+
+
     }
 
-    public static Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
-    }
-
-    public static void main(final String[] args) throws Exception {
-        final Session session = getSession();
-        try {
-            System.out.println("querying all the managed entities...");
-            final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
-            for (Object key : metadataMap.keySet()) {
-                final ClassMetadata classMetadata = (ClassMetadata) metadataMap.get(key);
-                final String entityName = classMetadata.getEntityName();
-                final Query query = session.createQuery("from " + entityName);
-                System.out.println("executing: " + query.getQueryString());
-                for (Object o : query.list()) {
-                    System.out.println("  " + o);
-                }
-            }
-        } finally {
-            session.close();
-        }
-    }
 }
