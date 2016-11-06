@@ -8,7 +8,7 @@ import java.sql.Time;
 public class Trein {
 
   private int treinId;
-    private String treinNaam;
+  private String treinNaam;
 
     public Trein(int treinId, String treinNaam) {
         this.treinId = treinId;
