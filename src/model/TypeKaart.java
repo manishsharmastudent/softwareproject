@@ -38,4 +38,14 @@ public class TypeKaart {
 		this.korting = korting;
 		return true;
 	}
+
+	public TypeKaart(int id, String naam, String omschrijving, Korting korting) {
+		this.id = id;
+		this.naam = naam;
+		this.omschrijving = omschrijving;
+		this.korting = korting;
+	}
+
+	public TypeKaart() {
+	}
 }
