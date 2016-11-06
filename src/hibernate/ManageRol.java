@@ -1,7 +1,6 @@
 package hibernate;
 
-import model.Klant;
-import model.Route;
+import model.Rol;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,19 +12,19 @@ import java.util.List;
 /**
  * Created by Robbe on 30/10/2016.
  */
-public class ManageKlant {
+public class ManageRol {
 
     /* Method to CREATE a Klant in the database */
-    public Integer addKlant(Klant a){
+    public Integer addRol(Rol a){
 
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer klantId = null;
+        Integer rolId = null;
         try{
             tx = session.beginTransaction();
 
-            klantId = (Integer)session.save(a);
+            rolId = (Integer)session.save(a);
 
             //  session.save(a);
             tx.commit();
@@ -35,21 +34,21 @@ public class ManageKlant {
         }finally {
             session.close();
         }
-        return klantId;
+        return rolId;
     }
 
 
-    public void listKlanten( ){
+    public void listRollen( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            List klanten = session.createQuery("FROM Klant").list();
+            List klanten = session.createQuery("FROM Rol").list();
             for (Iterator iterator =
-                klanten.iterator(); iterator.hasNext();){
-                Klant a = (Klant) iterator.next();
+                 klanten.iterator(); iterator.hasNext();){
+                Rol a = (Rol) iterator.next();
             }
             tx.commit();
         }catch (HibernateException e) {
@@ -61,10 +60,10 @@ public class ManageKlant {
     }
 
 
-    public Klant getKlant(String rijksregisterNummer){
+    public Rol getRol(int rolId){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
-        Klant klant = null;
+        Rol rol = null;
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
@@ -75,7 +74,7 @@ public class ManageKlant {
             query.setParameter("rrn",rijksregisterNummer);
             klanten = query.list();
 */
-            klant = (Klant) session.createQuery("FROM Klant WHERE rijksregisterNummer = :rrn").setParameter("rrn", rijksregisterNummer).uniqueResult();
+            rol = (Rol) session.createQuery("FROM Rol WHERE rolId = :rol").setParameter("rol", rolId).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -83,7 +82,7 @@ public class ManageKlant {
         }finally {
             session.close();
         }
-        return klant;
+        return rol;
     }
 
 
