@@ -1,7 +1,6 @@
 package hibernate;
 
 import model.Klant;
-import model.Route;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,7 +24,7 @@ public class ManageKlant {
         try{
             tx = session.beginTransaction();
 
-            klantId = (Integer)session.save(a);
+            session.save(a);
 
             //  session.save(a);
             tx.commit();
