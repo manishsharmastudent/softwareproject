@@ -1,4 +1,5 @@
 import controller.*;
+import hibernate.ManageKlant;
 import view.*;
 import model.*;
 
@@ -13,9 +14,14 @@ public class Main {
     public static void main(String[] args) {
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
-        KlantView KView = new KlantView("Klant", true);
+        /*KlantView KView = new KlantView("Klant", true);
         KlantController KC = new KlantController(k1, KView);
-        KC.showKlant();
+        KC.showKlant();*/
+        ManageKlant MK = new ManageKlant();
+        System.out.println(MK.getKlant("123-123").getAchternaam());
+
+
+
         //ManageStation MS = new ManageStation();
         //ManageRoute MR = new ManageRoute();
         //ManageAbonnement MA = new ManageAbonnement();
