@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,18 +38,15 @@ public class ManageRol {
     }
 
 
-    public void listRollen( ){
+    public List<Rol> listRollen( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-
         Session session = factory.openSession();
         Transaction tx = null;
+        List<Rol> rollen = new ArrayList<Rol>();
+
         try{
             tx = session.beginTransaction();
-            List klanten = session.createQuery("FROM Rol").list();
-            for (Iterator iterator =
-                 klanten.iterator(); iterator.hasNext();){
-                Rol a = (Rol) iterator.next();
-            }
+            rollen = session.createQuery("FROM Rol").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -57,6 +54,7 @@ public class ManageRol {
         }finally {
             session.close();
         }
+        return rollen;
     }
 
 
@@ -67,13 +65,6 @@ public class ManageRol {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            /*
-            tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE rijksregisterNummer = :rrn";
-            Klant klant = (Klant) session.createQuery(hql).uniqueResult();
-            query.setParameter("rrn",rijksregisterNummer);
-            klanten = query.list();
-*/
             rol = (Rol) session.createQuery("FROM Rol WHERE rolId = :rol").setParameter("rol", rolId).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {

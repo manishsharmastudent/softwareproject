@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,18 +38,15 @@ public class ManageKlant {
     }
 
 
-    public void listKlanten( ){
+    public List<Klant> listKlanten( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = null;
+        List<Klant> klanten = new ArrayList<Klant>();
         try{
             tx = session.beginTransaction();
-            List klanten = session.createQuery("FROM Klant").list();
-            for (Iterator iterator =
-                klanten.iterator(); iterator.hasNext();){
-                Klant a = (Klant) iterator.next();
-            }
+            klanten = session.createQuery("FROM Klant").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -57,6 +54,7 @@ public class ManageKlant {
         }finally {
             session.close();
         }
+        return klanten;
     }
 
 
@@ -67,13 +65,6 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            /*
-            tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE rijksregisterNummer = :rrn";
-            Klant klant = (Klant) session.createQuery(hql).uniqueResult();
-            query.setParameter("rrn",rijksregisterNummer);
-            klanten = query.list();
-*/
             klant = (Klant) session.createQuery("FROM Klant WHERE rijksregisterNummer = :rrn").setParameter("rrn", rijksregisterNummer).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {
