@@ -30,5 +30,7 @@
         <mapping resource="xml/Abonnementen.hbm.xml"/>
         <mapping resource="xml/Klanten.hbm.xml"/>
         <mapping resource="xml/Routes.hbm.xml"/>
+        <mapping resource="xml/VerlorenVoorwerpen.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>

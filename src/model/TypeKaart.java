@@ -6,6 +6,21 @@ public class TypeKaart {
 	private String omschrijving;
 	private Korting korting;
 
+	public TypeKaart(int typeId, int kortingId, String naam, String omschrijving){
+		this.id=typeId;
+		this.naam=naam;
+		this.omschrijving=omschrijving;
+	}
+	public TypeKaart(){};
+	public TypeKaart(int id,String naam,String omschrijving,Korting korting)
+	{
+		this.id=id;
+		this.naam=naam;
+		this.omschrijving=omschrijving;
+		this.korting=korting;
+
+	}
+
 	public int getId(){
 		return this.id;
 	}
