@@ -9,9 +9,6 @@ public class TypeKaart {
 	public int getId(){
 		return this.id;
 	}
-	public void setId(int id){
-		this.id = id;
-	}
 	public String getNaam()
 	{
 		return this.naam;
@@ -23,29 +20,11 @@ public class TypeKaart {
 	public Korting getKorting(){
 		return korting;
 	}
-	public boolean setNaam(String naam)
-	{
-		this.naam = naam;
-		return true;
-	}
-	public boolean setOmschrijving(String omschrijving)
-	{
-		this.omschrijving = omschrijving;
-		return true;
-	}
-	public boolean setKorting(Korting korting)
-	{
-		this.korting = korting;
-		return true;
-	}
 
-	public TypeKaart(int id, String naam, String omschrijving, Korting korting) {
+	public void setId(int id){
 		this.id = id;
-		this.naam = naam;
-		this.omschrijving = omschrijving;
-		this.korting = korting;
 	}
-
-	public TypeKaart() {
-	}
+	public void setNaam(String naam){this.naam = naam;}
+	public void setOmschrijving(String omschrijving){this.omschrijving = omschrijving;}
+	public void setKorting(Korting korting){this.korting = korting;}
 }

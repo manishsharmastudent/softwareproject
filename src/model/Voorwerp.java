@@ -22,42 +22,36 @@ public class Voorwerp {
     public Voorwerp() {
     }
 
+    public int getVoorwerpId(){return voorwerpId; }
     public Trein getTrein() {
         return trein;
     }
-
-    public void setTrein(Trein trein) {
-        this.trein = trein;
-    }
-
     public String getKleur() {
         return kleur;
     }
-
-    public void setKleur(String kleur) {
-        this.kleur = kleur;
-    }
-
     public String getType() {
         return type;
     }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Route getRoute() {
         return route;
     }
-
-    public void setRoute(Route route) {
-        this.route = route;
-    }
-
     public Station getStation() {
         return station;
     }
 
+    public void setVoorwerpId(int voorwerpId){this.voorwerpId = voorwerpId; }
+    public void setTrein(Trein trein) {
+        this.trein = trein;
+    }
+    public void setKleur(String kleur) {
+        this.kleur = kleur;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+    public void setRoute(Route route) {
+        this.route = route;
+    }
     public void setStation(Station station) {
         this.station = station;
     }

@@ -1,13 +1,10 @@
 import controller.*;
-import hibernate.ManageAbonnement;
-import hibernate.ManageTicket;
+import hibernate.ManageKlant;
 import view.*;
 import model.*;
 
 import hibernate.SessionFactorySingleton;
 import org.hibernate.SessionFactory;
-
-import java.util.Date;
 
 /**
  * Created by Manish on 10/10/2016.
@@ -16,34 +13,25 @@ public class Main {
 
     public static void main(String[] args) {
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-     //   Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
-    //    KlantView KView = new KlantView("Klant", true);
-      //  KlantController KC = new KlantController(k1, KView);
-      //  KC.showKlant();
+        Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
+        /*KlantView KView = new KlantView("Klant", true);
+        KlantController KC = new KlantController(k1, KView);
+        KC.showKlant();*/
+        ManageKlant MK = new ManageKlant();
+        System.out.println(MK.getKlant("123-123").getAchternaam());
+
 
 
         //ManageStation MS = new ManageStation();
         //ManageRoute MR = new ManageRoute();
-        ManageAbonnement MA = new ManageAbonnement();
-
-
-        Korting k = new Korting(1,0,new Date(),"test korting", true);
-        Station s = new Station(1,"test","leuven");
-        Route r = new Route(1,s,s);
-        TypeKaart type = new TypeKaart(1,"test","andere test", k);
-        Ticket t = new Ticket(1,r,new Date(), new Date(), type, 4, 555,1);
-
-        ManageTicket mt = new ManageTicket();
-
-
-
-
-  //    System.out.print();
+        //ManageAbonnement MA = new ManageAbonnement();
+        //Korting k = new Korting(1,0,new Date(),"test korting", true);
+        //Station s = new Station(1,"test","leuven");
+        //Route r = new Route(1,s,s);
         //Route ro = new Route(2,s,s);
-        Klant klant = new Klant("123-123","Manish","Sharma","tiensevest 14",3000,"Leuven",true);
-        Abonnement a = new Abonnement(0,k, new Date(), new Date(),r, klant, Float.valueOf(55),true);
-       int id = mt.addTicket(t);
-        System.out.print(id);
+        //Klant klant = new Klant("95103150548","Manish","Sharma","tiensevest 14",3000,"Leuven",true);
+        //Abonnement a = new Abonnement(0,k, new Date(), new Date(),r, klant, Float.valueOf(55),true);
+      //  int id = MA.addAbonnement(a);
         //MA.listAbonnementen();
         //MA.updateRoute(4,r);
         //MR.addRoute(r);
