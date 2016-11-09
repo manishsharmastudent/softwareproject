@@ -1,10 +1,13 @@
 import controller.*;
+import hibernate.ManageAbonnement;
 import hibernate.ManageKlant;
 import view.*;
 import model.*;
 
 import hibernate.SessionFactorySingleton;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 /**
  * Created by Manish on 10/10/2016.
@@ -13,15 +16,20 @@ public class Main {
 
     public static void main(String[] args) {
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-        Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
+       // Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
         /*KlantView KView = new KlantView("Klant", true);
         KlantController KC = new KlantController(k1, KView);
-        KC.showKlant();*/
-        ManageKlant MK = new ManageKlant();
-        System.out.println(MK.getKlant("123-123").getAchternaam());
+        KC.showKlant();
+      //  ManageKlant MK = new ManageKlant();
+       // System.out.println(MK.getKlant("123-123").getAchternaam());
+        ManageAbonnement MA = new ManageAbonnement();
+        List<Abonnement> abo = MA.listAbonnementen();
+        for (Abonnement a :
+                abo) {
+            System.out.println(a.getAbonnementId());
 
-
-
+        }
+        */
         //ManageStation MS = new ManageStation();
         //ManageRoute MR = new ManageRoute();
         //ManageAbonnement MA = new ManageAbonnement();

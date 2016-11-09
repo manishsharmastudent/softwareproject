@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,20 +41,21 @@ public class ManageAbonnement {
     }
 
 
-    public void listAbonnementen( ){
+    public List<Abonnement> listAbonnementen( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = null;
+        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
         try{
             tx = session.beginTransaction();
-            List abonnementen = session.createQuery("FROM Abonnement").list();
-            for (Iterator iterator =
+             abonnementen = session.createQuery("FROM Abonnement").list();
+           /* for (Iterator iterator =
                  abonnementen.iterator(); iterator.hasNext();){
                 Abonnement a = (Abonnement) iterator.next();
                 System.out.println("abonnement id: " + a.getAbonnementId());
 
-            }
+            }*/
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -61,6 +63,7 @@ public class ManageAbonnement {
         }finally {
             session.close();
         }
+        return abonnementen;
     }
 
 

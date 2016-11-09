@@ -13,6 +13,6 @@
       </id>
        <many-to-one name="routeBestemming" column="bestemmingId" class="model.Station" not-null="true"/>
        <many-to-one name="routeVertrek" column="vertrekId" class="model.Station" not-null="true"/>
-
+       <property name="active" column="active" type="boolean"/>
    </class>
 </hibernate-mapping>
