@@ -1,61 +1,56 @@
 package model;
 
 public class TypeKaart {
-
-	private int typeId;
+	private int id;
 	private String naam;
 	private String omschrijving;
 	private Korting korting;
-	private boolean active;
 
-	public TypeKaart(int typeId, String naam, String omschrijving, Korting korting, boolean active) {
-		this.typeId = typeId;
-		this.naam = naam;
-		this.omschrijving = omschrijving;
-		this.korting = korting;
-		this.active = active;
+	public TypeKaart(int typeId, int kortingId, String naam, String omschrijving){
+		this.id=typeId;
+		this.naam=naam;
+		this.omschrijving=omschrijving;
+	}
+	public TypeKaart(){};
+	public TypeKaart(int id,String naam,String omschrijving,Korting korting)
+	{
+		this.id=id;
+		this.naam=naam;
+		this.omschrijving=omschrijving;
+		this.korting=korting;
+
 	}
 
-	public int getTypeId() {
-		return typeId;
+	public int getId(){
+		return this.id;
 	}
-
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
+	public void setId(int id){
+		this.id = id;
 	}
-
-	public String getNaam() {
-		return naam;
+	public String getNaam()
+	{
+		return this.naam;
 	}
-
-	public void setNaam(String naam) {
-		this.naam = naam;
+	public String getOmschrijving()
+	{
+		return this.omschrijving;
 	}
-
-	public String getOmschrijving() {
-		return omschrijving;
-	}
-
-	public void setOmschrijving(String omschrijving) {
-		this.omschrijving = omschrijving;
-	}
-
-	public Korting getKorting() {
+	public Korting getKorting(){
 		return korting;
 	}
-
-	public void setKorting(Korting korting) {
+	public boolean setNaam(String naam)
+	{
+		this.naam = naam;
+		return true;
+	}
+	public boolean setOmschrijving(String omschrijving)
+	{
+		this.omschrijving = omschrijving;
+		return true;
+	}
+	public boolean setKorting(Korting korting)
+	{
 		this.korting = korting;
-	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	public TypeKaart() {
+		return true;
 	}
 }

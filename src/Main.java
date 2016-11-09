@@ -1,12 +1,12 @@
 import controller.*;
-import hibernate.ManageAbonnement;
-import hibernate.ManageKlant;
+import hibernate.ManageVoorwerp;
 import view.*;
 import model.*;
 
 import hibernate.SessionFactorySingleton;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,20 +16,29 @@ public class Main {
 
     public static void main(String[] args) {
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-       // Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
-        /*KlantView KView = new KlantView("Klant", true);
+        Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
+        KlantView KView = new KlantView("Klant", true);
         KlantController KC = new KlantController(k1, KView);
         KC.showKlant();
-      //  ManageKlant MK = new ManageKlant();
-       // System.out.println(MK.getKlant("123-123").getAchternaam());
-        ManageAbonnement MA = new ManageAbonnement();
-        List<Abonnement> abo = MA.listAbonnementen();
-        for (Abonnement a :
-                abo) {
-            System.out.println(a.getAbonnementId());
 
-        }
-        */
+
+        ManageVoorwerp MV = new ManageVoorwerp();
+        //Trein trein = new Trein(1,"IC 4456");
+
+        Station stationVertrek = new Station(1,"Brussel-Zuid","Brussel");
+        Station stationAankomst = new Station(1,"Vilvoorde","Vilvoorde");
+        Route route = new Route(1,stationVertrek,stationAankomst);
+    //    Voorwerp v = new Voorwerp(1,1345, stationAankomst,route,"Kous", "Geel",k1,true);
+        Voorwerp v1 = new Voorwerp(2,1,"Groen","elektronica","GSM", route, stationAankomst,k1,true);
+
+        //MV.addVoorwerp(v1);
+       List<Voorwerp> voorwerpen = MV.listVoorwerp();
+        System.out.println("Station id: " + st.getStationId());
+
+        System.out.println("Voorwerp id: " + voorwerpen);
+
+
+
         //ManageStation MS = new ManageStation();
         //ManageRoute MR = new ManageRoute();
         //ManageAbonnement MA = new ManageAbonnement();
