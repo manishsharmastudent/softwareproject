@@ -51,8 +51,6 @@ public class LoginView implements ActionListener {
         panel.add(pass);
         j.add(panel);
 
-
-        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         j.setVisible(true);
     }
 
