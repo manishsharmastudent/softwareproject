@@ -7,11 +7,21 @@ public class Route {
     private int routeId;
     private Station routeVertrek;
     private Station routeBestemming;
+    private boolean active;
 
-    public Route(int routeId, Station routeVertrek, Station routeBestemming) {
+    public Route(int routeId, Station routeVertrek, Station routeBestemming, boolean active) {
         this.routeId = routeId;
         this.routeVertrek = routeVertrek;
         this.routeBestemming = routeBestemming;
+        this.active = active;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Route() {

@@ -26,6 +26,9 @@ public class Ticket {
         this.klasse = klasse;
     }
 
+    public Ticket() {
+    }
+
     public int getTicketId() {
         return ticketId;
     }
@@ -88,8 +91,5 @@ public class Ticket {
 
     public void setKlasse(int klasse) {
         this.klasse = klasse;
-    }
-
-    public Ticket() {
     }
 }

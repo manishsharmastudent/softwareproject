@@ -19,12 +19,14 @@ public class VoorwerpController {
 
 
     public int getVoorwerpId(){ return voorwerpModel.getVoorwerpId(); }
+    public Trein getTrein(){ return voorwerpModel.getTrein(); }
     public String getKleur(){ return voorwerpModel.getKleur(); }
     public String getType(){ return voorwerpModel.getType(); }
     public Route getRoute(){ return voorwerpModel.getRoute(); }
     public Station getStation(){ return voorwerpModel.getStation(); }
 
     public void setVoorwerpId(int voorwerpid){ voorwerpModel.setVoorwerpId(voorwerpid); }
+    public void setTrein(Trein trein){ voorwerpModel.setTrein(trein); }
     public void setKleur(String kleur){ voorwerpModel.setKleur(kleur); }
     public void setType(String type){ voorwerpModel.setType(type); }
     public void setRoute(Route route){ voorwerpModel.setRoute(route); }
