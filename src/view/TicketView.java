@@ -1,8 +1,16 @@
 package view;
 import javax.swing.*;
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 import org.jdesktop.swingx.autocomplete.*;
 
+import java.awt.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Properties;
+import java.util.Calendar;
 
 /**
  * Created by User on 31/10/2016.
@@ -24,6 +32,29 @@ public class TicketView {
     private JButton zoekButton = new JButton("Zoek");
     private AutoCompleteDecorator decorator;
     private JComboBox stationCombobox;
+    private JComboBox stationTweeCombobox;
+    private Properties p = new Properties();
+    private UtilDateModel model = new UtilDateModel();
+    private JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+    private JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new JFormattedTextField.AbstractFormatter() {
+
+        private String datePattern = "yyyy-MM-dd";
+        private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+
+        @Override
+        public Object stringToValue(String text) throws ParseException {
+            return dateFormatter.parseObject(text);        }
+
+        @Override
+        public String valueToString(Object value) throws ParseException {
+            if (value != null) {
+                Calendar cal = (Calendar) value;
+                return dateFormatter.format(cal.getTime());
+            }
+
+            return "";
+        }
+    });
 
 
     public TicketView(){
@@ -36,12 +67,24 @@ public class TicketView {
         stationCombobox = new JComboBox(new Object[]{"","test", "aardappeltest"});
         AutoCompleteDecorator.decorate(stationCombobox);
 
+
         frame.add(panel);
-        panel.add(stationCombobox);
+
+        panel.add(datePicker);
+
+
+
+        p.put("text.today", "Today");
+        p.put("text.month", "Month");
+        p.put("text.year", "Year");
 
         frame.setSize(800,700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+
         frame.setVisible(true);
+
+
 
     }
 
