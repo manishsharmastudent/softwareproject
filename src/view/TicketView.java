@@ -1,5 +1,6 @@
 package view;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -55,7 +56,7 @@ public class TicketView {
             return "";
         }
     });
-
+    private Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 
     public TicketView(){
 
@@ -70,7 +71,32 @@ public class TicketView {
 
         frame.add(panel);
 
-        panel.add(datePicker);
+
+
+
+
+
+        panel.setLayout(new BorderLayout(20,20));
+
+
+
+        welkomPanel.setLayout(new BoxLayout(welkomPanel, BoxLayout.LINE_AXIS));
+        welkomPanel.setPreferredSize(new Dimension(800,50));
+        welkomPanel.setMaximumSize(welkomPanel.getPreferredSize());
+        welkomPanel.add(welkomLabel);
+        welkomPanel.add(tijdLabel);
+        welkomPanel.add(datumLabel);
+        welkomPanel.setBorder(border);
+
+
+
+
+
+        interactiePanel.add(datePicker);
+
+        welkomPanel.add(welkomLabel);
+        panel.add(welkomPanel, BorderLayout.NORTH);
+        panel.add(interactiePanel, BorderLayout.CENTER);
 
 
 
@@ -80,6 +106,10 @@ public class TicketView {
 
         frame.setSize(800,700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+
+
         frame.setLocationRelativeTo(null);
 
         frame.setVisible(true);
