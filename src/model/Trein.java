@@ -8,7 +8,10 @@ import java.sql.Time;
 public class Trein {
 
   private int treinId;
+  private int treinType;
   private String treinNaam;
+  private boolean cancelled = false;
+  private String vetrek, bestemming;
 
     public Trein(int treinId, String treinNaam) {
         this.treinId = treinId;
@@ -34,5 +37,27 @@ public class Trein {
     public boolean setTreinNaam(String treinNaam) {
         this.treinNaam = treinNaam;
         return true;
+    }
+
+    public String getVetrek() {
+        return vetrek;
+    }
+    public void setVetrek(String vetrek) {
+        this.vetrek = vetrek;
+    }
+    public String getBestemming() {
+        return bestemming;
+    }
+    public void setBestemming(String bestemming) {
+        this.bestemming = bestemming;
+    }
+
+    public void setTreinType(int type){
+
+        treinType=type;
+    }
+
+    public int getTreinType() {
+        return treinType;
     }
 }
