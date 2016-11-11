@@ -8,7 +8,7 @@ import model.Station;
 public class StationView extends StandardView {
     public StationView(String titel, boolean haveButton){
         super(titel, haveButton);
-        standardButton.setText("StationView");
+        getStandardButton().setText("StationView");
     }
     public void showStation(Station station){
 

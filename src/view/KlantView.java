@@ -23,12 +23,8 @@ public class KlantView extends StandardView {
         JLabel voornaam = new JLabel(klant.getVoornaam());
         JLabel achternaam = new JLabel(klant.getAchternaam());
         JLabel rijksregisterNummer = new JLabel(klant.getRijksregisterNummer());
-        standardButton = new JButton("Klik hier");
-        content.add(standardButton);
         JTextField text = new JTextField();
-        content.add(text);
 
-        content.setVisible(true);
-        window.setVisible(true);
+        getWindow().setVisible(true);
     }
 }

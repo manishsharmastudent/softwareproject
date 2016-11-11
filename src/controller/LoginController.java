@@ -14,7 +14,13 @@ public class LoginController {
     private Login loginModel;
     private LoginView loginView;
     private ManageLogin loginManage;
+    private MainController mainController = new MainController();
 
+    public LoginController(){
+        loginModel = new Login();
+        loginManage = new ManageLogin();
+        loginView = new LoginView("Login", false);
+    }
     public LoginController(Login login, LoginView view, ManageLogin manage){
         this.loginModel = login;
         this.loginView = view;
@@ -40,9 +46,17 @@ public class LoginController {
         return true;
     }
     public void showLoginScreen(){
-        loginView.showLoginScreen();
+        loginView.showLoginScreen(this);
     }
-    public boolean controleerLogin(Login login){
-        return loginManage.checkLogin(login.getLoginNaam(), login.getLoginWachtwoord());
+    public void controleerLogin(Login login){
+        if (loginManage.checkLogin(login.getLoginNaam(), login.getLoginWachtwoord()) == true){
+            loginView.getWindow().setVisible(false);
+            loginView.getWindow().dispose();
+            mainController.showHomeScreen();
+        }
+        else {showFailedLogin();}
+    }
+    public void showFailedLogin(){
+        loginView.showFailedLogin();
     }
 }

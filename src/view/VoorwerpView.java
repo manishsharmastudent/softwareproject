@@ -8,7 +8,7 @@ import model.Voorwerp;
 public class VoorwerpView extends StandardView {
     public VoorwerpView(String titel, boolean haveButton){
         super(titel, haveButton);
-        standardButton.setText("Voorwerp view");
+        getStandardButton().setText("Voorwerp view");
     }
     public void showVoorwerp(Voorwerp voorwerp){
 

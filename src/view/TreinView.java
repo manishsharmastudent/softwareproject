@@ -8,7 +8,7 @@ import model.Trein;
 public class TreinView extends StandardView{
     public TreinView(String titel, boolean haveButton){
         super(titel, haveButton);
-        standardButton.setText("Show trein");
+        getStandardButton().setText("Show trein");
     }
     public void showTrein(Trein trein){
 
