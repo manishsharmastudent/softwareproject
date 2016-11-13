@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  * Created by Nofel on 11-11-16.
  */
 public class TrajectParseController {
-    public static List<Traject> getTrajecten(JSONArray arrCon){
+    public static List<Traject> getTrajecten(JSONArray arrCon, String vertrek){
         List<Traject> trajecten = new ArrayList<Traject>();
 
         arrCon.forEach(new Consumer<Object>() {
@@ -24,7 +24,7 @@ public class TrajectParseController {
                 trj .setAankomstStation(obj.getString("Arrival"));
                 trj .setCancelled(obj.getBoolean("Cancelled"));
                 JSONArray arrTrains = obj.getJSONArray("Trains");
-                trj .setTreinen(TreinParseController.getTrains(arrTrains));
+                trj .setTreinen(TreinParseController.getTrains(arrTrains, vertrek));
 
                 trajecten.add(trj );
 

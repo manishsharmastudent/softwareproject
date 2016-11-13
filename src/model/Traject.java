@@ -114,4 +114,13 @@ public class Traject {
     public void setTreinen(List<Trein> treinen) {
         this.treinen = treinen;
     }
+
+    @Override
+    public String toString() {
+        return "Traject{" +
+                "vertrekStation='" + vertrekStation + '\'' +
+                ", aankomstStation='" + aankomstStation + '\'' +
+                ", treinen=" + treinen +
+                '}';
+    }
 }

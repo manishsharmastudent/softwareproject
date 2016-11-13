@@ -1,6 +1,10 @@
 package model;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
+
+import controller.TimeParseController;
+import controller.TimeParseController.*;
 
 /**
  * Created by Manish on 29/10/2016.
@@ -12,6 +16,9 @@ public class Trein {
   private String treinNaam;
   private boolean cancelled = false;
   private String vetrek, bestemming;
+  private String vetrkPlatform;
+  private LocalDateTime departure;
+  private LocalDateTime actualDeparture;
 
     public Trein(int treinId, String treinNaam) {
         this.treinId = treinId;
@@ -59,5 +66,49 @@ public class Trein {
 
     public int getTreinType() {
         return treinType;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    public String getVetrkPlatform() {
+        return vetrkPlatform;
+    }
+
+    public void setVetrkPlatform(String vetrkPlatform) {
+        this.vetrkPlatform = vetrkPlatform;
+    }
+
+    public LocalDateTime getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(LocalDateTime departure) {
+        this.departure = departure;
+    }
+
+    public LocalDateTime getActualDeparture() {
+        return actualDeparture;
+    }
+
+    public void setActualDeparture(LocalDateTime actualDeparture) {
+        this.actualDeparture = actualDeparture;
+    }
+
+    @Override
+    public String toString() {
+        return "Trein{" +
+                "treinNaam='" + treinNaam + '\'' +
+                ", vetrek='" + vetrek + '\'' +
+                ", bestemming='" + bestemming + '\'' +
+                ", vetrkPlatform='" + vetrkPlatform + '\'' +
+                ", Vetrektijd: " + TimeParseController.getDelay(departure,actualDeparture) +
+                '}' +
+                '\n';
     }
 }

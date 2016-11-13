@@ -90,7 +90,7 @@ public class ParseController {
             }
 
             JSONArray arrCon = jBase.getJSONArray("Routes");
-            traject = TrajectParseController.getTrajecten(arrCon);
+            traject = TrajectParseController.getTrajecten(arrCon, from);
 
         } catch (IOException io) {
             System.err.println("Error");
@@ -118,5 +118,16 @@ public class ParseController {
         }
 
         return station;
+    }
+
+    public static void main(String[] args) {
+        try {
+            List<Traject> tra = getTraject("Ternat", "Holleken");
+            tra.forEach(e -> System.out.print(e));
+
+        }catch (Exception e){}
+
+
+
     }
 }
