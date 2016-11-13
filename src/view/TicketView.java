@@ -21,9 +21,10 @@ import java.util.Calendar;
  */
 public class TicketView {
     private JFrame frame = new JFrame();
-    private JLabel welkomLabel = new JLabel("Welkom");
-    private JLabel tijdLabel = new JLabel("tijd");
-    private JLabel datumLabel = new JLabel("datum");
+
+    private JLabel tijdLabel = new JLabel("Welkom");
+    private JLabel datumLabel = new JLabel("Tijd");
+    private JLabel welkomLabel = new JLabel("Datum");
     private JPanel welkomPanel = new JPanel();
     private JPanel panel = new JPanel();
     private JPanel interactiePanel = new JPanel(new SpringLayout());
@@ -49,6 +50,7 @@ public class TicketView {
     private JPanel mainPanel = new JPanel();
     private JPanel navigationPanel = new JPanel();
     private FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
+    private JPanel mainNavPanel = new JPanel();
 
 
 
@@ -104,16 +106,36 @@ public class TicketView {
 
 
 
+        mainNavPanel.setLayout(new BorderLayout());
+        mainNavPanel.add(navigationPanel, BorderLayout.WEST);
+        mainNavPanel.add(terugButton, BorderLayout.EAST);
 
 
 
 
-        welkomPanel.setLayout(new BoxLayout(welkomPanel, BoxLayout.LINE_AXIS));
+        welkomPanel.setLayout(new GridLayout(0,3));
+
+
+
+        welkomLabel.setHorizontalAlignment(JLabel.CENTER);
+        datumLabel.setHorizontalAlignment(JLabel.CENTER);
+        tijdLabel.setHorizontalAlignment(JLabel.CENTER);
+
+
+        welkomPanel.add(welkomLabel);
+
+
+
+
+
+
+
+        welkomPanel.add(datumLabel, JLabel.CENTER);
+        welkomPanel.add(tijdLabel, JLabel.CENTER);
+
         welkomPanel.setPreferredSize(new Dimension(800,50));
         welkomPanel.setMaximumSize(welkomPanel.getPreferredSize());
-        welkomPanel.add(welkomLabel);
-        welkomPanel.add(tijdLabel);
-        welkomPanel.add(datumLabel);
+
         welkomPanel.setBorder(border);
 
 
@@ -150,8 +172,8 @@ public class TicketView {
 
 
         welkomPanel.add(welkomLabel);
-        navigationPanel.setBorder(border);
 
+        mainNavPanel.setBorder(border);
 
 
 
@@ -170,7 +192,7 @@ public class TicketView {
 
 
 
-        mainPanel.add(navigationPanel, BorderLayout.NORTH);
+        mainPanel.add(mainNavPanel, BorderLayout.NORTH);
         mainPanel.add(interactiePanel, BorderLayout.CENTER);
 
 
@@ -214,9 +236,10 @@ public class TicketView {
             JLabel treeText = new JLabel("");
 
             JPanel treePanel = new JPanel();
-            treePanel.setLayout(new BorderLayout(20,20));
+            treePanel.setLayout(new BorderLayout());
 
-
+            treeText.setHorizontalAlignment(JLabel.CENTER);
+            treeText.setVerticalAlignment(JLabel.CENTER);
 
 
             switch (i){
@@ -233,12 +256,13 @@ public class TicketView {
                     break;
             }
 
-            treePanel.add(treeText, BorderLayout.CENTER);
 
 
 
             treePanel.setPreferredSize(new Dimension(Global.widthNavPanel, Global.heightNavPanel));
             treePanel.setBorder(border);
+            treePanel.add(treeText, BorderLayout.CENTER);
+
             navigationPanel.add(treePanel);
 
 
@@ -246,12 +270,13 @@ public class TicketView {
 
 
 
-        navigationPanel.add(terugButton);
+
+
 
 
 
         frame.add(panel);
-
+        frame.setResizable(false);
 
     }
 
