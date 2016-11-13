@@ -48,6 +48,10 @@ public class TicketView {
     private JSpinner spinner1 = new JSpinner(modelSp);
     private JPanel mainPanel = new JPanel();
     private JPanel navigationPanel = new JPanel();
+    private FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
+
+
+
 
     private UtilDateModel model = new UtilDateModel();
     private JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
@@ -146,8 +150,6 @@ public class TicketView {
 
 
         welkomPanel.add(welkomLabel);
-        navigationPanel.setLayout(new BorderLayout(0,0));
-        navigationPanel.add(terugButton, BorderLayout.EAST);
         navigationPanel.setBorder(border);
 
 
@@ -157,6 +159,17 @@ public class TicketView {
         panel.setLayout(new BorderLayout(80,30));
 
         mainPanel.setLayout(new BorderLayout(0,0));
+
+
+
+
+
+
+
+
+
+
+
         mainPanel.add(navigationPanel, BorderLayout.NORTH);
         mainPanel.add(interactiePanel, BorderLayout.CENTER);
 
@@ -174,8 +187,70 @@ public class TicketView {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.add(panel);
 
+
+
+
+        Global.aantalTrees=0;
+
+        Global.aantalTrees++;
+        System.out.println(Global.aantalTrees);
+        Global.currentPathName = "Home";
+        System.out.println(Global.firstPathName);
+        Global.aantalTrees++;
+        System.out.println(Global.aantalTrees);
+
+        Global.secondPathName = "Tickets en Abonnementen";
+        Global.currentPathName = "Verkoop Ticket";
+        Global.aantalTrees++;
+        Global.thirdPathName = Global.currentPathName;
+
+
+
+        navigationPanel.setLayout(navigationPanelLayout);
+
+
+        for (int i = 0; i < Global.aantalTrees; i++){
+            JLabel treeText = new JLabel("");
+
+            JPanel treePanel = new JPanel();
+            treePanel.setLayout(new BorderLayout(20,20));
+
+
+
+
+            switch (i){
+                case 0: treeText.setText(Global.firstPathName);
+                    System.out.println(0);
+
+
+                    break;
+                case 1: treeText.setText(Global.secondPathName);
+                    break;
+                case 2: treeText.setText(Global.thirdPathName);
+                    break;
+                default: treeText.setText("Error_treestructure_naming");
+                    break;
+            }
+
+            treePanel.add(treeText, BorderLayout.CENTER);
+
+
+
+            treePanel.setPreferredSize(new Dimension(Global.widthNavPanel, Global.heightNavPanel));
+            treePanel.setBorder(border);
+            navigationPanel.add(treePanel);
+
+
+        }
+
+
+
+        navigationPanel.add(terugButton);
+
+
+
+        frame.add(panel);
 
 
     }
@@ -184,5 +259,6 @@ public class TicketView {
         TicketView t = new TicketView();
 
     }
+
 
 }

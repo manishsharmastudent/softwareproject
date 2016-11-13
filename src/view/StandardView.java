@@ -128,11 +128,16 @@ public class StandardView {
         frame.setLocationRelativeTo( null );
         frame.setVisible(true);
 
+        Global.aantalTrees++;
+        Global.currentPathName = "Home";
+
+
     }
 
     public static void main(String[] args) {
        StandardView st = new StandardView();
 
     }
+
 
 }
