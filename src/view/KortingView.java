@@ -8,7 +8,7 @@ import model.Korting;
 public class KortingView extends StandardView {
     public KortingView(String titel, boolean haveButton){
         super(titel, haveButton);
-        standardButton.setText("KortinView");
+        getStandardButton().setText("KortinView");
     }
     public void showKorting(Korting korting){
 

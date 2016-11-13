@@ -8,11 +8,12 @@
       <meta attribute="class-description">
          This class contains the Type Kaarten detail.
       </meta>
-      <id name="id" type="string" column="typeId">
+      <id name="id" type="int" column="typeId">
          <generator class="native"/>
       </id>
-      <many-to-one name="korting" column="korting" class="model.Korting" unique="true" not-null="true"/>
+      <many-to-one name="korting" column="kortingid" class="model.Korting" unique="true" not-null="true"/>
       <property name="naam" column="naam" type="string"/>
       <property name="omschrijving" column="omschrijving" type="string"/>
+      <property name="active" column="active" type="boolean"/>
    </class>
 </hibernate-mapping>

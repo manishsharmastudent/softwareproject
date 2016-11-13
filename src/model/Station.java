@@ -7,14 +7,24 @@ public class Station {
     private int stationId;
     private String naam;
     private String stad;
+    private boolean active;
 
-    public Station(int stationId, String naam, String stad) {
+    public Station(int stationId, String naam, String stad, boolean active) {
         this.stationId = stationId;
         this.naam = naam;
         this.stad = stad;
+        this.active = active;
     }
 
     public Station() {
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public int getStationId() {

@@ -8,7 +8,7 @@ import model.Route;
 public class RouteView extends StandardView {
     public RouteView(String titel, boolean haveButton){
         super(titel, haveButton);
-        standardButton.setText("RouteView");
+        getStandardButton().setText("RouteView");
     }
 
     public void showRoute(Route route){
