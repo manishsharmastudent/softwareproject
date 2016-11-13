@@ -125,9 +125,9 @@ public class ParseController {
             List<Traject> tra = getTraject("Ternat", "Holleken");
             tra.forEach(e -> System.out.print(e));
 
-        }catch (Exception e){}
-
-
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
 
     }
 }

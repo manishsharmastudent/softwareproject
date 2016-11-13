@@ -47,7 +47,6 @@ public class TreinParseController {
                     t.setDeparture(TimeParseController.getTime(time.getString("ActualDeparture")));
                 }
             }
-
         });
 
         return t;

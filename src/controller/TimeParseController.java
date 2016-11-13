@@ -11,10 +11,10 @@ public class TimeParseController {
     {
         LocalDateTime d = null;
 
-        if((timeString.length() == 19) && (timeString != "0001-01-01T00:00:00")) {
-            d = LocalDateTime.parse(timeString);
+        if((timeString != "0001-01-01T00:00:00")) {
+           if (!(timeString.substring(11).equals("00:00:00+01:00")))
+                d = LocalDateTime.parse(timeString);
         }
-
         return d;
     }
 

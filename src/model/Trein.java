@@ -107,7 +107,7 @@ public class Trein {
                 ", vetrek='" + vetrek + '\'' +
                 ", bestemming='" + bestemming + '\'' +
                 ", vetrkPlatform='" + vetrkPlatform + '\'' +
-                ", Vetrektijd: " + TimeParseController.getDelay(departure,actualDeparture) +
+                ", Vetrektijd: " + departure.toLocalTime().toString() +
                 '}' +
                 '\n';
     }
