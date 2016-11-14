@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by Nofel on 02-11-16.
@@ -50,6 +51,24 @@ public class Traject {
 
     public void setTreinen(List<Trein> treinen) {
         this.treinen = treinen;
+    }
+
+    public void setVertrekStation(String vertrekStation) {
+        this.vertrekStation = vertrekStation;
+    }
+
+    public List<String> getTransferstations() {
+        return transferstations;
+    }
+
+    public void setTransferstations(List<String> transferstations) {
+        this.transferstations = transferstations;
+    }
+
+    public void setTransferstations(String transferstation) {
+        if(transferstations == null)
+            transferstations = new ArrayList<String>();
+        transferstations.add(transferstation);
     }
 
     @Override

@@ -14,13 +14,11 @@ public class Halte {
     private LocalDateTime ActualArrival;
     private LocalDateTime Departure;
     private LocalDateTime ActualDeparture;
-    private int arrivalPlatform;
     private int departurePlatform;
 
-    public Halte(String name, int arrivalPlatform, int departurePlatform) {
+    public Halte(String name, int departurePlatform) {
         super();
         this.name = name;
-        this.arrivalPlatform = arrivalPlatform;
         this.departurePlatform = departurePlatform;
     }
 
@@ -66,16 +64,6 @@ public class Halte {
         ActualDeparture = TimeParseController.getTime(actualDeparture);
     }
 
-    public int getArrivalPlatform ()
-    {
-        return arrivalPlatform;
-    }
-
-    public void setArrivalPlatform (int arrivalPlatform)
-    {
-        this.arrivalPlatform = arrivalPlatform;
-    }
-
     public int getDeparturePlatform ()
     {
         return departurePlatform;
@@ -94,7 +82,7 @@ public class Halte {
     public String toString() {
         return "Halte{" +
                 "name='" + name + '\'' +
-                ", arrivalPlatform=" + arrivalPlatform +
+                ", arrivalPlatform=" +
                 ", departurePlatform=" + departurePlatform +
                 '}';
     }

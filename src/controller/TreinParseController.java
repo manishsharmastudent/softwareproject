@@ -28,28 +28,28 @@ public class TreinParseController {
         return list;
     }
 
-        public static List<Halte> getHaltes(JSONObject obj) {
+    public static List<Halte> getHaltes(JSONObject obj) {
         JSONArray arrTrains = obj.getJSONArray("Trains");
-        List<Halte> stops = new ArrayList<Halte>();
+        List<Halte> haltes = new ArrayList<Halte>();
 
         arrTrains.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {
-                JSONObject obj = (JSONObject)t;
+                JSONObject obj = (JSONObject) t;
                 JSONObject stps = obj.getJSONObject("Stops");
                 JSONArray arrStops = stps.getJSONArray("Stations");
 
                 arrStops.forEach(new Consumer<Object>() {
                     public void accept(Object t) {
-                        JSONObject obj = (JSONObject)t;
-                        stops.add(getStop(obj));
+                        JSONObject obj = (JSONObject) t;
+                        haltes.add(getStop(obj));
 
                     }
                 });
             }
         });
 
-        return stops;
+        return haltes;
     }
 
     public static Halte getStop(JSONObject obj) {
@@ -57,18 +57,18 @@ public class TreinParseController {
         String coordinates = obj.getString("Coordinates");
 
         int arrivalPlatform = 0;
-        if(obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
+        if (obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
             arrivalPlatform = obj.getInt("ArrivalPlatform");
         else if (!obj.isNull("DeparturePlatform"))
             arrivalPlatform = obj.getInt("DeparturePlatform");
 
         int departurePlatform = 0;
-        if(obj.has("DeparturePlatform") && !obj.isNull("DeparturePlatform"))
+        if (obj.has("DeparturePlatform") && !obj.isNull("DeparturePlatform"))
             departurePlatform = obj.getInt("DeparturePlatform");
-        else if(!obj.isNull("ArrivalPlatform"))
+        else if (!obj.isNull("ArrivalPlatform"))
             departurePlatform = obj.getInt("ArrivalPlatform");
 
-        return new Halte(station, arrivalPlatform, departurePlatform);
+        return new Halte(station, departurePlatform);
     }
 
     public static Trein getTrain(JSONObject obj, String vetrek) {
@@ -99,7 +99,7 @@ public class TreinParseController {
     public static Station getLiveBoard(JSONArray jArray) {
         Station station = new Station();
 
-        station.setTreinen(getTrains(jArray,""));
+        station.setTreinen(getTrains(jArray, ""));
 
         return station;
     }

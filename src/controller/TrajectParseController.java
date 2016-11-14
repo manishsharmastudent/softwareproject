@@ -25,6 +25,19 @@ public class TrajectParseController {
                 trj .setCancelled(obj.getBoolean("Cancelled"));
                 JSONArray arrTrains = obj.getJSONArray("Trains");
                 trj .setTreinen(TreinParseController.getTrains(arrTrains, trj .getVertrekStation()));
+                if(obj.getJSONArray("TransferStations").length() > 1){
+                   JSONArray arrTransfer = obj.getJSONArray("TransferStations");
+                    arrTransfer.forEach(new Consumer<Object>() {
+                        @Override
+                        public void accept(Object transfer){
+                            JSONObject ts = (JSONObject)transfer;
+                            if(!ts.isNull("TransferAt"))
+                             trj.setTransferstations(ts.getString("TransferAt"));
+
+                        }
+                    });
+                }
+
 
                 trajecten.add(trj);
 

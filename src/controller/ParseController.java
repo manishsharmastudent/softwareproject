@@ -81,8 +81,8 @@ public class ParseController {
 
     public static void main(String[] args) {
         try {
-           // List<Traject> tra = getTraject("Ternat", "Holleken");
-           // tra.forEach(e -> System.out.print(e));
+            List<Traject> tra = getTraject("Ternat", "Holleken");
+            tra.forEach(e -> System.out.print(e));
 
             Station antw = getStationBoard("Antwerpen-Centraal");
             System.out.println();
