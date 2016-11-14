@@ -45,11 +45,14 @@ public class TicketView extends StandardView {
 
     public TicketView(String titel, boolean haveButton){
         super(titel, haveButton);
-        getStandardButton().setText("Ticket View");
         setGui();
         terugButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                getWindow().dispose();
+                getWindow().setVisible(false);
                 deleteLastInPath();
+                deleteLastInPath();
+                HomeView hV = new HomeView("Home", false);
             }
         });
     }
@@ -126,9 +129,7 @@ public class TicketView extends StandardView {
         p.put("text.month", "Month");
         p.put("text.year", "Year");
 
-        addPath("Home");
-        addPath("Tickets en Abonnementen");
-
+        addPath("Tickets en abonnementen");
         addPath("Verkoop Ticket");
 
         showPath();

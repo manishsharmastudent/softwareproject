@@ -82,6 +82,8 @@ public class StandardView {
         welkomPanel.setPreferredSize(new Dimension(800,50));
         welkomPanel.setMaximumSize(welkomPanel.getPreferredSize());
         welkomPanel.setBorder(border);
+
+        mainPanel.add(welkomPanel, BorderLayout.NORTH);
     }
     public void initNavTree(){
         mainNavPanel.setLayout(new BorderLayout(0,0));
@@ -91,7 +93,8 @@ public class StandardView {
         mainNavPanel.setBorder(border);
 
         navigationPanel.setLayout(navigationPanelLayout);
-
+        mainNavPanel.setPreferredSize(welkomPanel.getPreferredSize());
+        mainPanel.add(mainNavPanel, BorderLayout.NORTH);
 
     }
     public void showWindow(){
