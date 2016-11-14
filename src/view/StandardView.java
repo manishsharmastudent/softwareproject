@@ -23,7 +23,7 @@ public class StandardView {
     StandardView(String titel, boolean haveButton){
         window = new JFrame(titel);
 
-        java.net.URL url = ClassLoader.getSystemResource("resources/nmbs_sncb.png");
+        java.net.URL url = ClassLoader.getSystemResource("");
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image img = kit.createImage(url);
         window.setIconImage(img);

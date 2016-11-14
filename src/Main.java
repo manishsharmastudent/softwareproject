@@ -1,11 +1,8 @@
 import controller.*;
-import hibernate.ManageKlant;
-import hibernate.ManageLogin;
-import hibernate.ManageVoorwerp;
+import hibernate.*;
 import view.*;
 import model.*;
 
-import hibernate.SessionFactorySingleton;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+    /*    SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         ManageKlant mK = new ManageKlant();
         Klant k1 = new Klant("123-123", "Rik", "Van Belle", "Vrijheidstraat 25", 9400, "Ninove", true);
         KlantView KView = new KlantView("Klant", true);
@@ -37,6 +34,79 @@ public class Main {
         LoginView lView = new LoginView("Login", false);
         LoginController lC = new LoginController(l, lView, mL);
         lC.showLoginScreen();
+
+
+
+
+    //Rik zijn main code
+    */
+
+        /* Typekaart, ticket en Route  list getest
+        System.out.print("manish");
+        ManageTypeKaart tk = new ManageTypeKaart();
+        List<TypeKaart> types = tk.listTypeKaarten();
+
+        for (TypeKaart t:types
+             ) {
+
+            System.out.print(t.getNaam());
+        }
+
+
+        ManageTicket mt = new ManageTicket();
+        List<Ticket> tickets = mt.listTicket();
+        for (Ticket t:tickets
+             ) {
+            System.out.print(t.getTicketId());
+
+        }
+
+
+        Station stationVertrek = new Station(1,"Brussel-Zuid","Brussel", true);
+        Station stationAankomst = new Station(1,"Vilvoorde","Vilvoorde", true);
+        Route route = new Route(1,stationVertrek,stationAankomst, true);
+        ManageTypeKaart tk = new ManageTypeKaart();
+        List<TypeKaart> types = tk.listTypeKaarten();
+        TypeKaart typekaart = types.get(0);
+
+        Ticket t = new Ticket(1,route,new Date(), new Date(),typekaart,1,5,1);
+        ManageTicket mt = new ManageTicket();
+       int id = mt.addTicket(t);
+        System.out.print(id);
+        Station stationVertrek = new Station(1,"Brussel-Zuid","Brussel", true);
+        Station stationAankomst = new Station(1,"Vilvoorde","Vilvoorde", true);
+        Route route = new Route(1,stationVertrek,stationAankomst, true);
+
+        ManageRoute rt = new ManageRoute();
+      int i =  rt.addRoute(route);
+        System.out.print(i);
+        ManageAbonnement ma = new ManageAbonnement();
+        List<Abonnement> abo= ma.getAbonnementByLastName("achter");
+
+        for (Abonnement a:abo
+             ) {
+            System.out.println(a.getAbonnementId());
+
+        }
+        */
+
+        Station stationVertrek = new Station(1,"Brussel-Zuid","Brussel", true);
+        Station stationAankomst = new Station(1,"Vilvoorde","Vilvoorde", true);
+        Route route = new Route(1,stationVertrek,stationAankomst, true);
+        ManageTypeKaart tk = new ManageTypeKaart();
+     //   List<TypeKaart> types = tk.listTypeKaarten();
+        TypeKaart typekaart = tk.getTypeKaartById(1);
+
+        Ticket t = new Ticket(1,route,new Date(), new Date(),typekaart,1,5,1);
+
+        ManageTicket mt = new ManageTicket();
+
+        int i = mt.addTicket(t);
+        System.out.print(i);
+
     }
+
+
+
 
 }
