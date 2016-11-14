@@ -47,7 +47,6 @@ public class StandardView {
         window.setJMenuBar(menuBar);
     }
     public void showWindow(){
-        window.pack();
         mainPanel.setVisible(true);
         window.setVisible(true);
     }

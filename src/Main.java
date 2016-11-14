@@ -36,15 +36,7 @@ public class Main {
         ManageLogin mL = new ManageLogin();
         LoginView lView = new LoginView("Login", false);
         LoginController lC = new LoginController(l, lView, mL);
-        //lC.showLoginScreen();
-
-        ManageTypeKaart manage = new ManageTypeKaart();
-        manage.listTypeKaarten();
-
-        Korting kor1 = new Korting(25,1,new Date(), "Korting1", true);
-
-        TypeKaart typeKaart = new TypeKaart(2,1,"Go Pass", "10 ritten aan 5 euro");
-        manage.addTypeKaart(typeKaart);
+        lC.showLoginScreen();
     }
 
 }
