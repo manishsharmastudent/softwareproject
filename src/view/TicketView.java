@@ -19,12 +19,12 @@ import java.util.Calendar;
 /**
  * Created by User on 31/10/2016.
  */
-public class TicketView {
+public class TicketView extends StandardGuiView{/*
     private JFrame frame = new JFrame();
 
-    private JLabel tijdLabel = new JLabel("Welkom");
-    private JLabel datumLabel = new JLabel("Tijd");
-    private JLabel welkomLabel = new JLabel("Datum");
+    private JLabel tijdLabel = new JLabel("Tijd");
+    private JLabel datumLabel = new JLabel("Datum");
+    private JLabel welkomLabel = new JLabel("Welkom");
     private JPanel welkomPanel = new JPanel();
     private JPanel panel = new JPanel();
     private JPanel interactiePanel = new JPanel(new SpringLayout());
@@ -112,9 +112,7 @@ public class TicketView {
 
 
 
-
-        welkomPanel.setLayout(new GridLayout(0,3));
-
+        welkomPanel.setLayout(new GridLayout(1,3));
 
 
         welkomLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -123,15 +121,10 @@ public class TicketView {
 
 
         welkomPanel.add(welkomLabel);
+        welkomPanel.add(tijdLabel);
+        welkomPanel.add(datumLabel);
 
 
-
-
-
-
-
-        welkomPanel.add(datumLabel, JLabel.CENTER);
-        welkomPanel.add(tijdLabel, JLabel.CENTER);
 
         welkomPanel.setPreferredSize(new Dimension(800,50));
         welkomPanel.setMaximumSize(welkomPanel.getPreferredSize());
@@ -169,9 +162,6 @@ public class TicketView {
         interactiePanel.setBorder(border);
 
 
-
-
-        welkomPanel.add(welkomLabel);
 
         mainNavPanel.setBorder(border);
 
@@ -278,7 +268,7 @@ public class TicketView {
         frame.add(panel);
         frame.setResizable(false);
 
-    }
+    }*/
 
     public static void main(String[] args) {
         TicketView t = new TicketView();

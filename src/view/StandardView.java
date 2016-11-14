@@ -1,11 +1,14 @@
+/*
 package view;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+*/
 /**
  * Created by User on 31/10/2016.
- */
+ *//*
+
 public class StandardView {
     private JFrame frame = new JFrame();
     private JPanel panel = new JPanel();
@@ -141,3 +144,4 @@ public class StandardView {
 
 
 }
+*/
