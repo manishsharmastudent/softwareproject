@@ -24,48 +24,7 @@ public class ParseController {
     private static final String CONNECTIONS_URL = "https://traintracks.online/api/";
 
 
-    /* private static List<StationStop> getStops(JSONObject obj) {
-        JSONArray arrTrains = obj.getJSONArray("Trains");
-        List<StationStop> stops = new ArrayList<StationStop>();
 
-        arrTrains.forEach(new Consumer<Object>() {
-            @Override
-            public void accept(Object t) {
-                JSONObject obj = (JSONObject)t;
-                JSONObject stps = obj.getJSONObject("Stops");
-                JSONArray arrStops = stps.getJSONArray("Stations");
-
-                arrStops.forEach(new Consumer<Object>() {
-                    public void accept(Object t) {
-                        JSONObject obj = (JSONObject)t;
-                        stops.add(getStop(obj));
-
-                    }
-                });
-            }
-        });
-
-        return stops;
-    } */
-
-    /*private static StationStop getStop(JSONObject obj) {
-        String station = obj.getString("Name");
-        String coordinates = obj.getString("Coordinates");
-
-        int arrivalPlatform = 0;
-        if(obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
-            arrivalPlatform = obj.getInt("ArrivalPlatform");
-        else if (!obj.isNull("DeparturePlatform"))
-            arrivalPlatform = obj.getInt("DeparturePlatform");
-
-        int departurePlatform = 0;
-        if(obj.has("DeparturePlatform") && !obj.isNull("DeparturePlatform"))
-            departurePlatform = obj.getInt("DeparturePlatform");
-        else if(!obj.isNull("ArrivalPlatform"))
-            departurePlatform = obj.getInt("ArrivalPlatform");
-
-        return new StationStop(station, arrivalPlatform, departurePlatform, coordinates);
-    } */
 
 
 
@@ -90,7 +49,7 @@ public class ParseController {
             }
 
             JSONArray arrCon = jBase.getJSONArray("Routes");
-            traject = TrajectParseController.getTrajecten(arrCon, from);
+            traject = TrajectParseController.getTrajecten(arrCon);
 
         } catch (IOException io) {
             System.err.println("Error");
@@ -122,9 +81,11 @@ public class ParseController {
 
     public static void main(String[] args) {
         try {
-            List<Traject> tra = getTraject("Ternat", "Holleken");
-            tra.forEach(e -> System.out.print(e));
+           // List<Traject> tra = getTraject("Ternat", "Holleken");
+           // tra.forEach(e -> System.out.print(e));
 
+            Station antw = getStationBoard("Antwerpen-Centraal");
+            System.out.println();
         }catch (Exception e){
             System.out.println(e.toString());
         }

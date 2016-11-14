@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Time;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import controller.TimeParseController;
 import controller.TimeParseController.*;
@@ -11,14 +12,25 @@ import controller.TimeParseController.*;
  */
 public class Trein {
 
-  private int treinId;
-  private int treinType;
-  private String treinNaam;
-  private boolean cancelled = false;
-  private String vetrek, bestemming;
-  private String vetrkPlatform;
-  private LocalDateTime departure;
-  private LocalDateTime actualDeparture;
+    private int treinId;
+    private int treinType;
+    private String treinNaam;
+    private boolean cancelled = false;
+    private String vetrek, bestemming;
+    private String vetrkPlatform;
+    private LocalDateTime departure;
+    private LocalDateTime actualDeparture;
+
+    public List<Halte> getHaltes() {
+        return haltes;
+    }
+
+    public void setHaltes(List<Halte> haltes) {
+        this.haltes = haltes;
+    }
+
+    private List<Halte> haltes;
+
 
     public Trein(int treinId, String treinNaam) {
         this.treinId = treinId;
@@ -49,23 +61,26 @@ public class Trein {
     public String getVetrek() {
         return vetrek;
     }
+
     public void setVetrek(String vetrek) {
         this.vetrek = vetrek;
     }
+
     public String getBestemming() {
         return bestemming;
     }
+
     public void setBestemming(String bestemming) {
         this.bestemming = bestemming;
     }
 
-    public void setTreinType(int type){
-
-        treinType=type;
-    }
-
     public int getTreinType() {
         return treinType;
+    }
+
+    public void setTreinType(int type) {
+
+        treinType = type;
     }
 
     public boolean isCancelled() {
@@ -103,11 +118,10 @@ public class Trein {
     @Override
     public String toString() {
         return "Trein{" +
-                "treinNaam='" + treinNaam + '\'' +
-                ", vetrek='" + vetrek + '\'' +
-                ", bestemming='" + bestemming + '\'' +
-                ", vetrkPlatform='" + vetrkPlatform + '\'' +
-                ", Vetrektijd: " + departure.toLocalTime().toString() +
+                "treinNaam='" + treinNaam + '\'' + '\n' +
+                ", vetrek='" + vetrek + '\'' + '\n' +
+                ", bestemming='" + bestemming + '\'' + '\n' +
+                ", vetrkPlatform='" + vetrkPlatform + '\'' + '\n' +
                 '}' +
                 '\n';
     }
