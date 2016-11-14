@@ -13,9 +13,8 @@ public class VoorwerpView extends StandardView {
     JPanel voorwerpen = new JPanel();
 
 
-    public VoorwerpView(String titel, boolean haveButton){
-        super(titel, haveButton);
-        getStandardButton().setText("Voorwerp view");
+    public VoorwerpView(String titel){
+        super(titel);
     }
     public void showVoorwerp(Voorwerp voorwerp){
 

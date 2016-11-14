@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -18,12 +21,11 @@ public class StandardView {
     static int heightNavPanel = 30;
     static int widthNavPanel = 170;
 
-    private JFrame window;
-    private Container content;
-    private JPanel mainPanel = new JPanel();
-    private JButton standardButton = new JButton("StandaarButton");
-    private BorderLayout layout = new BorderLayout();
-    private FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
+    protected JFrame window;
+    protected JPanel mainPanel = new JPanel();
+    protected JButton standardButton = new JButton("StandaarButton");
+    protected BorderLayout layout = new BorderLayout();
+    protected FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
 
     protected Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 
@@ -33,32 +35,49 @@ public class StandardView {
     protected JPanel navigationPanel = new JPanel(); //mainNavPanel //Tree structure
     protected JPanel mainNavPanel = new JPanel();//fullNavigationPanel
 
-    protected JLabel tijdLabel = new JLabel("Tijd");
-    protected JLabel datumLabel = new JLabel("Datum");
-    protected JLabel welkomLabel = new JLabel("Welkom");
+    protected JLabel tijdLabel = new JLabel();
+    protected JLabel datumLabel = new JLabel();
+    protected JLabel welkomLabel = new JLabel();
     protected JButton terugButton = new JButton("Terug");
 
     private JMenuBar menuBar;
     private JMenu menu;
 
-    StandardView(String titel, boolean haveButton){
+    StandardView(String titel){
         window = new JFrame(titel);
 
         java.net.URL url = ClassLoader.getSystemResource("resources/nmbs_sncb.png");
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image img = kit.createImage(url);
         window.setIconImage(img);
-
-        initWelkomBoard();
-        initNavTree();
-        initMenuBar();
-        window.setSize(400, 500);
-        if (haveButton == true){
-            standardButton = new JButton("StandaardButton");
+        if (titel != "Login") {
+            initTimeAndDate();
+            initMenuBar();
+            initWelkomBoard();
+            initNavTree();
         }
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    public void setWelkomLabel(String tekst){
+        this.welkomLabel.setText(tekst);
+    }
+
+    public JFrame getWindow(){
+        return this.window;
+    }
+    public JPanel getMainPanel(){ return this.mainPanel; }
+    public JButton getStandardButton(){
+        return this.standardButton;
+    }
+
+    public void initTimeAndDate(){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        tijdLabel.setText(sdf.format(cal.getTime()));
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        datumLabel.setText(sdf.format(cal.getTime()));
+    }
     public void initMenuBar(){
         menuBar = new JMenuBar();
         menu = new JMenu("Test");
@@ -97,6 +116,7 @@ public class StandardView {
         mainPanel.add(mainNavPanel, BorderLayout.NORTH);
 
     }
+
     public void showWindow(){
         getWindow().setSize(800,700);
         getWindow().setLocationRelativeTo(null);
@@ -104,21 +124,9 @@ public class StandardView {
         mainPanel.setVisible(true);
         window.setVisible(true);
     }
-    public JFrame getWindow(){
-        return this.window;
-    }
-    public Container getContainer(){
-        return this.content;
-    }
-    public JPanel getMainPanel(){ return this.mainPanel; }
-    public JButton getStandardButton(){
-        return this.standardButton;
-    }
-
     public void addPath(String tekst){
         path.add(tekst);
     }
-
     public void showPath(){
         for (int i = 0; i < path.size(); i++){
             JLabel treeText = new JLabel("");
@@ -138,7 +146,6 @@ public class StandardView {
             navigationPanel.add(treePanel);
         }
     }
-
     public void deleteLastInPath(){
         if (path.size() > 0){
             path.remove(path.size()-1);

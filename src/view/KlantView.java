@@ -14,8 +14,8 @@ import java.awt.event.KeyListener;
  * Created by Rik Van Belle on 01/11/2016.
  */
 public class KlantView extends StandardView {
-    public KlantView(String titel, boolean haveButton){
-        super(titel, haveButton);
+    public KlantView(String titel){
+        super(titel);
     }
 
     public void showKlant(Klant klant){

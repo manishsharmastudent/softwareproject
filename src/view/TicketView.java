@@ -43,46 +43,29 @@ public class TicketView extends StandardView {
     private JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
 
 
-    public TicketView(String titel, boolean haveButton){
-        super(titel, haveButton);
-        setGui();
-        terugButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                getWindow().dispose();
-                getWindow().setVisible(false);
-                deleteLastInPath();
-                deleteLastInPath();
-                HomeView hV = new HomeView("Home", false);
-            }
-        });
-    }
-    public void showTicket(Ticket ticket){
-
+    public TicketView(String titel){
+        super(titel);
     }
 
-    private JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new JFormattedTextField.AbstractFormatter() {
+    public String getVertrekStation(){
+        return stationCombobox.getSelectedItem().toString();
+    }
 
-        private String datePattern = "yyyy-MM-dd";
-        private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+    public String getBestemmingsStation(){
+        return stationTweeCombobox.getSelectedItem().toString();
+    }
 
-        @Override
-        public Object stringToValue(String text) throws ParseException {
-            return dateFormatter.parseObject(text);        }
+    public String getKlasse(){
+        return klasseCombobox.getSelectedItem().toString();
+    }
 
-        @Override
-        public String valueToString(Object value) throws ParseException {
-            if (value != null) {
-                Calendar cal = (Calendar) value;
-                return dateFormatter.format(cal.getTime());
-            }
+    public JButton getZoekButton(){
+        return this.zoekButton;
+    }
 
-            return "";
-        }
-    });
-
-    private void setGui(){
-        stationCombobox = new JComboBox(new Object[]{"","test", "aardappeltest"});
-        stationTweeCombobox = new JComboBox(new Object[]{"","test", "aardappeltest"});
+    public void showVoegTicketToe(){
+        stationCombobox = new JComboBox(new Object[]{"","Aalst", "Ninove"});
+        stationTweeCombobox = new JComboBox(new Object[]{"","Aalst", "Ninove"});
         klasseCombobox = new JComboBox(new Object[]{"","Eerste klasse", "Tweede klasse"});
 
         AutoCompleteDecorator.decorate(stationCombobox);
@@ -136,10 +119,26 @@ public class TicketView extends StandardView {
 
         getWindow().setResizable(false);
         showWindow();
-        }
-
-    public static void main(String[] args){
-        TicketView tV = new TicketView("Ticket", false);
     }
+
+    private JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new JFormattedTextField.AbstractFormatter() {
+
+        private String datePattern = "yyyy-MM-dd";
+        private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+
+        @Override
+        public Object stringToValue(String text) throws ParseException {
+            return dateFormatter.parseObject(text);        }
+
+        @Override
+        public String valueToString(Object value) throws ParseException {
+            if (value != null) {
+                Calendar cal = (Calendar) value;
+                return dateFormatter.format(cal.getTime());
+            }
+
+            return "";
+        }
+    });
 
     }

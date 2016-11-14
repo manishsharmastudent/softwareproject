@@ -32,19 +32,15 @@ public class HomeView extends StandardView {
     private JButton vvvButton = new JButton("Verwijder verloren voorwerp");
     private JLabel verlorenVoorLabel = new JLabel("Verloren voorwerpen");
 
-    public HomeView(String titel, boolean haveButton){
-        super(titel, haveButton);
-        setGui();
-        verkoopTicketButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                TicketView tv = new TicketView("Ticket", false);
-                getWindow().setVisible(false);
-                getWindow().dispose();
-            }
-        });
+    public HomeView(String titel){
+        super(titel);
     }
 
-    private void setGui() {
+    public JButton getButtonVoegTicketToe(){
+        return this.verkoopTicketButton;
+    }
+
+    public void showVoegTicketToe() {
 
         ticketPanel.setLayout(new BoxLayout(ticketPanel, BoxLayout.PAGE_AXIS));
         ticketPanel.setPreferredSize(new Dimension(250, 100));
@@ -107,8 +103,5 @@ public class HomeView extends StandardView {
 
         showPath();
         showWindow();
-    }
-    public static void main(String[] args){
-        HomeView hv = new HomeView("Home", false);
     }
 }
