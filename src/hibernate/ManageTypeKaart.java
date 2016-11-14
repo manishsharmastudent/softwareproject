@@ -22,7 +22,6 @@ public class ManageTypeKaart {
             tx = session.beginTransaction();
             id = (Integer) session.save(a);
 
-            //  session.save(a);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();

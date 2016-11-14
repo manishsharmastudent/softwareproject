@@ -1,11 +1,8 @@
 import controller.*;
-import hibernate.ManageKlant;
-import hibernate.ManageLogin;
-import hibernate.ManageVoorwerp;
+import hibernate.*;
 import view.*;
 import model.*;
 
-import hibernate.SessionFactorySingleton;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
@@ -29,14 +26,25 @@ public class Main {
         Station stationVertrek = new Station(1,"Brussel-Zuid","Brussel", true);
         Station stationAankomst = new Station(1,"Vilvoorde","Vilvoorde", true);
         Route route = new Route(1,stationVertrek,stationAankomst, true);
-    //    Voorwerp v = new Voorwerp(1,1345, stationAankomst,route,"Kous", "Geel",k1,true);
+    //  Voorwerp v = new Voorwerp(1,1345, stationAankomst,route,"Kous", "Geel",k1,true);
         Voorwerp v1 = new Voorwerp(2,1,"Groen","elektronica","GSM", route, stationAankomst,k1,true);
+        VoorwerpView voorwerpView = new VoorwerpView("Voorwerp", false);
+        VoorwerpController voorwerpController = new VoorwerpController(v1, voorwerpView);
+        voorwerpController.showVoorwerpen();
 
         Login l = new Login(1, "Rik", "Pass", new Rol(), new Date(), true, stationVertrek);
         ManageLogin mL = new ManageLogin();
         LoginView lView = new LoginView("Login", false);
         LoginController lC = new LoginController(l, lView, mL);
-        lC.showLoginScreen();
+        //lC.showLoginScreen();
+
+        ManageTypeKaart manage = new ManageTypeKaart();
+        manage.listTypeKaarten();
+
+        Korting kor1 = new Korting(25,1,new Date(), "Korting1", true);
+
+        TypeKaart typeKaart = new TypeKaart(2,1,"Go Pass", "10 ritten aan 5 euro");
+        manage.addTypeKaart(typeKaart);
     }
 
 }
