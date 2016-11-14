@@ -6,6 +6,6 @@ package view;
 public class TypeKaartView extends StandardView {
     public TypeKaartView(String titel, boolean haveButton){
         super(titel, haveButton);
-        standardButton.setText("TypeKaartView");
+        getStandardButton().setText("TypeKaartView");
     }
 }

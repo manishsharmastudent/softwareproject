@@ -4,11 +4,11 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="model.Voorwerp" table="VERLOREN_VOORWERP">
+   <class name="model.Voorwerp" table="VERLOREN_VOORWERPEN">
       <meta attribute="class-description">
          This class contains the Login detail.
       </meta>
-      <id name="id" type="string" column="voorwerpId">
+      <id name="voorwerpId" type="string" column="voorwerpId">
          <generator class="native"/>
       </id>
       <property name="active" column="active" type="boolean"/>

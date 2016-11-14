@@ -1,17 +1,24 @@
 package controller;
 
+import hibernate.ManageKlant;
 import model.Klant;
 import view.KlantView;
+
+import java.util.List;
+
 /**
  * Created by Rik Van Belle on 01/11/2016.
  */
 public class KlantController {
     private Klant klantModel;
     private KlantView klantView;
+    private ManageKlant MK;
 
-    public KlantController(Klant klant, KlantView klantView){
+
+    public KlantController(Klant klant, KlantView klantView, ManageKlant MK){
         this.klantModel = klant;
         this.klantView = klantView;
+        this.MK = MK;
     }
     public String getRijksregister(){
         return klantModel.getRijksregisterNummer();
@@ -46,6 +53,14 @@ public class KlantController {
     public boolean setStad(String stad){
         return klantModel.setStad(stad);
     }
+
+    public void getKlantByName(String name){
+        /*List kl = MK.getKlantByName(name);
+        for (int i = 0; i < kl.size();i++){
+            klantView.showKlant((Klant)kl.get(i));
+        }*/
+    }
+
     public void showKlant(){
         klantView.showKlant(klantModel);
     }

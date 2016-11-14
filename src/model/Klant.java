@@ -1,6 +1,7 @@
 package model;
 
 public class Klant {
+	private int klantId;
 	private String rijksregisterNummer;
 	private String voornaam;
 	private String achternaam;
@@ -10,10 +11,6 @@ public class Klant {
 	private boolean active;
 
 	public Klant() {
-	}
-
-	public boolean isActive() {
-		return active;
 	}
 
 	public Klant(String rijksregisterNummer, String voornaam, String achternaam, String adres, int postcode, String stad, boolean active) {
@@ -28,6 +25,9 @@ public class Klant {
 
 	}
 
+	public int getKlantId(){
+		return this.klantId;
+	}
 	public String getRijksregisterNummer(){ return this.rijksregisterNummer; }
 	public String getVoornaam(){
 		return this.voornaam;
@@ -45,7 +45,10 @@ public class Klant {
 		return this.stad;
 	}
 	public boolean getActive(){ return this.active; }
-
+	public boolean setKlantId(int klantId){
+		this.klantId = klantId;
+		return true;
+	}
 	public boolean setRijksregisterNummer(String rijksregisterNummer){
 		this.rijksregisterNummer = rijksregisterNummer;
 		return true;

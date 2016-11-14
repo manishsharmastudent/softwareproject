@@ -8,7 +8,7 @@ import model.Abonnement;
 public class AbonnementView extends StandardView {
     public AbonnementView(String titel, boolean haveButton){
         super(titel, haveButton);
-        standardButton.setText("AbonnementView");
+        getStandardButton().setText("AbonnementView");
     }
 
     public void showAbonnement(Abonnement abonnement){

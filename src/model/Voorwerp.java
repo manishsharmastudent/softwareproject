@@ -24,7 +24,7 @@ public class Voorwerp {
     private boolean active;
 
     public int getVoorwerpId() {
-        return voorwerpId;
+        return this.voorwerpId;
     }
 
     public void setVoorwerpId(int voorwerpId) {
