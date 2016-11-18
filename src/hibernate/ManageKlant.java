@@ -182,6 +182,4 @@ public class ManageKlant {
         }
         return klanten;
     }
-
-
 }

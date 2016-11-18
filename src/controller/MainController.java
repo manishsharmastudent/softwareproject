@@ -1,5 +1,6 @@
 package controller;
 
+import model.Voorwerp;
 import view.HomeView;
 import view.TicketView;
 
@@ -12,15 +13,30 @@ import java.awt.event.ActionListener;
 public class MainController {
     HomeView home;
     TicketController ticketController;
-
+    StationController stationController;
+    KlantController klantController;
+    VoorwerpController voorwerpController;
     public MainController(){
         home = new HomeView("HomeScreen");
-        ticketController = new TicketController();
     }
 
-    public void showHomeScreen(){
-        home.showVoegTicketToe();
+    protected void showHomeScreen(){
+        home.showHomeScreen();
         koopTicket();
+        //voegStationToe();
+        toevoegenKlant();
+        voegAbonnementToe();
+        voegVoorwerpToe();
+    }
+
+    public void toevoegenKlant(){
+        home.getKlantToevoegenButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                home.getWindow().setVisible(false);
+                home.getWindow().dispose();
+                new KlantController().showToevoegenKlant();
+            }
+        });
     }
 
     public void koopTicket(){
@@ -28,9 +44,38 @@ public class MainController {
             public void actionPerformed(ActionEvent e) {
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
-                ticketController.showVoegTicketToe();
+                new TicketController().showVoegTicketToe();
             }
         });
     }
 
+    public void voegAbonnementToe(){
+        home.getVerkoopAboButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                home.getWindow().setVisible(false);
+                home.getWindow().dispose();
+                new AbonnementController().showToevoegenAbonnement();
+            }
+        });
+    }
+
+    public void voegStationToe(){
+        home.getVerkoopAboButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                home.getWindow().setVisible(false);
+                home.getWindow().dispose();
+                //stationController.showToevoegenStation();
+            }
+        });
+    }
+
+    public void voegVoorwerpToe(){
+        home.getRvvButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                home.getWindow().setVisible(false);
+                home.getWindow().dispose();
+                new VoorwerpController().showVoorwerpToevoegen();
+            }
+        });
+    }
 }

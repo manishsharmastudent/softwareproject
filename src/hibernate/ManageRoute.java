@@ -5,6 +5,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.Iterator;
 import java.util.List;
@@ -54,7 +55,6 @@ public class ManageRoute {
         return routes;
     }
 
-
     public void updateRouteId(Route a, int integer ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -73,6 +73,23 @@ public class ManageRoute {
         }
     }
 
+    public Route getRouteById(int id){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Route route = null;
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            route =  (Route) session.get(Route.class, id);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            return route;
+        }
+    }
 
 }
 

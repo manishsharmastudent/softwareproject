@@ -37,6 +37,7 @@ public class ManageLogin {
         }
         return LoginID;
     }
+
     /* Method to  READ all the Logins */
     public List<Login> listLogins( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
