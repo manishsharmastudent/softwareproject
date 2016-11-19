@@ -40,8 +40,6 @@ public class ManageTicket {
         return ticketId;
     }
 
-
-
     public List<Ticket> listTicket( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 

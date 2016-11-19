@@ -22,9 +22,8 @@ public class TicketView extends StandardView {
     private JLabel datumticketLabel = new JLabel("Datum");
     private JLabel aantalLabel = new JLabel("Aantal");
     private JLabel klasseLabel = new JLabel("Klasse");
-    private JLabel typeKaartOmschrijving = new JLabel("Hier komt omschrijving");
+    private JLabel typeKaartOmschrijving = new JLabel();
     private JButton zoekButton = new JButton("Zoek");
-    private AutoCompleteDecorator decorator;
     private JComboBox stationCombobox = new JComboBox();
     private JComboBox stationTweeCombobox = new JComboBox();
     private JComboBox klasseCombobox = new JComboBox();
@@ -59,6 +58,10 @@ public class TicketView extends StandardView {
     public JComboBox getKlasseCombobox() { return this.klasseCombobox; }
 
     public int getTypeKaartIndex(){ return typeKaartenComboBox.getSelectedIndex();}
+
+    public JSpinner getSpinnerAantalPersonen(){
+        return this.spinner1;
+    }
 
     public int getAantalPersonen(){ return modelSp.getNumber().intValue(); }
 
@@ -135,6 +138,18 @@ public class TicketView extends StandardView {
 
         addPath("Verkoop Ticket");
         showWindow();
+    }
+
+    public int showPrice(double prijs){
+        if (JOptionPane.showConfirmDialog(null, "Het ticket kost € " + prijs + " .") == JOptionPane.YES_OPTION){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+    public void noTicketAdded(){
+        JOptionPane.showMessageDialog(null, "Ticket is niet toegevoegd!");
     }
 
     public void showTickets(Ticket[][] tickets){

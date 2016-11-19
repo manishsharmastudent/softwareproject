@@ -1,12 +1,15 @@
 package view;
 
 import model.Abonnement;
+import model.Klant;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,12 +28,9 @@ public class AbonnementView extends StandardView {
     private JLabel kortingLabel = new JLabel("Korting");
     private JLabel begindatumLabel = new JLabel("Begindatum");
     private JLabel einddatumLabel = new JLabel("Einddatum");
-
     private JComboBox routeComboBox = new JComboBox();
     private JComboBox klantComboBox = new JComboBox();
     private JComboBox kortingComboBox = new JComboBox();
-    private JTextField begindatumText = new JTextField();
-    private JTextField einddatumText = new JTextField();
 
     private JButton toevoegenAbonnement = new JButton("Abonnement toevoegen");
 
@@ -73,6 +73,8 @@ public class AbonnementView extends StandardView {
     public JButton getToevoegenAbonnementButton(){
         return this.toevoegenAbonnement;
     }
+    public JDatePickerImpl getDatePickerBeginDatum(){ return this.datePickerBeginDatum; }
+    public JDatePickerImpl getDatePickerEindDatum(){ return this.datePickerEindDatum;}
 
     public void showAbonnement(Abonnement abonnement){
 
@@ -97,6 +99,9 @@ public class AbonnementView extends StandardView {
         path.add("Abonnement toevoegen");
 
         showWindow();
+    }
+    public void showErrorDate(){
+        JOptionPane.showMessageDialog(null, "Einddatum moet na begindatum zijn.");
     }
     private JDatePickerImpl datePickerBeginDatum = new JDatePickerImpl(datePanelBeginDatum, new JFormattedTextField.AbstractFormatter() {
 
@@ -135,4 +140,16 @@ public class AbonnementView extends StandardView {
             return "";
         }
     });
+    public void showSuccesfullAdd(Klant klant){ JOptionPane.showMessageDialog(null, "Abonnement voor " + klant.getAchternaam() + " " + klant.getVoornaam() + " is toegevoegd!");}
+    public int showPrice(double price){
+        if (JOptionPane.showConfirmDialog(null, "Het bedrag van € " + price + " betalen?") == JOptionPane.YES_OPTION){;
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    }
+    public void alreadyAbonnement(int id){
+        JOptionPane.showMessageDialog(null, "Klant heeft al een abonnement" + "Id: " + id);
+    }
 }

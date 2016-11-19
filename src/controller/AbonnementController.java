@@ -14,6 +14,7 @@ import model.Abonnement;
 import model.Korting;
 import model.Route;
 import model.Klant;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import view.AbonnementView;
 
 import javax.swing.*;
@@ -63,6 +64,15 @@ public class AbonnementController {
         initComboBoxes();
         toevoegenAbonnement();
         terugButton();
+        checkIfEndDateIsAfterStartDate();
+    }
+    public double calculatePrice(Korting korting){
+        double price = 120;
+        double procent = korting.getProcent();
+        double kortingsPrijs = price * procent;
+        price = price - kortingsPrijs;
+
+        return price;
     }
     public void toevoegenAbonnement(){
         abonnementView.getToevoegenAbonnementButton().addActionListener(new ActionListener() {
@@ -70,40 +80,38 @@ public class AbonnementController {
                 Korting korting = null;
                 Route route = null;
                 Klant klant = null;
+                List<Abonnement> abonnements = null;
 
-                //Korting
-                try {
                     List<Korting> kortingen = new ManageKorting().listKorting();
-                    korting = new ManageKorting().getKortingByid(kortingen.get(abonnementView.getKlantComboBox().getSelectedIndex()).getKortingId());
-                } catch (Exception exc){
-                    JOptionPane.showMessageDialog(null, exc.getMessage() + "\nRoute is niet gevonden");
-                }
+                    korting = new ManageKorting().getKortingByid(kortingen.get(abonnementView.getKortingComboBox().getSelectedIndex()).getKortingId());
 
-                //Route
-                try{
                     List<Route> routes = new ManageRoute().listRoute();
-                    route = new ManageRoute().getRouteById(routes.get(abonnementView.getKlantComboBox().getSelectedIndex()).getRouteId());
-                } catch(Exception exc){
-                    JOptionPane.showMessageDialog(null, exc.getMessage() + "\nRoute is niet gevonden");
-                }
+                    route = new ManageRoute().getRouteById(routes.get(abonnementView.getRouteComboBox().getSelectedIndex()).getRouteId());
 
-                //Klant
-                try {
                     List<Klant> klanten = new ManageKlant().listKlanten();
                     klant = new ManageKlant().getKlantByRijksregister(klanten.get(abonnementView.getKlantComboBox().getSelectedIndex()).getRijksregisterNummer());
-                } catch (Exception exc){
-                    JOptionPane.showMessageDialog(null, exc.getMessage() + "\nKlant is niet gevonden");
-                }
-                try {
+
                     abonnementModel = new Abonnement(0, korting, abonnementView.getBegindatum(), abonnementView.getEinddatum(), route, klant, 12.5f, true);
-                    abonnementManage.addAbonnement(abonnementModel);
-                } catch (Exception exc){
-                    JOptionPane.showMessageDialog(null, exc.getMessage() + "\n Abonnement is niet toegevoegd");
-                }
+                    abonnements = abonnementManage.getAbonnementByKlantId(klant);
+
+                    if (abonnements.size() == 0) {
+                        if(abonnementView.showPrice(calculatePrice(korting)) == 1){
+                            abonnementManage.addAbonnement(abonnementModel);
+                            abonnementView.showSuccesfullAdd(abonnementModel.getKlant());
+                        }
+                    }
+                    else {
+                            abonnementView.alreadyAbonnement(abonnements.get(0).getAbonnementId());
+                    }
+                backToHomeScreen();
             }
         });
     }
     private void initComboBoxes(){
+        AutoCompleteDecorator.decorate(abonnementView.getKlantComboBox());
+        AutoCompleteDecorator.decorate(abonnementView.getKortingComboBox());
+        AutoCompleteDecorator.decorate(abonnementView.getRouteComboBox());
+
         ManageRoute manageRoute = new ManageRoute();
         final List<Route> routes = manageRoute.listRoute();
         for (int i = 0; i < routes.size();i++){
@@ -143,5 +151,14 @@ public class AbonnementController {
         abonnementView.getWindow().dispose();
         abonnementView.deleteLastInPath();
         new MainController().showHomeScreen();
+    }
+    public void checkIfEndDateIsAfterStartDate(){
+        abonnementView.getDatePickerEindDatum().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(abonnementView.getEinddatum().compareTo(abonnementView.getBegindatum()) < 0){
+                    abonnementView.showErrorDate();
+                }
+            }
+        });
     }
 }

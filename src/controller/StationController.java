@@ -35,6 +35,7 @@ public class StationController {
                 Station station = new Station(0, "Station " + stationView.getNaamText(), stationView.getStadText(),true);
                 if (stationManage.addStation(station) > 0){
                     JOptionPane.showMessageDialog(stationView.getWindow(), "Station " + station.getNaam() + " is toegevoegd!");
+                    backToHomeScreen();
                 };
             }
         });

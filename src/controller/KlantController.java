@@ -80,7 +80,9 @@ public class KlantController {
                 klantModel = new Klant(klantView.getRijksregisterNummer(), klantView.getVoornaam(), klantView.getAchternaam(), klantView.getAdres(), klantView.getPostcode(), klantView.getStad(), true);
                 try {
                     manageKlant.addKlant(klantModel);
+                    backToHomeScreen();
                 } catch (Exception ex){
+                    ex.getStackTrace();
                     JOptionPane.showMessageDialog(null, ex.getMessage() + "\n Probeer later opnieuw!");
                     backToHomeScreen();
                 }
@@ -91,7 +93,6 @@ public class KlantController {
     public void showKlant(){
         klantView.showKlant(klantModel);
     }
-
     public void terugButton(){
         klantView.getTerugButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

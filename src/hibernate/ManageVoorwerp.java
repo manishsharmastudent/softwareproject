@@ -35,8 +35,6 @@ public class ManageVoorwerp {
         }
         return voorwerpId;
     }
-
-
     public Vector<Voorwerp> listVoorwerp( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
@@ -61,8 +59,6 @@ public class ManageVoorwerp {
         }
         return vw;
     }
-
-
     public void updateVoorwerp(Voorwerp a){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -78,7 +74,6 @@ public class ManageVoorwerp {
             session.close();
         }
     }
-
     public Voorwerp getVoorwerpById(int id){
 
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();

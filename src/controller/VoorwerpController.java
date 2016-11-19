@@ -5,6 +5,7 @@ import hibernate.ManageRoute;
 import hibernate.ManageStation;
 import hibernate.ManageVoorwerp;
 import model.*;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import view.VoorwerpView;
 
 import javax.swing.*;
@@ -91,6 +92,12 @@ public class VoorwerpController {
         terugButton();
     }
     public void initComboBox(){
+        AutoCompleteDecorator.decorate(voorwerpView.getKlantComboBox());
+        AutoCompleteDecorator.decorate(voorwerpView.getRouteComboBox());
+        AutoCompleteDecorator.decorate(voorwerpView.getKleurComboBox());
+        AutoCompleteDecorator.decorate(voorwerpView.getStationComboBox());
+        AutoCompleteDecorator.decorate(voorwerpView.getTypeComboBox());
+
         voorwerpView.getRouteComboBox().addItem("N/A");
         voorwerpView.getKlantComboBox().addItem("N/A");
         ManageRoute manageRoute = new ManageRoute();

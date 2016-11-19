@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
@@ -145,5 +146,15 @@ public class StandardView {
         if (path.size() > 0){
             path.remove(path.size()-1);
         }
+    }
+
+    protected MaskFormatter createFormatter(String s){
+        MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter(s);
+        } catch (java.text.ParseException exc){
+            System.err.println("formatter is bad: " + exc.getMessage());
+        }
+        return formatter;
     }
 }

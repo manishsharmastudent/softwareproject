@@ -4,6 +4,7 @@ import com.sun.xml.internal.bind.api.impl.NameConverter;
 import model.Klant;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,9 +25,9 @@ public class KlantView extends StandardView {
 
     private JTextField voornaamText = new JTextField();
     private JTextField achternaamText = new JTextField();
-    private JTextField rijksregisterNummerText = new JTextField();
+    private JTextField rijksregisterNummerText = new JFormattedTextField(createFormatter("##.##.##-###.##"));
     private JTextField adresText = new JTextField();
-    private JTextField postcodeText = new JTextField();
+    private JTextField postcodeText = new JFormattedTextField(createFormatter("####"));
     private JTextField stadText = new JTextField();
 
     private JButton klantToevoegenButton = new JButton("Klant toevoegen");
@@ -34,15 +35,6 @@ public class KlantView extends StandardView {
     public KlantView(String titel){
         super(titel);
     }
-
-    /*private JTextField voornaamText = new JTextField();
-    private JTextField achternaamText = new JTextField();
-    private JTextField rijksregisterNummerText = new JTextField();
-    private JTextField adresText = new JTextField();
-    private JTextField postcodeText = new JTextField();
-    private JTextField stadText = new JTextField();
-
-    private JButton klantToevoegenButton = new JButton("Klant toevoegen");*/
 
     public String getRijksregisterNummer(){
         return this.rijksregisterNummerText.getText();
