@@ -20,7 +20,6 @@ public class TypeKaartController {
     public String getNaam(){ return typeKaartModel.getNaam(); }
     public String getOmschrijving(){ return typeKaartModel.getOmschrijving(); }
     public Korting getKorting(){ return typeKaartModel.getKorting(); }
-
     public void setId(int typeKaartId){ typeKaartModel.setId(typeKaartId); }
     public void SetNaam(String naam){ typeKaartModel.setOmschrijving(naam); }
     public void setOmschrijving(String omschrijving){ typeKaartModel.setOmschrijving(omschrijving); }
