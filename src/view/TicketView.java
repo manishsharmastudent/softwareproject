@@ -7,7 +7,6 @@ import org.jdatepicker.impl.UtilDateModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +16,7 @@ import java.util.Calendar;
 import java.util.Properties;
 
 /**
- * Created by Rik Van Belle on 01/11/2016.
+ * Created by User on 01/11/2016.
  */
 public class TicketView extends StandardView {
     private JLabel vertrekLabel = new JLabel("Vertrekpunt");

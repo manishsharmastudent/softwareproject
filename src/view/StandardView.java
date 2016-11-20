@@ -46,10 +46,10 @@ public class StandardView {
     StandardView(String titel){
         window = new JFrame(titel);
 
-        java.net.URL url = ClassLoader.getSystemResource("resources/nmbs_sncb.png");
+     /*   java.net.URL url = ClassLoader.getSystemResource("resources/nmbs_sncb.png");
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image img = kit.createImage(url);
-        window.setIconImage(img);
+        window.setIconImage(img);*/
         if (titel != "Login") {
             initTimeAndDate();
             initMenuBar();
@@ -57,6 +57,7 @@ public class StandardView {
             initNavTree();
         }
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }
 
     public void setWelkomLabel(String tekst){
