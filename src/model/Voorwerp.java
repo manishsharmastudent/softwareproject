@@ -5,28 +5,37 @@ package model;
  */
 public class Voorwerp {
     private int voorwerpId;
-    private Trein trein;
+    private int trein;
     private String kleur;
     private String type;
+    private String voorwerpstr;
+
+    public String getVoorwerpstr() {
+        return voorwerpstr;
+    }
+
+    public void setVoorwerpstr(String voorwerpstr) {
+        this.voorwerpstr = voorwerpstr;
+    }
+
     private Route route;
     private Station station;
+    private Klant klant;
+    private boolean active;
 
-    public Voorwerp(Trein trein, Station station, Route route, String type, String kleur) {
-        this.trein = trein;
-        this.station = station;
-        this.route = route;
-        this.type = type;
-        this.kleur = kleur;
+    public int getVoorwerpId() {
+        return voorwerpId;
     }
 
-    public Voorwerp() {
+    public void setVoorwerpId(int voorwerpId) {
+        this.voorwerpId = voorwerpId;
     }
 
-    public Trein getTrein() {
+    public int getTrein() {
         return trein;
     }
 
-    public void setTrein(Trein trein) {
+    public void setTrein(int trein) {
         this.trein = trein;
     }
 
@@ -46,6 +55,14 @@ public class Voorwerp {
         this.type = type;
     }
 
+    public String getVoorwerp() {
+        return voorwerpstr;
+    }
+
+    public void setVoorwerp(String voorwerpstr) {
+        this.voorwerpstr = voorwerpstr;
+    }
+
     public Route getRoute() {
         return route;
     }
@@ -60,5 +77,38 @@ public class Voorwerp {
 
     public void setStation(Station station) {
         this.station = station;
+    }
+
+    public Klant getKlant() {
+        return klant;
+    }
+
+    public void setKlant(Klant klant) {
+        this.klant = klant;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Voorwerp() {
+
+    }
+
+    public Voorwerp(int voorwerpId, int trein, String kleur, String type, String voorwerpstr, Route route, Station station, Klant klant, boolean active) {
+
+        this.voorwerpId = voorwerpId;
+        this.trein = trein;
+        this.kleur = kleur;
+        this.type = type;
+        this.voorwerpstr = voorwerpstr;
+        this.route = route;
+        this.station = station;
+        this.klant = klant;
+        this.active = active;
     }
 }

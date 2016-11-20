@@ -8,9 +8,7 @@
       <meta attribute="class-description">
          This class contains the Login detail.
       </meta>
-      <id name="rijksregisterNummer" type="string" column="rijksregisterNummer">
-         <generator class="native"/>
-      </id>
+      <id name="rijksregisterNummer" type="string" column="rijksregisterNummer"/>
       <property name="achternaam" column="achternaam" type="string"/>
       <property name="active" column="active" type="boolean"/>
       <property name="adres" column="adres" type="string"/>

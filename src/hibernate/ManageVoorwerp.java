@@ -1,82 +1,69 @@
 package hibernate;
-
-import model.Abonnement;
-import model.Login;
-import model.Route;
+import java.util.ArrayList;
+import model.Voorwerp;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Manish on 30/10/2016.
+ * Created by thibaut on 31/10/2016.
  */
-public class ManageAbonnement {
-
-    /* Method to CREATE an Abonnement in the database */
-    public Integer addAbonnement(Abonnement a){
+public class ManageVoorwerp {
+    public Integer addVoorwerp(Voorwerp v) {
 
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer abonnementId = null;
+        Integer voorwerpId = null;
+        try {
+            tx = session.beginTransaction();
+            voorwerpId = (Integer)session.save(v);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return voorwerpId;
+    }
+
+
+    public List<Voorwerp> listVoorwerp( ){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List<Voorwerp> voorwerpen = new ArrayList<Voorwerp>();
         try{
             tx = session.beginTransaction();
+           voorwerpen = session.createQuery("FROM Voorwerp").list();
 
-           abonnementId = (Integer)session.save(a);
-
-              //  session.save(a);
             tx.commit();
+
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
         }finally {
             session.close();
         }
-        return abonnementId;
+        return voorwerpen;
     }
 
 
-    public List<Abonnement> listAbonnementen( ){
-        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-
-        Session session = factory.openSession();
-        Transaction tx = null;
-        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
-        try{
-            tx = session.beginTransaction();
-             abonnementen = session.createQuery("FROM Abonnement").list();
-           /* for (Iterator iterator =
-                 abonnementen.iterator(); iterator.hasNext();){
-                Abonnement a = (Abonnement) iterator.next();
-                System.out.println("abonnement id: " + a.getAbonnementId());
-
-            }*/
-            tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-        return abonnementen;
-    }
-
-
-    public void updateRoute(Integer abonnementId, Route route ){
+    public void updateVoorwerpId(Voorwerp a, int integer ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            Abonnement abonnement =
-                    (Abonnement) session.get(Abonnement.class, abonnementId);
-            abonnement.setRoute( route );
-            session.update(abonnement);
+            Voorwerp voorwerp =(Voorwerp) session.get(Voorwerp.class, integer);
+            voorwerp.setVoorwerpId(integer);
+            session.update(voorwerp);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -88,3 +75,4 @@ public class ManageAbonnement {
 
 
 }
+
