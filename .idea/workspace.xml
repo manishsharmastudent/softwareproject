@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/resources/images/arrow.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SP2.iml" afterPath="$PROJECT_DIR$/SP2.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/StandardView.java" afterPath="$PROJECT_DIR$/src/view/StandardView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/TicketView.java" afterPath="$PROJECT_DIR$/src/view/TicketView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/TreinView.java" afterPath="$PROJECT_DIR$/src/view/TreinView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/TypeKaartView.java" afterPath="$PROJECT_DIR$/src/view/TypeKaartView.java" />
-    </list>
+    <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="" />
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -724,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479113599013</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="koopticketview klaar">
+      <created>1479676746176</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1479676746176</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -784,7 +783,8 @@
     <MESSAGE value="datepicker voor ticketview layout staat goed" />
     <MESSAGE value="ticketview bijna af" />
     <MESSAGE value="treestructure bijna af" />
-    <option name="LAST_COMMIT_MESSAGE" value="treestructure bijna af" />
+    <MESSAGE value="koopticketview klaar" />
+    <option name="LAST_COMMIT_MESSAGE" value="koopticketview klaar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
