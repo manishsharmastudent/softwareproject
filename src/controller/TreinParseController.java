@@ -15,47 +15,62 @@ import java.util.function.Consumer;
  */
 public class TreinParseController {
 
-    public static List<Trein> getTrains(JSONArray arr, String vertrek) {
+    public static Station getLiveBoard(JSONArray jArray) {
+        Station station = new Station();
+
+        station.setTreinen(getTrains(jArray));
+
+        return station;
+    }
+
+    public static List<Trein> getTrains(JSONArray arr) {
         List<Trein> list = new ArrayList<Trein>();
         arr.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {
                 JSONObject obj = (JSONObject) t;
-                Trein trein = getTrain(obj, vertrek);
+                Trein trein = getTrain(obj);
                 list.add(trein);
             }
         });
         return list;
     }
 
-    public static List<Halte> getHaltes(JSONObject obj) {
-        JSONArray arrTrains = obj.getJSONArray("Trains");
-        List<Halte> haltes = new ArrayList<Halte>();
+    public static Trein getTrain(JSONObject obj) {
+        Trein t = new Trein();
+        t.setTreinId(obj.getInt("Number"));
+        t.setTreinNaam(obj.getString("FullId"));
 
-        arrTrains.forEach(new Consumer<Object>() {
+        if (!obj.isNull("DepartureStation"))
+            t.setVetrek(obj.getString("DepartureStation"));
+
+        t.setBestemming(obj.getString("TerminusStation"));
+        t.setTreinType(obj.getInt("TrainType"));
+
+        JSONObject stops = obj.getJSONObject("Stops");
+        JSONArray arrStations = stops.getJSONArray("Stations");
+
+        t.setHaltes(getHaltes(arrStations));
+
+        return t;
+    }
+
+    public static List<Halte> getHaltes(JSONArray arrStations) {
+        List<Halte> haltes = new ArrayList<Halte>();
+        arrStations.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {
                 JSONObject obj = (JSONObject) t;
-                JSONObject stps = obj.getJSONObject("Stops");
-                JSONArray arrStops = stps.getJSONArray("Stations");
-
-                arrStops.forEach(new Consumer<Object>() {
-                    public void accept(Object t) {
-                        JSONObject obj = (JSONObject) t;
-                        haltes.add(getStop(obj));
-
-                    }
-                });
-            }
+                haltes.add(getStop(obj));
+             }
         });
-
         return haltes;
     }
 
     public static Halte getStop(JSONObject obj) {
         String station = obj.getString("Name");
         String coordinates = obj.getString("Coordinates");
-
+        /*
         int arrivalPlatform = 0;
         if (obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
             arrivalPlatform = obj.getInt("ArrivalPlatform");
@@ -67,41 +82,7 @@ public class TreinParseController {
             departurePlatform = obj.getInt("DeparturePlatform");
         else if (!obj.isNull("ArrivalPlatform"))
             departurePlatform = obj.getInt("ArrivalPlatform");
-
-        return new Halte(station, departurePlatform);
+        */
+        return new Halte(station, 0);
     }
-
-    public static Trein getTrain(JSONObject obj, String vetrek) {
-        Trein t = new Trein();
-        t.setTreinId(obj.getInt("Number"));
-        t.setTreinNaam(obj.getString("FullId"));
-        if (!obj.isNull("DepartureStation"))
-            t.setVetrek(obj.getString("DepartureStation"));
-        t.setBestemming(obj.getString("TerminusStation"));
-        t.setTreinType(obj.getInt("TrainType"));
-        //t.setStops(StopsParserTest.getStops(obj));
-        JSONObject stops = obj.getJSONObject("Stops");
-        JSONArray arrStations = stops.getJSONArray("Stations");
-        arrStations.forEach(new Consumer<Object>() {
-            @Override
-            public void accept(Object s) {
-                if (((JSONObject) s).getString("Name").equalsIgnoreCase(vetrek)) {
-                    JSONObject time = ((JSONObject) s).getJSONObject("Time");
-                    t.setDeparture(TimeParseController.getTime(time.getString("Departure")));
-                    t.setDeparture(TimeParseController.getTime(time.getString("ActualDeparture")));
-                }
-            }
-        });
-
-        return t;
-    }
-
-    public static Station getLiveBoard(JSONArray jArray) {
-        Station station = new Station();
-
-        station.setTreinen(getTrains(jArray, ""));
-
-        return station;
-    }
-
 }

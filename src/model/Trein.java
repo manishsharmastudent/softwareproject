@@ -20,6 +20,7 @@ public class Trein {
     private String vetrkPlatform;
     private LocalDateTime departure;
     private LocalDateTime actualDeparture;
+    private List<Halte> Haltes;
 
     public List<Halte> getHaltes() {
         return haltes;
@@ -111,18 +112,16 @@ public class Trein {
         return actualDeparture;
     }
 
+
     public void setActualDeparture(LocalDateTime actualDeparture) {
         this.actualDeparture = actualDeparture;
     }
 
     @Override
     public String toString() {
-        return "Trein{" +
-                "treinNaam='" + treinNaam + '\'' + '\n' +
-                ", vetrek='" + vetrek + '\'' + '\n' +
-                ", bestemming='" + bestemming + '\'' + '\n' +
-                ", vetrkPlatform='" + vetrkPlatform + '\'' + '\n' +
-                '}' +
-                '\n';
+        return "Trein " + treinNaam + '\n' +
+                "Vetrek: " + vetrek + '\n' +
+                "Bestemming: " + bestemming + '\n' +
+                "VetrkPlatform: " + vetrkPlatform + '\n';
     }
 }

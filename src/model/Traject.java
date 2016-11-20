@@ -1,8 +1,9 @@
 package model;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 /**
  * Created by Nofel on 02-11-16.
  */
@@ -10,6 +11,11 @@ public class Traject {
 
     private String vertrekStation;
     private String aankomstStation;
+    private LocalDateTime vertrekTijd;
+    private LocalDateTime actualVertrekTijd;
+    private LocalDateTime aankomstTijd;
+    private LocalDateTime actualAankomstTijd;
+    private Duration duur;
     private boolean cancelled;
     private List<String> transferstations;
     private List<Trein> treinen;
@@ -71,12 +77,58 @@ public class Traject {
         transferstations.add(transferstation);
     }
 
+    public LocalDateTime getVertrekTijd() {
+        return vertrekTijd;
+    }
+
+    public void setVertrekTijd(LocalDateTime vetrekTijd) {
+        this.vertrekTijd = vetrekTijd;
+    }
+
+    public LocalDateTime getAankomstTijd() {
+        return aankomstTijd;
+    }
+
+    public void setAankomstTijd(LocalDateTime aankomstTijd) {
+        this.aankomstTijd = aankomstTijd;
+    }
+
+    public Duration getDuur() {
+        return duur;
+    }
+
+    public void setDuur(Duration duur) {
+        this.duur = duur;
+    }
+
+    public LocalDateTime getActualVertrekTijd() {
+        return actualVertrekTijd;
+    }
+
+    public void setActualVertrekTijd(LocalDateTime actualVertrekTijd) {
+        this.actualVertrekTijd = actualVertrekTijd;
+    }
+
+    public LocalDateTime getActualAankomstTijd() {
+        return actualAankomstTijd;
+    }
+
+    public void setActualAankomstTijd(LocalDateTime actualAankomstTijd) {
+        this.actualAankomstTijd = actualAankomstTijd;
+    }
+
     @Override
     public String toString() {
-        return "Traject{" +
-                "vertrekStation='" + vertrekStation + '\'' +
-                ", aankomstStation='" + aankomstStation + '\'' +
-                ", treinen=" + treinen +
-                '}';
+        String s = "Traject: van " + vertrekStation +
+                " tot " + aankomstStation + ". \n" +
+                "Routes:";
+
+        for (Trein e:treinen) {
+            if(treinen.indexOf(e) > 0)
+            s += "Transfer at: "+transferstations.get(treinen.indexOf(e) - 1 ) + '\n';
+            s += e.toString() + '\n';
+        }
+
+        return s;
     }
 }
