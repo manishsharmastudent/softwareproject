@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="" />
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -850,7 +848,7 @@
       <updated>1477909309667</updated>
       <workItem from="1477909311009" duration="9384000" />
       <workItem from="1478008454304" duration="57000" />
-      <workItem from="1479754247017" duration="268000" />
+      <workItem from="1479754247017" duration="277000" />
     </task>
     <task id="LOCAL-00001" summary="Mergen van master">
       <created>1477909378042</created>
@@ -964,11 +962,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479754432762</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary=".gitignore">
+      <created>1479754521685</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1479754521685</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9709000" />
+    <option name="totallyTimeSpent" value="9718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="683" y="0" width="683" height="728" extended-state="0" />
