@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,7 +28,6 @@ public class StandardView {
     protected FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
 
     protected Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
-
     protected JPanel welkomPanel = new JPanel();
     protected JPanel interactiePanel = new JPanel(new SpringLayout());
     protected JPanel panel= new JPanel();
@@ -68,12 +69,18 @@ public class StandardView {
     public JButton getTerugButton(){return this.terugButton; }
 
     public void initTimeAndDate(){
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        tijdLabel.setText(sdf.format(cal.getTime()));
-        sdf = new SimpleDateFormat("dd/MM/yyyy");
-        datumLabel.setText(sdf.format(cal.getTime()));
+        final Timer simpleTimer = new Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                tijdLabel.setText(sdf.format(cal.getTime()));
+                sdf = new SimpleDateFormat("dd/MM/yyyy");
+                datumLabel.setText(sdf.format(cal.getTime()));
+            }
+        });
+        simpleTimer.start();
     }
+
     public void initMenuBar(){
         menuBar = new JMenuBar();
         menu = new JMenu("Test");
