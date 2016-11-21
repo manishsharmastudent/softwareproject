@@ -8,27 +8,26 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Properties;
+import java.util.*;
 
 /**
- * Created by User on 01/11/2016.
+ * Created by Rik Van Belle on 01/11/2016.
  */
 public class TicketView extends StandardView {
     private JLabel vertrekLabel = new JLabel("Vertrekpunt");
+    private JLabel kaartLabel = new JLabel("Kaart");
     private JLabel aankomstLabel = new JLabel("Aankomst");
     private JLabel datumticketLabel = new JLabel("Datum");
     private JLabel aantalLabel = new JLabel("Aantal");
     private JLabel klasseLabel = new JLabel("Klasse");
+    private JLabel typeKaartOmschrijving = new JLabel();
     private JButton zoekButton = new JButton("Zoek");
-    private AutoCompleteDecorator decorator;
-    private JComboBox stationCombobox;
-    private JComboBox stationTweeCombobox;
-    private JComboBox klasseCombobox;
+    private JComboBox stationCombobox = new JComboBox();
+    private JComboBox stationTweeCombobox = new JComboBox();
+    private JComboBox klasseCombobox = new JComboBox();
+    private JComboBox typeKaartenComboBox = new JComboBox();
     private Properties p = new Properties();
     private Integer value = new Integer(1);
     private Integer min = new Integer(1);
@@ -46,6 +45,26 @@ public class TicketView extends StandardView {
         super(titel);
     }
 
+    public JComboBox getTypeKaartenComboBox(){ return this.typeKaartenComboBox; }
+
+    public JComboBox getVertrekStationComboBox(){
+        return this.stationCombobox;
+    }
+
+    public JComboBox getBestemmingsStationComboBox(){
+        return this.stationTweeCombobox;
+    }
+
+    public JComboBox getKlasseCombobox() { return this.klasseCombobox; }
+
+    public int getTypeKaartIndex(){ return typeKaartenComboBox.getSelectedIndex();}
+
+    public JSpinner getSpinnerAantalPersonen(){
+        return this.spinner1;
+    }
+
+    public int getAantalPersonen(){ return modelSp.getNumber().intValue(); }
+
     public String getVertrekStation(){
         return stationCombobox.getSelectedItem().toString();
     }
@@ -62,15 +81,18 @@ public class TicketView extends StandardView {
         return this.zoekButton;
     }
 
-    public void showVoegTicketToe(){
-        stationCombobox = new JComboBox(new Object[]{"","Aalst", "Ninove"});
-        stationTweeCombobox = new JComboBox(new Object[]{"","Aalst", "Ninove"});
-        klasseCombobox = new JComboBox(new Object[]{"","Eerste klasse", "Tweede klasse"});
+    public void setTypeKaartOmschrijving(String omschrijving){
+        this.typeKaartOmschrijving.setText(omschrijving);
+    }
 
+    public void showVoegTicketToe(){
         AutoCompleteDecorator.decorate(stationCombobox);
         AutoCompleteDecorator.decorate(stationTweeCombobox);
 
         interactiePanel.setLayout(null);
+        kaartLabel.setBounds(30,140,180,25);
+        typeKaartenComboBox.setBounds(200,140,180,25);
+        typeKaartOmschrijving.setBounds(450,140,180,25);
         vertrekLabel.setBounds(30, 180, 180, 25);
         stationCombobox.setBounds(200, 180, 180, 25);
         aankomstLabel.setBounds(30, 220, 180, 25);
@@ -84,6 +106,9 @@ public class TicketView extends StandardView {
         zoekButton.setBounds(330, 400, 180, 25);
         terugButton.setBounds(600, 20, 90, 40);
 
+        interactiePanel.add(kaartLabel);
+        interactiePanel.add(typeKaartenComboBox);
+        interactiePanel.add(typeKaartOmschrijving);
         interactiePanel.add(stationTweeCombobox);
         interactiePanel.add(vertrekLabel);
         interactiePanel.add(stationCombobox);
@@ -111,13 +136,24 @@ public class TicketView extends StandardView {
         p.put("text.month", "Month");
         p.put("text.year", "Year");
 
-        addPath("Tickets en abonnementen");
         addPath("Verkoop Ticket");
-
-        showPath();
-
-        getWindow().setResizable(false);
         showWindow();
+    }
+
+    public int showPrice(double prijs){
+        if (JOptionPane.showConfirmDialog(null, "Het ticket kost € " + prijs + " .") == JOptionPane.YES_OPTION){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+    public void noTicketAdded(){
+        JOptionPane.showMessageDialog(null, "Ticket is niet toegevoegd!");
+    }
+
+    public void showTickets(Ticket[][] tickets){
+
     }
 
     private JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new JFormattedTextField.AbstractFormatter() {
