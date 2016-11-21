@@ -14,6 +14,7 @@ public class TypeKaart {
         this.active = true;
 	}
 	public TypeKaart(){};
+
 	public TypeKaart(int id,String naam,String omschrijving,Korting korting)
 	{
 		this.id=id;
@@ -33,6 +34,12 @@ public class TypeKaart {
 	{
 		return this.naam;
 	}
+	public boolean setNaam(String naam)
+	{
+		this.naam = naam;
+		return true;
+	}
+
 	public String getOmschrijving()
 	{
 		return this.omschrijving;
@@ -47,11 +54,7 @@ public class TypeKaart {
         this.active = active;
         return true;
     }
-	public boolean setNaam(String naam)
-	{
-		this.naam = naam;
-		return true;
-	}
+
 	public boolean setOmschrijving(String omschrijving)
 	{
 		this.omschrijving = omschrijving;

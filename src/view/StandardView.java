@@ -2,13 +2,11 @@ package view;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -46,7 +44,7 @@ public class StandardView {
     StandardView(String titel){
         window = new JFrame(titel);
 
-        java.net.URL url = ClassLoader.getSystemResource("resources/nmbs_sncb.png");
+        java.net.URL url = ClassLoader.getSystemResource("");
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image img = kit.createImage(url);
         window.setIconImage(img);
@@ -67,9 +65,7 @@ public class StandardView {
         return this.window;
     }
     public JPanel getMainPanel(){ return this.mainPanel; }
-    public JButton getStandardButton(){
-        return this.standardButton;
-    }
+    public JButton getTerugButton(){return this.terugButton; }
 
     public void initTimeAndDate(){
         Calendar cal = Calendar.getInstance();
@@ -89,7 +85,6 @@ public class StandardView {
     }
     public void initWelkomBoard(){
         welkomPanel.setLayout(new GridLayout(1,3));
-
         welkomLabel.setHorizontalAlignment(JLabel.CENTER);
         datumLabel.setHorizontalAlignment(JLabel.CENTER);
         tijdLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -118,10 +113,11 @@ public class StandardView {
     }
 
     public void showWindow(){
+        showPath();
+        window.setResizable(false);
         getWindow().setSize(800,700);
         getWindow().setLocationRelativeTo(null);
         window.add(mainPanel);
-        mainPanel.setVisible(true);
         window.setVisible(true);
     }
     public void addPath(String tekst){
@@ -150,5 +146,15 @@ public class StandardView {
         if (path.size() > 0){
             path.remove(path.size()-1);
         }
+    }
+
+    protected MaskFormatter createFormatter(String s){
+        MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter(s);
+        } catch (java.text.ParseException exc){
+            System.err.println("formatter is bad: " + exc.getMessage());
+        }
+        return formatter;
     }
 }

@@ -19,7 +19,7 @@ public class Station {
     public Station() {
     }
 
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
 
