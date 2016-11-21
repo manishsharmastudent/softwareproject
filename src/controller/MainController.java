@@ -96,7 +96,6 @@ public class MainController {
             public void mouseDragged(MouseEvent e) {
             }
             public void mouseMoved(MouseEvent e) {
-                System.out.println("Bewogen");
                 logOutTimer.restart();
             }
         };
