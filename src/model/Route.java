@@ -16,7 +16,7 @@ public class Route {
         this.active = active;
     }
 
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
 

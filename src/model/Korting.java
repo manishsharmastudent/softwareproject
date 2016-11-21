@@ -7,15 +7,21 @@ public class Korting {
 	private int kortingType;
 	private Date beginDatum;
 	private String omschrijving;
+	private double procent;
 	private boolean active;
 
-	public Korting(int kortingId, int kortingType, Date beginDatum, String omschrijving, boolean active) {
+	public Korting(int kortingId, int kortingType, Date beginDatum, String omschrijving, boolean active, double procent) {
 		this.kortingId = kortingId;
 		this.kortingType = kortingType;
 		this.beginDatum = beginDatum;
 		this.omschrijving = omschrijving;
+		this.procent = procent;
 		this.active = active;
 	}
+
+	public double getProcent(){ return this.procent; }
+
+	public void setProcent(double procent){this.procent = procent;}
 
 	public int getKortingId() {
 		return kortingId;

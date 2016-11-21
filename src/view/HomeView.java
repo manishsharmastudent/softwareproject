@@ -14,23 +14,31 @@ import java.util.ArrayList;
  */
 public class HomeView extends StandardView {
     private JPanel ticketPanel = new JPanel();
-    private JPanel voorwerpPanel = new JPanel();
-    private JPanel infoPanel = new JPanel();
     private JLabel ticketLabel = new JLabel("Tickets & Abonnementen");
     private JButton verkoopTicketButton = new JButton("Verkoop Ticket");
-    private JButton verkoopAboButton = new JButton("Verkoop Abonnement");
+    private JButton verkoopAboButton = new JButton("Abonnement aanmaken");
     private JButton reservButton = new JButton("Reservaties");
     private JButton verlengAboButton = new JButton("Verleng Abonnement");
     private JButton aboAanpas = new JButton("Abonnement Aanpassen");
-    private JButton treinInfo = new JButton("Treininformatie opvragen");
-    private JButton routeInfo = new JButton("Stationsinformatie opvragen");
-    private JButton stationsInfo = new JButton("Route-informatie opvragen");
-    private JLabel infoLabel = new JLabel("Informatie");
+
+    private JPanel voorwerpPanel = new JPanel();
     private JButton vvvdsButton = new JButton("Verloren voorwerpen voor <dit station>");
     private JButton vvvasButton = new JButton("Verloren voorwerpen voor ander station");
     private JButton rvvButton = new JButton("Registreer verloren voorwerp");
     private JButton vvvButton = new JButton("Verwijder verloren voorwerp");
     private JLabel verlorenVoorLabel = new JLabel("Verloren voorwerpen");
+
+    private JPanel infoPanel = new JPanel();
+    private JButton treinInfo = new JButton("Treininformatie opvragen");
+    private JButton routeInfo = new JButton("Stationsinformatie opvragen");
+    private JButton stationsInfo = new JButton("Route-informatie opvragen");
+    private JLabel infoLabel = new JLabel("Informatie");
+
+    private JPanel klantPanel = new JPanel();
+    private JLabel klantLabel = new JLabel("Klantenadministratie");
+    private JButton klantOpzoeken = new JButton("Opzoeken klant");
+    private JButton klantToevoegen = new JButton("Klant Toevoegen");
+    private JButton klantVerwijderen = new JButton("Klant verwijderen");
 
     public HomeView(String titel){
         super(titel);
@@ -40,68 +48,61 @@ public class HomeView extends StandardView {
         return this.verkoopTicketButton;
     }
 
-    public void showVoegTicketToe() {
+    public JButton getVerkoopAboButton(){
+        return this.verkoopAboButton;
+    }
 
-        ticketPanel.setLayout(new BoxLayout(ticketPanel, BoxLayout.PAGE_AXIS));
-        ticketPanel.setPreferredSize(new Dimension(250, 100));
-        ticketPanel.setMaximumSize(ticketPanel.getPreferredSize());
-        ticketPanel.setMinimumSize(ticketPanel.getPreferredSize());
+    public JButton getKlantToevoegenButton(){
+        return this.klantToevoegen;
+    }
+
+    public JButton getRvvButton(){
+        return this.rvvButton;
+    }
+
+    public void showHomeScreen() {
+
+        ticketPanel.setLayout(new GridLayout(8,1));
+        infoPanel.setLayout(new GridLayout(5,1));
+        voorwerpPanel.setLayout(new GridLayout(5,1));
+        klantPanel.setLayout(new GridLayout(4,1));
+
         ticketLabel.setBorder(border);
-        ticketLabel.setMaximumSize(new Dimension(Integer.MAX_VALUE, ticketLabel.getMinimumSize().height));
         ticketPanel.add(ticketLabel);
-        verkoopTicketButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, ticketLabel.getMinimumSize().height));
         ticketPanel.add(verkoopTicketButton);
-        verkoopAboButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, ticketLabel.getMinimumSize().height));
         ticketPanel.add(verkoopAboButton);
-        reservButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, ticketLabel.getMinimumSize().height));
         ticketPanel.add(reservButton);
-        verlengAboButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, ticketLabel.getMinimumSize().height));
         ticketPanel.add(verlengAboButton);
-        aboAanpas.setMaximumSize(new Dimension(Integer.MAX_VALUE, ticketLabel.getMinimumSize().height));
         ticketPanel.add(aboAanpas);
+        ticketPanel.add(verkoopTicketButton);
 
-        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
-        infoPanel.setMaximumSize(new Dimension(250, 101));
         infoLabel.setBorder(border);
-        infoLabel.setMaximumSize(new Dimension(250, infoLabel.getMinimumSize().height));
         infoPanel.add(infoLabel);
-        treinInfo.setMaximumSize(new Dimension(250, 34));
         infoPanel.add(treinInfo);
-        stationsInfo.setMaximumSize(new Dimension(250, 34));
         infoPanel.add(stationsInfo);
-        routeInfo.setMaximumSize(new Dimension(250, 33));
         infoPanel.add(routeInfo);
 
-
-        voorwerpPanel.setLayout(new BoxLayout(voorwerpPanel, BoxLayout.PAGE_AXIS));
-        infoPanel.setMaximumSize(new Dimension(250, 101));
         verlorenVoorLabel.setBorder(border);
-        verlorenVoorLabel.setMaximumSize(new Dimension(250, verlorenVoorLabel.getMinimumSize().height));
         voorwerpPanel.add(verlorenVoorLabel);
-        vvvdsButton.setMaximumSize(new Dimension(250, 25));
-        vvvdsButton.setFont(new Font("Arial", Font.BOLD, 10));
         voorwerpPanel.add(vvvdsButton);
-        vvvasButton.setMaximumSize(new Dimension(250, 26));
-        vvvasButton.setFont(new Font("Arial", Font.BOLD, 10));
         voorwerpPanel.add(vvvasButton);
-        rvvButton.setMaximumSize(new Dimension(250, 25));
         voorwerpPanel.add(rvvButton);
-        vvvButton.setMaximumSize(new Dimension(250, 25));
         voorwerpPanel.add(vvvButton);
 
-        getMainPanel().add(ticketPanel, BorderLayout.WEST);
-        getMainPanel().add(infoPanel, BorderLayout.CENTER);
-        getMainPanel().add(voorwerpPanel, BorderLayout.EAST);
+        klantLabel.setBorder(border);
+        klantPanel.add(klantLabel);
+        klantPanel.add(klantOpzoeken);
+        klantPanel.add(klantToevoegen);
+        klantPanel.add(klantVerwijderen);
 
-        panel.add(interactiePanel, BorderLayout.CENTER);
-
-        getMainPanel().add(panel, BorderLayout.CENTER);
+        mainPanel.add(ticketPanel);
+        mainPanel.add(voorwerpPanel);
+        mainPanel.add(infoPanel);
+        mainPanel.add(klantPanel);
 
         if (path.size() == 0){
             addPath("Home");
         }
-
-        showPath();
         showWindow();
     }
 }

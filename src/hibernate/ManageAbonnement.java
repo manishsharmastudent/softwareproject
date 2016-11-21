@@ -1,12 +1,12 @@
 package hibernate;
 
 import model.Abonnement;
+import model.Klant;
 import model.Login;
 import model.Route;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,7 +40,6 @@ public class ManageAbonnement {
         return abonnementId;
     }
 
-
     public List<Abonnement> listAbonnementen( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
@@ -49,13 +48,7 @@ public class ManageAbonnement {
         List<Abonnement> abonnementen = new ArrayList<Abonnement>();
         try{
             tx = session.beginTransaction();
-             abonnementen = session.createQuery("FROM Abonnement").list();
-           /* for (Iterator iterator =
-                 abonnementen.iterator(); iterator.hasNext();){
-                Abonnement a = (Abonnement) iterator.next();
-                System.out.println("abonnement id: " + a.getAbonnementId());
-
-            }*/
+             abonnementen = session.createQuery("FROM Abonnement where active = true").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -66,16 +59,12 @@ public class ManageAbonnement {
         return abonnementen;
     }
 
-
-    public void updateRoute(Integer abonnementId, Route route ){
+    public void updateAbonnement(Abonnement abonnement ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            Abonnement abonnement =
-                    (Abonnement) session.get(Abonnement.class, abonnementId);
-            abonnement.setRoute( route );
             session.update(abonnement);
             tx.commit();
         }catch (HibernateException e) {
@@ -86,5 +75,87 @@ public class ManageAbonnement {
         }
     }
 
+    public boolean deleteAbonnementById(int id){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Abonnement a = null;
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            a = (Abonnement)session.load(Abonnement.class,id);
+            session.delete(a);
+            //This makes the pending delete to be done
+            session.flush() ;
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            return true;
+        }
+    }
 
+    public Abonnement getAbonnementById(int id){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Abonnement a = null;
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            a =  (Abonnement) session.get(Abonnement.class, id);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            return a;
+        }
+    }
+
+    public List<Abonnement> getAbonnementByRoute(Route r){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Abonnement WHERE route = :route AND active = true";
+            Query query = session.createQuery(hql);
+            query.setParameter("route", r);
+
+            abonnementen = query.list();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return abonnementen;
+
+    }
+
+    public List<Abonnement> getAbonnementByKlantId(Klant klant){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
+        Query query= null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Abonnement WHERE klant = :klant AND active = true";
+            query = session.createQuery(hql);
+            query.setParameter("klant", klant);
+            abonnementen = query.list();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return abonnementen;
+    }
 }
