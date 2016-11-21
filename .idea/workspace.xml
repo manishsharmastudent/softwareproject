@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SP2.iml" afterPath="$PROJECT_DIR$/SP2.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MainController.java" afterPath="$PROJECT_DIR$/src/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/StandardView.java" afterPath="$PROJECT_DIR$/src/view/StandardView.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -52,21 +50,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="344">
+              <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#showHomeScreen#0;class#MainController#0" expanded="false" />
+                <element signature="method#toevoegenKlant#0;class#MainController#0" expanded="false" />
+                <element signature="method#koopTicket#0;class#MainController#0" expanded="false" />
                 <element signature="method#voegAbonnementToe#0;class#MainController#0" expanded="false" />
                 <element signature="method#voegStationToe#0;class#MainController#0" expanded="false" />
                 <element signature="method#voegVoorwerpToe#0;class#MainController#0" expanded="false" />
-                <element signature="e#2911#3243#0" expanded="true" />
-                <element signature="e#3242#3243#0" expanded="true" />
-                <element signature="method#mouseDragged#0;class#MainController#0" expanded="false" />
-                <element signature="e#3368#3369#0" expanded="true" />
-                <element signature="e#3403#3404#0" expanded="true" />
+                <element signature="method#initLogOutTimer#0;class#MainController#0" expanded="false" />
+                <element signature="e#2783#3115#0" expanded="true" />
+                <element signature="e#3114#3115#0" expanded="true" />
+                <element signature="method#initMouseMotionListener#0;class#MainController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManageAbonnement.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/hibernate/ManageAbonnement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-30">
+              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+              <folding>
+                <element signature="method#addAbonnement#0;class#ManageAbonnement#0" expanded="false" />
+                <element signature="method#updateAbonnement#0;class#ManageAbonnement#0" expanded="false" />
+                <element signature="method#deleteAbonnementById#0;class#ManageAbonnement#0" expanded="false" />
+                <element signature="method#getAbonnementByRoute#0;class#ManageAbonnement#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -250,7 +265,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
+              <option name="myItemId" value="hibernate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -737,7 +752,7 @@
       <workItem from="1479569574119" duration="9577000" />
       <workItem from="1479716385309" duration="1172000" />
       <workItem from="1479719583406" duration="628000" />
-      <workItem from="1479720245341" duration="2083000" />
+      <workItem from="1479720245341" duration="3275000" />
     </task>
     <task id="LOCAL-00001" summary="Mergen van master">
       <created>1477909378042</created>
@@ -816,11 +831,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479718514380</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Merge branch 'Rik' into ManishBranch&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/Main.java&#10;&#10;Toevoegen StationView&#10;Toevoegen van stations via GUI&#10;TicketView gedebugged&#10;&#10;Voorwerp kunnen toevoegen&#10;Ticket kunnen toevoegen&#10;Station toevoegen&#10;Klant toevoegen&#10;Abonnement toevoegen&#10;&#10;Controle toevoegen op abonnement&#10;Controle toevoegen op ticket">
+      <created>1479722355587</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1479722355587</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74241000" />
+    <option name="totallyTimeSpent" value="75433000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -907,7 +929,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/MainController.java</url>
-          <line>31</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
@@ -915,7 +937,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="49" />
+      <option name="time" value="51" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1204,13 +1226,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hibernate/ManageAbonnement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="150" column="45" selection-start-line="150" selection-start-column="45" selection-end-line="150" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#addVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
+            <element signature="method#listVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
+            <element signature="method#updateVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
+            <element signature="method#getVoorwerpById#0;class#ManageVoorwerp#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1340,18 +1362,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="344">
+          <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#showHomeScreen#0;class#MainController#0" expanded="false" />
+            <element signature="method#toevoegenKlant#0;class#MainController#0" expanded="false" />
+            <element signature="method#koopTicket#0;class#MainController#0" expanded="false" />
             <element signature="method#voegAbonnementToe#0;class#MainController#0" expanded="false" />
             <element signature="method#voegStationToe#0;class#MainController#0" expanded="false" />
             <element signature="method#voegVoorwerpToe#0;class#MainController#0" expanded="false" />
-            <element signature="e#2911#3243#0" expanded="true" />
-            <element signature="e#3242#3243#0" expanded="true" />
-            <element signature="method#mouseDragged#0;class#MainController#0" expanded="false" />
-            <element signature="e#3368#3369#0" expanded="true" />
-            <element signature="e#3403#3404#0" expanded="true" />
+            <element signature="method#initLogOutTimer#0;class#MainController#0" expanded="false" />
+            <element signature="e#2783#3115#0" expanded="true" />
+            <element signature="e#3114#3115#0" expanded="true" />
+            <element signature="method#initMouseMotionListener#0;class#MainController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hibernate/ManageAbonnement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding>
+            <element signature="method#addAbonnement#0;class#ManageAbonnement#0" expanded="false" />
+            <element signature="method#updateAbonnement#0;class#ManageAbonnement#0" expanded="false" />
+            <element signature="method#deleteAbonnementById#0;class#ManageAbonnement#0" expanded="false" />
+            <element signature="method#getAbonnementByRoute#0;class#ManageAbonnement#0" expanded="false" />
           </folding>
         </state>
       </provider>

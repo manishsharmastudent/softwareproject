@@ -14,32 +14,27 @@ import javax.swing.event.MouseInputAdapter;
 /**
  * Created by Rik Van Belle on 11/11/2016.
  */
-public class MainController implements MouseMotionListener {
+public class MainController {
     HomeView home;
 
     protected Timer logOutTimer;
-
-    TicketController ticketController;
-    StationController stationController;
-    KlantController klantController;
-    VoorwerpController voorwerpController;
+    protected MouseMotionListener l;
 
     public MainController(){
         home = new HomeView("HomeScreen");
     }
-
     protected void showHomeScreen(){
         home.showHomeScreen();
-        home.getWindow().addMouseMotionListener(this);
         koopTicket();
         //voegStationToe();
         toevoegenKlant();
         voegAbonnementToe();
         voegVoorwerpToe();
         initLogOutTimer();
-        logOutTimer.start();
+        initMouseMotionListener();
+        home.getWindow().addMouseMotionListener(l);
+        logOutTimer.restart();
     }
-
     public void toevoegenKlant(){
         home.getKlantToevoegenButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -49,7 +44,6 @@ public class MainController implements MouseMotionListener {
             }
         });
     }
-
     public void koopTicket(){
         home.getButtonVoegTicketToe().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -60,7 +54,6 @@ public class MainController implements MouseMotionListener {
             }
         });
     }
-
     public void voegAbonnementToe(){
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +63,6 @@ public class MainController implements MouseMotionListener {
             }
         });
     }
-
     public void voegStationToe(){
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -80,7 +72,6 @@ public class MainController implements MouseMotionListener {
             }
         });
     }
-
     public void voegVoorwerpToe(){
         home.getRvvButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -90,7 +81,6 @@ public class MainController implements MouseMotionListener {
             }
         });
     }
-
     public void initLogOutTimer(){
         logOutTimer = new javax.swing.Timer(10000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -101,12 +91,14 @@ public class MainController implements MouseMotionListener {
             }
         });
         }
-
-    public void mouseDragged(MouseEvent e) {
-        //NOTHING
-    }
-
-    public void mouseMoved(MouseEvent e) {
-        logOutTimer.start();
+    public void initMouseMotionListener(){
+        l = new MouseMotionListener() {
+            public void mouseDragged(MouseEvent e) {
+            }
+            public void mouseMoved(MouseEvent e) {
+                System.out.println("Bewogen");
+                logOutTimer.restart();
+            }
+        };
     }
 }
