@@ -68,21 +68,27 @@ public class TreinParseController {
     }
 
     public static Halte getStop(JSONObject obj) {
-        String station = obj.getString("Name");
-        String coordinates = obj.getString("Coordinates");
-        /*
-        int arrivalPlatform = 0;
-        if (obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
-            arrivalPlatform = obj.getInt("ArrivalPlatform");
-        else if (!obj.isNull("DeparturePlatform"))
-            arrivalPlatform = obj.getInt("DeparturePlatform");
+        Halte h = new Halte();
+        h.setName(obj.getString("Name"));
+        h.setCoordinaten(obj.getString("Coordinates"));
 
-        int departurePlatform = 0;
-        if (obj.has("DeparturePlatform") && !obj.isNull("DeparturePlatform"))
-            departurePlatform = obj.getInt("DeparturePlatform");
-        else if (!obj.isNull("ArrivalPlatform"))
-            departurePlatform = obj.getInt("ArrivalPlatform");
+       /* String arrivalPlatform = "0";
+        if (obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
+            arrivalPlatform = obj.getString("ArrivalPlatform");
+        else if (!obj.isNull("DeparturePlatform"))
+            arrivalPlatform = obj.getString("DeparturePlatform");
         */
-        return new Halte(station, 0);
+        String departurePlatform = "0";
+        if (obj.has("DeparturePlatform") && !obj.isNull("DeparturePlatform"))
+            departurePlatform = obj.getString("DeparturePlatform");
+        else if (!obj.isNull("ArrivalPlatform"))
+            departurePlatform = obj.getString("ArrivalPlatform");
+        JSONObject hTime = obj.getJSONObject("Time");
+        h.setDeparturePlatform(departurePlatform);
+        h.setArrival(TimeParseController.getTime(hTime.getString("Arrival")));
+        h.setActualArrival(TimeParseController.getTime(hTime.getString("ActualArrival")));
+        h.setDeparture(TimeParseController.getTime(hTime.getString("Departure")));
+        h.setActualDeparture(TimeParseController.getTime(hTime.getString("ActualDeparture")));
+        return h;
     }
 }

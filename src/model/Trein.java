@@ -32,7 +32,6 @@ public class Trein {
 
     private List<Halte> haltes;
 
-
     public Trein(int treinId, String treinNaam) {
         this.treinId = treinId;
         this.treinNaam = treinNaam;

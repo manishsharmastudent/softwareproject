@@ -14,12 +14,38 @@ public class Halte {
     private LocalDateTime ActualArrival;
     private LocalDateTime Departure;
     private LocalDateTime ActualDeparture;
-    private int departurePlatform;
+    private String departurePlatform;
+    private String coordinaten;
 
-    public Halte(String name, int departurePlatform) {
+    public Halte(){}
+    public Halte(String name, String departurePlatform) {
         super();
         this.name = name;
         this.departurePlatform = departurePlatform;
+    }
+
+    public void setArrival(LocalDateTime arrival) {
+        Arrival = arrival;
+    }
+
+    public void setActualArrival(LocalDateTime actualArrival) {
+        ActualArrival = actualArrival;
+    }
+
+    public void setDeparture(LocalDateTime departure) {
+        Departure = departure;
+    }
+
+    public void setActualDeparture(LocalDateTime actualDeparture) {
+        ActualDeparture = actualDeparture;
+    }
+
+    public String getCoordinaten() {
+        return coordinaten;
+    }
+
+    public void setCoordinaten(String coordinaten) {
+        this.coordinaten = coordinaten;
     }
 
     public String getName ()
@@ -64,12 +90,12 @@ public class Halte {
         ActualDeparture = TimeParseController.getTime(actualDeparture);
     }
 
-    public int getDeparturePlatform ()
+    public String getDeparturePlatform ()
     {
         return departurePlatform;
     }
 
-    public void setDeparturePlatform (int departurePlatform)
+    public void setDeparturePlatform (String departurePlatform)
     {
         this.departurePlatform = departurePlatform;
     }
