@@ -5,6 +5,7 @@ import model.Login;
 
 import javax.swing.JOptionPane;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,15 +48,14 @@ public class LoginView extends StandardView {
     }
 
     public void showLoginScreen() {
-        loginNaamText.setColumns(4);
-        loginWachtwoordText.setColumns(4);
+        loginNaamText.setColumns(6);
+        loginWachtwoordText.setColumns(6);
         panelGegevens.add(loginNaam);
         panelGegevens.add(loginNaamText);
         panelGegevens.add(loginWachtwoord);
         panelGegevens.add(loginWachtwoordText);
         panelGegevens.add(aanmelden);
         panelGegevens.add(vergeetPaswoord);
-
         mainPanel.add(panelGegevens);
 
         window.pack();

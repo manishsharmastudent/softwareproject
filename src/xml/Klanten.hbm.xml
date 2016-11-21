@@ -6,7 +6,7 @@
 <hibernate-mapping>
    <class name="model.Klant" table="KLANTEN">
       <meta attribute="class-description">
-         This class contains the Login detail.
+         This class contains the Klant detail.
       </meta>
       <id name="rijksregisterNummer" type="string" column="rijksregisterNummer"/>
       <property name="achternaam" column="achternaam" type="string"/>

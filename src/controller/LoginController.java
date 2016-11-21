@@ -3,17 +3,12 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
 
 import hibernate.ManageLogin;
 import model.Login;
 import model.Rol;
-import org.hibernate.Session;
-import view.HomeView;
+
 import view.LoginView;
-//import view.LoginView;
 /**
  * Created by Rik Van Belle on 01/11/2016.
  */
@@ -21,13 +16,11 @@ public class LoginController {
     private Login loginModel;
     private LoginView loginView;
     private ManageLogin loginManage;
-    private MainController mainController;
 
     public LoginController(){
         loginModel = new Login();
         loginManage = new ManageLogin();
         loginView = new LoginView("Login");
-        mainController = new MainController();
     }
     public LoginController(Login login, LoginView view, ManageLogin manage){
         this.loginModel = login;
@@ -68,7 +61,7 @@ public class LoginController {
                 if (loginManage.checkLogin(loginView.getLoginNaamText().getText(), loginView.getLoginWachtwoordText().getText()) == true){
                     loginView.getWindow().setVisible(false);
                     loginView.getWindow().dispose();
-                    mainController.showHomeScreen();
+                    new MainController().showHomeScreen();
                 }
                 else
                 {
