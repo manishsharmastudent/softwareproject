@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by thibaut on 31/10/2016.
@@ -33,7 +34,7 @@ public class ManageVoorwerp {
     }
 
 
-    public List<Voorwerp> listVoorwerp( ){
+    public Vector<Voorwerp> listVoorwerp( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
@@ -51,7 +52,11 @@ public class ManageVoorwerp {
         }finally {
             session.close();
         }
-        return voorwerpen;
+        Vector<Voorwerp>vw = new Vector<Voorwerp>();
+        for (int i = 0; i < voorwerpen.size();i++){
+            vw.add(voorwerpen.get(i));
+        }
+        return vw;
     }
 
 

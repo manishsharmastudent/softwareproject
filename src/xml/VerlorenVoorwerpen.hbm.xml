@@ -8,7 +8,7 @@
       <meta attribute="class-description">
          This class contains the Login detail.
       </meta>
-      <id name="voorwerpId" type="string" column="voorwerpId">
+      <id name="voorwerpId" type="int" column="voorwerpId">
          <generator class="native"/>
       </id>
       <property name="active" column="active" type="boolean"/>

@@ -11,6 +11,7 @@
       <id name="ticketId" type="int" column="ticketId">
          <generator class="native"/>
       </id>
+
        <many-to-one name="route" column="routeId" class="model.Route" />
        <property name="beginDatum" column="beginDatum" type="date"/>
        <property name="eindDatum" column="eindDatum" type="date"/>
