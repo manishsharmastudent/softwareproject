@@ -1,12 +1,14 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 
 import hibernate.ManageLogin;
 import model.Login;
 import model.Rol;
+
 import view.LoginView;
-//import view.LoginView;
 /**
  * Created by Rik Van Belle on 01/11/2016.
  */
@@ -14,18 +16,18 @@ public class LoginController {
     private Login loginModel;
     private LoginView loginView;
     private ManageLogin loginManage;
-    private MainController mainController = new MainController();
 
     public LoginController(){
         loginModel = new Login();
         loginManage = new ManageLogin();
-        loginView = new LoginView("Login", false);
+        loginView = new LoginView("Login");
     }
     public LoginController(Login login, LoginView view, ManageLogin manage){
         this.loginModel = login;
         this.loginView = view;
         this.loginManage = manage;
     }
+
     public String getLoginNaam(){
         return loginModel.getLoginNaam();
     }
@@ -45,18 +47,38 @@ public class LoginController {
         loginModel.setRol(rol);
         return true;
     }
+
     public void showLoginScreen(){
-        loginView.showLoginScreen(this);
+        loginView.showLoginScreen();
+        //add Listeners
+        controleerLogin();
+        vergeetPasswoord();
     }
-    public void controleerLogin(Login login){
-        if (loginManage.checkLogin(login.getLoginNaam(), login.getLoginWachtwoord()) == true){
-            loginView.getWindow().setVisible(false);
-            loginView.getWindow().dispose();
-            mainController.showHomeScreen();
-        }
-        else {showFailedLogin();}
+
+    public void controleerLogin(){
+        loginView.getAanmeldButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (loginManage.checkLogin(loginView.getLoginNaamText().getText(), loginView.getLoginWachtwoordText().getText()) == true){
+                    loginView.getWindow().setVisible(false);
+                    loginView.getWindow().dispose();
+                    new MainController().showHomeScreen();
+                }
+                else
+                {
+                    loginView.showFailedLogin();
+                }
+            }
+        });
     }
-    public void showFailedLogin(){
-        loginView.showFailedLogin();
+    public void vergeetPasswoord(){
+        loginView.getVergeetPaswoordButton().addActionListener(new ActionListener() {
+            String email;
+            public void actionPerformed(ActionEvent e) {
+                email = loginView.showForgetPassword();
+                System.out.println(email);
+
+            }
+        });
     }
 }
+

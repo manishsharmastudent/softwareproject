@@ -1,11 +1,11 @@
 package view;
 
-import Listeners.AanmeldListener;
 import controller.LoginController;
 import model.Login;
 
 import javax.swing.JOptionPane;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,53 +14,55 @@ import java.awt.event.ActionListener;
  * Created by Rik Van Belle on 01/11/2016.
  */
 public class LoginView extends StandardView {
-    final Login login = new Login();
-
-    JPanel panelGegevens = new JPanel();
-    JPanel panelButtons = new JPanel();
-    JLabel loginNaam = new JLabel("Naam: ");
-    JLabel loginWachtwoord = new JLabel("Wachtwoord: ");
-    final JTextField loginNaamText = new JTextField();
-    final JTextField loginWachtwoordText = new JTextField();
-
-    public LoginView(String titel, boolean haveButton){
-        super(titel, haveButton);
-        panelGegevens.setLayout(new GridLayout(2, 2));
-        panelButtons.setLayout(new GridLayout(2, 1));
-        getStandardButton().setText("Aanmelden");
+    private final Login login = new Login();
+    private JPanel panelGegevens = new JPanel();
+    private JLabel loginNaam = new JLabel("Naam: ");
+    private JLabel loginWachtwoord = new JLabel("Wachtwoord: ");
+    private JTextField loginNaamText = new JTextField("Rik");
+    private JPasswordField loginWachtwoordText = new JPasswordField("Password");
+    private JButton aanmelden = new JButton("Aanmelden");
+    private JButton vergeetPaswoord = new JButton("Passwoord vergeten");
+    public LoginView(String titel){
+        super(titel);
+        panelGegevens.setLayout(new GridLayout(3, 3));
     }
 
     public Login getLogin(){
         return this.login;
     }
 
-    public void showLoginScreen(final LoginController loginController) {
-        JButton aanmelden = new JButton("Aanmelden");
-        aanmelden.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                login.setLoginNaam(loginNaamText.getText());
-                login.setLoginWachtwoord(loginWachtwoordText.getText());
-                System.out.println(login.getLoginNaam());
-                loginController.controleerLogin(login);
-            }
-        });
-        loginNaamText.setColumns(4);
-        loginWachtwoordText.setColumns(4);
+    public JTextField getLoginNaamText(){
+        return this.loginNaamText;
+    }
+
+    public JPasswordField getLoginWachtwoordText(){
+        return this.loginWachtwoordText;
+    }
+
+    public JButton getAanmeldButton(){
+        return this.aanmelden;
+    }
+
+    public JButton getVergeetPaswoordButton(){
+        return this.vergeetPaswoord;
+    }
+
+    public void showLoginScreen() {
+        loginNaamText.setColumns(6);
+        loginWachtwoordText.setColumns(6);
         panelGegevens.add(loginNaam);
         panelGegevens.add(loginNaamText);
         panelGegevens.add(loginWachtwoord);
         panelGegevens.add(loginWachtwoordText);
-        panelButtons.add(aanmelden);
+        panelGegevens.add(aanmelden);
+        panelGegevens.add(vergeetPaswoord);
+        mainPanel.add(panelGegevens);
 
-        getMainPanel().add(panelGegevens);
-        getMainPanel().add(panelButtons);
-        getMainPanel().setLayout(new GridLayout(2, 1));
-        getWindow().add(getMainPanel());
-
+        window.pack();
         this.showWindow();
     }
-    public void showForgetPassword(){
-
+    public String showForgetPassword(){
+        return JOptionPane.showInputDialog("Geef hieronder het email adres van je account in:");
     }
     public void showLogins(Login[] logins){
 
