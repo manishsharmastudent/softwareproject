@@ -60,6 +60,10 @@ public class HomeView extends StandardView {
         return this.rvvButton;
     }
 
+    public JButton getTreinInfo(){
+        return this.treinInfo;
+    }
+
     public void showHomeScreen() {
 
         ticketPanel.setLayout(new GridLayout(8,1));

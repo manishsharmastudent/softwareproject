@@ -23,18 +23,13 @@ public class ParseController {
      **/
     private static final String CONNECTIONS_URL = "https://traintracks.online/api/";
 
-
-
-
-
-
 /**
  * In de blok hieronder komen de methodes van alle soort request die gemaakt kan worden
  * Voor iedere soort request zal een andere methode geschreven moeten worden.
  **/
 
     /** Deze methode behandeld de vraag naar een route tussen 2 stations **/
-    public static List<Traject> getTraject(String from, String to) throws Exception {
+    public List<Traject> getTraject(String from, String to) throws Exception {
 
         List<Traject>traject = new ArrayList<Traject>();
 
@@ -77,20 +72,5 @@ public class ParseController {
         }
 
         return station;
-    }
-
-    public static void main(String[] args) {
-        try {
-            List<Traject> tra = getTraject("Virton", "Oostende");
-
-           // tra.forEach(e -> System.out.print(e));
-
-            //Station antw = getStationBoard("Antwerpen-Centraal");
-            System.out.println();
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println(e.toString());
-        }
-
     }
 }

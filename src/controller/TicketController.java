@@ -9,6 +9,7 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthTextAreaUI;
 
 import hibernate.ManageStation;
 import hibernate.ManageTicket;
@@ -76,8 +77,7 @@ public class TicketController {
         terugButton();
     }
     private void initComboBoxes(){
-        ManageStation ms = new ManageStation();
-        List<Station> stations = ms.listStations();
+        List<StationCsv> stations = new ManageStation().getAllStationsBoxes();
 
         ManageTypeKaart mTK = new ManageTypeKaart();
         final List<TypeKaart> typeKaarten = mTK.listTypeKaarten();
@@ -89,7 +89,6 @@ public class TicketController {
         });
 
         for (int i = 0; i < typeKaarten.size();i++){
-            System.out.print(typeKaarten.get(i).getNaam());
             ticketView.getTypeKaartenComboBox().addItem(typeKaarten.get(i).getNaam());
         }
 
@@ -105,8 +104,21 @@ public class TicketController {
     private void voegTicketToe(){
         ticketView.getZoekButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Station stationVertrek = new Station();
-                Station stationAankomst = new Station();
+                List<Traject> trajecten = null;
+                ParseController pC = new ParseController();
+                try {
+                   trajecten = pC.getTraject(ticketView.getVertrekStation(), ticketView.getBestemmingsStation());
+                    for(int i = 0; i < trajecten.size();i++){
+                        System.out.println(trajecten.get(i).toString());
+                    }
+                } catch (Exception exc){
+                    exc.getStackTrace();
+                }
+
+                for (int i = 0; i < trajecten.size();i++){
+                    System.out.println(trajecten.get(i).toString());
+                }
+                /*
                 Route route = new Route(1,stationVertrek,stationAankomst, true);
 
                 ManageTypeKaart mTK = new ManageTypeKaart();
@@ -129,7 +141,7 @@ public class TicketController {
                     else {
                         ticketView.noTicketAdded();
                     }
-                }
+                }*/
             }
         });
     }

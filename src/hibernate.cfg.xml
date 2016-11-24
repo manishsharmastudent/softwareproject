@@ -34,6 +34,7 @@
         <mapping resource="xml/Routes.hbm.xml"/>
         <mapping resource="xml/TypeKaart.hbm.xml"/>
         <mapping resource="xml/VerlorenVoorwerpen.hbm.xml"/>
+        <mapping resource="xml/StationsCsv.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

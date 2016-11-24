@@ -20,7 +20,6 @@ public class Station {
 
     public Station() {
     }
-
     public boolean getActive(){
         return this.active;
     }
