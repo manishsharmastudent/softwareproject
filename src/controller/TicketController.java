@@ -105,8 +105,8 @@ public class TicketController {
     private void voegTicketToe(){
         ticketView.getZoekButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Station stationVertrek = new Station(0,"Station " + ticketView.getBestemmingsStation(),ticketView.getBestemmingsStation(), true);
-                Station stationAankomst = new Station(0,"Station" + ticketView.getVertrekStation(),ticketView.getVertrekStation(), true);
+                Station stationVertrek = new Station();
+                Station stationAankomst = new Station();
                 Route route = new Route(1,stationVertrek,stationAankomst, true);
 
                 ManageTypeKaart mTK = new ManageTypeKaart();

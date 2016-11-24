@@ -25,7 +25,7 @@ public class TreinParseController {
     }
 
     public static List<Trein> getTrains(JSONArray arr) {
-        List<Trein> list = new ArrayList<Trein>();
+        final List<Trein> list = new ArrayList<Trein>();
         arr.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {
@@ -57,7 +57,7 @@ public class TreinParseController {
     }
 
     public static List<Halte> getHaltes(JSONArray arrStations) {
-        List<Halte> haltes = new ArrayList<Halte>();
+        final List<Halte> haltes = new ArrayList<Halte>();
         arrStations.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {

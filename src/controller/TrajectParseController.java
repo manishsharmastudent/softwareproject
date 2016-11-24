@@ -16,7 +16,7 @@ public class TrajectParseController {
 
     private static Traject getTraject(JSONObject obj) {
 
-        Traject trj = new Traject();
+        final Traject trj = new Traject();
         trj.setVetrekStation(obj.getString("Departure"));
         trj.setAankomstStation(obj.getString("Arrival"));
         trj.setCancelled(obj.getBoolean("Cancelled"));
@@ -68,7 +68,7 @@ public class TrajectParseController {
     }
 
     public static List<Traject> getTrajecten(JSONArray arrCon) {
-        List<Traject> trajecten = new ArrayList<Traject>();
+        final List<Traject> trajecten = new ArrayList<Traject>();
 
         arrCon.forEach(new Consumer<Object>() {
             @Override
