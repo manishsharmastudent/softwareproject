@@ -5,3 +5,5 @@
 out/
 src/resources/nmbs.png
 src/resources/print-logo.gif
+/.idea/dataSources.xml
+/.idea/misc.xml
