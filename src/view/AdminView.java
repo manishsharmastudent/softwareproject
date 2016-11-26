@@ -54,9 +54,5 @@ public class AdminView extends StandardView {
 
     }
 
-    public static void main(String[] args) {
-        AdminView a = new AdminView("Admin");
-        a.showAdminOptions();
-    }
 
 }
