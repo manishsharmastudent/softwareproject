@@ -9,6 +9,7 @@ public class SettingView extends StandardView {
 
     private JButton saveButton = new JButton("Save");
 
+
     SettingView(String titel) {
         super(titel);
     }

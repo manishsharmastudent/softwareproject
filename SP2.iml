@@ -85,5 +85,17 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="appframework-1.0.3" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/JTimeChooser_0.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/JTimeChooser_0.1.0.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="JTimeChooser_0.1.0" level="project" />
   </component>
 </module>
