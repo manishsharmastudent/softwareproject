@@ -20,6 +20,10 @@ public class Station {
 
     public Station() {
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Rik
     public boolean getActive(){
         return this.active;
     }

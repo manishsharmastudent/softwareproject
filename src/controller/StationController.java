@@ -30,10 +30,15 @@ public class StationController {
         terugButton();
     }
     public void clickToevoegenStation(){
+        final Station station = new Station();
         stationView.getToevoegButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
               //  Station station = new Station(0, "Station " + stationView.getNaamText(), stationView.getStadText(),true);
               /*  if (stationManage.addStation(station) > 0){
+=======
+                if (stationManage.addStation(station) > 0){
+>>>>>>> origin/Rik
                     JOptionPane.showMessageDialog(stationView.getWindow(), "Station " + station.getNaam() + " is toegevoegd!");
                     backToHomeScreen();
                 };*/
