@@ -3,6 +3,11 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.maps.DistanceMatrixApi;
+import com.google.maps.GeoApiContext;
+import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.TransitMode;
+import com.google.maps.model.TravelMode;
 import model.Station;
 import util.NetUtil;
 import java.io.IOException;
@@ -45,6 +50,34 @@ public class ParseController {
 
             JSONArray arrCon = jBase.getJSONArray("Routes");
             traject = TrajectParseController.getTrajecten(arrCon);
+            String[] aankomst =  {traject.get(0).getAankomstStation()};
+            String[] vertrek =  {traject.get(0).getVertrekStation()};
+
+            GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");
+
+
+
+            DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins(aankomst).destinations(vertrek).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
+
+
+            long distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
+
+            for (int i = 0; i < traject.size(); i++){
+
+                matrix= DistanceMatrixApi.newRequest(a).origins(traject.get(i).getVertrekStation()).destinations(traject.get(i).getAankomstStation()).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
+
+
+                distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
+
+                traject.get(i).setAantalKilometers((double)distanceInMeters/1000);
+
+            }
+
+
+
+
+
+
 
         } catch (IOException io) {
             System.err.println("Error");

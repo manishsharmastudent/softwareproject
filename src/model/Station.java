@@ -12,7 +12,7 @@ public class Station {
     private List<Trein> treinen;
     private boolean active;
 
-    public Station(int stationId, String naam, String stad) {
+    public Station(int stationId, String naam, String stad, boolean b) {
         this.stationId = stationId;
         this.naam = naam;
         this.stad = stad;

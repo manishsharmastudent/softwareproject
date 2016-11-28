@@ -30,14 +30,14 @@ public class UserSettingsView extends StandardView {
 
 
 
-        getMainPanel().setLayout(new BorderLayout(80,30));
+        mainPanel.setLayout(new BorderLayout(80,30));
         panel.setLayout(new BorderLayout(0,0));
 
         panel.add(mainNavPanel, BorderLayout.NORTH);
         panel.add(interactiePanel, BorderLayout.CENTER);
 
-        getMainPanel().add(welkomPanel, BorderLayout.NORTH);
-        getMainPanel().add(panel, BorderLayout.CENTER);
+        mainPanel.add(welkomPanel, BorderLayout.NORTH);
+        mainPanel.add(panel, BorderLayout.CENTER);
 
 
         GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");

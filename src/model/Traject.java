@@ -133,6 +133,7 @@ public class Traject {
         for (Trein e:treinen) {
             if(treinen.indexOf(e) > 0)
             s += "Transfer at: "+transferstations.get(treinen.indexOf(e) - 1 ) + '\n';
+            s += "aantal kilometers route: " + this.getAantalKilometers() + "\n";
             s += e.toString() + '\n';
         }
 

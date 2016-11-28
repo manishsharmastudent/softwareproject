@@ -5,7 +5,9 @@ import model.Route;
 import model.StationCsv;
 import model.Traject;
 import view.RouteView;
+import view.TicketView;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
  */
 public class RouteController {
     RouteView view;
+    TicketView ticketView;
     Route routeModel;
 
     public RouteController(){
@@ -42,6 +45,8 @@ public class RouteController {
             trajecten = new ParseController().getTraject(vertrek, bestemming);
         } catch (Exception e){
             e.getStackTrace();
+            JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!!!! godverdomme zoekt ne keer een deftige route");
+
         }
         view = new RouteView("Route");
         if(trajecten == null){
@@ -49,6 +54,7 @@ public class RouteController {
         }
         else {
             view.showSearchedRoutes(trajecten);
+
         }
     }
     public void initComboBoxes(){

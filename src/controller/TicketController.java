@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -111,13 +113,24 @@ public class TicketController {
                     for(int i = 0; i < trajecten.size();i++){
                         System.out.println(trajecten.get(i).toString());
                     }
+                    double prijs = trajecten.get(1).getAantalKilometers() * 0.50;
+                    NumberFormat formatter = new DecimalFormat("##.##");
+                    JOptionPane.showMessageDialog(ticketView.getWindow(), "Prijs ticket: €" +  formatter.format(prijs)
+                    + "\nAfstand route= " + trajecten.get(1).getAantalKilometers() + "km");
+
                 } catch (Exception exc){
+                    JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!!!! godverdomme zoekt ne keer een deftige route");
                     exc.getStackTrace();
                 }
 
-                for (int i = 0; i < trajecten.size();i++){
-                    System.out.println(trajecten.get(i).toString());
-                }
+/*
+                    if (trajecten.equals(null)){
+                        JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!!!! godverdomme zoekt ne keer een deftige route");
+                    }else {
+                        for (int i = 0; i < trajecten.size(); i++){
+                            System.out.println(trajecten.get(i).toString());
+                        }
+                    }*/
                 /*
                 Route route = new Route(1,stationVertrek,stationAankomst, true);
 

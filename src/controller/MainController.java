@@ -110,7 +110,6 @@ public class MainController {
                 new KlantController().showZoekKlanten();
             }
         });
-        new KlantController().showZoekKlanten();
 
     }
     public void initLogOutTimer(){
