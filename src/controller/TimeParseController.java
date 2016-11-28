@@ -1,5 +1,6 @@
 package controller;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
@@ -31,6 +32,7 @@ public class TimeParseController {
         int urenDelay = 0;
         int minutenDelay = 0;
         int secondenDelay = 0;
+
 
         if (actual != null) {
             if (actual.isAfter(departure)) {

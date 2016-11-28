@@ -78,14 +78,19 @@ public class ParseController {
 
     public static void main(String[] args) {
         try {
-            List<Traject> tra = getTraject("Ternat", "Holleken");
+            //List<Traject> tra = getTraject("Ternat", "Holleken");
+
+            LocalDateTime d1 = TimeParseController.getTime("2016-01-01T23:00:00");
+            LocalDateTime d2 = TimeParseController.getTime("2016-01-02T00:05:31");
+
+            Duration d = Duration.between(d1,d2);
 
            // tra.forEach(e -> System.out.print(e));
 
             //Station antw = getStationBoard("Antwerpen-Centraal");
 
 
-            System.out.println(tra.toString());
+            System.out.println(d1.toString());
         }catch (Exception e){
             e.printStackTrace();
             System.out.println(e.toString());
