@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -22,6 +23,13 @@ import java.util.Properties;
  */
 public class AbonnementView extends StandardView {
     private JPanel abonnementPanel = new JPanel();
+    private JPanel gevondenAbonnementen = new JPanel();
+    Abonnement abonnement = new Abonnement();
+
+    private JLabel rijksregisterLabel = new JLabel("Rijksregisternummer: ");
+    private JLabel abonnementIdLabel = new JLabel("Abonnementnummer: ");
+    private JTextField rijksregisterNummerText = new JFormattedTextField(createFormatter("##.##.##-###.##"));
+    private JTextField abonnementNummerText = new JTextField();
 
     private JLabel klantLabel = new JLabel("Klant");
     private JLabel routeLabel = new JLabel("Route");
@@ -33,6 +41,10 @@ public class AbonnementView extends StandardView {
     private JComboBox kortingComboBox = new JComboBox();
 
     private JButton toevoegenAbonnement = new JButton("Abonnement toevoegen");
+    private JButton zoekAbonnementOpKlantIdButton = new JButton("Zoeken");
+    private JButton zoekAbonnementOpAboIdButton = new JButton("Zoeken");
+    private JButton aanpasButton = new JButton("Aanpassen");
+    private JButton updateButton = new JButton("Updaten");
 
     private Properties pBeginDatum = new Properties();
     private UtilDateModel modelBeginDatum = new UtilDateModel();
@@ -44,6 +56,16 @@ public class AbonnementView extends StandardView {
 
     public AbonnementView(String titel){
         super(titel);
+    }
+
+    public Abonnement getAbonnement(){ return this.abonnement;}
+
+    public JPanel getGevondenAbonnementPanel(){ return gevondenAbonnementen; }
+    public String getRijksregisterNummerText(){
+        return rijksregisterNummerText.getText();
+    }
+    public String getAbonnementNummerText(){
+        return abonnementNummerText.getText();
     }
 
     public JComboBox getKlantComboBox(){
@@ -73,12 +95,85 @@ public class AbonnementView extends StandardView {
     public JButton getToevoegenAbonnementButton(){
         return this.toevoegenAbonnement;
     }
+    public JButton getZoekAbonnementByKlantIdButton(){ return this.zoekAbonnementOpKlantIdButton; }
+    public JButton getZoekAbonnementByAboIdButton(){ return this.zoekAbonnementOpAboIdButton; }
+    public JButton getAanpasButton(){
+        return aanpasButton;}
+    public JButton getUpdateButton(){
+        return updateButton;
+    }
     public JDatePickerImpl getDatePickerBeginDatum(){ return this.datePickerBeginDatum; }
     public JDatePickerImpl getDatePickerEindDatum(){ return this.datePickerEindDatum;}
 
-    public void showAbonnement(Abonnement abonnement){
+    public void showAanpassenAbonnement(Abonnement abonnement){
+        abonnementPanel.setLayout(new GridLayout(6,2));
+        System.out.println(abonnement.getAbonnementId());
+        JTextField textAboId = new JTextField();
+        JTextField kortingOmschrijving = new JTextField();
+        JTextField beginDatum = new JTextField();
+        JTextField eindDatum = new JTextField();
+        JTextField afsluiten = new JTextField();
 
+        afsluiten.setText(Boolean.toString(abonnement.isActive()));
+        eindDatum.setText("12-12-2015");
+        beginDatum.setText("12-12-2015");
+        kortingOmschrijving.setText(abonnement.getKorting().getOmschrijving());
+        textAboId.setText(Integer.toString(abonnement.getAbonnementId()));
+        textAboId.setEnabled(false);
+
+        abonnementPanel.add(new JLabel("Abonnementnummer: "));
+        abonnementPanel.add(textAboId);
+        abonnementPanel.add(new JLabel("Korting: "));
+        abonnementPanel.add(kortingOmschrijving);
+        abonnementPanel.add(new JLabel("Begindatum: "));
+        abonnementPanel.add(beginDatum);
+        abonnementPanel.add(new JLabel("Einddatum: "));
+        abonnementPanel.add(eindDatum);
+        abonnementPanel.add(new JLabel("Afsluiten: "));
+        abonnementPanel.add(afsluiten);
+        abonnementPanel.add(updateButton);
+
+        mainPanel.add(abonnementPanel);
+
+        showWindow();
     }
+    public void showZoekAbonnement(){
+        abonnementPanel.setLayout(new GridLayout(2,3));
+
+        abonnementPanel.add(rijksregisterLabel);
+        abonnementPanel.add(rijksregisterNummerText);
+        abonnementPanel.add(zoekAbonnementOpKlantIdButton);
+        abonnementPanel.add(abonnementIdLabel);
+        abonnementPanel.add(abonnementNummerText);
+        abonnementPanel.add(zoekAbonnementOpAboIdButton);
+
+        mainPanel.add(abonnementPanel);
+        path.add("Abonnement zoeken");
+        showWindow();
+    }
+    public void showGevondenAbonnementen(Abonnement abonnement){
+        this.abonnement = abonnement;
+        GridLayout layout = new GridLayout(2,3);
+        layout.setHgap(25);
+        gevondenAbonnementen.setLayout(layout);
+        if (abonnement == null){
+            JOptionPane.showMessageDialog(null, "Er is geen abonnement gevonden!");
+        }
+        else {
+            gevondenAbonnementen.add(new JLabel("Naam"));
+            gevondenAbonnementen.add(new JLabel("Abonnementnummer"));
+            gevondenAbonnementen.add(new JLabel());
+                Klant klant = abonnement.getKlant();
+
+                JLabel klantNaam = new JLabel(klant.getVoornaam() + " " + klant.getAchternaam());
+                JLabel abonnementNummer = new JLabel(Integer.toString(abonnement.getAbonnementId()));
+
+                gevondenAbonnementen.add(klantNaam);
+                gevondenAbonnementen.add(abonnementNummer);
+                gevondenAbonnementen.add(aanpasButton);
+            }
+            mainPanel.add(gevondenAbonnementen);
+        }
     public void showToevoegenAbonnement(){
         abonnementPanel.setLayout(new GridLayout(6,2));
 
