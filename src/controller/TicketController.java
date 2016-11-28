@@ -105,18 +105,15 @@ public class TicketController {
     private void voegTicketToe(){
         ticketView.getZoekButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                /* Station stationVertrek = new Station(0,"Station " + ticketView.getBestemmingsStation(),ticketView.getBestemmingsStation(), true);
                 Station stationAankomst = new Station(0,"Station" + ticketView.getVertrekStation(),ticketView.getVertrekStation(), true);
                 Route route = new Route(1,stationVertrek,stationAankomst, true);*/
-=======
-=======
->>>>>>> origin/Rik
+
                 Station stationVertrek = new Station();
                 Station stationAankomst = new Station();
                 Route route = new Route(1,stationVertrek,stationAankomst, true);
->>>>>>> origin/Rik
+
 
                 ManageTypeKaart mTK = new ManageTypeKaart();
                 List<TypeKaart> typeKaarten = mTK.listTypeKaarten();
