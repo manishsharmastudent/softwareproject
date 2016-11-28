@@ -6,7 +6,6 @@ out/
 src/resources/nmbs.png
 src/resources/print-logo.gif
 .idea/dataSources.xml
-.idea/misc.xml
 .idea/libraries/javax_json_api_1_0_javadoc__2_.xml
 .idea/libraries/json.xml
 .idea/libraries/javax_json_api_1_0_javadoc.xml
