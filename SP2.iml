@@ -33,20 +33,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="com.google.maps:google-maps-services:0.1.16" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES />
-        <JAVADOC>
-          <root url="jar://$MODULE_DIR$/lib/javax.json-api-1.0-javadoc.jar!/" />
-        </JAVADOC>
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="javax.json-api-1.0-javadoc" level="project" />
-    <orderEntry type="library" name="javax.json-api-1.0-javadoc (2)" level="project" />
-    <orderEntry type="library" name="json (2)" level="project" />
-=======
-    <orderEntry type="library" name="json" level="project" />
->>>>>>> origin/Rik
   </component>
 </module>

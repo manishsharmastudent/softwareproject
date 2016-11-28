@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 /**
  * Created by Manish on 29/10/2016.
  */
@@ -9,30 +7,32 @@ public class Station {
     private int stationId;
     private String naam;
     private String stad;
-    private List<Trein> treinen;
     private boolean active;
 
-    public Station(int stationId, String naam, String stad) {
+    public Station(int stationId, String naam, String stad, boolean active) {
         this.stationId = stationId;
         this.naam = naam;
         this.stad = stad;
+        this.active = active;
     }
 
     public Station() {
     }
 
-    public boolean getActive(){
-        return this.active;
+    public boolean getActive() {
+        return active;
     }
-    public void setActive(boolean active){
+
+    public void setActive(boolean active) {
         this.active = active;
     }
+
     public int getStationId() {
         return stationId;
     }
 
     public void setStationId(int stationId){
-        this.stationId = stationId;
+     this.stationId = stationId;
     }
 
     public String getStad() {
@@ -49,12 +49,5 @@ public class Station {
 
     public void setNaam(String naam) {
         this.naam = naam;
-    }
-
-    public List<Trein> getTreinen() {
-        return treinen;
-    }
-    public void setTreinen(List<Trein> treinen) {
-        this.treinen = treinen;
     }
 }
