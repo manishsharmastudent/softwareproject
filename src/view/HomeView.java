@@ -47,21 +47,22 @@ public class HomeView extends StandardView {
     public JButton getButtonVoegTicketToe(){
         return this.verkoopTicketButton;
     }
-
     public JButton getVerkoopAboButton(){
         return this.verkoopAboButton;
     }
-
     public JButton getKlantToevoegenButton(){
         return this.klantToevoegen;
     }
-
     public JButton getRvvButton(){
         return this.rvvButton;
     }
+    public JButton getTreinInfo(){
+        return this.treinInfo;
+    }
+    public JButton getVerlengAboButton() {return this.verlengAboButton; }
+    public JButton getKlantOpzoeken(){ return this.klantOpzoeken; }
 
     public void showHomeScreen() {
-
         ticketPanel.setLayout(new GridLayout(8,1));
         infoPanel.setLayout(new GridLayout(5,1));
         voorwerpPanel.setLayout(new GridLayout(5,1));

@@ -21,7 +21,6 @@ public class TrajectParseController {
         trj.setAankomstStation(obj.getString("Arrival"));
         trj.setCancelled(obj.getBoolean("Cancelled"));
 
-
         JSONArray arrTrains = obj.getJSONArray("Trains");
         trj.setTreinen(TreinParseController.getTrains(arrTrains));
 

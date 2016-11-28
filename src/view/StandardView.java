@@ -65,7 +65,6 @@ public class StandardView {
     public JFrame getWindow(){
         return this.window;
     }
-    public JPanel getMainPanel(){ return this.mainPanel; }
     public JButton getTerugButton(){return this.terugButton; }
 
     public void initTimeAndDate(){

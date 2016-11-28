@@ -19,6 +19,7 @@ public class Traject {
     private boolean cancelled;
     private List<String> transferstations;
     private List<Trein> treinen;
+    private double aantalKilometers;
 
     public Traject(){}
 
@@ -117,6 +118,12 @@ public class Traject {
         this.actualAankomstTijd = actualAankomstTijd;
     }
 
+    public double getAantalKilometers(){
+        return this.aantalKilometers;
+    }
+    public void setAantalKilometers(double kilometers){
+        this.aantalKilometers = kilometers;
+    }
     @Override
     public String toString() {
         String s = "Traject: van " + vertrekStation +
