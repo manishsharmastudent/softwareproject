@@ -80,8 +80,6 @@ public class RouteView extends StandardView {
                 aantalOverstappen = new JLabel(Integer.toString(trajectList.get(i).getTransferstations().size()));
             }
 
-            //JLabel vertrekTijd = new JLabel(trajectList.get(i).getVertrekTijd());
-            //JLabel aankomstTijd = new JLabel(trajectList.get(i).getAankomstTijd();
 
             searchedRoutes.add(vertrekStation);
             searchedRoutes.add(bestemmingStation);
