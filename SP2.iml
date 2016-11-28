@@ -33,5 +33,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="com.google.maps:google-maps-services:0.1.16" level="project" />
+    <orderEntry type="library" name="json (2)" level="project" />
+    <orderEntry type="library" name="javax.json-api-1.0-javadoc" level="project" />
   </component>
 </module>
