@@ -19,6 +19,7 @@ public class Traject {
     private boolean cancelled;
     private List<String> transferstations;
     private List<Trein> treinen;
+    private String vetrekPlatform;
 
     public Traject(){}
 
@@ -113,8 +114,14 @@ public class Traject {
         return actualAankomstTijd;
     }
 
-    public void setActualAankomstTijd(LocalDateTime actualAankomstTijd) {
-        this.actualAankomstTijd = actualAankomstTijd;
+    public void setActualAankomstTijd(LocalDateTime actualAankomstTijd) { this.actualAankomstTijd = actualAankomstTijd; }
+
+    public String getVetrekPlatform() {
+        return vetrekPlatform;
+    }
+
+    public void setVetrekPlatform(String vetrekPlatform) {
+        this.vetrekPlatform = vetrekPlatform;
     }
 
     @Override

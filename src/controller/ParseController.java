@@ -81,12 +81,14 @@ public class ParseController {
 
     public static void main(String[] args) {
         try {
-            List<Traject> tra = getTraject("Virton", "Oostende");
+            List<Traject> tra = getTraject("Eupen", "Oostende");
 
            // tra.forEach(e -> System.out.print(e));
 
             //Station antw = getStationBoard("Antwerpen-Centraal");
-            System.out.println();
+
+
+            System.out.println(tra.toString());
         }catch (Exception e){
             e.printStackTrace();
             System.out.println(e.toString());

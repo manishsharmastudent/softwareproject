@@ -1,5 +1,6 @@
 package controller;
 
+import model.Halte;
 import model.Traject;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,6 +26,25 @@ public class TrajectParseController {
         JSONArray arrTrains = obj.getJSONArray("Trains");
         trj.setTreinen(TreinParseController.getTrains(arrTrains));
 
+        if (!(trj.getTreinen().isEmpty())){
+            Halte hlte = trj.getTreinen().get(0).getHaltes().stream()
+                    .filter(h -> h.getName().equalsIgnoreCase(trj.getVertrekStation()))
+                    .findFirst()
+                    .get();
+
+            trj.setActualVertrekTijd(hlte.getActualDeparture());
+            trj.setVertrekTijd(hlte.getDeparture());
+            trj.setVetrekPlatform(hlte.getDeparturePlatform());
+
+            hlte = trj.getTreinen().get(trj.getTreinen().size() - 1).getHaltes().stream()
+                    .filter(h -> h.getName().equalsIgnoreCase(trj.getAankomstStation()))
+                    .findFirst()
+                    .get();
+
+            trj.setAankomstTijd(hlte.getArrival());
+            trj.setActualAankomstTijd(hlte.getActualArrival());
+        }
+
         if (obj.getJSONArray("TransferStations").length() > 1) {
             JSONArray arrTransfer = obj.getJSONArray("TransferStations");
             arrTransfer.forEach(new Consumer<Object>() {
@@ -35,32 +55,6 @@ public class TrajectParseController {
                     if (!ts.isNull("TransferAt")) {
                         trj.setTransferstations(ts.getString("TransferAt"));
                     }
-                }
-            });
-        }
-        if (arrTrains.length() > 1) {
-            arrTrains.forEach(new Consumer<Object>() {
-                @Override
-                public void accept(Object s) {
-                    JSONObject trn = (JSONObject) s;
-                    JSONObject stops = trn.getJSONObject("Stops");
-                    JSONArray arrStations = stops.getJSONArray("Stations");
-                    arrStations.forEach(new Consumer<Object>() {
-                        @Override
-                        public void accept(Object s) {
-                            if (((JSONObject) s).getString("Name").equalsIgnoreCase(trj.getVertrekStation()) || ((JSONObject) s).getString("Name").equalsIgnoreCase(trj.getAankomstStation())) {
-                                if (((JSONObject) s).getString("Name").equalsIgnoreCase(trj.getVertrekStation())) {
-                                    JSONObject time = ((JSONObject) s).getJSONObject("Time");
-                                    trj.setVertrekTijd(TimeParseController.getTime(time.getString("Departure")));
-                                    trj.setActualVertrekTijd(TimeParseController.getTime(time.getString("ActualDeparture")));
-                                } else if (((JSONObject) s).getString("Name").equalsIgnoreCase(trj.getAankomstStation())) {
-                                    JSONObject time = ((JSONObject) s).getJSONObject("Time");
-                                    trj.setAankomstTijd(TimeParseController.getTime(time.getString("Arrival")));
-                                    trj.setActualAankomstTijd(TimeParseController.getTime(time.getString("ActualArrival")));
-                                }
-                            }
-                        }
-                    });
                 }
             });
         }
