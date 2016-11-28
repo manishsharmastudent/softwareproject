@@ -20,7 +20,14 @@ public class Trein {
     private String vetrkPlatform;
     private LocalDateTime departure;
     private LocalDateTime actualDeparture;
-    private List<Halte> Haltes;
+    private List<Halte> haltes;
+
+    public Trein() {}
+
+    public Trein(int treinId, String treinNaam) {
+        this.treinId = treinId;
+        this.treinNaam = treinNaam;
+    }
 
     public List<Halte> getHaltes() {
         return haltes;
@@ -28,16 +35,6 @@ public class Trein {
 
     public void setHaltes(List<Halte> haltes) {
         this.haltes = haltes;
-    }
-
-    private List<Halte> haltes;
-
-    public Trein(int treinId, String treinNaam) {
-        this.treinId = treinId;
-        this.treinNaam = treinNaam;
-    }
-
-    public Trein() {
     }
 
     public int getTreinId() {

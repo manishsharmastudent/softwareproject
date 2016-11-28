@@ -25,9 +25,6 @@ public class ParseController {
 
 
 
-
-
-
 /**
  * In de blok hieronder komen de methodes van alle soort request die gemaakt kan worden
  * Voor iedere soort request zal een andere methode geschreven moeten worden.
@@ -81,7 +78,7 @@ public class ParseController {
 
     public static void main(String[] args) {
         try {
-            List<Traject> tra = getTraject("Eupen", "Oostende");
+            List<Traject> tra = getTraject("Ternat", "Holleken");
 
            // tra.forEach(e -> System.out.print(e));
 
