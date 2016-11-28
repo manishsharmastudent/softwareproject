@@ -105,15 +105,15 @@ public class TicketController {
     private void voegTicketToe(){
         ticketView.getZoekButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Station stationVertrek = new Station(0,"Station " + ticketView.getBestemmingsStation(),ticketView.getBestemmingsStation(), true);
+               /* Station stationVertrek = new Station(0,"Station " + ticketView.getBestemmingsStation(),ticketView.getBestemmingsStation(), true);
                 Station stationAankomst = new Station(0,"Station" + ticketView.getVertrekStation(),ticketView.getVertrekStation(), true);
-                Route route = new Route(1,stationVertrek,stationAankomst, true);
+                Route route = new Route(1,stationVertrek,stationAankomst, true);*/
 
                 ManageTypeKaart mTK = new ManageTypeKaart();
                 List<TypeKaart> typeKaarten = mTK.listTypeKaarten();
 
                 ticketModel.setTicketId(0);
-                ticketModel.setRoute(route);
+                //ticketModel.setRoute(route);
                 ticketModel.setBeginDatum(new Date());
                 ticketModel.setEindDatum(new Date());
                 ticketModel.setTypeKaart(typeKaarten.get(ticketView.getTypeKaartIndex()));
