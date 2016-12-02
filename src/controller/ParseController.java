@@ -12,6 +12,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import model.Traject;
 import model.Trein;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 
 /**
  * Created by Nofel on 02-11-16.
@@ -22,6 +25,12 @@ public class ParseController {
      * Voeg hierin het adres van de api die dient gebruikt te worden
      **/
     private static final String CONNECTIONS_URL = "https://traintracks.online/api/";
+
+    private static String getStringFromFile(String path) throws IOException{
+
+        return new String(Files.readAllBytes(Paths.get(path)));
+
+    }
 
 
 
@@ -38,7 +47,8 @@ public class ParseController {
         try {
             /** vervolledig het request hier **/
             String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
-            String curlUrl = NetUtil.curlURL(finalURl);
+            String curlUrl = getStringFromFile("C:\\Users\\Nofel\\Desktop\\http _traintracks.online_api_Route_Eupen_Gent-Sint-Pieters");
+                    //NetUtil.curlURL(finalURl);
 
             JSONObject jBase = new JSONObject(curlUrl);
             if(jBase.has("error")) {
@@ -78,19 +88,15 @@ public class ParseController {
 
     public static void main(String[] args) {
         try {
-            //List<Traject> tra = getTraject("Ternat", "Holleken");
+            List<Traject> tra = getTraject("Oostende", "Antwerpen-Centraal");
 
-            LocalDateTime d1 = TimeParseController.getTime("2016-01-01T23:00:00");
-            LocalDateTime d2 = TimeParseController.getTime("2016-01-02T00:05:31");
-
-            Duration d = Duration.between(d1,d2);
 
            // tra.forEach(e -> System.out.print(e));
 
             //Station antw = getStationBoard("Antwerpen-Centraal");
 
 
-            System.out.println(d1.toString());
+            System.out.println(tra.toString());
         }catch (Exception e){
             e.printStackTrace();
             System.out.println(e.toString());

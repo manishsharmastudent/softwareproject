@@ -38,8 +38,9 @@ public class TrajectParseController {
 
             hlte = trj.getTreinen().get(trj.getTreinen().size() - 1).getHaltes().stream()
                     .filter(h -> h.getName().equalsIgnoreCase(trj.getAankomstStation()))
-                    .findFirst()
-                    .get();
+                    .findFirst().get();
+
+                    ;
 
             trj.setAankomstTijd(hlte.getArrival());
             trj.setActualAankomstTijd(hlte.getActualArrival());
