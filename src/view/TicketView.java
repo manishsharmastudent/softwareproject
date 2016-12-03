@@ -28,11 +28,12 @@ public class TicketView extends StandardView {
     private JComboBox stationTweeCombobox = new JComboBox();
     private JComboBox klasseCombobox = new JComboBox();
     private JComboBox typeKaartenComboBox = new JComboBox();
-    private Properties p = new Properties();
     private Integer value = new Integer(1);
     private Integer min = new Integer(1);
     private Integer max = new Integer(100);
     private Integer step = new Integer(1);
+    private Properties p = new Properties();
+
     private SpinnerNumberModel modelSp = new SpinnerNumberModel(value, min, max, step);
     private int fifty = modelSp.getNumber().intValue();
     private JSpinner spinner1 = new JSpinner(modelSp);
