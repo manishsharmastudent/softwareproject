@@ -124,6 +124,15 @@ public class StandardView {
         getWindow().setSize(800,700);
         getWindow().setLocationRelativeTo(null);
         window.add(mainPanel);
+        mainPanel.setLayout(new BorderLayout(80,30));
+        panel.setLayout(new BorderLayout(0,0));
+
+        panel.add(mainNavPanel, BorderLayout.NORTH);
+        panel.add(interactiePanel, BorderLayout.CENTER);
+
+        mainPanel.add(welkomPanel, BorderLayout.NORTH);
+        mainPanel.add(panel, BorderLayout.CENTER);
+
         window.setVisible(true);
     }
     public void addPath(String tekst){
