@@ -20,6 +20,7 @@ public class Traject {
     private List<String> transferstations;
     private List<Trein> treinen;
     private String vetrekPlatform;
+    private String exception;
 
     public Traject(){}
 
@@ -122,6 +123,14 @@ public class Traject {
 
     public void setVetrekPlatform(String vetrekPlatform) {
         this.vetrekPlatform = vetrekPlatform;
+    }
+
+    public String getException() {
+        return exception;
+    }
+
+    public void setException(String exception) {
+        this.exception = exception;
     }
 
     @Override

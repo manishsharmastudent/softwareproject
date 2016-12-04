@@ -46,9 +46,9 @@ public class ParseController {
 
         try {
             /** vervolledig het request hier **/
-            String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
-            String curlUrl = getStringFromFile("C:\\Users\\Nofel\\Desktop\\http _traintracks.online_api_Route_Eupen_Gent-Sint-Pieters");
-                    //NetUtil.curlURL(finalURl);
+            //String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
+           String curlUrl = getStringFromFile("C:\\Users\\Nofel\\Desktop\\http _traintracks.online_api_Route_Aalst_Oostende_Onvolledig.online_api_Route_Aalst_Oostende");
+            //String curlUrl = NetUtil.curlURL(finalURl);
 
             JSONObject jBase = new JSONObject(curlUrl);
             if(jBase.has("error")) {
@@ -87,8 +87,8 @@ public class ParseController {
     }
 
     public static void main(String[] args) {
-        try {
-            List<Traject> tra = getTraject("Oostende", "Antwerpen-Centraal");
+         try {
+            List<Traject> tra = getTraject("Aalst", "Oostende");
 
 
            // tra.forEach(e -> System.out.print(e));
