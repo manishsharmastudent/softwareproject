@@ -5,6 +5,6 @@ package exceptions;
  */
 public class HalteNotFoundException extends Exception {
     public HalteNotFoundException(String halte){
-        super("Halte" + " /'" + halte + "/' " + "werd niet gevonden.");
+        super("Halte" + " \'" + halte + "\' " + "werd niet gevonden.");
     }
 }

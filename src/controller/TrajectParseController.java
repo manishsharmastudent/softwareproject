@@ -16,9 +16,11 @@ import java.util.function.Consumer;
  */
 public class TrajectParseController {
 
-    private static void getRouteTimes(Traject trj) throws HalteNotFoundException{
+    private static void getRouteTimes(Traject trj) throws HalteNotFoundException {
+
+        Halte hlte;
         try {
-            Halte hlte = trj.getTreinen().get(0).getHaltes().stream()
+            hlte = trj.getTreinen().get(0).getHaltes().stream()
                     .filter(h -> h.getName().equalsIgnoreCase(trj.getVertrekStation()))
                     .findFirst()
                     .get();
@@ -27,16 +29,19 @@ public class TrajectParseController {
             trj.setVertrekTijd(hlte.getDeparture());
             trj.setVetrekPlatform(hlte.getDeparturePlatform());
 
+        } catch (Exception e) {
+            throw new HalteNotFoundException(trj.getVertrekStation());
+        }
+
+        try {
             hlte = trj.getTreinen().get(trj.getTreinen().size() - 1).getHaltes().stream()
                     .filter(h -> h.getName().equalsIgnoreCase(trj.getAankomstStation()))
                     .findFirst().get();
 
-            ;
-
             trj.setAankomstTijd(hlte.getArrival());
             trj.setActualAankomstTijd(hlte.getActualArrival());
-        }catch(Exception e){
-            throw new HalteNotFoundException("Halte");
+        } catch (Exception e) {
+            throw new HalteNotFoundException(trj.getAankomstStation());
         }
     }
 
@@ -54,9 +59,10 @@ public class TrajectParseController {
             if (!(trj.getTreinen().isEmpty())) {
                 getRouteTimes(trj);
             }
-        }catch (HalteNotFoundException h){
+        } catch (HalteNotFoundException h) {
             trj.setException(h.getMessage());
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
 
         if (obj.getJSONArray("TransferStations").length() > 1) {
             JSONArray arrTransfer = obj.getJSONArray("TransferStations");
@@ -88,9 +94,9 @@ public class TrajectParseController {
 
                     Traject trj = null;
 
-                        trj = getTraject(obj);
-                        if (trj.getVertrekTijd() != null)
-                            trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
+                    trj = getTraject(obj);
+                    if (trj.getVertrekTijd() != null)
+                        trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
 
 
                     trajecten.add(trj);
