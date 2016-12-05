@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appframework_1_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appframework_1_0_3.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SP2.iml" afterPath="$PROJECT_DIR$/SP2.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/AbonnementController.java" afterPath="$PROJECT_DIR$/src/controller/AbonnementController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/KlantController.java" afterPath="$PROJECT_DIR$/src/controller/KlantController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MainController.java" afterPath="$PROJECT_DIR$/src/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/TicketController.java" afterPath="$PROJECT_DIR$/src/controller/TicketController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageAbonnement.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageAbonnement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageKlant.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageKlant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageStation.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageStation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Station.java" afterPath="$PROJECT_DIR$/src/model/Station.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/AbonnementView.java" afterPath="$PROJECT_DIR$/src/view/AbonnementView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/HomeView.java" afterPath="$PROJECT_DIR$/src/view/HomeView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/KlantView.java" afterPath="$PROJECT_DIR$/src/view/KlantView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/RouteView.java" afterPath="$PROJECT_DIR$/src/view/RouteView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/StandardView.java" afterPath="$PROJECT_DIR$/src/view/StandardView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/StationView.java" afterPath="$PROJECT_DIR$/src/view/StationView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/TicketView.java" afterPath="$PROJECT_DIR$/src/view/TicketView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gitignore/" />
@@ -40,151 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ManageAbonnement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/hibernate/ManageAbonnement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="148" column="59" lean-forward="false" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbonnementController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/AbonnementController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="191" column="74" lean-forward="true" selection-start-line="191" selection-start-column="74" selection-end-line="191" selection-end-column="74" />
-              <folding>
-                <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
-                <element signature="e#6299#6300#0" expanded="false" />
-                <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#showChangeAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="e#9358#9359#0" expanded="true" />
-                <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
-                <element signature="e#9717#9987#0" expanded="true" />
-                <element signature="e#9986#9987#0" expanded="true" />
-                <marker date="1480934507801" expanded="false" signature="4561:4640" ph="(e) → {" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/view/HomeView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="101" column="35" lean-forward="true" selection-start-line="101" selection-start-column="35" selection-end-line="101" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-              <folding>
-                <element signature="method#LoginController#1;class#LoginController#0" expanded="false" />
-                <element signature="method#setRol#0;class#LoginController#0" expanded="false" />
-                <element signature="method#vergeetPasswoord#0;class#LoginController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KlantController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/KlantController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="125" column="27" lean-forward="false" selection-start-line="125" selection-start-column="27" selection-end-line="125" selection-end-column="27" />
-              <folding>
-                <element signature="method#showKlant#0;class#KlantController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KlantView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/KlantView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="115" column="1" lean-forward="true" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
-              <folding>
-                <element signature="method#showKlantToevoegen#0;class#KlantView#0" expanded="false" />
-                <element signature="method#showKlantZoeken#0;class#KlantView#0" expanded="false" />
-                <element signature="method#showKlanten#0;class#KlantView#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TicketController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/TicketController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-              <folding>
-                <element signature="e#834#835#0" expanded="true" />
-                <element signature="method#disableOptionsOnType#0;class#TicketController#0" expanded="false" />
-                <element signature="method#showVoegTicketToe#0;class#TicketController#0" expanded="false" />
-                <element signature="method#terugButton#0;class#TicketController#0" expanded="false" />
-                <element signature="e#3005#3144#0" expanded="true" />
-                <element signature="e#3143#3144#0" expanded="true" />
-                <element signature="method#backToHomeScreen#0;class#TicketController#0" expanded="false" />
-                <element signature="method#initComboBoxes#0;class#TicketController#0" expanded="false" />
-                <element signature="method#voegTicketToe#0;class#TicketController#0" expanded="false" />
-                <element signature="e#4651#6785#0" expanded="true" />
-                <element signature="e#6784#6785#0" expanded="true" />
-                <element signature="method#calculatePrice#0;class#TicketController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-              <folding>
-                <element signature="method#toevoegenKlant#0;class#MainController#0" expanded="false" />
-                <element signature="method#koopTicket#0;class#MainController#0" expanded="false" />
-                <element signature="method#voegAbonnementToe#0;class#MainController#0" expanded="false" />
-                <element signature="e#1792#2096#0" expanded="true" />
-                <element signature="e#2095#2096#0" expanded="true" />
-                <element signature="method#verlengAbonnement#0;class#MainController#0" expanded="false" />
-                <element signature="method#voegStationToe#0;class#MainController#0" expanded="false" />
-                <element signature="method#voegVoorwerpToe#0;class#MainController#0" expanded="false" />
-                <element signature="method#zoekRoute#0;class#MainController#0" expanded="false" />
-                <element signature="method#zoekKlanten#0;class#MainController#0" expanded="false" />
-                <element signature="method#initLogOutTimer#0;class#MainController#0" expanded="false" />
-                <element signature="method#initMouseMotionListener#0;class#MainController#0" expanded="false" />
-                <element signature="method#closeHomeWindow#0;class#MainController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AbonnementView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/AbonnementView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="211" column="23" lean-forward="true" selection-start-line="211" selection-start-column="23" selection-end-line="211" selection-end-column="23" />
+            <state relative-caret-position="532">
+              <caret line="211" column="23" lean-forward="false" selection-start-line="211" selection-start-column="23" selection-end-line="211" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getRoute#0;class#AbonnementView#0" expanded="false" />
@@ -200,6 +43,28 @@
                 <element signature="method#showPrice#0;class#AbonnementView#0" expanded="false" />
                 <element signature="method#alreadyAbonnement#0;class#AbonnementView#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/HomeView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1078">
+              <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+              <folding>
+                <element signature="method#showHomeScreen#0;class#HomeView#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Abonnementen.hbm.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/xml/Abonnementen.hbm.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -318,6 +183,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -330,60 +197,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SP2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SP2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SP2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -892,7 +707,8 @@
       <workItem from="1480688218556" duration="12073000" />
       <workItem from="1480842504530" duration="12278000" />
       <workItem from="1480926788388" duration="3996000" />
-      <workItem from="1480930827347" duration="4034000" />
+      <workItem from="1480930827347" duration="4179000" />
+      <workItem from="1480955576893" duration="793000" />
     </task>
     <task id="LOCAL-00001" summary="afstand wordt nu berekend bij trajecten">
       <created>1480370775699</created>
@@ -919,7 +735,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47166000" />
+    <option name="totallyTimeSpent" value="48104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -944,8 +760,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23293608" sideWeight="0.81724393" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23293608" sideWeight="0.81724393" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1036,13 +852,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/json.jar!/org/json/JSONObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7304">
-          <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Halte.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -1126,53 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="125" column="5" lean-forward="false" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#800#801#0" expanded="false" />
-            <element signature="e#832#833#0" expanded="false" />
-            <element signature="e#883#884#0" expanded="false" />
-            <element signature="e#925#926#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1022#1023#0" expanded="false" />
-            <element signature="e#1076#1077#0" expanded="false" />
-            <element signature="e#1122#1123#0" expanded="false" />
-            <element signature="e#1163#1164#0" expanded="false" />
-            <element signature="e#1200#1201#0" expanded="false" />
-            <element signature="e#1242#1243#0" expanded="false" />
-            <element signature="e#1280#1281#0" expanded="false" />
-            <element signature="e#1319#1320#0" expanded="false" />
-            <element signature="e#1349#1350#0" expanded="false" />
-            <element signature="e#1400#1401#0" expanded="false" />
-            <element signature="e#1438#1439#0" expanded="false" />
-            <element signature="e#1498#1499#0" expanded="false" />
-            <element signature="e#1550#1551#0" expanded="false" />
-            <element signature="e#1599#1600#0" expanded="false" />
-            <element signature="e#1638#1639#0" expanded="false" />
-            <element signature="e#1708#1709#0" expanded="false" />
-            <element signature="e#1764#1765#0" expanded="false" />
-            <element signature="e#2018#2019#0" expanded="false" />
-            <element signature="e#2052#2053#0" expanded="false" />
-            <element signature="e#2112#2113#0" expanded="false" />
-            <element signature="e#2157#2158#0" expanded="false" />
-            <element signature="e#2203#2204#0" expanded="false" />
-            <element signature="e#2238#2239#0" expanded="false" />
-            <element signature="e#2301#2302#0" expanded="false" />
-            <element signature="e#2349#2350#0" expanded="false" />
-            <element signature="e#2382#2383#0" expanded="false" />
-            <element signature="e#2409#2410#0" expanded="false" />
-            <element signature="e#2451#2452#0" expanded="false" />
-            <element signature="e#2483#2484#0" expanded="false" />
-            <element signature="e#2534#2535#0" expanded="false" />
-            <element signature="e#2574#2575#0" expanded="false" />
-            <element signature="e#2647#2648#0" expanded="false" />
-            <element signature="e#2705#2706#0" expanded="false" />
-            <element signature="e#2757#2758#0" expanded="false" />
-            <element signature="e#2798#2799#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-            <element signature="e#3019#3020#0" expanded="false" />
-            <element signature="e#3075#3076#0" expanded="false" />
-            <element signature="e#3125#3126#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1218,7 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1338,7 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="69" lean-forward="false" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1346,9 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="method#Station#0;class#Station#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1356,13 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addStation#0;class#ManageStation#0" expanded="false" />
-            <element signature="method#listStations#0;class#ManageStation#0" expanded="false" />
-            <element signature="method#getStationById#0;class#ManageStation#0" expanded="false" />
-            <element signature="method#getAllStationsBoxes#0;class#ManageStation#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1370,45 +1120,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="76" column="18" lean-forward="false" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/AbonnementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="191" column="74" lean-forward="false" selection-start-line="191" selection-start-column="74" selection-end-line="191" selection-end-column="74" />
           <folding>
-            <element signature="method#updateKlant#0;class#ManageKlant#0" expanded="false" />
-            <element signature="method#deleteKlantByRijksregister#0;class#ManageKlant#0" expanded="false" />
-            <element signature="method#getKlantByLastname#0;class#ManageKlant#0" expanded="false" />
-            <element signature="method#getKlantBySurname#0;class#ManageKlant#0" expanded="false" />
-            <element signature="method#getKlantByPostcode#0;class#ManageKlant#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
+            <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
+            <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
+            <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
+            <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
+            <element signature="method#showChangeAbonnement#0;class#AbonnementController#0" expanded="false" />
+            <element signature="e#9298#9299#0" expanded="false" />
+            <element signature="e#9348#9349#0" expanded="false" />
+            <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/TicketController.java">
+    <entry file="file://$PROJECT_DIR$/src/hibernate/ManageAbonnement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="484">
+          <caret line="148" column="59" lean-forward="false" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
           <folding>
-            <element signature="e#834#835#0" expanded="true" />
-            <element signature="method#disableOptionsOnType#0;class#TicketController#0" expanded="false" />
-            <element signature="method#showVoegTicketToe#0;class#TicketController#0" expanded="false" />
-            <element signature="method#terugButton#0;class#TicketController#0" expanded="false" />
-            <element signature="e#3005#3144#0" expanded="true" />
-            <element signature="e#3143#3144#0" expanded="true" />
-            <element signature="method#backToHomeScreen#0;class#TicketController#0" expanded="false" />
-            <element signature="method#initComboBoxes#0;class#TicketController#0" expanded="false" />
-            <element signature="method#voegTicketToe#0;class#TicketController#0" expanded="false" />
-            <element signature="e#4651#6785#0" expanded="true" />
-            <element signature="e#6784#6785#0" expanded="true" />
-            <element signature="method#calculatePrice#0;class#TicketController#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/KlantView.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="115" column="1" lean-forward="true" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
+        <state relative-caret-position="176">
+          <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="52" column="23" lean-forward="false" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
           <folding>
-            <element signature="method#showKlantToevoegen#0;class#KlantView#0" expanded="false" />
-            <element signature="method#showKlantZoeken#0;class#KlantView#0" expanded="false" />
-            <element signature="method#showKlanten#0;class#KlantView#0" expanded="false" />
+            <element signature="method#LoginController#1;class#LoginController#0" expanded="false" />
+            <element signature="method#setRol#0;class#LoginController#0" expanded="false" />
+            <element signature="method#vergeetPasswoord#0;class#LoginController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1423,10 +1182,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/KlantView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
+          <folding>
+            <element signature="method#showKlantToevoegen#0;class#KlantView#0" expanded="false" />
+            <element signature="method#showKlantZoeken#0;class#KlantView#0" expanded="false" />
+            <element signature="method#showKlanten#0;class#KlantView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/TicketController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="method#disableOptionsOnType#0;class#TicketController#0" expanded="false" />
+            <element signature="method#showVoegTicketToe#0;class#TicketController#0" expanded="false" />
+            <element signature="method#terugButton#0;class#TicketController#0" expanded="false" />
+            <element signature="method#backToHomeScreen#0;class#TicketController#0" expanded="false" />
+            <element signature="method#initComboBoxes#0;class#TicketController#0" expanded="false" />
+            <element signature="method#voegTicketToe#0;class#TicketController#0" expanded="false" />
+            <element signature="method#calculatePrice#0;class#TicketController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="30" column="28" lean-forward="false" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding>
+            <element signature="method#toevoegenKlant#0;class#MainController#0" expanded="false" />
+            <element signature="method#koopTicket#0;class#MainController#0" expanded="false" />
+            <element signature="method#voegAbonnementToe#0;class#MainController#0" expanded="false" />
+            <element signature="method#verlengAbonnement#0;class#MainController#0" expanded="false" />
+            <element signature="method#voegStationToe#0;class#MainController#0" expanded="false" />
+            <element signature="method#voegVoorwerpToe#0;class#MainController#0" expanded="false" />
+            <element signature="method#zoekRoute#0;class#MainController#0" expanded="false" />
+            <element signature="method#zoekKlanten#0;class#MainController#0" expanded="false" />
+            <element signature="method#initLogOutTimer#0;class#MainController#0" expanded="false" />
+            <element signature="method#initMouseMotionListener#0;class#MainController#0" expanded="false" />
+            <element signature="method#closeHomeWindow#0;class#MainController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/AbonnementView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="211" column="23" lean-forward="true" selection-start-line="211" selection-start-column="23" selection-end-line="211" selection-end-column="23" />
+        <state relative-caret-position="532">
+          <caret line="211" column="23" lean-forward="false" selection-start-line="211" selection-start-column="23" selection-end-line="211" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getRoute#0;class#AbonnementView#0" expanded="false" />
@@ -1445,81 +1252,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hibernate/ManageAbonnement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="148" column="59" lean-forward="false" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/AbonnementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="191" column="74" lean-forward="true" selection-start-line="191" selection-start-column="74" selection-end-line="191" selection-end-column="74" />
-          <folding>
-            <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
-            <element signature="e#6299#6300#0" expanded="false" />
-            <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#showChangeAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="e#9358#9359#0" expanded="true" />
-            <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
-            <element signature="e#9717#9987#0" expanded="true" />
-            <element signature="e#9986#9987#0" expanded="true" />
-            <marker date="1480934507801" expanded="false" signature="4561:4640" ph="(e) → {" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-          <folding>
-            <element signature="method#LoginController#1;class#LoginController#0" expanded="false" />
-            <element signature="method#setRol#0;class#LoginController#0" expanded="false" />
-            <element signature="method#vergeetPasswoord#0;class#LoginController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-          <folding>
-            <element signature="method#toevoegenKlant#0;class#MainController#0" expanded="false" />
-            <element signature="method#koopTicket#0;class#MainController#0" expanded="false" />
-            <element signature="method#voegAbonnementToe#0;class#MainController#0" expanded="false" />
-            <element signature="e#1792#2096#0" expanded="true" />
-            <element signature="e#2095#2096#0" expanded="true" />
-            <element signature="method#verlengAbonnement#0;class#MainController#0" expanded="false" />
-            <element signature="method#voegStationToe#0;class#MainController#0" expanded="false" />
-            <element signature="method#voegVoorwerpToe#0;class#MainController#0" expanded="false" />
-            <element signature="method#zoekRoute#0;class#MainController#0" expanded="false" />
-            <element signature="method#zoekKlanten#0;class#MainController#0" expanded="false" />
-            <element signature="method#initLogOutTimer#0;class#MainController#0" expanded="false" />
-            <element signature="method#initMouseMotionListener#0;class#MainController#0" expanded="false" />
-            <element signature="method#closeHomeWindow#0;class#MainController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/HomeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="101" column="35" lean-forward="true" selection-start-line="101" selection-start-column="35" selection-end-line="101" selection-end-column="35" />
+        <state relative-caret-position="1078">
+          <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+          <folding>
+            <element signature="method#showHomeScreen#0;class#HomeView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xml/Abonnementen.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
