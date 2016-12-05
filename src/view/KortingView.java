@@ -134,12 +134,14 @@ public class KortingView extends StandardView {
 //
         //////
 
+        //;/
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
 
         addPath("Instellingen Korting");
         showWindow();
+        ////
 
     }
     public static void main(String [] args){
