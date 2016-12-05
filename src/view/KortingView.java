@@ -143,6 +143,8 @@ public class KortingView extends StandardView {
         showWindow();
         ////
 
+
+        //////cocmsdkovnhaisduhfiobjszduirhxfg
     }
     public static void main(String [] args){
 
