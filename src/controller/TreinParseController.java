@@ -83,14 +83,18 @@ public class TreinParseController {
             departurePlatform = obj.getString("DeparturePlatform");
         else if (!obj.isNull("ArrivalPlatform"))
             departurePlatform = obj.getString("ArrivalPlatform");
-        JSONObject halteTime = obj.getJSONObject("Time");
 
-        h.setAankomstPlatform(arrivalPlatform);
         h.setDeparturePlatform(departurePlatform);
-        h.setArrival(TimeParseController.getTime(halteTime.getString("Arrival")));
-        h.setActualArrival(TimeParseController.getTime(halteTime.getString("ActualArrival")));
-        h.setDeparture(TimeParseController.getTime(halteTime.getString("Departure")));
-        h.setActualDeparture(TimeParseController.getTime(halteTime.getString("ActualDeparture")));
+        h.setAankomstPlatform(arrivalPlatform);
+
+        if(obj.has("Time") && !obj.isNull("Time")) {
+            JSONObject halteTime = obj.getJSONObject("Time");
+            h.setArrival(TimeParseController.getTime(halteTime.getString("Arrival")));
+            h.setActualArrival(TimeParseController.getTime(halteTime.getString("ActualArrival")));
+            h.setDeparture(TimeParseController.getTime(halteTime.getString("Departure")));
+            h.setActualDeparture(TimeParseController.getTime(halteTime.getString("ActualDeparture")));
+        }
+
         return h;
     }
 }

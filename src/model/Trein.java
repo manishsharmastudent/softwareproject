@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,14 +11,14 @@ import controller.TimeParseController.*;
 /**
  * Created by Manish on 29/10/2016.
  */
-public class Trein {
+public class Trein implements Serializable{
 
     private int treinId;
     private int treinType;
     private String treinNaam;
     private boolean cancelled = false;
     private String vetrek, bestemming;
-    private String vetrkPlatform;
+    private String vetrekPlatform;
     private LocalDateTime departure;
     private LocalDateTime actualDeparture;
     private List<Halte> haltes;
@@ -88,12 +89,12 @@ public class Trein {
         this.cancelled = cancelled;
     }
 
-    public String getVetrkPlatform() {
-        return vetrkPlatform;
+    public String getVetrekPlatform() {
+        return vetrekPlatform;
     }
 
-    public void setVetrkPlatform(String vetrkPlatform) {
-        this.vetrkPlatform = vetrkPlatform;
+    public void setVetrkPlatform(String vetrekPlatform) {
+        this.vetrekPlatform = vetrekPlatform;
     }
 
     public LocalDateTime getDeparture() {
@@ -118,6 +119,6 @@ public class Trein {
         return "Trein " + treinNaam + '\n' +
                 "Vetrek: " + vetrek + '\n' +
                 "Bestemming: " + bestemming + '\n' +
-                "VetrkPlatform: " + vetrkPlatform + '\n';
+                "VetrkPlatform: " + vetrekPlatform + '\n';
     }
 }

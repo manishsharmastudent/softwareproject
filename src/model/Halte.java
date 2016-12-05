@@ -2,12 +2,13 @@ package model;
 
 import controller.TimeParseController;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by Ontlener on 14/11/2016.
  */
-public class Halte {
+public class Halte implements Serializable {
 
     private String name;
     private LocalDateTime Arrival;
