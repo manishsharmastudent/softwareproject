@@ -1,11 +1,7 @@
 package view;
 
-<<<<<<< HEAD
 import model.Traject;
-=======
 import model.Route;
->>>>>>> origin/Dietger
-
 import javax.swing.*;
 import java.awt.*;
 import java.time.format.DateTimeFormatter;

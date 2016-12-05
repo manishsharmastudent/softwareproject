@@ -2,11 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD
-import java.util.ArrayList;
-=======
->>>>>>> origin/Dietger
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -62,10 +57,7 @@ public class AbonnementController {
     public void setPrijs(Float prijs){ abonnementModel.setPrijs(prijs); }
     public void setActive(Boolean active){ abonnementModel.setActive(active); }
 
-<<<<<<< HEAD
-=======
-    public void showAbonnement(Abonnement abonnement){ abonnementView.showAbonnement(abonnement);}
->>>>>>> origin/Dietger
+    public void showAbonnement(Abonnement abonnement){ abonnementView.showAanpassenAbonnement(abonnement);}
     public void showToevoegenAbonnement(){
         abonnementView.showToevoegenAbonnement();
         initComboBoxes();
@@ -73,7 +65,6 @@ public class AbonnementController {
         terugButton();
         checkIfEndDateIsAfterStartDate();
     }
-<<<<<<< HEAD
     public void showZoekAbonnement(){
         abonnementView.showZoekAbonnement();
         zoekAbonnementWithKlantId();
@@ -105,8 +96,6 @@ public class AbonnementController {
                }
            });
        }
-=======
->>>>>>> origin/Dietger
     public double calculatePrice(Korting korting){
         double price = 120;
         double procent = korting.getProcent();
@@ -121,12 +110,7 @@ public class AbonnementController {
                 Korting korting = null;
                 Route route = null;
                 Klant klant = null;
-<<<<<<< HEAD
                 Abonnement abonnement = null;
-=======
-                List<Abonnement> abonnements = null;
->>>>>>> origin/Dietger
-
                     List<Korting> kortingen = new ManageKorting().listKorting();
                     korting = new ManageKorting().getKortingByid(kortingen.get(abonnementView.getKortingComboBox().getSelectedIndex()).getKortingId());
 
@@ -137,32 +121,22 @@ public class AbonnementController {
                     klant = new ManageKlant().getKlantByRijksregister(klanten.get(abonnementView.getKlantComboBox().getSelectedIndex()).getRijksregisterNummer());
 
                     abonnementModel = new Abonnement(0, korting, abonnementView.getBegindatum(), abonnementView.getEinddatum(), route, klant, 12.5f, true);
-<<<<<<< HEAD
                     abonnement = abonnementManage.getAbonnementByKlantId(klant.getRijksregisterNummer());
 
                     if (abonnement == null) {
-=======
-                    abonnements = abonnementManage.getAbonnementByKlantId(klant);
-
-                    if (abonnements.size() == 0) {
->>>>>>> origin/Dietger
                         if(abonnementView.showPrice(calculatePrice(korting)) == 1){
                             abonnementManage.addAbonnement(abonnementModel);
                             abonnementView.showSuccesfullAdd(abonnementModel.getKlant());
                         }
                     }
                     else {
-<<<<<<< HEAD
                             abonnementView.alreadyAbonnement(abonnement.getAbonnementId());
-=======
-                            abonnementView.alreadyAbonnement(abonnements.get(0).getAbonnementId());
->>>>>>> origin/Dietger
                     }
                 backToHomeScreen();
             }
         });
     }
-<<<<<<< HEAD
+
     public void aanpassenAbonnement(){
         abonnementView.getAanpasButton().addActionListener(new ActionListener() {
             @Override
@@ -179,8 +153,8 @@ public class AbonnementController {
         abonnementView.getUpdateButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    Abonnement abonnement = new Abonnement(abonnementView.getAboId(), new ManageKorting().getKortingByid(abonnementView.getKorting()), abonnementView.getBegindatum(), abonnementView.getEinddatum(),new ManageRoute().getRouteById(abonnementView.getRoute()), new ManageKlant().getKlantByRijksregister(abonnementView.getKlant()), 0.0f,  abonnementView.getAfsluiten());
-                    abonnementManage.updateAbonnement(abonnement);
+                Abonnement abonnement = new Abonnement(abonnementView.getAboId(), new ManageKorting().getKortingByid(abonnementView.getKorting()), abonnementView.getBegindatum(), abonnementView.getEinddatum(),new ManageRoute().getRouteById(abonnementView.getRoute()), new ManageKlant().getKlantByRijksregister(abonnementView.getKlant()), 0.0f,  abonnementView.getAfsluiten());
+                abonnementManage.updateAbonnement(abonnement);
             }
         });
     }
@@ -191,66 +165,37 @@ public class AbonnementController {
         updatenAbonnement();
         initComboBoxes();
     }
-=======
->>>>>>> origin/Dietger
-    private void initComboBoxes(){
+    private void initComboBoxes() {
         AutoCompleteDecorator.decorate(abonnementView.getKlantComboBox());
         AutoCompleteDecorator.decorate(abonnementView.getKortingComboBox());
         AutoCompleteDecorator.decorate(abonnementView.getRouteComboBox());
 
         ManageRoute manageRoute = new ManageRoute();
         final List<Route> routes = manageRoute.listRoute();
-        for (int i = 0; i < routes.size();i++){
-<<<<<<< HEAD
+        for (int i = 0; i < routes.size(); i++) {
             String route = routes.get(i).getRouteId() + ". " + routes.get(i).getRouteVertrek().getNaam() + " - " + routes.get(i).getRouteBestemming().getNaam();
-=======
-            String route = routes.get(i).getRouteVertrek().getNaam() + " - " + routes.get(i).getRouteBestemming().getNaam();
->>>>>>> origin/Dietger
             abonnementView.getRouteComboBox().addItem(route);
         }
         List<Korting> kortingen = new ManageKorting().listKorting();
-        for (int i = 0; i < kortingen.size();i++){
-<<<<<<< HEAD
+        for (int i = 0; i < kortingen.size(); i++) {
             String korting = kortingen.get(i).getKortingId() + "." + kortingen.get(i).getOmschrijving();
-=======
-            String korting = kortingen.get(i).getOmschrijving();
->>>>>>> origin/Dietger
             abonnementView.getKortingComboBox().addItem(korting);
         }
 
         final List<Klant> klanten = new ManageKlant().listKlanten();
-        for (int i = 0; i < klanten.size();i++){
-<<<<<<< HEAD
+        for (int i = 0; i < klanten.size(); i++) {
             String klant = klanten.get(i).getRijksregisterNummer() + klanten.get(i).getVoornaam() + " " + klanten.get(i).getAchternaam();
             abonnementView.getKlantComboBox().addItem(klant);
         }
-=======
-            String klant = klanten.get(i).getVoornaam() + " " + klanten.get(i).getAchternaam();
-            abonnementView.getKlantComboBox().addItem(klant);
-        }
-
-        abonnementView.getKlantComboBox().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Klant klant = new Klant();
-                String nummer = klanten.get(abonnementView.getKlantComboBox().getSelectedIndex()).getRijksregisterNummer();
-                System.out.println(klant.getRijksregisterNummer());
-            }
-        });
-
->>>>>>> origin/Dietger
     }
-    public void terugButton(){
+    public void terugButton() {
         abonnementView.getTerugButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 backToHomeScreen();
             }
         });
     }
-<<<<<<< HEAD
-    private void backToHomeScreen() {
-=======
     public void backToHomeScreen() {
->>>>>>> origin/Dietger
         abonnementView.getWindow().setVisible(false);
         abonnementView.getWindow().dispose();
         abonnementView.deleteLastInPath();

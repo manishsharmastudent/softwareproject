@@ -1,13 +1,7 @@
 package view;
 
-import hibernate.ManageVoorwerp;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  * Created by Rik Van Belle on 11/11/2016.
@@ -18,13 +12,8 @@ public class HomeView extends StandardView {
     private JButton verkoopTicketButton = new JButton("Verkoop Ticket");
     private JButton verkoopAboButton = new JButton("Abonnement aanmaken");
     private JButton reservButton = new JButton("Reservaties");
-<<<<<<< HEAD
-    private JButton verlengAboButton = new JButton("Abonnement Aanpassen/Verlengen");
-=======
     private JButton verlengAboButton = new JButton("Verleng Abonnement");
     private JButton aboAanpas = new JButton("Abonnement Aanpassen");
->>>>>>> origin/Dietger
-
     private JPanel voorwerpPanel = new JPanel();
     private JButton vvvdsButton = new JButton("Verloren voorwerpen voor <dit station>");
     private JButton vvvasButton = new JButton("Verloren voorwerpen voor ander station");
@@ -44,48 +33,40 @@ public class HomeView extends StandardView {
     private JButton klantToevoegen = new JButton("Klant Toevoegen");
     private JButton klantVerwijderen = new JButton("Klant verwijderen");
 
-    public HomeView(String titel){
+    public HomeView(String titel) {
         super(titel);
     }
 
-    public JButton getButtonVoegTicketToe(){
+    public JButton getButtonVoegTicketToe() {
         return this.verkoopTicketButton;
     }
-    public JButton getVerkoopAboButton(){
+
+    public JButton getVerkoopAboButton() {
         return this.verkoopAboButton;
     }
-    public JButton getKlantToevoegenButton(){
+
+    public JButton getKlantToevoegenButton() {
         return this.klantToevoegen;
     }
-    public JButton getRvvButton(){
+
+    public JButton getRvvButton() {
         return this.rvvButton;
     }
-    public JButton getTreinInfo(){
+
+    public JButton getTreinInfo() {
         return this.treinInfo;
     }
-    public JButton getVerlengAboButton() {return this.verlengAboButton; }
-    public JButton getKlantOpzoeken(){ return this.klantOpzoeken; }
 
-<<<<<<< HEAD
-    public void showHomeScreen() {
-        ticketPanel.setLayout(new GridLayout(7,1));
-=======
-    public JButton getVerkoopAboButton(){
-        return this.verkoopAboButton;
+    public JButton getVerlengAboButton() {
+        return this.verlengAboButton;
     }
 
-    public JButton getKlantToevoegenButton(){
-        return this.klantToevoegen;
-    }
-
-    public JButton getRvvButton(){
-        return this.rvvButton;
+    public JButton getKlantOpzoeken() {
+        return this.klantOpzoeken;
     }
 
     public void showHomeScreen() {
-
         ticketPanel.setLayout(new GridLayout(8,1));
->>>>>>> origin/Dietger
         infoPanel.setLayout(new GridLayout(5,1));
         voorwerpPanel.setLayout(new GridLayout(5,1));
         klantPanel.setLayout(new GridLayout(4,1));
@@ -96,10 +77,7 @@ public class HomeView extends StandardView {
         ticketPanel.add(verkoopAboButton);
         ticketPanel.add(reservButton);
         ticketPanel.add(verlengAboButton);
-<<<<<<< HEAD
-=======
         ticketPanel.add(aboAanpas);
->>>>>>> origin/Dietger
         ticketPanel.add(verkoopTicketButton);
 
         infoLabel.setBorder(border);

@@ -30,7 +30,6 @@ public class MainController {
         toevoegenKlant();
         voegAbonnementToe();
         voegVoorwerpToe();
-<<<<<<< HEAD
         zoekKlanten();
         zoekRoute();
         verlengAbonnement();
@@ -38,12 +37,6 @@ public class MainController {
         //initMouseMotionListener();
         //home.getWindow().addMouseMotionListener(l);
         //logOutTimer.restart();
-=======
-        initLogOutTimer();
-        initMouseMotionListener();
-        home.getWindow().addMouseMotionListener(l);
-        logOutTimer.restart();
->>>>>>> origin/Dietger
     }
     public void toevoegenKlant(){
         home.getKlantToevoegenButton().addActionListener(new ActionListener() {
@@ -59,11 +52,7 @@ public class MainController {
             public void actionPerformed(ActionEvent e) {
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
-<<<<<<< HEAD
-//                logOutTimer.start();
-=======
-                logOutTimer.start();
->>>>>>> origin/Dietger
+                //logOutTimer.start();
                 new TicketController().showVoegTicketToe();
             }
         });
@@ -71,17 +60,13 @@ public class MainController {
     public void voegAbonnementToe(){
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
                 closeHomeWindow();
-=======
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
->>>>>>> origin/Dietger
                 new AbonnementController().showToevoegenAbonnement();
             }
         });
     }
-<<<<<<< HEAD
     public void verlengAbonnement(){
         home.getVerlengAboButton().addActionListener(new ActionListener() {
             @Override
@@ -91,8 +76,6 @@ public class MainController {
             }
         });
     }
-=======
->>>>>>> origin/Dietger
     public void voegStationToe(){
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -111,7 +94,6 @@ public class MainController {
             }
         });
     }
-<<<<<<< HEAD
     public void zoekRoute(){
         home.getTreinInfo().addActionListener(new ActionListener() {
             @Override
@@ -131,8 +113,6 @@ public class MainController {
             }
         });
     }
-=======
->>>>>>> origin/Dietger
     public void initLogOutTimer(){
         logOutTimer = new javax.swing.Timer(10000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -152,11 +132,8 @@ public class MainController {
             }
         };
     }
-<<<<<<< HEAD
     private void closeHomeWindow(){
         home.getWindow().setVisible(false);
         home.getWindow().dispose();
     }
-=======
->>>>>>> origin/Dietger
 }

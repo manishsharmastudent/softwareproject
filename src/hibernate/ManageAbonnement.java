@@ -116,8 +116,6 @@ public class ManageAbonnement {
 
     public List<Abonnement> getAbonnementByRoute(Route r){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-<<<<<<< HEAD
-
         Session session = factory.openSession();
         Transaction tx = null;
         List<Abonnement> abonnementen = new ArrayList<Abonnement>();
@@ -137,64 +135,25 @@ public class ManageAbonnement {
         return abonnementen;
 
     }
-
     public Abonnement getAbonnementByKlantId(String rijksregisterNummer){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-        Klant klant = new Klant();
-        klant.setRijksregisterNummer(rijksregisterNummer);
-        Session session = factory.openSession();
-        Transaction tx = null;
-        Abonnement abonnement = new Abonnement();
-=======
 
         Session session = factory.openSession();
         Transaction tx = null;
-        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
-        try{
-            tx = session.beginTransaction();
-            String hql = "FROM Abonnement WHERE route = :route AND active = true";
-            Query query = session.createQuery(hql);
-            query.setParameter("route", r);
-
-            abonnementen = query.list();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-        return abonnementen;
-
-    }
-
-    public List<Abonnement> getAbonnementByKlantId(Klant klant){
-        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-
-        Session session = factory.openSession();
-        Transaction tx = null;
-        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
->>>>>>> origin/Dietger
+        Abonnement abonnement = null;
         Query query= null;
         try{
             tx = session.beginTransaction();
             String hql = "FROM Abonnement WHERE klant = :klant AND active = true";
             query = session.createQuery(hql);
-            query.setParameter("klant", klant);
-<<<<<<< HEAD
-            abonnement= (Abonnement)query.uniqueResult();
-=======
-            abonnementen = query.list();
->>>>>>> origin/Dietger
+            query.setParameter("klant", rijksregisterNummer);
+            abonnement = (Abonnement)query.uniqueResult();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
         }finally {
             session.close();
         }
-<<<<<<< HEAD
         return abonnement;
-=======
-        return abonnementen;
->>>>>>> origin/Dietger
     }
 }

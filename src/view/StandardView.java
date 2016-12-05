@@ -45,10 +45,7 @@ public class StandardView {
     StandardView(String titel){
         window = new JFrame(titel);
 
-<<<<<<< HEAD
-=======
         java.net.URL url = ClassLoader.getSystemResource("");
->>>>>>> origin/Dietger
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image img = kit.createImage("resources\\nmbs.png");
         window.setIconImage(img);
@@ -68,10 +65,7 @@ public class StandardView {
     public JFrame getWindow(){
         return this.window;
     }
-<<<<<<< HEAD
-=======
     public JPanel getMainPanel(){ return this.mainPanel; }
->>>>>>> origin/Dietger
     public JButton getTerugButton(){return this.terugButton; }
 
     public void initTimeAndDate(){

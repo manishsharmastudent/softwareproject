@@ -38,11 +38,6 @@ public class ManageKlant {
         }
         return klantId;
     }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/Dietger
     public List<Klant> listKlanten( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         List<Klant> klanten = new ArrayList<Klant>();
@@ -62,28 +57,18 @@ public class ManageKlant {
             return klanten;
         }
     }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/Dietger
     public Klant getKlantByRijksregister(String rijksregisterNummer){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Klant klant = null;
         Transaction tx = null;
-        try{
+        /*try{
             tx = session.beginTransaction();
-<<<<<<< HEAD
-=======
-            /*
             tx = session.beginTransaction();
             String hql = "FROM Klant WHERE rijksregisterNummer = :rrn";
             Klant klant = (Klant) session.createQuery(hql).uniqueResult();
             query.setParameter("rrn",rijksregisterNummer);
             klanten = query.list();
-*/
->>>>>>> origin/Dietger
             klant = (Klant) session.createQuery("FROM Klant WHERE rijksregisterNummer = :rrn and active = true").setParameter("rrn", rijksregisterNummer).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {
@@ -93,8 +78,9 @@ public class ManageKlant {
             session.close();
         }
         return klant;
+*/
+        return null;
     }
-
     public void updateKlant(Klant k){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -131,10 +117,6 @@ public class ManageKlant {
         }
 
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Dietger
     public List<Klant> getKlantByLastname(String lastname){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -154,10 +136,6 @@ public class ManageKlant {
         }
         return klanten;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Dietger
     public List<Klant> getKlantBySurname(String surname){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -177,10 +155,6 @@ public class ManageKlant {
         }
         return klanten;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Dietger
     public List<Klant> getKlantByPostcode(int postcode){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();

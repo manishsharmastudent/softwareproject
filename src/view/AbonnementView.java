@@ -2,21 +2,15 @@ package view;
 
 import model.Abonnement;
 import model.Klant;
+import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-import java.util.ArrayList;
-=======
->>>>>>> origin/Dietger
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -26,7 +20,6 @@ import java.util.Properties;
  */
 public class AbonnementView extends StandardView {
     private JPanel abonnementPanel = new JPanel();
-<<<<<<< HEAD
     private JPanel gevondenAbonnementen = new JPanel();
     Abonnement abonnement = new Abonnement();
 
@@ -34,8 +27,6 @@ public class AbonnementView extends StandardView {
     private JLabel abonnementIdLabel = new JLabel("Abonnementnummer: ");
     private JTextField rijksregisterNummerText = new JFormattedTextField(createFormatter("##.##.##-###.##"));
     private JTextField abonnementNummerText = new JTextField();
-=======
->>>>>>> origin/Dietger
 
     private JLabel klantLabel = new JLabel("Klant");
     private JLabel routeLabel = new JLabel("Route");
@@ -46,21 +37,16 @@ public class AbonnementView extends StandardView {
     private JComboBox klantComboBox = new JComboBox();
     private JComboBox kortingComboBox = new JComboBox();
 
-<<<<<<< HEAD
     private JTextField textAboId = new JTextField();
     private JTextField beginDatum = new JTextField();
     private JTextField eindDatum = new JTextField();
     private JTextField afsluiten = new JTextField();
 
-    private JButton toevoegenAbonnement = new JButton("Abonnement toevoegen");
     private JButton zoekAbonnementOpKlantIdButton = new JButton("Zoeken");
     private JButton zoekAbonnementOpAboIdButton = new JButton("Zoeken");
     private JButton aanpasButton = new JButton("Aanpassen");
     private JButton updateButton = new JButton("Updaten");
-=======
     private JButton toevoegenAbonnement = new JButton("Abonnement toevoegen");
->>>>>>> origin/Dietger
-
     private Properties pBeginDatum = new Properties();
     private UtilDateModel modelBeginDatum = new UtilDateModel();
     private Properties pEindDatum = new Properties();
@@ -73,7 +59,6 @@ public class AbonnementView extends StandardView {
         super(titel);
     }
 
-<<<<<<< HEAD
     public Abonnement getAbonnement(){ return this.abonnement;}
     public JPanel getAbonnementPanel() { return this.abonnementPanel; }
     public JPanel getGevondenAbonnementPanel(){ return gevondenAbonnementen; }
@@ -84,8 +69,6 @@ public class AbonnementView extends StandardView {
         return abonnementNummerText.getText();
     }
 
-=======
->>>>>>> origin/Dietger
     public JComboBox getKlantComboBox(){
         return this.klantComboBox;
     }
@@ -95,26 +78,16 @@ public class AbonnementView extends StandardView {
     public JComboBox getKortingComboBox(){
         return this.kortingComboBox;
     }
-<<<<<<< HEAD
-    public int getRoute(){
+    public int getRoute() {
         String[] data = routeComboBox.getSelectedItem().toString().split("\\.");
         return Integer.parseInt(data[0]);
-=======
-    public String getRoute(){
-        return routeComboBox.getSelectedItem().toString();
->>>>>>> origin/Dietger
     }
-    public String getKlant(){
-        return klantComboBox.getSelectedItem().toString();
-    }
-<<<<<<< HEAD
     public int getKorting(){
         String[] data = kortingComboBox.getSelectedItem().toString().split("\\.");
         return Integer.parseInt(data[0]);
-=======
-    public String getKorting(){
-        return kortingComboBox.getSelectedItem().toString();
->>>>>>> origin/Dietger
+    }
+    public String getKlant(){
+        return klantComboBox.getSelectedItem().toString();
     }
     public Date getBegindatum() {
         return (Date) datePickerBeginDatum.getModel().getValue();
@@ -125,8 +98,6 @@ public class AbonnementView extends StandardView {
     public JButton getToevoegenAbonnementButton(){
         return this.toevoegenAbonnement;
     }
-<<<<<<< HEAD
-
     public int getAboId(){
         return Integer.parseInt(textAboId.getText());
     }
@@ -145,14 +116,6 @@ public class AbonnementView extends StandardView {
     public JButton getUpdateButton(){
         return updateButton;
     }
-    public JDatePickerImpl getDatePickerBeginDatum(){ return this.datePickerBeginDatum; }
-    public JDatePickerImpl getDatePickerEindDatum(){ return this.datePickerEindDatum;}
-=======
-    public JDatePickerImpl getDatePickerBeginDatum(){ return this.datePickerBeginDatum; }
-    public JDatePickerImpl getDatePickerEindDatum(){ return this.datePickerEindDatum;}
-
-    public void showAbonnement(Abonnement abonnement){
->>>>>>> origin/Dietger
 
     public void showAanpassenAbonnement(Abonnement abonnement){
         abonnementPanel.setLayout(new GridLayout(8,2));
@@ -283,79 +246,12 @@ public class AbonnementView extends StandardView {
             return "";
         }
     });
-    public void showSuccesfullAdd(Klant klant){ JOptionPane.showMessageDialog(null, "Abonnement voor " + klant.getAchternaam() + " " + klant.getVoornaam() + " is toegevoegd!");}
-    public int showPrice(double price){
-        if (JOptionPane.showConfirmDialog(null, "Het bedrag van € " + price + " betalen?") == JOptionPane.YES_OPTION){;
-            return 1;
-        }
-        else {
-            return -1;
-        }
+    public JDatePicker getDatePickerEindDatum(){
+        return this.datePickerEindDatum;
     }
-    public void alreadyAbonnement(int id){
-        JOptionPane.showMessageDialog(null, "Klant heeft al een abonnement" + "Id: " + id);
+    public JDatePicker getDatePickerBeginDatum(){
+        return this.datePickerBeginDatum;
     }
-    public void showToevoegenAbonnement(){
-        abonnementPanel.setLayout(new GridLayout(6,2));
-
-        abonnementPanel.add(klantLabel);
-        abonnementPanel.add(klantComboBox);
-        abonnementPanel.add(routeLabel);
-        abonnementPanel.add(routeComboBox);
-        abonnementPanel.add(kortingLabel);
-        abonnementPanel.add(kortingComboBox);
-        abonnementPanel.add(begindatumLabel);
-        abonnementPanel.add(datePickerBeginDatum);
-        abonnementPanel.add(einddatumLabel);
-        abonnementPanel.add(datePickerEindDatum);
-        abonnementPanel.add(toevoegenAbonnement);
-
-        mainPanel.add(abonnementPanel);
-
-        path.add("Abonnement toevoegen");
-
-        showWindow();
-    }
-    public void showErrorDate(){
-        JOptionPane.showMessageDialog(null, "Einddatum moet na begindatum zijn.");
-    }
-    private JDatePickerImpl datePickerBeginDatum = new JDatePickerImpl(datePanelBeginDatum, new JFormattedTextField.AbstractFormatter() {
-
-        private String datePattern = "yyyy-MM-dd";
-        private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
-
-        @Override
-        public Object stringToValue(String text) throws ParseException {
-            return dateFormatter.parseObject(text);        }
-
-        @Override
-        public String valueToString(Object value) throws ParseException {
-            if (value != null) {
-                Calendar cal = (Calendar) value;
-                return dateFormatter.format(cal.getTime());
-            }
-
-            return "";
-        }
-    });
-    private JDatePickerImpl datePickerEindDatum = new JDatePickerImpl(datePanelEindDatum, new JFormattedTextField.AbstractFormatter() {
-        private String datePattern = "yyyy-MM-dd";
-        private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
-
-        @Override
-        public Object stringToValue(String text) throws ParseException {
-            return dateFormatter.parseObject(text);        }
-
-        @Override
-        public String valueToString(Object value) throws ParseException {
-            if (value != null) {
-                Calendar cal = (Calendar) value;
-                return dateFormatter.format(cal.getTime());
-            }
-
-            return "";
-        }
-    });
     public void showSuccesfullAdd(Klant klant){ JOptionPane.showMessageDialog(null, "Abonnement voor " + klant.getAchternaam() + " " + klant.getVoornaam() + " is toegevoegd!");}
     public int showPrice(double price){
         if (JOptionPane.showConfirmDialog(null, "Het bedrag van € " + price + " betalen?") == JOptionPane.YES_OPTION){;

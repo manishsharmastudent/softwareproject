@@ -1,20 +1,15 @@
 import controller.*;
-<<<<<<< HEAD
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-=======
->>>>>>> origin/Dietger
-
 /**
  * Created by Manish on 10/10/2016.
  */
 public class Main {
     public static void main(String[] args) {
-<<<<<<< HEAD
         if (checkInternetConnection() == true){
             LoginController loginController = new LoginController();
             loginController.showLoginScreen();
@@ -37,9 +32,5 @@ public class Main {
         } catch (IOException e){
             return false;
         }
-=======
-        LoginController loginController = new LoginController();
-        loginController.showLoginScreen();
->>>>>>> origin/Dietger
     }
 }
