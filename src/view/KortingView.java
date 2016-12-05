@@ -131,7 +131,7 @@ public class KortingView extends StandardView {
 
 
         interactiePanel.add(kortingPanel);
-
+//
 
         p.put("text.today", "Today");
         p.put("text.month", "Month");
