@@ -105,6 +105,7 @@ public class KlantController {
         searchKlantByLastname();
         searchKlantByRijksregister();
         searchKlantBySurname();
+        terugButton();
     }
     public void klantToevoegen(){
         klantView.getKlantToevoegenButton().addActionListener(new ActionListener() {

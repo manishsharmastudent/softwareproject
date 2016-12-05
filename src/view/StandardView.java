@@ -45,9 +45,8 @@ public class StandardView {
     StandardView(String titel){
         window = new JFrame(titel);
 
-        java.net.URL url = ClassLoader.getSystemResource("");
         Toolkit kit = Toolkit.getDefaultToolkit();
-        Image img = kit.createImage(url);
+        Image img = kit.createImage("resources\\nmbs.png");
         window.setIconImage(img);
         if (titel != "Login") {
             initTimeAndDate();

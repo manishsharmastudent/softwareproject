@@ -110,8 +110,6 @@ public class MainController {
                 new KlantController().showZoekKlanten();
             }
         });
-        new KlantController().showZoekKlanten();
-
     }
     public void initLogOutTimer(){
         logOutTimer = new javax.swing.Timer(10000, new ActionListener() {

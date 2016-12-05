@@ -77,7 +77,7 @@ public class TicketController {
         terugButton();
     }
     private void initComboBoxes(){
-        List<StationCsv> stations = new ManageStation().getAllStationsBoxes();
+        List<Station> stations = new ManageStation().listStations();
 
         ManageTypeKaart mTK = new ManageTypeKaart();
         final List<TypeKaart> typeKaarten = mTK.listTypeKaarten();

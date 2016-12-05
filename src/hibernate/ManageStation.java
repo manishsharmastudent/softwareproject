@@ -1,7 +1,5 @@
 package hibernate;
 
-import model.Login;
-import model.StationCsv;
 import model.Station;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -9,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -76,15 +73,15 @@ public class ManageStation {
             return station;
         }
     }
-    public List<StationCsv> getAllStationsBoxes(){
+    public List<Station> getAllStationsBoxes(){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = null;
-        List<StationCsv> stations = new ArrayList<StationCsv>();
+        List<Station> stations = new ArrayList<Station>();
         try{
             tx = session.beginTransaction();
-            stations = session.createQuery("FROM StationCsv").list();
+            stations = session.createQuery("FROM Station").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
