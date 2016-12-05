@@ -20,8 +20,14 @@ public class Station {
 
     public Station() {
     }
+<<<<<<< HEAD
     public boolean getActive(){
         return this.active;
+=======
+
+    public boolean getActive() {
+        return active;
+>>>>>>> origin/Dietger
     }
     public void setActive(boolean active){
         this.active = active;

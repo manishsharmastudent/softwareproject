@@ -1,5 +1,6 @@
 package hibernate;
 
+import model.Login;
 import model.Station;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -7,6 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Iterator;
+>>>>>>> origin/Dietger
 import java.util.List;
 
 /**
@@ -47,6 +52,7 @@ public class ManageStation {
         try{
             tx = session.beginTransaction();
             stations = session.createQuery("FROM Station").list();
+<<<<<<< HEAD
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -82,6 +88,8 @@ public class ManageStation {
         try{
             tx = session.beginTransaction();
             stations = session.createQuery("FROM Station").list();
+=======
+>>>>>>> origin/Dietger
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -91,4 +99,22 @@ public class ManageStation {
         }
         return stations;
     }
+    public Station getStationById(int id) {
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Station station = null;
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            station = (Station) session.get(Station.class, id);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return station;
+        }
+    }
+
 }

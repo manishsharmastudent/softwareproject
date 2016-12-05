@@ -17,7 +17,10 @@ import java.awt.event.KeyListener;
  */
 public class KlantView extends StandardView {
     private JPanel klantPanel = new JPanel();
+<<<<<<< HEAD
     private JPanel gevondenKlantenPanel = new JPanel();
+=======
+>>>>>>> origin/Dietger
     private JLabel voornaamLabel = new JLabel("Voornaam");
     private JLabel achternaamLabel = new JLabel("Achternaam");
     private JLabel rijksregisterNummerLabel = new JLabel("Rijksregister-nummer");
@@ -32,9 +35,12 @@ public class KlantView extends StandardView {
     private JTextField postcodeText = new JFormattedTextField(createFormatter("####"));
     private JTextField stadText = new JTextField();
 
+<<<<<<< HEAD
     private JButton searchButtonRijksregisterNummer = new JButton("Zoeken");
     private JButton searchButtonSurname = new JButton("Zoeken");
     private JButton searchButtonLastname = new JButton("Zoeken");
+=======
+>>>>>>> origin/Dietger
     private JButton klantToevoegenButton = new JButton("Klant toevoegen");
 
     public KlantView(String titel){
@@ -63,10 +69,13 @@ public class KlantView extends StandardView {
     public JButton getKlantToevoegenButton(){
         return this.klantToevoegenButton;
     }
+<<<<<<< HEAD
     public JButton getSearchButtonSurname(){ return this.searchButtonSurname; }
     public JButton getSearchButtonLastname(){ return this.searchButtonLastname; }
     public JButton getSearchButtonRijksregisterNummer(){ return this.searchButtonRijksregisterNummer; }
 
+=======
+>>>>>>> origin/Dietger
 
     public void showKlant(Klant klant){
         //JTextField voornaam = new JTextField(klant.getVoornaam());
@@ -99,6 +108,7 @@ public class KlantView extends StandardView {
         path.add("Klant Toevoegen");
         showWindow();
     }
+<<<<<<< HEAD
     public void showKlantZoeken(){
         klantPanel.setLayout(new GridLayout(4,3));
 
@@ -123,4 +133,7 @@ public class KlantView extends StandardView {
         }
        klantPanel.add(gevondenKlantenPanel);
     }
+=======
+
+>>>>>>> origin/Dietger
 }

@@ -123,6 +123,29 @@ public class KlantController {
         });
     }
 
+    public void showToevoegenKlant(){
+        klantView.showKlantToevoegen();
+        //Listeners
+        klantToevoegen();
+        terugButton();
+    }
+
+    public void klantToevoegen(){
+        klantView.getKlantToevoegenButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                klantModel = new Klant(klantView.getRijksregisterNummer(), klantView.getVoornaam(), klantView.getAchternaam(), klantView.getAdres(), klantView.getPostcode(), klantView.getStad(), true);
+                try {
+                    manageKlant.addKlant(klantModel);
+                    backToHomeScreen();
+                } catch (Exception ex){
+                    ex.getStackTrace();
+                    JOptionPane.showMessageDialog(null, ex.getMessage() + "\n Probeer later opnieuw!");
+                    backToHomeScreen();
+                }
+            }
+        });
+    }
+
     public void showKlant(){
         klantView.showKlant(klantModel);
     }

@@ -18,7 +18,12 @@ public class HomeView extends StandardView {
     private JButton verkoopTicketButton = new JButton("Verkoop Ticket");
     private JButton verkoopAboButton = new JButton("Abonnement aanmaken");
     private JButton reservButton = new JButton("Reservaties");
+<<<<<<< HEAD
     private JButton verlengAboButton = new JButton("Abonnement Aanpassen/Verlengen");
+=======
+    private JButton verlengAboButton = new JButton("Verleng Abonnement");
+    private JButton aboAanpas = new JButton("Abonnement Aanpassen");
+>>>>>>> origin/Dietger
 
     private JPanel voorwerpPanel = new JPanel();
     private JButton vvvdsButton = new JButton("Verloren voorwerpen voor <dit station>");
@@ -61,8 +66,26 @@ public class HomeView extends StandardView {
     public JButton getVerlengAboButton() {return this.verlengAboButton; }
     public JButton getKlantOpzoeken(){ return this.klantOpzoeken; }
 
+<<<<<<< HEAD
     public void showHomeScreen() {
         ticketPanel.setLayout(new GridLayout(7,1));
+=======
+    public JButton getVerkoopAboButton(){
+        return this.verkoopAboButton;
+    }
+
+    public JButton getKlantToevoegenButton(){
+        return this.klantToevoegen;
+    }
+
+    public JButton getRvvButton(){
+        return this.rvvButton;
+    }
+
+    public void showHomeScreen() {
+
+        ticketPanel.setLayout(new GridLayout(8,1));
+>>>>>>> origin/Dietger
         infoPanel.setLayout(new GridLayout(5,1));
         voorwerpPanel.setLayout(new GridLayout(5,1));
         klantPanel.setLayout(new GridLayout(4,1));
@@ -73,6 +96,10 @@ public class HomeView extends StandardView {
         ticketPanel.add(verkoopAboButton);
         ticketPanel.add(reservButton);
         ticketPanel.add(verlengAboButton);
+<<<<<<< HEAD
+=======
+        ticketPanel.add(aboAanpas);
+>>>>>>> origin/Dietger
         ticketPanel.add(verkoopTicketButton);
 
         infoLabel.setBorder(border);

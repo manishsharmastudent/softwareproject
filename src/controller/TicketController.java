@@ -9,7 +9,10 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.swing.*;
+<<<<<<< HEAD
 import javax.swing.plaf.synth.SynthTextAreaUI;
+=======
+>>>>>>> origin/Dietger
 
 import hibernate.ManageStation;
 import hibernate.ManageTicket;
@@ -77,7 +80,12 @@ public class TicketController {
         terugButton();
     }
     private void initComboBoxes(){
+<<<<<<< HEAD
         List<Station> stations = new ManageStation().listStations();
+=======
+        ManageStation ms = new ManageStation();
+        List<Station> stations = ms.listStations();
+>>>>>>> origin/Dietger
 
         ManageTypeKaart mTK = new ManageTypeKaart();
         final List<TypeKaart> typeKaarten = mTK.listTypeKaarten();
@@ -89,6 +97,10 @@ public class TicketController {
         });
 
         for (int i = 0; i < typeKaarten.size();i++){
+<<<<<<< HEAD
+=======
+            System.out.print(typeKaarten.get(i).getNaam());
+>>>>>>> origin/Dietger
             ticketView.getTypeKaartenComboBox().addItem(typeKaarten.get(i).getNaam());
         }
 
@@ -104,6 +116,7 @@ public class TicketController {
     private void voegTicketToe(){
         ticketView.getZoekButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
                 List<Traject> trajecten = null;
                 ParseController pC = new ParseController();
                 try {
@@ -119,6 +132,10 @@ public class TicketController {
                     System.out.println(trajecten.get(i).toString());
                 }
                 /*
+=======
+                Station stationVertrek = new Station(0,"Station " + ticketView.getBestemmingsStation(),ticketView.getBestemmingsStation(), true);
+                Station stationAankomst = new Station(0,"Station" + ticketView.getVertrekStation(),ticketView.getVertrekStation(), true);
+>>>>>>> origin/Dietger
                 Route route = new Route(1,stationVertrek,stationAankomst, true);
 
                 ManageTypeKaart mTK = new ManageTypeKaart();
@@ -132,6 +149,18 @@ public class TicketController {
                 ticketModel.setAantalPersonen(ticketView.getAantalPersonen());
                 if (ticketView.getKlasse().toString() == "Eerste klasse"){
                     ticketModel.setKlasse(1);
+<<<<<<< HEAD
+=======
+                }
+                else {ticketModel.setKlasse(2);}
+                if (ticketView.showPrice(calculatePrice(typeKaarten.get(ticketView.getTypeKaartIndex()), ticketModel.getKlasse())) == 1){
+                    if (ticketManage.addTicket(ticketModel) > 0){
+                        JOptionPane.showMessageDialog(ticketView.getWindow(), "Ticket toevgevoegd!");
+                    }
+                    else {
+                        ticketView.noTicketAdded();
+                    }
+>>>>>>> origin/Dietger
                 }
                 else {ticketModel.setKlasse(2);}
                 if (ticketView.showPrice(calculatePrice(typeKaarten.get(ticketView.getTypeKaartIndex()), ticketModel.getKlasse())) == 1){
