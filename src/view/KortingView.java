@@ -69,7 +69,7 @@ public class KortingView extends StandardView {
         }
     });
     private JTextArea omschrijvingArea = new JTextArea(10,20);
-    private SpinnerNumberModel modelSp = new SpinnerNumberModel(0,0,1,0.01);
+    private SpinnerNumberModel modelSp = new SpinnerNumberModel(0,0,100,1);
     private JSpinner percentageSpinner = new JSpinner(modelSp);
     private JButton saveButton = new JButton("Opslaan");
     private GridBagConstraints c = new GridBagConstraints();

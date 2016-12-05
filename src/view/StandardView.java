@@ -58,6 +58,8 @@ public class StandardView {
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+
+
     public void setWelkomLabel(String tekst){
         this.welkomLabel.setText(tekst);
     }
