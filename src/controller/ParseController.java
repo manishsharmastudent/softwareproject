@@ -3,6 +3,8 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import model.Liveboard;
 import model.Station;
 import util.NetUtil;
 import java.io.IOException;
@@ -32,7 +34,30 @@ public class ParseController {
 
     }
 
+    private static String getCurlUrl(String from, String to) throws IOException{
+        String curlUrl = null;
+            /** vervolledig het request hier **/
+            //String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
+            curlUrl = getStringFromFile("\\\\dt-srv-file1\\Studentenhomes\\nofel.tiani\\Documents\\Holleken");
+            //String curlUrl = NetUtil.curlURL(finalURl);
 
+        return curlUrl;
+    }
+
+    private static String getCurlUrl(String station){
+        String curlUrl = null;
+        try {
+            /** vervolledig het request hier **/
+            String finalURl = CONNECTIONS_URL + "SStationBoard/" + station;
+            curlUrl = NetUtil.curlURL(finalURl);
+
+        } catch (IOException io) {
+            System.err.println("Error");
+            io.printStackTrace();
+        }
+
+        return curlUrl;
+    }
 
 /**
  * In de blok hieronder komen de methodes van alle soort request die gemaakt kan worden
@@ -45,11 +70,7 @@ public class ParseController {
         List<Traject>traject = new ArrayList<Traject>();
 
         try {
-            /** vervolledig het request hier **/
-            //String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
-           String curlUrl = getStringFromFile("C:\\Users\\Nofel\\Desktop\\http _traintracks.online_api_Route_Aalst_Oostende_Onvolledig.online_api_Route_Aalst_Oostende");
-            //String curlUrl = NetUtil.curlURL(finalURl);
-
+            String curlUrl = getCurlUrl(from,to);
             JSONObject jBase = new JSONObject(curlUrl);
             if(jBase.has("error")) {
                 throw new Exception("API is down");
@@ -66,37 +87,40 @@ public class ParseController {
     }
 
     /** Deze methode behandeld de vraag naar alle treinen die in een specifieke station aankomt **/
-    public static Station getStationBoard(String s) throws Exception {
+    public static Liveboard getStationBoard(String s) throws Exception {
         Station station = new Station();
+        Liveboard lb;
 
-        try {
-            /** vervolledig het request hier **/
-            String finalURl = CONNECTIONS_URL + "StationBoard/" + s;
-            String curlUrl = NetUtil.curlURL(finalURl);
+        /** vervolledig het request hier **/
 
-            JSONArray jArray = new JSONArray(curlUrl);
+        String curlUrl = getCurlUrl(s);
 
-            station = TreinParseController.getLiveBoard(jArray);
+        if(curlUrl.contains("Message") || curlUrl.contains("error"))
+            curlUrl = getStringFromFile("\\\\dt-srv-file1\\Studentenhomes\\nofel.tiani\\Documents\\cache_liveboard_"+ s);
+        JSONArray jArray = new JSONArray(curlUrl);
+        /*if(jBase.has("error")) {
+            throw new Exception("API is down");
+        }*/
 
-        } catch (IOException io) {
-            System.err.println("Error");
-            io.printStackTrace();
-        }
+        station = TreinParseController.getLiveBoard(jArray);
 
-        return station;
+        lb = new Liveboard(station, false, LocalDateTime.now());
+
+
+        return lb;
     }
 
     public static void main(String[] args) {
          try {
-            List<Traject> tra = getTraject("Aalst", "Oostende");
+           // List<Traject> tra = getTraject("Ternat", "Holleken");
 
 
            // tra.forEach(e -> System.out.print(e));
 
-            //Station antw = getStationBoard("Antwerpen-Centraal");
+            Liveboard antw = getStationBoard("Merode");
 
 
-            System.out.println(tra.toString());
+            System.out.println(antw.toString());
         }catch (Exception e){
             e.printStackTrace();
             System.out.println(e.toString());

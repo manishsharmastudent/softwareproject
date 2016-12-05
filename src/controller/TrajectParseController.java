@@ -72,7 +72,15 @@ public class TrajectParseController {
                     JSONObject ts = (JSONObject) transfer;
 
                     if (!ts.isNull("TransferAt")) {
-                        trj.setTransferstations(ts.getString("TransferAt"));
+                        String transferStation = null;
+                        if(ts.has("TransferAt") && !ts.isNull("TransferAt"))
+                            transferStation = ts.getString("TransferAt");
+
+                        String transferPlatform = null;
+                        if(ts.has("DeparturePlatform") && !ts.isNull("DeparturePlatform"))
+                             transferPlatform = ts.getString("DeparturePlatform");
+
+                        trj.setTransferstations(transferStation, transferPlatform);
                     }
                 }
             });

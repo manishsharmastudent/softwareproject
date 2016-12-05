@@ -17,7 +17,7 @@ public class Traject {
     private LocalDateTime actualAankomstTijd;
     private Duration duur;
     private boolean cancelled;
-    private List<String> transferstations;
+    private Map<String,String> transferstations;
     private List<Trein> treinen;
     private String vetrekPlatform;
     private String exception;
@@ -65,18 +65,18 @@ public class Traject {
         this.vertrekStation = vertrekStation;
     }
 
-    public List<String> getTransferstations() {
+    public Map<String,String> getTransferstations() {
         return transferstations;
     }
 
-    public void setTransferstations(List<String> transferstations) {
+    public void setTransferstations(HashMap<String,String> transferstations) {
         this.transferstations = transferstations;
     }
 
-    public void setTransferstations(String transferstation) {
+    public void setTransferstations(String transferstation, String departurePlatform) {
         if(transferstations == null)
-            transferstations = new ArrayList<String>();
-        transferstations.add(transferstation);
+            transferstations = new HashMap<>();
+        transferstations.put(transferstation, departurePlatform);
     }
 
     public LocalDateTime getVertrekTijd() {
