@@ -46,7 +46,7 @@ public class ParseController {
         String curlUrl = null;
         try {
             /** vervolledig het request hier **/
-            String finalURl = CONNECTIONS_URL + "StationBoard/" + station;
+            String finalURl = CONNECTIONS_URL + "sStationBoard/" + station;
             curlUrl = NetUtil.curlURL(finalURl);
 
         } catch (IOException io) {
@@ -94,13 +94,13 @@ public class ParseController {
         Liveboard lb;
 
         String curlUrl = getCurlUrl(s);
-
-        if (curlUrl.contains("Message") || curlUrl.contains("error")) {
-            lb = LiveboardParseController.getLiveboardFromCache(s);
-            return lb;
-        } else {
+        try{
             JSONArray jArray = new JSONArray(curlUrl);
             lb = LiveboardParseController.getLiveBoard(jArray, s);
+            return lb;
+        }catch (Exception e){
+            lb = LiveboardParseController.getLiveboardFromCache(s);
+            lb.setJsonException(e.getMessage());
             return lb;
         }
     }

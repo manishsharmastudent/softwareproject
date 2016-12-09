@@ -44,6 +44,15 @@ public class TreinParseController {
         if (!obj.isNull("DepartureStation"))
             t.setVetrek(obj.getString("DepartureStation"));
 
+        if(obj.has("Time") && !obj.isNull("Time"))
+        {
+            JSONObject tijd = obj.getJSONObject("Time");
+            String vertrek = tijd.getString("Departure");
+            String actueelVertrek = tijd.getString("ActualDeparture");
+            t.setDeparture(TimeParseController.getTime(vertrek));
+            t.setActualDeparture(TimeParseController.getTime(actueelVertrek));
+        }
+
         t.setBestemming(obj.getString("TerminusStation"));
         t.setTreinType(obj.getInt("TrainType"));
 

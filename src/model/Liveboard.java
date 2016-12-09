@@ -11,6 +11,7 @@ public class Liveboard implements Serializable {
     private Boolean live;
     private LocalDateTime timeVersion;
     private String exception;
+    private String jsonException;
 
     public Liveboard(Station station, Boolean live, LocalDateTime tv) {
         this.station = station;
@@ -51,5 +52,13 @@ public class Liveboard implements Serializable {
 
     public void setException(String exception) {
         this.exception = exception;
+    }
+
+    public String getJsonException() {
+        return jsonException;
+    }
+
+    public void setJsonException(String jsonException) {
+        this.jsonException = jsonException;
     }
 }
