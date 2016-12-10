@@ -72,7 +72,7 @@ public class TrajectParseController {
                     JSONObject ts = (JSONObject) transfer;
 
                     if (!ts.isNull("TransferAt")) {
-                        trj.setTransferstations(ts.getString("TransferAt"));
+                        //trj.setTransferstations(ts.getString("TransferAt"));
                     }
                 }
             });

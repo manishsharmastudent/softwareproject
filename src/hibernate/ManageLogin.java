@@ -77,12 +77,7 @@ public class ManageLogin {
         }finally {
             session.close();
         }
-        if (logins.isEmpty()){
-            return false;
-        }
-        else {
-            return true;
-        }
+        return !logins.isEmpty();
     }
 
 
@@ -112,7 +107,7 @@ public class ManageLogin {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            l =  (Login) session.get(Login.class, id);
+            l = session.get(Login.class, id);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -130,7 +125,7 @@ public class ManageLogin {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            l = (Login)session.load(Login.class,id);
+            l = session.load(Login.class,id);
             session.delete(l);
             //This makes the pending delete to be done
             session.flush() ;

@@ -33,6 +33,7 @@ public class MainController {
         zoekKlanten();
         zoekRoute();
         verlengAbonnement();
+        showSearchVoorwerpen();
         //initLogOutTimer();
         //initMouseMotionListener();
         //home.getWindow().addMouseMotionListener(l);
@@ -82,6 +83,14 @@ public class MainController {
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
                 //stationController.showToevoegenStation();
+            }
+        });
+    }
+    public void showSearchVoorwerpen(){
+        home.getShowVerlorenVoorwerpenButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VoorwerpController().showZoekVoorwerp();
             }
         });
     }

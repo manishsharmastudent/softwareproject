@@ -103,7 +103,7 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            k = (Klant) session.load(Klant.class,rijksregister);
+            k = session.load(Klant.class,rijksregister);
             session.delete(k);
             //This makes the pending delete to be done
             session.flush() ;

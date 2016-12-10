@@ -9,6 +9,7 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,6 +37,8 @@ public class AbonnementView extends StandardView {
     private JComboBox routeComboBox = new JComboBox();
     private JComboBox klantComboBox = new JComboBox();
     private JComboBox kortingComboBox = new JComboBox();
+    private JTable abonnementenTable = null;
+    private String[][] dataAbonnementen = null;
 
     private JTextField textAboId = new JTextField();
     private JTextField beginDatum = new JTextField();
@@ -102,12 +105,7 @@ public class AbonnementView extends StandardView {
         return Integer.parseInt(textAboId.getText());
     }
     public boolean getAfsluiten(){
-        if (afsluiten.getText() == "true") {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return afsluiten.getText() == "true";
     }
     public JButton getZoekAbonnementByKlantIdButton(){ return this.zoekAbonnementOpKlantIdButton; }
     public JButton getZoekAbonnementByAboIdButton(){ return this.zoekAbonnementOpAboIdButton; }
@@ -116,7 +114,10 @@ public class AbonnementView extends StandardView {
     public JButton getUpdateButton(){
         return updateButton;
     }
-
+    public int getSelectedRow(){
+        String[] abonnement = dataAbonnementen[abonnementenTable.getSelectedRow()];
+        return Integer.parseInt(abonnement[0]);
+    }
     public void showAanpassenAbonnement(Abonnement abonnement){
         abonnementPanel.setLayout(new GridLayout(8,2));
         System.out.println(abonnement.getAbonnementId());
@@ -162,28 +163,14 @@ public class AbonnementView extends StandardView {
         path.add("Abonnement zoeken");
         showWindow();
     }
-    public void showGevondenAbonnementen(Abonnement abonnement){
-        this.abonnement = abonnement;
-        GridLayout layout = new GridLayout(2,3);
-        layout.setHgap(25);
-        gevondenAbonnementen.setLayout(layout);
-        if (abonnement == null){
-            JOptionPane.showMessageDialog(null, "Er is geen abonnement gevonden!");
-        }
-        else {
-            gevondenAbonnementen.add(new JLabel("Naam"));
-            gevondenAbonnementen.add(new JLabel("Abonnementnummer"));
-            gevondenAbonnementen.add(new JLabel());
-                Klant klant = abonnement.getKlant();
-
-                JLabel klantNaam = new JLabel(klant.getVoornaam() + " " + klant.getAchternaam());
-                JLabel abonnementNummer = new JLabel(Integer.toString(abonnement.getAbonnementId()));
-
-                gevondenAbonnementen.add(klantNaam);
-                gevondenAbonnementen.add(abonnementNummer);
-                gevondenAbonnementen.add(aanpasButton);
-            }
+    public void showGevondenAbonnementen(java.util.List<Abonnement>abonnementen){
+            gevondenAbonnementen.setLayout(new GridLayout(1,2));
+            initTable(abonnementen);
+            JScrollPane scrollPane = new JScrollPane(abonnementenTable);
+            gevondenAbonnementen.add(scrollPane);
+            gevondenAbonnementen.add(aanpasButton);
             mainPanel.add(gevondenAbonnementen);
+            showWindow();
         }
     public void showToevoegenAbonnement(){
         abonnementPanel.setLayout(new GridLayout(6,2));
@@ -254,7 +241,7 @@ public class AbonnementView extends StandardView {
     }
     public void showSuccesfullAdd(Klant klant){ JOptionPane.showMessageDialog(null, "Abonnement voor " + klant.getAchternaam() + " " + klant.getVoornaam() + " is toegevoegd!");}
     public int showPrice(double price){
-        if (JOptionPane.showConfirmDialog(null, "Het bedrag van € " + price + " betalen?") == JOptionPane.YES_OPTION){;
+        if (JOptionPane.showConfirmDialog(null, "Het bedrag van € " + price + " betalen?") == JOptionPane.YES_OPTION){
             return 1;
         }
         else {
@@ -263,5 +250,42 @@ public class AbonnementView extends StandardView {
     }
     public void alreadyAbonnement(int id){
         JOptionPane.showMessageDialog(null, "Klant heeft al een abonnement" + "Id: " + id);
+    }
+    public void showAbonnementNotFound(){
+        JOptionPane.showMessageDialog(null, "Abonnement niet gevonden");
+    }
+    public void initTable(java.util.List<Abonnement> abonnementList){
+        String[] headers = {"ID", "Klant", "Route", "Korting", "Begindatum", "Einddatum"};
+        dataAbonnementen = new String[abonnementList.size()][6];
+
+        for (int row = 0; row < abonnementList.size(); row++) {
+            for (int col = 0; col < 6; col++) {
+                Abonnement abo = abonnementList.get(row);
+                switch (col) {
+                    case 0:
+                        dataAbonnementen[row][col] = Integer.toString(abo.getAbonnementId());
+                        break;
+                    case 1:
+                        dataAbonnementen[row][col] = abo.getKlant().getVoornaam() + " " + abo.getKlant().getAchternaam();
+                        break;
+                    case 2:
+                        dataAbonnementen[row][col] = abo.getRoute().getRouteVertrek().getNaam() + "-" + abo.getRoute().getRouteBestemming().getNaam();
+                        break;
+                    case 3:
+                        dataAbonnementen[row][col] = Double.toString(abo.getKorting().getProcent());
+                        break;
+                    case 4:
+                        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                        dataAbonnementen[row][col] = df.format(abo.getBeginDatum());
+                        break;
+                    case 5:
+                        df= new SimpleDateFormat("dd/MM/yyyy");
+                        dataAbonnementen[row][col] = df.format(abo.getVervalDatum());
+                        break;
+                }
+            }
+        }
+
+        abonnementenTable = new JTable(dataAbonnementen, headers);
     }
 }

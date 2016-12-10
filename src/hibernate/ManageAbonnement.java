@@ -82,7 +82,7 @@ public class ManageAbonnement {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            a = (Abonnement)session.load(Abonnement.class,id);
+            a = session.load(Abonnement.class,id);
             session.delete(a);
             //This makes the pending delete to be done
             session.flush() ;
@@ -103,7 +103,7 @@ public class ManageAbonnement {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            a =  (Abonnement) session.get(Abonnement.class, id);
+            a = session.get(Abonnement.class, id);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

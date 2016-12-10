@@ -36,7 +36,7 @@ public class StationController {
                 if (stationManage.addStation(station) > 0){
                     JOptionPane.showMessageDialog(stationView.getWindow(), "Station " + station.getNaam() + " is toegevoegd!");
                     backToHomeScreen();
-                };
+                }
             }
         });
     }
