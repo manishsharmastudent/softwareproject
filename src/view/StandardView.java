@@ -23,8 +23,6 @@ public class StandardView {
 
     protected JFrame window;
     protected JPanel mainPanel = new JPanel();
-    protected JButton standardButton = new JButton("StandaarButton");
-    protected BorderLayout layout = new BorderLayout();
     protected FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
 
     protected Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
@@ -39,27 +37,20 @@ public class StandardView {
     protected JLabel welkomLabel = new JLabel();
     protected JButton terugButton = new JButton("Terug");
 
-    private JMenuBar menuBar;
-    private JMenu menu;
 
     StandardView(String titel){
         window = new JFrame(titel);
 
         java.net.URL url = ClassLoader.getSystemResource("");
         Toolkit kit = Toolkit.getDefaultToolkit();
-        Image img = kit.createImage(url);
+        Image img = kit.createImage("resources\\nmbs.png");
         window.setIconImage(img);
         if (titel != "Login") {
             initTimeAndDate();
-            initMenuBar();
             initWelkomBoard();
             initNavTree();
         }
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-    public void setWelkomLabel(String tekst){
-        this.welkomLabel.setText(tekst);
     }
 
     public JFrame getWindow(){
@@ -79,16 +70,6 @@ public class StandardView {
             }
         });
         simpleTimer.start();
-    }
-
-    public void initMenuBar(){
-        menuBar = new JMenuBar();
-        menu = new JMenu("Test");
-        menuBar.add(menu);
-
-        JMenuItem menuItem = new JMenuItem("A test");
-        menu.add(menuItem);
-        window.setJMenuBar(menuBar);
     }
     public void initWelkomBoard(){
         welkomPanel.setLayout(new GridLayout(1,3));

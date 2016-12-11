@@ -38,8 +38,6 @@ public class ManageKlant {
         }
         return klantId;
     }
-
-
     public List<Klant> listKlanten( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         List<Klant> klanten = new ArrayList<Klant>();
@@ -59,22 +57,18 @@ public class ManageKlant {
             return klanten;
         }
     }
-
-
     public Klant getKlantByRijksregister(String rijksregisterNummer){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Klant klant = null;
         Transaction tx = null;
-        try{
+        /*try{
             tx = session.beginTransaction();
-            /*
             tx = session.beginTransaction();
             String hql = "FROM Klant WHERE rijksregisterNummer = :rrn";
             Klant klant = (Klant) session.createQuery(hql).uniqueResult();
             query.setParameter("rrn",rijksregisterNummer);
             klanten = query.list();
-*/
             klant = (Klant) session.createQuery("FROM Klant WHERE rijksregisterNummer = :rrn and active = true").setParameter("rrn", rijksregisterNummer).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {
@@ -84,8 +78,9 @@ public class ManageKlant {
             session.close();
         }
         return klant;
+*/
+        return null;
     }
-
     public void updateKlant(Klant k){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -108,7 +103,7 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            k = (Klant) session.load(Klant.class,rijksregister);
+            k = session.load(Klant.class,rijksregister);
             session.delete(k);
             //This makes the pending delete to be done
             session.flush() ;
@@ -122,7 +117,6 @@ public class ManageKlant {
         }
 
     }
-
     public List<Klant> getKlantByLastname(String lastname){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -142,7 +136,6 @@ public class ManageKlant {
         }
         return klanten;
     }
-
     public List<Klant> getKlantBySurname(String surname){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -162,7 +155,6 @@ public class ManageKlant {
         }
         return klanten;
     }
-
     public List<Klant> getKlantByPostcode(int postcode){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();

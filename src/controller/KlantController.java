@@ -66,6 +66,33 @@ public class KlantController {
             klantView.showKlant((Klant)kl.get(i));
         }*/
     }
+    public void searchKlantByRijksregister(){
+        klantView.getSearchButtonRijksregisterNummer().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Klant klant = manageKlant.getKlantByRijksregister(klantView.getRijksregisterNummer());
+                //klantView.showKlanten(klant);
+            }
+        });
+    }
+    public void searchKlantBySurname(){
+        klantView.getSearchButtonSurname().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<Klant> klanten = manageKlant.getKlantBySurname(klantView.getVoornaam());
+                klantView.showKlanten(klanten);
+            }
+        });
+    }
+    public void searchKlantByLastname(){
+        klantView.getSearchButtonLastname().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<Klant> klanten = manageKlant.getKlantByLastname(klantView.getAchternaam());
+                klantView.showKlanten(klanten);
+            }
+        });
+    }
 
     public void showToevoegenKlant(){
         klantView.showKlantToevoegen();
@@ -73,7 +100,13 @@ public class KlantController {
         klantToevoegen();
         terugButton();
     }
-
+    public void showZoekKlanten(){
+        klantView.showKlantZoeken();
+        searchKlantByLastname();
+        searchKlantByRijksregister();
+        searchKlantBySurname();
+        terugButton();
+    }
     public void klantToevoegen(){
         klantView.getKlantToevoegenButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -91,7 +124,7 @@ public class KlantController {
     }
 
     public void showKlant(){
-        klantView.showKlant(klantModel);
+        //klantView.showKlant(klantModel);
     }
     public void terugButton(){
         klantView.getTerugButton().addActionListener(new ActionListener() {

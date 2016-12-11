@@ -3,6 +3,7 @@ package view;
 import com.sun.xml.internal.bind.api.impl.NameConverter;
 import model.Klant;
 
+import java.util.List;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
@@ -16,6 +17,7 @@ import java.awt.event.KeyListener;
  */
 public class KlantView extends StandardView {
     private JPanel klantPanel = new JPanel();
+    private JPanel gevondenKlantenPanel = new JPanel();
     private JLabel voornaamLabel = new JLabel("Voornaam");
     private JLabel achternaamLabel = new JLabel("Achternaam");
     private JLabel rijksregisterNummerLabel = new JLabel("Rijksregister-nummer");
@@ -30,6 +32,9 @@ public class KlantView extends StandardView {
     private JTextField postcodeText = new JFormattedTextField(createFormatter("####"));
     private JTextField stadText = new JTextField();
 
+    private JButton searchButtonRijksregisterNummer = new JButton("Zoeken");
+    private JButton searchButtonSurname = new JButton("Zoeken");
+    private JButton searchButtonLastname = new JButton("Zoeken");
     private JButton klantToevoegenButton = new JButton("Klant toevoegen");
 
     public KlantView(String titel){
@@ -58,16 +63,10 @@ public class KlantView extends StandardView {
     public JButton getKlantToevoegenButton(){
         return this.klantToevoegenButton;
     }
+    public JButton getSearchButtonSurname(){ return this.searchButtonSurname; }
+    public JButton getSearchButtonLastname(){ return this.searchButtonLastname; }
+    public JButton getSearchButtonRijksregisterNummer(){ return this.searchButtonRijksregisterNummer; }
 
-    public void showKlant(Klant klant){
-        //JTextField voornaam = new JTextField(klant.getVoornaam());
-        JLabel voornaam = new JLabel(klant.getVoornaam());
-        JLabel achternaam = new JLabel(klant.getAchternaam());
-        JLabel rijksregisterNummer = new JLabel(klant.getRijksregisterNummer());
-        JTextField text = new JTextField();
-
-        getWindow().setVisible(true);
-    }
     public void showKlantToevoegen(){
         klantPanel.setLayout(new GridLayout(7,1));
 
@@ -90,5 +89,28 @@ public class KlantView extends StandardView {
         path.add("Klant Toevoegen");
         showWindow();
     }
+    public void showKlantZoeken(){
+        klantPanel.setLayout(new GridLayout(4,3));
 
+        klantPanel.add(rijksregisterNummerLabel);
+        klantPanel.add(rijksregisterNummerText);
+        klantPanel.add(searchButtonRijksregisterNummer);
+        klantPanel.add(voornaamLabel);
+        klantPanel.add(voornaamText);
+        klantPanel.add(searchButtonSurname);
+        klantPanel.add(achternaamLabel);
+        klantPanel.add(achternaamText);
+        klantPanel.add(searchButtonLastname);
+
+        mainPanel.add(klantPanel);
+        addPath("Klant zoeken");
+        showWindow();
+    }
+    public void showKlanten(List<Klant> klanten){
+        gevondenKlantenPanel.setLayout(new GridLayout(klanten.size(), 1));
+        for (int i = 0;i < klanten.size();i++){
+            gevondenKlantenPanel.add(new JLabel(klanten.get(i).getVoornaam() + " " + klanten.get(i).getAchternaam()));
+        }
+       klantPanel.add(gevondenKlantenPanel);
+    }
 }

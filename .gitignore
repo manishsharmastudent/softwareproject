@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+<<<<<<< HEAD
+.gitignore
+.idea/dataSources.local.xml
+.idea/workspace.xml
+out/
+src/resources/nmbs.png
+src/resources/print-logo.gif
+=======
+out/
+.idea/workspace.xml
+.idea/dataSources.local.xml
+
+
+
+>>>>>>> origin/Dietger

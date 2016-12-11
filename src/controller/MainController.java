@@ -30,10 +30,14 @@ public class MainController {
         toevoegenKlant();
         voegAbonnementToe();
         voegVoorwerpToe();
-        initLogOutTimer();
-        initMouseMotionListener();
-        home.getWindow().addMouseMotionListener(l);
-        logOutTimer.restart();
+        zoekKlanten();
+        zoekRoute();
+        verlengAbonnement();
+        showSearchVoorwerpen();
+        //initLogOutTimer();
+        //initMouseMotionListener();
+        //home.getWindow().addMouseMotionListener(l);
+        //logOutTimer.restart();
     }
     public void toevoegenKlant(){
         home.getKlantToevoegenButton().addActionListener(new ActionListener() {
@@ -49,7 +53,7 @@ public class MainController {
             public void actionPerformed(ActionEvent e) {
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
-                logOutTimer.start();
+                //logOutTimer.start();
                 new TicketController().showVoegTicketToe();
             }
         });
@@ -57,9 +61,19 @@ public class MainController {
     public void voegAbonnementToe(){
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                closeHomeWindow();
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
                 new AbonnementController().showToevoegenAbonnement();
+            }
+        });
+    }
+    public void verlengAbonnement(){
+        home.getVerlengAboButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               closeHomeWindow();
+                new AbonnementController().showZoekAbonnement();
             }
         });
     }
@@ -72,12 +86,39 @@ public class MainController {
             }
         });
     }
+    public void showSearchVoorwerpen(){
+        home.getShowVerlorenVoorwerpenButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VoorwerpController().showZoekVoorwerp();
+            }
+        });
+    }
     public void voegVoorwerpToe(){
         home.getRvvButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
                 new VoorwerpController().showVoorwerpToevoegen();
+            }
+        });
+    }
+    public void zoekRoute(){
+        home.getTreinInfo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                home.getWindow().setVisible(false);
+                home.getWindow().dispose();
+                new RouteController().showZoekRoute();
+            }
+        });
+    }
+    public void zoekKlanten(){
+        home.getKlantOpzoeken().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                closeHomeWindow();
+                new KlantController().showZoekKlanten();
             }
         });
     }
@@ -99,5 +140,9 @@ public class MainController {
                 logOutTimer.restart();
             }
         };
+    }
+    private void closeHomeWindow(){
+        home.getWindow().setVisible(false);
+        home.getWindow().dispose();
     }
 }
