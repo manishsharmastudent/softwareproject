@@ -1,6 +1,7 @@
 package controller;
 
 import exceptions.HalteNotFoundException;
+import exceptions.OnvolledigeTrajectException;
 import model.Halte;
 import model.Traject;
 import org.json.JSONArray;
@@ -45,7 +46,7 @@ public class TrajectParseController {
         }
     }
 
-    private static Traject getTraject(JSONObject obj) {
+    private static Traject getTraject(JSONObject obj) throws OnvolledigeTrajectException {
 
         Traject trj = new Traject();
         trj.setVetrekStation(obj.getString("Departure"));
@@ -59,32 +60,34 @@ public class TrajectParseController {
             if (!(trj.getTreinen().isEmpty())) {
                 getRouteTimes(trj);
             }
+
+            if (obj.getJSONArray("TransferStations").length() > 1) {
+                JSONArray arrTransfer = obj.getJSONArray("TransferStations");
+                arrTransfer.forEach(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object transfer) {
+                        JSONObject ts = (JSONObject) transfer;
+
+                        if (!ts.isNull("TransferAt")) {
+                            String transferStation = null;
+                            if(ts.has("TransferAt") && !ts.isNull("TransferAt"))
+                                transferStation = ts.getString("TransferAt");
+
+                            String transferPlatform = null;
+                            if(ts.has("DeparturePlatform") && !ts.isNull("DeparturePlatform"))
+                                transferPlatform = ts.getString("DeparturePlatform");
+
+                            trj.setTransferstations(transferStation, transferPlatform);
+                        }
+                    }
+                });
+            }
+
         } catch (HalteNotFoundException h) {
-            trj.setException(h.getMessage());
+            throw new OnvolledigeTrajectException(h.getMessage());
         } catch (Exception e) {
         }
 
-        if (obj.getJSONArray("TransferStations").length() > 1) {
-            JSONArray arrTransfer = obj.getJSONArray("TransferStations");
-            arrTransfer.forEach(new Consumer<Object>() {
-                @Override
-                public void accept(Object transfer) {
-                    JSONObject ts = (JSONObject) transfer;
-
-                    if (!ts.isNull("TransferAt")) {
-                        String transferStation = null;
-                        if(ts.has("TransferAt") && !ts.isNull("TransferAt"))
-                            transferStation = ts.getString("TransferAt");
-
-                        String transferPlatform = null;
-                        if(ts.has("DeparturePlatform") && !ts.isNull("DeparturePlatform"))
-                             transferPlatform = ts.getString("DeparturePlatform");
-
-                        trj.setTransferstations(transferStation, transferPlatform);
-                    }
-                }
-            });
-        }
         return trj;
     }
 
@@ -102,11 +105,13 @@ public class TrajectParseController {
 
                     Traject trj = null;
 
-                    trj = getTraject(obj);
-                    if (trj.getVertrekTijd() != null)
-                        trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
-
-
+                    try {
+                        trj = getTraject(obj);
+                        if (trj.getVertrekTijd() != null)
+                            trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
+                    } catch (OnvolledigeTrajectException e) {
+                        trj.setException(e.getMessage());
+                    }
                     trajecten.add(trj);
                 }
             }

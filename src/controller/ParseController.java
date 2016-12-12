@@ -46,7 +46,7 @@ public class ParseController {
         String curlUrl = null;
         try {
             /** vervolledig het request hier **/
-            String finalURl = CONNECTIONS_URL + "sStationBoard/" + station;
+            String finalURl = CONNECTIONS_URL + "StationBoard/" + station;
             curlUrl = NetUtil.curlURL(finalURl);
 
         } catch (IOException io) {
@@ -89,17 +89,17 @@ public class ParseController {
     /**
      * Deze methode behandeld de vraag naar alle treinen die in een specifieke station aankomt
      **/
-    public static Liveboard getStationBoard(String s) throws Exception {
+    public static Liveboard getStationBoard(String stationNaam) throws Exception {
         Station station = new Station();
         Liveboard lb;
 
-        String curlUrl = getCurlUrl(s);
+        String curlUrl = getCurlUrl(stationNaam);
         try{
             JSONArray jArray = new JSONArray(curlUrl);
-            lb = LiveboardParseController.getLiveBoard(jArray, s);
+            lb = LiveboardParseController.getLiveBoard(jArray, stationNaam);
             return lb;
         }catch (Exception e){
-            lb = LiveboardParseController.getLiveboardFromCache(s);
+            lb = LiveboardParseController.getLiveboardFromCache(stationNaam);
             lb.setJsonException(e.getMessage());
             return lb;
         }
@@ -107,13 +107,13 @@ public class ParseController {
 
     public static void main(String[] args) {
         try {
-            // List<Traject> tra = getTraject("Ternat", "Holleken");
+             List<Traject> tra = getTraject("Liege-Guillemins", "Antwerpen-Centraal");
 
             // tra.forEach(e -> System.out.print(e));
 
-            Liveboard antw = getStationBoard("Merode");
+           // Liveboard antw = getStationBoard("Merode");
 
-            System.out.println(antw.toString());
+            System.out.println(tra.toString());
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.toString());

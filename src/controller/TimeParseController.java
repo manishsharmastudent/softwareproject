@@ -28,4 +28,17 @@ public class TimeParseController {
 
     }
 
+    public static String formatTime(LocalDateTime tijd){
+        int uur;
+        int minuten;
+        int seconden;
+
+        uur = tijd.getHour();
+        minuten = tijd.getMinute();
+        seconden = tijd.getSecond();
+
+        String formattedTijd = uur + ":" + minuten + ":" + seconden;
+        return formattedTijd;
+    }
+
 }
