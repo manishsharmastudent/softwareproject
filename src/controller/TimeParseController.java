@@ -52,4 +52,19 @@ public class TimeParseController {
         return formattedTijd;
     }
 
+    public static String formatTimeDate(LocalDateTime tijd){
+        String uur = formatTime(tijd);
+
+        int dag;
+        int maand;
+        int jaar;
+
+        dag = tijd.getDayOfMonth();
+        maand = tijd.getMonthValue();
+        jaar = tijd.getYear();
+
+        String formattedTijd = dag + "/" + maand + "/" + jaar + " " + uur;
+        return formattedTijd;
+    }
+
 }
