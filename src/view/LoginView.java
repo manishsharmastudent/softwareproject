@@ -18,8 +18,8 @@ public class LoginView extends StandardView {
     private JPanel panelGegevens = new JPanel();
     private JLabel loginNaam = new JLabel("Naam: ");
     private JLabel loginWachtwoord = new JLabel("Wachtwoord: ");
-    private JTextField loginNaamText = new JTextField("Rik");
-    private JPasswordField loginWachtwoordText = new JPasswordField("Password");
+    private JTextField loginNaamText = new JTextField("Manish");
+    private JPasswordField loginWachtwoordText = new JPasswordField("Changed!");
     private JButton aanmelden = new JButton("Aanmelden");
     private JButton vergeetPaswoord = new JButton("Passwoord vergeten");
     public LoginView(String titel){

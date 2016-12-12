@@ -94,12 +94,12 @@ public class StationView extends StandardView {
         initTable(liveboard.getStation().getTreinen());
         JLabel liveLable = new JLabel();
         liveLable.setAlignmentX(LEFT_ALIGNMENT);
+        liveLable.setOpaque(true);
         if(liveboard.getLive()){
-            liveLable.setText("LIVE");
-            liveLable.setBackground(Color.GREEN);
+            liveLable.setText("• LIVE");
+            liveLable.setForeground(Color.RED);
         } else {
-            liveLable.setText("Cached " + liveboard.getTimeVersion().toString());
-            liveLable.setBackground(Color.RED);
+            JOptionPane.showMessageDialog(null,"Er is geen verbinding! Liveboard is het laatste geupdate op " + liveboard.getTimeVersion());
         }
         stationPanel.setBorder(border);
         stationPanel.removeAll();

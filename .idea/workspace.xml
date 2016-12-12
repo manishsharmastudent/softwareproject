@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/LiveboardParseController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/Liveboard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/PasswordAuthentication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MainController.java" afterPath="$PROJECT_DIR$/src/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ParseController.java" afterPath="$PROJECT_DIR$/src/controller/ParseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/StationController.java" afterPath="$PROJECT_DIR$/src/controller/StationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/TimeParseController.java" afterPath="$PROJECT_DIR$/src/controller/TimeParseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/TreinParseController.java" afterPath="$PROJECT_DIR$/src/controller/TreinParseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageLogin.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Halte.java" afterPath="$PROJECT_DIR$/src/model/Halte.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Route.java" afterPath="$PROJECT_DIR$/src/model/Route.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Station.java" afterPath="$PROJECT_DIR$/src/model/Station.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Traject.java" afterPath="$PROJECT_DIR$/src/model/Traject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Trein.java" afterPath="$PROJECT_DIR$/src/model/Trein.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/HomeView.java" afterPath="$PROJECT_DIR$/src/view/HomeView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/cache_liveboard_Lot.tmp" afterPath="$PROJECT_DIR$/cache/cache_liveboard_Lot.tmp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/LoginView.java" afterPath="$PROJECT_DIR$/src/view/LoginView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/StationView.java" afterPath="$PROJECT_DIR$/src/view/StationView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -85,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StationView.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StationView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/StationView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="95" column="46" lean-forward="false" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
+            <state relative-caret-position="248">
+              <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#showVoegStationToe#0;class#StationView#0" expanded="false" />
@@ -119,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PasswordAuthentication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PasswordAuthentication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/PasswordAuthentication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
+            <state relative-caret-position="-23">
               <caret line="77" column="31" lean-forward="true" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -133,6 +118,26 @@
                 <element signature="e#4495#4496#0" expanded="true" />
                 <element signature="e#4561#4562#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/LoginView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="21" column="77" lean-forward="false" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -220,6 +225,7 @@
         <option value="$PROJECT_DIR$/src/model/Route.java" />
         <option value="$PROJECT_DIR$/src/hibernate/ManageLogin.java" />
         <option value="$PROJECT_DIR$/src/model/PasswordAuthentication.java" />
+        <option value="$PROJECT_DIR$/src/view/LoginView.java" />
         <option value="$PROJECT_DIR$/src/view/StationView.java" />
       </list>
     </option>
@@ -321,6 +327,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SP2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -881,7 +905,7 @@
       <workItem from="1481039636189" duration="820000" />
       <workItem from="1481281906386" duration="12873000" />
       <workItem from="1481532023654" duration="561000" />
-      <workItem from="1481533110584" duration="8508000" />
+      <workItem from="1481533110584" duration="9067000" />
     </task>
     <task id="LOCAL-00001" summary="afstand wordt nu berekend bij trajecten">
       <created>1480370775699</created>
@@ -908,7 +932,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72214000" />
+    <option name="totallyTimeSpent" value="72773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1067,14 +1091,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/view/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-458">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/AdminView.java" />
     <entry file="file://$PROJECT_DIR$/src/view/UserSettingsView.java" />
     <entry file="file://$PROJECT_DIR$/src/view/TicketView.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1612,18 +1628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/StationView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="95" column="46" lean-forward="false" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#showVoegStationToe#0;class#StationView#0" expanded="false" />
-            <element signature="method#showSearchLiveboard#0;class#StationView#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1650,7 +1654,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/PasswordAuthentication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
+        <state relative-caret-position="-23">
           <caret line="77" column="31" lean-forward="true" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1660,6 +1664,34 @@
             <element signature="e#4188#4189#0" expanded="true" />
             <element signature="e#4495#4496#0" expanded="true" />
             <element signature="e#4561#4562#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="21" column="77" lean-forward="false" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/StationView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#showVoegStationToe#0;class#StationView#0" expanded="false" />
+            <element signature="method#showSearchLiveboard#0;class#StationView#0" expanded="false" />
           </folding>
         </state>
       </provider>
