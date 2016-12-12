@@ -45,7 +45,6 @@ public class VoorwerpController {
     public void setType(String type){ voorwerpModel.setType(type); }
     public void setRoute(Route route){ voorwerpModel.setRoute(route); }
     public void setStation(Station station){ voorwerpModel.setStation(station); }
-
     public void toevoegenVoorwerp(){
         voorwerpView.getToevoegenVoorwerpButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -82,14 +81,64 @@ public class VoorwerpController {
             }
         });
     }
-
+    public void showZoekVoorwerp(){
+        voorwerpView.showVoorwerpenZoeken();
+        initComboBox();
+        zoekVoorwerpOpNaam();
+        terugButton();
+    }
+    public void showAllVoorwerpen(){
+        voorwerpView.showVoorwerpen(voorwerpManage.listVoorwerp());
+    }
+    public void zoekVoorwerpOpNaam(){
+        voorwerpView.getZoekButtonNaam().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<Voorwerp>voorwerpen = voorwerpManage.getVoorwerpenByNaam(voorwerpView.getVoorwerp());
+                showVoorwerpen(voorwerpen);
+                terugButton();
+            }
+        });
+    }
     public void showVoorwerp(Voorwerp voorwerp){ voorwerpView.showVoorwerp(voorwerp);}
-    public void showVoorwerpen(){voorwerpView.showVoorwerpen(voorwerpManage.listVoorwerp());}
+    public void showVoorwerpen(List<Voorwerp>voorwerpen){
+        if(voorwerpen.size() == 0){
+            showGeenVoorwerpenGevonden();
+        }
+        else {
+            voorwerpView.getVoorwerpenPanel().removeAll();
+            voorwerpView.getVoorwerpenPanel().updateUI();
+            voorwerpView.showVoorwerpen(voorwerpen);
+            verwijderAfgehaaldVoorwerp();
+        }
+
+    }
     public void showVoorwerpToevoegen(){
         voorwerpView.showVoorwerpenToevoegen();
         initComboBox();
         toevoegenVoorwerp();
         terugButton();
+    }
+    public void verwijderAfgehaaldVoorwerp(){
+        voorwerpView.getVoorwerpAfgehaald().addActionListener(new ActionListener() {
+            int id = -1;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    id = voorwerpView.getSelectedRow();
+                    if(id != -1) {
+                        voorwerpManage.deleteVoorwerpById(id);
+                        voorwerpView.showSucceed(id);
+                    }
+                } catch (Exception exc){
+                    voorwerpView.showError(id);
+                }
+
+            }
+        });
+    }
+    public void showGeenVoorwerpenGevonden(){
+        voorwerpView.geenVoorwerpenGevonden();
     }
     public void initComboBox(){
         AutoCompleteDecorator.decorate(voorwerpView.getKlantComboBox());
@@ -124,10 +173,10 @@ public class VoorwerpController {
             voorwerpView.getKleurComboBox().addItem(kleuren[i]);
         }
 
-        List<Station> stations = new ManageStation().listStations();
+        /*List<Station> stations = new ManageStation().listStations();
         for (int i = 0; i < stations.size();i++){
             voorwerpView.getStationComboBox().addItem(stations.get(i).getStad());
-        }
+        }*/
     }
     public void terugButton(){
         voorwerpView.getTerugButton().addActionListener(new ActionListener() {

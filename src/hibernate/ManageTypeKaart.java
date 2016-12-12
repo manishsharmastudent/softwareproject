@@ -81,7 +81,7 @@ public class ManageTypeKaart {
         TypeKaart tk = null;
         try{
             tx = session.beginTransaction();
-            tk =  (TypeKaart) session.get(TypeKaart.class, id);
+            tk = session.get(TypeKaart.class, id);
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
@@ -120,7 +120,7 @@ public class ManageTypeKaart {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            k = (TypeKaart) session.load(TypeKaart.class,id);
+            k = session.load(TypeKaart.class,id);
             session.delete(k);
             //This makes the pending delete to be done
             session.flush() ;

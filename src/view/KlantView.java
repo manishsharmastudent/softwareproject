@@ -25,6 +25,9 @@ public class KlantView extends StandardView {
     private JLabel postcodeLabel = new JLabel("Postcode");
     private JLabel stadLabel = new JLabel("Stad");
 
+    private JTable klantTable = null;
+    private String[][] klantData = null;
+
     private JTextField voornaamText = new JTextField();
     private JTextField achternaamText = new JTextField();
     private JTextField rijksregisterNummerText = new JFormattedTextField(createFormatter("##.##.##-###.##"));
@@ -36,6 +39,8 @@ public class KlantView extends StandardView {
     private JButton searchButtonSurname = new JButton("Zoeken");
     private JButton searchButtonLastname = new JButton("Zoeken");
     private JButton klantToevoegenButton = new JButton("Klant toevoegen");
+    private JButton klantUpdateButton = new JButton("Klant aanpassen");
+    private JButton aanpassenKlant = new JButton("Aanpassen");
 
     public KlantView(String titel){
         super(titel);
@@ -59,14 +64,52 @@ public class KlantView extends StandardView {
     public String getStad(){
         return this.stadText.getText();
     }
+    public String getSelectedRow(){
+        String[] klant = klantData[klantTable.getSelectedRow()];
+        return klant[0];
+    }
 
+    public JButton getAanpassenKlant(){
+        return aanpassenKlant;
+    }
     public JButton getKlantToevoegenButton(){
         return this.klantToevoegenButton;
     }
     public JButton getSearchButtonSurname(){ return this.searchButtonSurname; }
     public JButton getSearchButtonLastname(){ return this.searchButtonLastname; }
     public JButton getSearchButtonRijksregisterNummer(){ return this.searchButtonRijksregisterNummer; }
+    public JButton getKlantUpdateButton(){return this.klantUpdateButton;}
+    public void showUpdateKlant(Klant klant){
+        klantPanel.removeAll();
+        klantPanel.updateUI();
+        klantPanel.setLayout(new GridLayout(7,1));
 
+        klantPanel.add(rijksregisterNummerLabel);
+        rijksregisterNummerText.setText(klant.getRijksregisterNummer());
+        klantPanel.add(rijksregisterNummerText);
+        klantPanel.add(voornaamLabel);
+        voornaamText.setText(klant.getVoornaam());
+        klantPanel.add(voornaamText);
+        klantPanel.add(achternaamLabel);
+        achternaamText.setText(klant.getAchternaam());
+        klantPanel.add(achternaamText);
+        klantPanel.add(adresLabel);
+        adresText.setText(klant.getAdres());
+        klantPanel.add(adresText);
+        klantPanel.add(postcodeLabel);
+        postcodeText.setText(Integer.toString(klant.getPostcode()));
+        klantPanel.add(postcodeText);
+        klantPanel.add(stadLabel);
+        stadText.setText(klant.getStad());
+        klantPanel.add(stadText);
+        klantPanel.add(klantUpdateButton);
+
+        mainPanel.add(klantPanel);
+        deleteLastInPath();
+        deleteLastInPath();
+        path.add("Klant Aanpassen");
+        showWindow();
+    }
     public void showKlantToevoegen(){
         klantPanel.setLayout(new GridLayout(7,1));
 
@@ -107,10 +150,54 @@ public class KlantView extends StandardView {
         showWindow();
     }
     public void showKlanten(List<Klant> klanten){
-        gevondenKlantenPanel.setLayout(new GridLayout(klanten.size(), 1));
-        for (int i = 0;i < klanten.size();i++){
-            gevondenKlantenPanel.add(new JLabel(klanten.get(i).getVoornaam() + " " + klanten.get(i).getAchternaam()));
+        klantPanel.removeAll();
+        klantPanel.updateUI();
+        gevondenKlantenPanel.setLayout(new GridLayout(1, 2));
+        initTable(klanten);
+        JScrollPane scrollPane = new JScrollPane(klantTable);
+        gevondenKlantenPanel.add(scrollPane);
+        gevondenKlantenPanel.add(aanpassenKlant);
+        klantPanel.add(gevondenKlantenPanel);
+    }
+    public void initTable(java.util.List<Klant> klantList){
+        String[] headers = {"Rijksregister", "Voornaam", "Achternaam", "Adres", "Postcode", "Stad"};
+        klantData = new String[klantList.size()][6];
+
+        for (int row = 0; row < klantList.size(); row++) {
+            for (int col = 0; col < 6; col++) {
+                Klant klant = klantList.get(row);
+                switch (col) {
+                    case 0:
+                        klantData[row][col] = klant.getRijksregisterNummer();
+                        break;
+                    case 1:
+                        klantData[row][col] = klant.getVoornaam();
+                        break;
+                    case 2:
+                        klantData[row][col] = klant.getAchternaam();
+                        break;
+                    case 3:
+                        klantData[row][col] = klant.getAdres();
+                        break;
+                    case 4:
+                        klantData[row][col] = Integer.toString(klant.getPostcode());
+                        break;
+                    case 5:
+                        klantData[row][col] = klant.getStad();
+                        break;
+                }
+            }
         }
-       klantPanel.add(gevondenKlantenPanel);
+
+        klantTable = new JTable(klantData, headers);
+    }
+    public void klantNotFound(){
+        JOptionPane.showMessageDialog(null, "Klant is niet gevonden");
+    }
+    public void klantUpdateSucceed(){
+        JOptionPane.showMessageDialog(null, "Klant is geupdate");
+    }
+    public void klantUpdateFailure(){
+        JOptionPane.showMessageDialog(null, "Er is iets misgelopen tijdens het updaten.");
     }
 }

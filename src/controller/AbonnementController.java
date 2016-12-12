@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -78,9 +79,15 @@ public class AbonnementController {
                 abonnementView.getGevondenAbonnementPanel().removeAll();
                 abonnementView.getGevondenAbonnementPanel().updateUI();
                 Abonnement abonnement = abonnementManage.getAbonnementByKlantId(abonnementView.getRijksregisterNummerText());
-                System.out.println(abonnementView.getRijksregisterNummerText());
-                abonnementView.showGevondenAbonnementen(abonnement);
-                aanpassenAbonnement();
+                List<Abonnement> abonnements = new ArrayList<Abonnement>();
+                abonnements.add(abonnement);
+                if(abonnements.get(0) == null){
+                    abonnementView.showAbonnementNotFound();
+                }
+                else {
+                    abonnementView.showGevondenAbonnementen(abonnements);
+                    aanpassenAbonnement();
+                }
             }
         });
     }
@@ -91,7 +98,9 @@ public class AbonnementController {
                    abonnementView.getGevondenAbonnementPanel().removeAll();
                    abonnementView.getGevondenAbonnementPanel().updateUI();
                    Abonnement abo = abonnementManage.getAbonnementById(Integer.parseInt(abonnementView.getAbonnementNummerText()));
-                   abonnementView.showGevondenAbonnementen(abo);
+                   List<Abonnement> abonnements = new ArrayList<Abonnement>();
+                   abonnements.add(abo);
+                   abonnementView.showGevondenAbonnementen(abonnements);
                    aanpassenAbonnement();
                }
            });
@@ -136,7 +145,6 @@ public class AbonnementController {
             }
         });
     }
-
     public void aanpassenAbonnement(){
         abonnementView.getAanpasButton().addActionListener(new ActionListener() {
             @Override
@@ -145,7 +153,8 @@ public class AbonnementController {
                 abonnementView.getAbonnementPanel().updateUI();
                 abonnementView.getGevondenAbonnementPanel().removeAll();
                 abonnementView.getGevondenAbonnementPanel().updateUI();
-                showChangeAbonnement(abonnementView.getAbonnement());
+                Abonnement abo = abonnementManage.getAbonnementById(abonnementView.getSelectedRow());
+                showChangeAbonnement(abo);
             }
         });
     }

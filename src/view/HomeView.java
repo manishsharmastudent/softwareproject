@@ -12,11 +12,9 @@ public class HomeView extends StandardView {
     private JButton verkoopTicketButton = new JButton("Verkoop Ticket");
     private JButton verkoopAboButton = new JButton("Abonnement aanmaken");
     private JButton reservButton = new JButton("Reservaties");
-    private JButton verlengAboButton = new JButton("Verleng Abonnement");
-    private JButton aboAanpas = new JButton("Abonnement Aanpassen");
+    private JButton verlengAboButton = new JButton("Abonnement verlengen/aanpassen");
     private JPanel voorwerpPanel = new JPanel();
-    private JButton vvvdsButton = new JButton("Verloren voorwerpen voor <dit station>");
-    private JButton vvvasButton = new JButton("Verloren voorwerpen voor ander station");
+    private JButton vvvasButton = new JButton("Verloren voorwerpen zoeken");
     private JButton rvvButton = new JButton("Registreer verloren voorwerp");
     private JButton vvvButton = new JButton("Verwijder verloren voorwerp");
     private JLabel verlorenVoorLabel = new JLabel("Verloren voorwerpen");
@@ -35,6 +33,10 @@ public class HomeView extends StandardView {
 
     public HomeView(String titel) {
         super(titel);
+    }
+
+    public JButton getShowVerlorenVoorwerpenButton(){
+        return this.vvvasButton;
     }
 
     public JButton getButtonVoegTicketToe() {
@@ -68,7 +70,7 @@ public class HomeView extends StandardView {
     public void showHomeScreen() {
         ticketPanel.setLayout(new GridLayout(8,1));
         infoPanel.setLayout(new GridLayout(5,1));
-        voorwerpPanel.setLayout(new GridLayout(5,1));
+        voorwerpPanel.setLayout(new GridLayout(4,1));
         klantPanel.setLayout(new GridLayout(4,1));
 
         ticketLabel.setBorder(border);
@@ -77,7 +79,6 @@ public class HomeView extends StandardView {
         ticketPanel.add(verkoopAboButton);
         ticketPanel.add(reservButton);
         ticketPanel.add(verlengAboButton);
-        ticketPanel.add(aboAanpas);
         ticketPanel.add(verkoopTicketButton);
 
         infoLabel.setBorder(border);
@@ -88,7 +89,6 @@ public class HomeView extends StandardView {
 
         verlorenVoorLabel.setBorder(border);
         voorwerpPanel.add(verlorenVoorLabel);
-        voorwerpPanel.add(vvvdsButton);
         voorwerpPanel.add(vvvasButton);
         voorwerpPanel.add(rvvButton);
         voorwerpPanel.add(vvvButton);

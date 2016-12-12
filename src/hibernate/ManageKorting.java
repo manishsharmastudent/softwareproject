@@ -81,7 +81,7 @@ public class ManageKorting {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            k = (Korting)session.load(Korting.class,id);
+            k = session.load(Korting.class,id);
             session.delete(k);
             //This makes the pending delete to be done
             session.flush() ;
@@ -104,7 +104,7 @@ public class ManageKorting {
      Korting k = null;
         try{
             tx = session.beginTransaction();
-            k =  (Korting) session.get(Korting.class, id);
+            k = session.get(Korting.class, id);
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();

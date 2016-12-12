@@ -63,7 +63,7 @@ public class ManageStation {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            station = (Station) session.get(Station.class, id);
+            station = session.get(Station.class, id);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
