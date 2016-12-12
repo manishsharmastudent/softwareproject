@@ -20,8 +20,10 @@ public class Traject {
         private List<Trein> treinen;
         private String vetrekPlatform;
         private String exception;
+        private double aantalKilometers;
 
-        public Traject(){}
+
+    public Traject(){}
 
         public Traject(String vertrekStation, String aankomstStation) {
             this.vertrekStation = vertrekStation;
@@ -32,6 +34,13 @@ public class Traject {
             return cancelled;
         }
 
+        public double getAantalKilometers(){
+            return this.aantalKilometers;
+        }
+
+        public void setAantalKilometers(double kilometers){
+            this.aantalKilometers = kilometers;
+        }
         public void setCancelled(boolean cancelled) {
             this.cancelled = cancelled;
         }

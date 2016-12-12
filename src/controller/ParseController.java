@@ -50,14 +50,14 @@ public class ParseController {
 
             JSONArray arrCon = jBase.getJSONArray("Routes");
             traject = TrajectParseController.getTrajecten(arrCon);
-            String[] aankomst =  {traject.get(0).getAankomstStation()};
-            String[] vertrek =  {traject.get(0).getVertrekStation()};
+            String[] aankomst =  {to};
+            String[] vertrek =  {from};
 
             GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");
 
 
 
-            DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins(aankomst).destinations(vertrek).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
+            DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins(vertrek).destinations(aankomst).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
 
 
             long distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
