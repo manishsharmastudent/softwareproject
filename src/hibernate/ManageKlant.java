@@ -62,13 +62,8 @@ public class ManageKlant {
         Session session = factory.openSession();
         Klant klant = null;
         Transaction tx = null;
-        /*try{
+        try{
             tx = session.beginTransaction();
-            tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE rijksregisterNummer = :rrn";
-            Klant klant = (Klant) session.createQuery(hql).uniqueResult();
-            query.setParameter("rrn",rijksregisterNummer);
-            klanten = query.list();
             klant = (Klant) session.createQuery("FROM Klant WHERE rijksregisterNummer = :rrn and active = true").setParameter("rrn", rijksregisterNummer).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {
@@ -78,8 +73,6 @@ public class ManageKlant {
             session.close();
         }
         return klant;
-*/
-        return null;
     }
     public void updateKlant(Klant k){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
@@ -124,9 +117,9 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE achternaam = :achternaam AND active = true";
+            String hql = "FROM Klant WHERE achternaam LIKE :achternaam AND active = true";
             Query query = session.createQuery(hql);
-            query.setParameter("achternaam", lastname);
+            query.setParameter("achternaam", "%" + lastname + "%");
             klanten = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -143,9 +136,9 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE voornaam = :voornaam AND active = true";
+            String hql = "FROM Klant WHERE voornaam LIKE :voornaam AND active = true";
             Query query = session.createQuery(hql);
-            query.setParameter("voornaam", surname);
+            query.setParameter("voornaam", "%" + surname + "%");
             klanten = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

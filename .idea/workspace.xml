@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/exceptions/HalteNotFoundException.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SP2.iml" afterPath="$PROJECT_DIR$/SP2.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/AbonnementController.java" afterPath="$PROJECT_DIR$/src/controller/AbonnementController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MainController.java" afterPath="$PROJECT_DIR$/src/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/StationController.java" afterPath="$PROJECT_DIR$/src/controller/StationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/TrajectParseController.java" afterPath="$PROJECT_DIR$/src/controller/TrajectParseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/VoorwerpController.java" afterPath="$PROJECT_DIR$/src/controller/VoorwerpController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageAbonnement.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageAbonnement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/KlantController.java" afterPath="$PROJECT_DIR$/src/controller/KlantController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageKlant.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageKlant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageKorting.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageKorting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageLogin.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageRoute.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageRoute.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageStation.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageStation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageTypeKaart.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageTypeKaart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageVoorwerp.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageVoorwerp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Traject.java" afterPath="$PROJECT_DIR$/src/model/Traject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/TypeKaart.java" afterPath="$PROJECT_DIR$/src/model/TypeKaart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/AbonnementView.java" afterPath="$PROJECT_DIR$/src/view/AbonnementView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/HomeView.java" afterPath="$PROJECT_DIR$/src/view/HomeView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/StandardView.java" afterPath="$PROJECT_DIR$/src/view/StandardView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/VoorwerpView.java" afterPath="$PROJECT_DIR$/src/view/VoorwerpView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xml/VerlorenVoorwerpen.hbm.xml" afterPath="$PROJECT_DIR$/src/xml/VerlorenVoorwerpen.hbm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/KlantView.java" afterPath="$PROJECT_DIR$/src/view/KlantView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gitignore/" />
@@ -53,90 +34,246 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="VoorwerpController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/VoorwerpController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="103" column="56" lean-forward="false" selection-start-line="103" selection-start-column="56" selection-end-line="103" selection-end-column="56" />
-              <folding>
-                <element signature="method#toevoegenVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#showZoekVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#zoekVoorwerpOpNaam#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#showVoorwerpen#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#showVoorwerpToevoegen#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#verwijderAfgehaaldVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#initComboBox#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#terugButton#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#backToHomeScreen#0;class#VoorwerpController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VoorwerpView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/VoorwerpView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="63" selection-end-column="5" />
-              <folding>
-                <element signature="method#showVoorwerpenZoeken#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showVoorwerp#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showVoorwerpen#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showVoorwerpenToevoegen#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#geenVoorwerpenGevonden#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#initTable#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showSucceed#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showError#0;class#VoorwerpView#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AbonnementView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/AbonnementView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="119" column="5" lean-forward="true" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
+            <state relative-caret-position="1380">
+              <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="119" selection-end-column="5" />
               <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2611#2612#0" expanded="false" />
+                <element signature="e#2639#2640#0" expanded="false" />
+                <element signature="e#2903#2904#0" expanded="false" />
+                <element signature="e#2959#2960#0" expanded="false" />
+                <element signature="e#3004#3005#0" expanded="false" />
+                <element signature="e#3057#3058#0" expanded="false" />
+                <element signature="e#3099#3100#0" expanded="false" />
+                <element signature="e#3140#3141#0" expanded="false" />
+                <element signature="e#3181#3182#0" expanded="false" />
+                <element signature="e#3222#3223#0" expanded="false" />
+                <element signature="e#3265#3266#0" expanded="false" />
+                <element signature="e#3308#3309#0" expanded="false" />
                 <element signature="method#getRoute#0;class#AbonnementView#0" expanded="false" />
                 <element signature="method#getKorting#0;class#AbonnementView#0" expanded="false" />
+                <element signature="e#3655#3656#0" expanded="false" />
+                <element signature="e#3720#3721#0" expanded="false" />
+                <element signature="e#3754#3755#0" expanded="false" />
+                <element signature="e#3826#3827#0" expanded="false" />
+                <element signature="e#3859#3860#0" expanded="false" />
+                <element signature="e#3930#3931#0" expanded="false" />
+                <element signature="e#3981#3982#0" expanded="false" />
+                <element signature="e#4028#4029#0" expanded="false" />
+                <element signature="e#4055#4056#0" expanded="false" />
+                <element signature="e#4115#4116#0" expanded="false" />
+                <element signature="e#4150#4151#0" expanded="false" />
+                <element signature="e#4202#4203#0" expanded="false" />
                 <element signature="method#getAanpasButton#0;class#AbonnementView#0" expanded="false" />
+                <element signature="e#4504#4505#0" expanded="false" />
+                <element signature="e#4539#4540#0" expanded="false" />
                 <element signature="method#getSelectedRow#0;class#AbonnementView#0" expanded="false" />
                 <element signature="method#showAanpassenAbonnement#0;class#AbonnementView#0" expanded="false" />
                 <element signature="method#showZoekAbonnement#0;class#AbonnementView#0" expanded="false" />
                 <element signature="method#showGevondenAbonnementen#0;class#AbonnementView#0" expanded="false" />
                 <element signature="method#showToevoegenAbonnement#0;class#AbonnementView#0" expanded="false" />
+                <element signature="e#7720#7721#0" expanded="false" />
+                <element signature="e#7809#7810#0" expanded="false" />
                 <element signature="class#7907:8526" expanded="false" />
                 <element signature="class#8623:9241" expanded="false" />
+                <element signature="e#9291#9292#0" expanded="false" />
+                <element signature="e#9338#9339#0" expanded="false" />
+                <element signature="e#9388#9389#0" expanded="false" />
+                <element signature="e#9436#9437#0" expanded="false" />
                 <element signature="method#showPrice#0;class#AbonnementView#0" expanded="false" />
                 <element signature="method#alreadyAbonnement#0;class#AbonnementView#0" expanded="false" />
-                <element signature="method#initTable#0;class#AbonnementView#0" expanded="false" />
+                <element signature="e#10042#10043#0" expanded="false" />
+                <element signature="e#10121#10122#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbonnementController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/AbonnementController.java">
+      <file leaf-file-name="KlantController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/KlantController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="56" column="73" lean-forward="true" selection-start-line="56" selection-start-column="73" selection-end-line="56" selection-end-column="73" />
+            <state relative-caret-position="431">
+              <caret line="106" column="39" lean-forward="true" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="39" />
               <folding>
-                <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#zoekAbonnementWithKlantId#0;class#AbonnementController#0" expanded="false" />
-                <element signature="e#3409#3421#0" expanded="true" />
-                <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
-                <element signature="e#4368#4380#0" expanded="true" />
-                <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#toevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#updatenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#showChangeAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#initComboBoxes#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#terugButton#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#backToHomeScreen#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
+                <element signature="method#getKlantByName#0;class#KlantController#0" expanded="false" />
+                <element signature="method#searchKlantBySurname#0;class#KlantController#0" expanded="false" />
+                <element signature="method#showToevoegenKlant#0;class#KlantController#0" expanded="false" />
+                <element signature="method#showZoekKlanten#0;class#KlantController#0" expanded="false" />
+                <element signature="method#klantToevoegen#0;class#KlantController#0" expanded="false" />
+                <element signature="method#klantAanpassen#0;class#KlantController#0" expanded="false" />
+                <element signature="method#showKlantAanpassen#0;class#KlantController#0" expanded="false" />
+                <element signature="method#terugButton#0;class#KlantController#0" expanded="false" />
+                <element signature="method#backToHomeScreen#0;class#KlantController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hibernate.cfg.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManageKlant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hibernate/ManageKlant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="76" column="15" lean-forward="false" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="method#addKlant#0;class#ManageKlant#0" expanded="false" />
+                <element signature="method#listKlanten#0;class#ManageKlant#0" expanded="false" />
+                <element signature="e#1184#1191#0" expanded="false" />
+                <element signature="method#getKlantByRijksregister#0;class#ManageKlant#0" expanded="false" />
+                <element signature="method#updateKlant#0;class#ManageKlant#0" expanded="false" />
+                <element signature="method#deleteKlantByRijksregister#0;class#ManageKlant#0" expanded="false" />
+                <element signature="method#getKlantByLastname#0;class#ManageKlant#0" expanded="false" />
+                <element signature="method#getKlantBySurname#0;class#ManageKlant#0" expanded="false" />
+                <element signature="method#getKlantByPostcode#0;class#ManageKlant#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KlantView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/KlantView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+              <folding>
+                <element signature="method#getSelectedRow#0;class#KlantView#0" expanded="false" />
+                <element signature="method#showUpdateKlant#0;class#KlantView#0" expanded="false" />
+                <element signature="method#showKlantToevoegen#0;class#KlantView#0" expanded="false" />
+                <element signature="method#showKlantZoeken#0;class#KlantView#0" expanded="false" />
+                <element signature="method#showKlanten#0;class#KlantView#0" expanded="false" />
+                <element signature="method#initTable#0;class#KlantView#0" expanded="false" />
+                <element signature="method#klantUpdateFailure#0;class#KlantView#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StandardView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/StandardView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="800">
+              <caret line="102" column="28" lean-forward="false" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#471#479#0" expanded="false" />
+                <element signature="method#StandardView#0;class#StandardView#0" expanded="false" />
+                <element signature="e#1815#1816#0" expanded="false" />
+                <element signature="e#1849#1850#0" expanded="false" />
+                <element signature="method#initTimeAndDate#0;class#StandardView#0" expanded="false" />
+                <element signature="e#2059#2473#0" expanded="false" />
+                <element signature="e#2472#2473#0" expanded="false" />
+                <element signature="method#initWelkomBoard#0;class#StandardView#0" expanded="false" />
+                <element signature="method#initNavTree#0;class#StandardView#0" expanded="false" />
+                <element signature="method#showWindow#0;class#StandardView#0" expanded="false" />
+                <element signature="e#3838#3839#0" expanded="false" />
+                <element signature="e#3869#3870#0" expanded="false" />
+                <element signature="method#showPath#0;class#StandardView#0" expanded="false" />
+                <element signature="method#deleteLastInPath#0;class#StandardView#0" expanded="false" />
+                <element signature="method#createFormatter#0;class#StandardView#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Klant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Klant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="e#629#630#0" expanded="false" />
+                <element signature="e#667#668#0" expanded="false" />
+                <element signature="e#697#698#0" expanded="false" />
+                <element signature="e#724#725#0" expanded="false" />
+                <element signature="e#756#757#0" expanded="false" />
+                <element signature="e#785#786#0" expanded="false" />
+                <element signature="e#812#813#0" expanded="false" />
+                <element signature="e#836#837#0" expanded="false" />
+                <element signature="e#863#864#0" expanded="false" />
+                <element signature="e#890#891#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Traject.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Traject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2020">
+              <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#905#906#0" expanded="false" />
+                <element signature="e#945#946#0" expanded="false" />
+                <element signature="e#1000#1001#0" expanded="false" />
+                <element signature="e#1050#1051#0" expanded="false" />
+                <element signature="e#1106#1107#0" expanded="false" />
+                <element signature="e#1159#1160#0" expanded="false" />
+                <element signature="e#1217#1218#0" expanded="false" />
+                <element signature="e#1271#1272#0" expanded="false" />
+                <element signature="e#1316#1317#0" expanded="false" />
+                <element signature="e#1361#1362#0" expanded="false" />
+                <element signature="e#1407#1408#0" expanded="false" />
+                <element signature="e#1453#1454#0" expanded="false" />
+                <element signature="e#1496#1497#0" expanded="false" />
+                <element signature="e#1534#1535#0" expanded="false" />
+                <element signature="e#1589#1590#0" expanded="false" />
+                <element signature="e#1635#1636#0" expanded="false" />
+                <element signature="e#1699#1700#0" expanded="false" />
+                <element signature="e#1759#1760#0" expanded="false" />
+                <element signature="e#1818#1819#0" expanded="false" />
+                <element signature="e#1865#1866#0" expanded="false" />
+                <element signature="e#2328#2329#0" expanded="false" />
+                <element signature="e#2370#2371#0" expanded="false" />
+                <element signature="e#2434#2435#0" expanded="false" />
+                <element signature="e#2487#2488#0" expanded="false" />
+                <element signature="e#2537#2538#0" expanded="false" />
+                <element signature="e#2580#2581#0" expanded="false" />
+                <element signature="e#2647#2648#0" expanded="false" />
+                <element signature="e#2703#2704#0" expanded="false" />
+                <element signature="e#2740#2741#0" expanded="false" />
+                <element signature="e#2775#2776#0" expanded="false" />
+                <element signature="e#2821#2822#0" expanded="false" />
+                <element signature="e#2861#2862#0" expanded="false" />
+                <element signature="e#2916#2917#0" expanded="false" />
+                <element signature="e#2964#2965#0" expanded="false" />
+                <element signature="method#setActualVertrekTijd#0;class#Traject#0" expanded="false" />
+                <element signature="e#3163#3164#0" expanded="false" />
+                <element signature="e#3212#3213#0" expanded="false" />
+                <element signature="e#3384#3385#0" expanded="false" />
+                <element signature="e#3429#3430#0" expanded="false" />
+                <element signature="e#3493#3494#0" expanded="false" />
+                <element signature="e#3553#3554#0" expanded="false" />
+                <element signature="e#3593#3594#0" expanded="false" />
+                <element signature="e#3633#3634#0" expanded="false" />
+                <element signature="e#3687#3688#0" expanded="false" />
+                <element signature="e#3737#3738#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TicketController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/TicketController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="22" column="80" lean-forward="false" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
+              <folding>
+                <element signature="method#TicketController#0;class#TicketController#0" expanded="false" />
+                <element signature="method#TicketController#1;class#TicketController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -198,12 +335,9 @@
         <option value="$PROJECT_DIR$/.idea/libraries/appframework_1_0_3.xml" />
         <option value="$PROJECT_DIR$/src/model/Station.java" />
         <option value="$PROJECT_DIR$/src/hibernate/ManageStation.java" />
-        <option value="$PROJECT_DIR$/src/hibernate/ManageKlant.java" />
         <option value="$PROJECT_DIR$/src/controller/TicketController.java" />
-        <option value="$PROJECT_DIR$/src/controller/KlantController.java" />
         <option value="$PROJECT_DIR$/src/hibernate/ManageAbonnement.java" />
         <option value="$PROJECT_DIR$/src/exceptions/HalteNotFoundException.java" />
-        <option value="$PROJECT_DIR$/src/model/Traject.java" />
         <option value="$PROJECT_DIR$/src/controller/TrajectParseController.java" />
         <option value="$PROJECT_DIR$/src/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/view/HomeView.java" />
@@ -215,6 +349,10 @@
         <option value="$PROJECT_DIR$/src/view/VoorwerpView.java" />
         <option value="$PROJECT_DIR$/src/view/AbonnementView.java" />
         <option value="$PROJECT_DIR$/src/controller/AbonnementController.java" />
+        <option value="$PROJECT_DIR$/src/hibernate/ManageKlant.java" />
+        <option value="$PROJECT_DIR$/src/controller/KlantController.java" />
+        <option value="$PROJECT_DIR$/src/model/Traject.java" />
+        <option value="$PROJECT_DIR$/src/view/KlantView.java" />
       </list>
     </option>
   </component>
@@ -227,7 +365,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
-    <option name="width" value="1938" />
+    <option name="width" value="1924" />
     <option name="height" value="1060" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -294,6 +432,7 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -340,7 +479,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -855,7 +993,8 @@
       <workItem from="1480959142636" duration="952000" />
       <workItem from="1480960150899" duration="396000" />
       <workItem from="1481039636189" duration="820000" />
-      <workItem from="1481281906386" duration="8332000" />
+      <workItem from="1481281906386" duration="12873000" />
+      <workItem from="1481532023654" duration="561000" />
     </task>
     <task id="LOCAL-00001" summary="afstand wordt nu berekend bij trajecten">
       <created>1480370775699</created>
@@ -882,7 +1021,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58604000" />
+    <option name="totallyTimeSpent" value="63706000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -894,7 +1033,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
+    <frame x="-9" y="-9" width="1924" height="1060" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -909,7 +1048,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6749729" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28277355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32286024" sideWeight="0.47973472" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -920,8 +1059,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22535211" sideWeight="0.81724393" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11647429" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -929,6 +1067,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -998,23 +1137,35 @@
           <properties />
           <option name="timeStamp" value="45" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/VoorwerpController.java</url>
           <line>97</line>
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/view/VoorwerpView.java</url>
           <line>62</line>
           <properties />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/KlantView.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/Traject.java</url>
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="55" />
+      <option name="time" value="63" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1023,7 +1174,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/StationCsv.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Route.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1133,13 +1283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hibernate/ManageKlant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="76" column="18" lean-forward="false" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hibernate/ManageAbonnement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -1161,124 +1304,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/KlantView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/TicketController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exceptions/HalteNotFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#165#166#0" expanded="false" />
-            <element signature="e#243#244#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Traject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#905#906#0" expanded="false" />
-            <element signature="e#945#946#0" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1050#1051#0" expanded="false" />
-            <element signature="e#1106#1107#0" expanded="false" />
-            <element signature="e#1159#1160#0" expanded="false" />
-            <element signature="e#1217#1218#0" expanded="false" />
-            <element signature="e#1271#1272#0" expanded="false" />
-            <element signature="e#1316#1317#0" expanded="false" />
-            <element signature="e#1361#1362#0" expanded="false" />
-            <element signature="e#1407#1408#0" expanded="false" />
-            <element signature="e#1453#1454#0" expanded="false" />
-            <element signature="e#1496#1497#0" expanded="false" />
-            <element signature="e#1534#1535#0" expanded="false" />
-            <element signature="e#1589#1590#0" expanded="false" />
-            <element signature="e#1635#1636#0" expanded="false" />
-            <element signature="e#1699#1700#0" expanded="false" />
-            <element signature="e#1759#1760#0" expanded="false" />
-            <element signature="e#1818#1819#0" expanded="false" />
-            <element signature="e#1865#1866#0" expanded="false" />
-            <element signature="e#2328#2329#0" expanded="false" />
-            <element signature="e#2370#2371#0" expanded="false" />
-            <element signature="e#2434#2435#0" expanded="false" />
-            <element signature="e#2487#2488#0" expanded="false" />
-            <element signature="e#2537#2538#0" expanded="false" />
-            <element signature="e#2580#2581#0" expanded="false" />
-            <element signature="e#2647#2648#0" expanded="false" />
-            <element signature="e#2703#2704#0" expanded="false" />
-            <element signature="e#2740#2741#0" expanded="false" />
-            <element signature="e#2775#2776#0" expanded="false" />
-            <element signature="e#2821#2822#0" expanded="false" />
-            <element signature="e#2861#2862#0" expanded="false" />
-            <element signature="e#2916#2917#0" expanded="false" />
-            <element signature="e#2964#2965#0" expanded="false" />
-            <element signature="e#3163#3164#0" expanded="false" />
-            <element signature="e#3212#3213#0" expanded="false" />
-            <element signature="e#3384#3385#0" expanded="false" />
-            <element signature="e#3429#3430#0" expanded="false" />
-            <element signature="e#3493#3494#0" expanded="false" />
-            <element signature="e#3553#3554#0" expanded="false" />
-            <element signature="e#3593#3594#0" expanded="false" />
-            <element signature="e#3633#3634#0" expanded="false" />
-            <element signature="e#3687#3688#0" expanded="false" />
-            <element signature="e#3737#3738#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/KlantController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#753#754#0" expanded="false" />
-            <element signature="e#811#812#0" expanded="false" />
-            <element signature="e#844#845#0" expanded="false" />
-            <element signature="e#891#892#0" expanded="false" />
-            <element signature="e#926#927#0" expanded="false" />
-            <element signature="e#975#976#0" expanded="false" />
-            <element signature="e#1005#1006#0" expanded="false" />
-            <element signature="e#1049#1050#0" expanded="false" />
-            <element signature="e#1079#1080#0" expanded="false" />
-            <element signature="e#1126#1127#0" expanded="false" />
-            <element signature="e#1155#1156#0" expanded="false" />
-            <element signature="e#1198#1199#0" expanded="false" />
-            <element signature="e#1247#1248#0" expanded="false" />
-            <element signature="e#1302#1303#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1414#1415#0" expanded="false" />
-            <element signature="e#1457#1458#0" expanded="false" />
-            <element signature="e#1506#1507#0" expanded="false" />
-            <element signature="e#1552#1553#0" expanded="false" />
-            <element signature="e#1607#1608#0" expanded="false" />
-            <element signature="e#1648#1649#0" expanded="false" />
-            <element signature="e#1695#1696#0" expanded="false" />
-            <element signature="e#2020#2296#0" expanded="false" />
-            <element signature="e#2295#2296#0" expanded="false" />
-            <element signature="e#2406#2673#0" expanded="false" />
-            <element signature="e#2672#2673#0" expanded="false" />
-            <element signature="e#2785#3055#0" expanded="false" />
-            <element signature="e#3054#3055#0" expanded="false" />
-            <element signature="e#3518#4181#0" expanded="false" />
-            <element signature="e#4180#4181#0" expanded="false" />
-            <element signature="e#4353#4492#0" expanded="false" />
-            <element signature="e#4491#4492#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1286,9 +1315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="method#showKorting#0;class#KortingView#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1296,11 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="47" column="54" lean-forward="false" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
-          <folding>
-            <element signature="method#getRouteTimes#0;class#TrajectParseController#0" expanded="false" />
-            <element signature="method#getTraject#0;class#TrajectParseController#0" expanded="false" />
-            <element signature="method#getTrajecten#0;class#TrajectParseController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1324,27 +1345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="72" column="48" lean-forward="false" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
-          <folding>
-            <element signature="e#1692#1693#0" expanded="true" />
-            <element signature="e#1731#1732#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/StandardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding>
-            <element signature="method#StandardView#0;class#StandardView#0" expanded="false" />
-            <element signature="method#initTimeAndDate#0;class#StandardView#0" expanded="false" />
-            <element signature="method#initWelkomBoard#0;class#StandardView#0" expanded="false" />
-            <element signature="method#initNavTree#0;class#StandardView#0" expanded="false" />
-            <element signature="method#showWindow#0;class#StandardView#0" expanded="false" />
-            <element signature="method#showPath#0;class#StandardView#0" expanded="false" />
-            <element signature="method#deleteLastInPath#0;class#StandardView#0" expanded="false" />
-            <element signature="method#createFormatter#0;class#StandardView#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1352,7 +1352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-260">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1366,8 +1365,8 @@
             <element signature="method#voegAbonnementToe#0;class#MainController#0" expanded="false" />
             <element signature="method#verlengAbonnement#0;class#MainController#0" expanded="false" />
             <element signature="method#voegStationToe#0;class#MainController#0" expanded="false" />
-            <element signature="e#3020#3021#0" expanded="true" />
-            <element signature="e#3095#3096#0" expanded="true" />
+            <element signature="e#3020#3021#0" expanded="false" />
+            <element signature="e#3095#3096#0" expanded="false" />
             <element signature="method#zoekRoute#0;class#MainController#0" expanded="false" />
             <element signature="method#zoekKlanten#0;class#MainController#0" expanded="false" />
             <element signature="method#initLogOutTimer#0;class#MainController#0" expanded="false" />
@@ -1413,17 +1412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-          <folding>
-            <element signature="method#addVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#listVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpenByNaam#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#updateVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpById#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpByTreinId#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpByRoute#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpByKleur#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#deleteVoorwerpById#0;class#ManageVoorwerp#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1431,15 +1419,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
           <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1465,52 +1444,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="63" selection-end-column="5" />
-          <folding>
-            <element signature="method#showVoorwerpenZoeken#0;class#VoorwerpView#0" expanded="false" />
-            <element signature="method#showVoorwerp#0;class#VoorwerpView#0" expanded="false" />
-            <element signature="method#showVoorwerpen#0;class#VoorwerpView#0" expanded="false" />
-            <element signature="method#showVoorwerpenToevoegen#0;class#VoorwerpView#0" expanded="false" />
-            <element signature="method#geenVoorwerpenGevonden#0;class#VoorwerpView#0" expanded="false" />
-            <element signature="method#initTable#0;class#VoorwerpView#0" expanded="false" />
-            <element signature="method#showSucceed#0;class#VoorwerpView#0" expanded="false" />
-            <element signature="method#showError#0;class#VoorwerpView#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/AbonnementView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="119" column="5" lean-forward="true" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-          <folding>
-            <element signature="method#getRoute#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getKorting#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getAanpasButton#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getSelectedRow#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showAanpassenAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showZoekAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showGevondenAbonnementen#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showToevoegenAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="class#7907:8526" expanded="false" />
-            <element signature="class#8623:9241" expanded="false" />
-            <element signature="method#showPrice#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#alreadyAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#initTable#0;class#AbonnementView#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/AbonnementController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="56" column="73" lean-forward="true" selection-start-line="56" selection-start-column="73" selection-end-line="56" selection-end-column="73" />
+        <state relative-caret-position="432">
+          <caret line="198" column="5" lean-forward="true" selection-start-line="198" selection-start-column="5" selection-end-line="198" selection-end-column="5" />
           <folding>
             <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
             <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
             <element signature="method#zoekAbonnementWithKlantId#0;class#AbonnementController#0" expanded="false" />
-            <element signature="e#3409#3421#0" expanded="true" />
+            <element signature="e#3409#3421#0" expanded="false" />
             <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
-            <element signature="e#4368#4380#0" expanded="true" />
+            <element signature="e#4368#4380#0" expanded="false" />
             <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
             <element signature="method#toevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
             <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
@@ -1520,6 +1468,233 @@
             <element signature="method#terugButton#0;class#AbonnementController#0" expanded="false" />
             <element signature="method#backToHomeScreen#0;class#AbonnementController#0" expanded="false" />
             <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/AbonnementView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="119" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2611#2612#0" expanded="false" />
+            <element signature="e#2639#2640#0" expanded="false" />
+            <element signature="e#2903#2904#0" expanded="false" />
+            <element signature="e#2959#2960#0" expanded="false" />
+            <element signature="e#3004#3005#0" expanded="false" />
+            <element signature="e#3057#3058#0" expanded="false" />
+            <element signature="e#3099#3100#0" expanded="false" />
+            <element signature="e#3140#3141#0" expanded="false" />
+            <element signature="e#3181#3182#0" expanded="false" />
+            <element signature="e#3222#3223#0" expanded="false" />
+            <element signature="e#3265#3266#0" expanded="false" />
+            <element signature="e#3308#3309#0" expanded="false" />
+            <element signature="method#getRoute#0;class#AbonnementView#0" expanded="false" />
+            <element signature="method#getKorting#0;class#AbonnementView#0" expanded="false" />
+            <element signature="e#3655#3656#0" expanded="false" />
+            <element signature="e#3720#3721#0" expanded="false" />
+            <element signature="e#3754#3755#0" expanded="false" />
+            <element signature="e#3826#3827#0" expanded="false" />
+            <element signature="e#3859#3860#0" expanded="false" />
+            <element signature="e#3930#3931#0" expanded="false" />
+            <element signature="e#3981#3982#0" expanded="false" />
+            <element signature="e#4028#4029#0" expanded="false" />
+            <element signature="e#4055#4056#0" expanded="false" />
+            <element signature="e#4115#4116#0" expanded="false" />
+            <element signature="e#4150#4151#0" expanded="false" />
+            <element signature="e#4202#4203#0" expanded="false" />
+            <element signature="method#getAanpasButton#0;class#AbonnementView#0" expanded="false" />
+            <element signature="e#4504#4505#0" expanded="false" />
+            <element signature="e#4539#4540#0" expanded="false" />
+            <element signature="method#getSelectedRow#0;class#AbonnementView#0" expanded="false" />
+            <element signature="method#showAanpassenAbonnement#0;class#AbonnementView#0" expanded="false" />
+            <element signature="method#showZoekAbonnement#0;class#AbonnementView#0" expanded="false" />
+            <element signature="method#showGevondenAbonnementen#0;class#AbonnementView#0" expanded="false" />
+            <element signature="method#showToevoegenAbonnement#0;class#AbonnementView#0" expanded="false" />
+            <element signature="e#7720#7721#0" expanded="false" />
+            <element signature="e#7809#7810#0" expanded="false" />
+            <element signature="class#7907:8526" expanded="false" />
+            <element signature="class#8623:9241" expanded="false" />
+            <element signature="e#9291#9292#0" expanded="false" />
+            <element signature="e#9338#9339#0" expanded="false" />
+            <element signature="e#9388#9389#0" expanded="false" />
+            <element signature="e#9436#9437#0" expanded="false" />
+            <element signature="method#showPrice#0;class#AbonnementView#0" expanded="false" />
+            <element signature="method#alreadyAbonnement#0;class#AbonnementView#0" expanded="false" />
+            <element signature="e#10042#10043#0" expanded="false" />
+            <element signature="e#10121#10122#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Klant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#629#630#0" expanded="false" />
+            <element signature="e#667#668#0" expanded="false" />
+            <element signature="e#697#698#0" expanded="false" />
+            <element signature="e#724#725#0" expanded="false" />
+            <element signature="e#756#757#0" expanded="false" />
+            <element signature="e#785#786#0" expanded="false" />
+            <element signature="e#812#813#0" expanded="false" />
+            <element signature="e#836#837#0" expanded="false" />
+            <element signature="e#863#864#0" expanded="false" />
+            <element signature="e#890#891#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/StandardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="102" column="28" lean-forward="false" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#471#479#0" expanded="false" />
+            <element signature="method#StandardView#0;class#StandardView#0" expanded="false" />
+            <element signature="e#1815#1816#0" expanded="false" />
+            <element signature="e#1849#1850#0" expanded="false" />
+            <element signature="method#initTimeAndDate#0;class#StandardView#0" expanded="false" />
+            <element signature="e#2059#2473#0" expanded="false" />
+            <element signature="e#2472#2473#0" expanded="false" />
+            <element signature="method#initWelkomBoard#0;class#StandardView#0" expanded="false" />
+            <element signature="method#initNavTree#0;class#StandardView#0" expanded="false" />
+            <element signature="method#showWindow#0;class#StandardView#0" expanded="false" />
+            <element signature="e#3838#3839#0" expanded="false" />
+            <element signature="e#3869#3870#0" expanded="false" />
+            <element signature="method#showPath#0;class#StandardView#0" expanded="false" />
+            <element signature="method#deleteLastInPath#0;class#StandardView#0" expanded="false" />
+            <element signature="method#createFormatter#0;class#StandardView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hibernate/ManageKlant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="76" column="15" lean-forward="false" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#addKlant#0;class#ManageKlant#0" expanded="false" />
+            <element signature="method#listKlanten#0;class#ManageKlant#0" expanded="false" />
+            <element signature="e#1184#1191#0" expanded="false" />
+            <element signature="method#getKlantByRijksregister#0;class#ManageKlant#0" expanded="false" />
+            <element signature="method#updateKlant#0;class#ManageKlant#0" expanded="false" />
+            <element signature="method#deleteKlantByRijksregister#0;class#ManageKlant#0" expanded="false" />
+            <element signature="method#getKlantByLastname#0;class#ManageKlant#0" expanded="false" />
+            <element signature="method#getKlantBySurname#0;class#ManageKlant#0" expanded="false" />
+            <element signature="method#getKlantByPostcode#0;class#ManageKlant#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Traject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2020">
+          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#905#906#0" expanded="false" />
+            <element signature="e#945#946#0" expanded="false" />
+            <element signature="e#1000#1001#0" expanded="false" />
+            <element signature="e#1050#1051#0" expanded="false" />
+            <element signature="e#1106#1107#0" expanded="false" />
+            <element signature="e#1159#1160#0" expanded="false" />
+            <element signature="e#1217#1218#0" expanded="false" />
+            <element signature="e#1271#1272#0" expanded="false" />
+            <element signature="e#1316#1317#0" expanded="false" />
+            <element signature="e#1361#1362#0" expanded="false" />
+            <element signature="e#1407#1408#0" expanded="false" />
+            <element signature="e#1453#1454#0" expanded="false" />
+            <element signature="e#1496#1497#0" expanded="false" />
+            <element signature="e#1534#1535#0" expanded="false" />
+            <element signature="e#1589#1590#0" expanded="false" />
+            <element signature="e#1635#1636#0" expanded="false" />
+            <element signature="e#1699#1700#0" expanded="false" />
+            <element signature="e#1759#1760#0" expanded="false" />
+            <element signature="e#1818#1819#0" expanded="false" />
+            <element signature="e#1865#1866#0" expanded="false" />
+            <element signature="e#2328#2329#0" expanded="false" />
+            <element signature="e#2370#2371#0" expanded="false" />
+            <element signature="e#2434#2435#0" expanded="false" />
+            <element signature="e#2487#2488#0" expanded="false" />
+            <element signature="e#2537#2538#0" expanded="false" />
+            <element signature="e#2580#2581#0" expanded="false" />
+            <element signature="e#2647#2648#0" expanded="false" />
+            <element signature="e#2703#2704#0" expanded="false" />
+            <element signature="e#2740#2741#0" expanded="false" />
+            <element signature="e#2775#2776#0" expanded="false" />
+            <element signature="e#2821#2822#0" expanded="false" />
+            <element signature="e#2861#2862#0" expanded="false" />
+            <element signature="e#2916#2917#0" expanded="false" />
+            <element signature="e#2964#2965#0" expanded="false" />
+            <element signature="method#setActualVertrekTijd#0;class#Traject#0" expanded="false" />
+            <element signature="e#3163#3164#0" expanded="false" />
+            <element signature="e#3212#3213#0" expanded="false" />
+            <element signature="e#3384#3385#0" expanded="false" />
+            <element signature="e#3429#3430#0" expanded="false" />
+            <element signature="e#3493#3494#0" expanded="false" />
+            <element signature="e#3553#3554#0" expanded="false" />
+            <element signature="e#3593#3594#0" expanded="false" />
+            <element signature="e#3633#3634#0" expanded="false" />
+            <element signature="e#3687#3688#0" expanded="false" />
+            <element signature="e#3737#3738#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/TicketController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="22" column="80" lean-forward="false" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
+          <folding>
+            <element signature="method#TicketController#0;class#TicketController#0" expanded="false" />
+            <element signature="method#TicketController#1;class#TicketController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/KlantController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="106" column="39" lean-forward="true" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="39" />
+          <folding>
+            <element signature="method#getKlantByName#0;class#KlantController#0" expanded="false" />
+            <element signature="method#searchKlantBySurname#0;class#KlantController#0" expanded="false" />
+            <element signature="method#showToevoegenKlant#0;class#KlantController#0" expanded="false" />
+            <element signature="method#showZoekKlanten#0;class#KlantController#0" expanded="false" />
+            <element signature="method#klantToevoegen#0;class#KlantController#0" expanded="false" />
+            <element signature="method#klantAanpassen#0;class#KlantController#0" expanded="false" />
+            <element signature="method#showKlantAanpassen#0;class#KlantController#0" expanded="false" />
+            <element signature="method#terugButton#0;class#KlantController#0" expanded="false" />
+            <element signature="method#backToHomeScreen#0;class#KlantController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/KlantView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+          <folding>
+            <element signature="method#getSelectedRow#0;class#KlantView#0" expanded="false" />
+            <element signature="method#showUpdateKlant#0;class#KlantView#0" expanded="false" />
+            <element signature="method#showKlantToevoegen#0;class#KlantView#0" expanded="false" />
+            <element signature="method#showKlantZoeken#0;class#KlantView#0" expanded="false" />
+            <element signature="method#showKlanten#0;class#KlantView#0" expanded="false" />
+            <element signature="method#initTable#0;class#KlantView#0" expanded="false" />
+            <element signature="method#klantUpdateFailure#0;class#KlantView#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -140,7 +140,7 @@ public class Traject {
 
             for (Trein e:treinen) {
                 if(treinen.indexOf(e) > 0)
-                    s += "Transfer at: "+transferstations.get(treinen.indexOf(e) - 1 ) + '\n';
+                    s += "Transfer at: "+ transferstations.get(treinen.indexOf(e) - 1 ) + "\n";
                 s += e.toString() + '\n';
             }
 
