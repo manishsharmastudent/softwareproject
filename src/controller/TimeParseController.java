@@ -26,9 +26,9 @@ public class TimeParseController {
         }
         else {
             Duration duur = Duration.between(departure, actual);
-            long minuten;
+            int minuten;
 
-            minuten = duur.getSeconds() / 60;
+            minuten = (int) duur.getSeconds() / 60;
 
 
             String vertraging = minuten + " minuten";
