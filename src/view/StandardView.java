@@ -47,7 +47,7 @@ public class StandardView {
 
         java.net.URL url = ClassLoader.getSystemResource("");
         Toolkit kit = Toolkit.getDefaultToolkit();
-        Image img = kit.createImage(url);
+        Image img = kit.createImage("resources\\nmbs.png");
         window.setIconImage(img);
         if (titel != "Login") {
             initTimeAndDate();
@@ -58,8 +58,6 @@ public class StandardView {
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-
-
     public void setWelkomLabel(String tekst){
         this.welkomLabel.setText(tekst);
     }
@@ -67,6 +65,7 @@ public class StandardView {
     public JFrame getWindow(){
         return this.window;
     }
+    public JPanel getMainPanel(){ return this.mainPanel; }
     public JButton getTerugButton(){return this.terugButton; }
 
     public void initTimeAndDate(){
@@ -126,15 +125,6 @@ public class StandardView {
         getWindow().setSize(800,700);
         getWindow().setLocationRelativeTo(null);
         window.add(mainPanel);
-        mainPanel.setLayout(new BorderLayout(80,30));
-        panel.setLayout(new BorderLayout(0,0));
-
-        panel.add(mainNavPanel, BorderLayout.NORTH);
-        panel.add(interactiePanel, BorderLayout.CENTER);
-
-        mainPanel.add(welkomPanel, BorderLayout.NORTH);
-        mainPanel.add(panel, BorderLayout.CENTER);
-
         window.setVisible(true);
     }
     public void addPath(String tekst){

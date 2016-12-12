@@ -105,6 +105,7 @@ public class KlantController {
         searchKlantByLastname();
         searchKlantByRijksregister();
         searchKlantBySurname();
+        terugButton();
     }
     public void klantToevoegen(){
         klantView.getKlantToevoegenButton().addActionListener(new ActionListener() {
@@ -123,7 +124,7 @@ public class KlantController {
     }
 
     public void showKlant(){
-        klantView.showKlant(klantModel);
+        //klantView.showKlant(klantModel);
     }
     public void terugButton(){
         klantView.getTerugButton().addActionListener(new ActionListener() {

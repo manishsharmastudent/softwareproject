@@ -62,8 +62,13 @@ public class ManageKlant {
         Session session = factory.openSession();
         Klant klant = null;
         Transaction tx = null;
-        try{
+        /*try{
             tx = session.beginTransaction();
+            tx = session.beginTransaction();
+            String hql = "FROM Klant WHERE rijksregisterNummer = :rrn";
+            Klant klant = (Klant) session.createQuery(hql).uniqueResult();
+            query.setParameter("rrn",rijksregisterNummer);
+            klanten = query.list();
             klant = (Klant) session.createQuery("FROM Klant WHERE rijksregisterNummer = :rrn and active = true").setParameter("rrn", rijksregisterNummer).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {
@@ -73,8 +78,9 @@ public class ManageKlant {
             session.close();
         }
         return klant;
+*/
+        return null;
     }
-
     public void updateKlant(Klant k){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();

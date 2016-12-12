@@ -1,13 +1,7 @@
 package view;
 
-import hibernate.ManageVoorwerp;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  * Created by Rik Van Belle on 11/11/2016.
@@ -20,7 +14,6 @@ public class HomeView extends StandardView {
     private JButton reservButton = new JButton("Reservaties");
     private JButton verlengAboButton = new JButton("Verleng Abonnement");
     private JButton aboAanpas = new JButton("Abonnement Aanpassen");
-
     private JPanel voorwerpPanel = new JPanel();
     private JButton vvvdsButton = new JButton("Verloren voorwerpen voor <dit station>");
     private JButton vvvasButton = new JButton("Verloren voorwerpen voor ander station");
@@ -40,27 +33,37 @@ public class HomeView extends StandardView {
     private JButton klantToevoegen = new JButton("Klant Toevoegen");
     private JButton klantVerwijderen = new JButton("Klant verwijderen");
 
-    public HomeView(String titel){
+    public HomeView(String titel) {
         super(titel);
     }
 
-    public JButton getButtonVoegTicketToe(){
+    public JButton getButtonVoegTicketToe() {
         return this.verkoopTicketButton;
     }
-    public JButton getVerkoopAboButton(){
+
+    public JButton getVerkoopAboButton() {
         return this.verkoopAboButton;
     }
-    public JButton getKlantToevoegenButton(){
+
+    public JButton getKlantToevoegenButton() {
         return this.klantToevoegen;
     }
-    public JButton getRvvButton(){
+
+    public JButton getRvvButton() {
         return this.rvvButton;
     }
-    public JButton getTreinInfo(){
+
+    public JButton getTreinInfo() {
         return this.treinInfo;
     }
-    public JButton getVerlengAboButton() {return this.verlengAboButton; }
-    public JButton getKlantOpzoeken(){ return this.klantOpzoeken; }
+
+    public JButton getVerlengAboButton() {
+        return this.verlengAboButton;
+    }
+
+    public JButton getKlantOpzoeken() {
+        return this.klantOpzoeken;
+    }
 
     public void showHomeScreen() {
         ticketPanel.setLayout(new GridLayout(8,1));

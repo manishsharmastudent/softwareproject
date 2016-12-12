@@ -116,7 +116,6 @@ public class ManageAbonnement {
 
     public List<Abonnement> getAbonnementByRoute(Route r){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-
         Session session = factory.openSession();
         Transaction tx = null;
         List<Abonnement> abonnementen = new ArrayList<Abonnement>();
@@ -136,21 +135,19 @@ public class ManageAbonnement {
         return abonnementen;
 
     }
-
     public Abonnement getAbonnementByKlantId(String rijksregisterNummer){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-        Klant klant = new Klant();
-        klant.setRijksregisterNummer(rijksregisterNummer);
+
         Session session = factory.openSession();
         Transaction tx = null;
-        Abonnement abonnement = new Abonnement();
+        Abonnement abonnement = null;
         Query query= null;
         try{
             tx = session.beginTransaction();
             String hql = "FROM Abonnement WHERE klant = :klant AND active = true";
             query = session.createQuery(hql);
-            query.setParameter("klant", klant);
-            abonnement= (Abonnement)query.uniqueResult();
+            query.setParameter("klant", rijksregisterNummer);
+            abonnement = (Abonnement)query.uniqueResult();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();

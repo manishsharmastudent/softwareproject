@@ -12,15 +12,13 @@ public class Station {
     private List<Trein> treinen;
     private boolean active;
 
-    public Station(int stationId, String naam, String stad, boolean b) {
+    public Station(int stationId, String naam, String stad) {
         this.stationId = stationId;
         this.naam = naam;
         this.stad = stad;
     }
-
-    public Station() {
-    }
-    public boolean getActive(){
+    public Station() {}
+    public boolean getActive() {
         return this.active;
     }
     public void setActive(boolean active){
@@ -29,27 +27,21 @@ public class Station {
     public int getStationId() {
         return stationId;
     }
-
     public void setStationId(int stationId){
         this.stationId = stationId;
     }
-
     public String getStad() {
         return stad;
     }
-
     public void setStad(String stad) {
         this.stad = stad;
     }
-
     public String getNaam() {
         return naam;
     }
-
     public void setNaam(String naam) {
         this.naam = naam;
     }
-
     public List<Trein> getTreinen() {
         return treinen;
     }

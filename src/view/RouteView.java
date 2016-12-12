@@ -1,9 +1,10 @@
 package view;
 
 import model.Traject;
-
+import model.Route;
 import javax.swing.*;
 import java.awt.*;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 /**
  * Created by Rik Van Belle on 01/11/2016.
@@ -19,6 +20,7 @@ public class RouteView extends StandardView {
     private JLabel bestemmingLabel = new JLabel("Bestemming: ");
     private JButton getRouteButton = new JButton("Opzoeken");
 
+    public JPanel getRoutePanel(){ return this.routePanel; }
     public JComboBox getVertrekStationBox(){
         return vertrekStation;
     }
@@ -61,9 +63,8 @@ public class RouteView extends StandardView {
     }
 
     public void showSearchedRoutes(List<Traject> trajectList){
-        JFrame gevondenRoutes = new JFrame("Hallo");
         JPanel searchedRoutes = new JPanel();
-        GridLayout layout = new GridLayout(trajectList.size(), 3);
+        GridLayout layout = new GridLayout(trajectList.size(), 5);
 
         layout.setHgap(35);
         layout.setVgap(50);
@@ -72,6 +73,11 @@ public class RouteView extends StandardView {
         for(int i = 0; i < trajectList.size();i++){
             JLabel vertrekStation = new JLabel(trajectList.get(i).getVertrekStation());
             JLabel bestemmingStation = new JLabel(trajectList.get(i).getAankomstStation());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            String tijd = trajectList.get(i).getAankomstTijd().format(formatter);
+            JLabel vertrekTijd = new JLabel(tijd);
+            tijd = trajectList.get(i).getVertrekTijd().format(formatter);
+            JLabel aankomstTijd = new JLabel(tijd);
             JLabel aantalOverstappen = null;
             if (trajectList.get(i).getTransferstations() == null){
                 aantalOverstappen = new JLabel("0");
@@ -83,12 +89,15 @@ public class RouteView extends StandardView {
 
             searchedRoutes.add(vertrekStation);
             searchedRoutes.add(bestemmingStation);
+            searchedRoutes.add(vertrekTijd);
+            searchedRoutes.add(aankomstTijd);
             searchedRoutes.add(aantalOverstappen);
         }
 
         addPath(trajectList.get(0).getVertrekStation() + " - " + trajectList.get(0).getAankomstStation());
+        mainPanel.removeAll();
         mainPanel.add(searchedRoutes);
-        showWindow();
+        mainPanel.updateUI();
     }
 
     public void showError(){

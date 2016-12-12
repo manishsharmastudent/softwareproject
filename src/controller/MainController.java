@@ -52,7 +52,7 @@ public class MainController {
             public void actionPerformed(ActionEvent e) {
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
-//                logOutTimer.start();
+                //logOutTimer.start();
                 new TicketController().showVoegTicketToe();
             }
         });
@@ -61,6 +61,8 @@ public class MainController {
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 closeHomeWindow();
+                home.getWindow().setVisible(false);
+                home.getWindow().dispose();
                 new AbonnementController().showToevoegenAbonnement();
             }
         });
@@ -110,7 +112,6 @@ public class MainController {
                 new KlantController().showZoekKlanten();
             }
         });
-
     }
     public void initLogOutTimer(){
         logOutTimer = new javax.swing.Timer(10000, new ActionListener() {

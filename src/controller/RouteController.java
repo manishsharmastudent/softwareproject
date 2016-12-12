@@ -2,7 +2,7 @@ package controller;
 
 import hibernate.ManageStation;
 import model.Route;
-import model.StationCsv;
+import model.Station;
 import model.Traject;
 import view.RouteView;
 import view.TicketView;
@@ -27,14 +27,14 @@ public class RouteController {
         view.showRoute();
         initComboBoxes();
         zoekRouteInAPI();
+        terugButton();
     }
     public void zoekRouteInAPI(){
         view.getRouteButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                view.getWindow().dispose();
-                view.getWindow().setVisible(false);
-                searchRoutes(view.getVertrekStation(), view.getBestemmingStation());
+                searchRoutes(view.getVertrekStation(), "Oostende");
+                terugButton();
             }
         });
     }
@@ -48,7 +48,6 @@ public class RouteController {
             JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!!!! godverdomme zoekt ne keer een deftige route");
 
         }
-        view = new RouteView("Route");
         if(trajecten == null){
             view.showError();
         }
@@ -58,11 +57,24 @@ public class RouteController {
         }
     }
     public void initComboBoxes(){
-        List<StationCsv> stations = new ManageStation().getAllStationsBoxes();
+        List<Station> stations = new ManageStation().listStations();
         for (int i = 0; i < stations.size();i++){
             view.getVertrekStationBox().addItem(stations.get(i).getNaam());
             view.getBestemmingStationBox().addItem(stations.get(i).getNaam());
         }
+    }
+    public void terugButton(){
+        view.getTerugButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backToHomeScreen();
+            }
+        });
+    }
+    public void backToHomeScreen() {
+        view.getWindow().setVisible(false);
+        view.getWindow().dispose();
+        view.deleteLastInPath();
+        new MainController().showHomeScreen();
     }
 }
 

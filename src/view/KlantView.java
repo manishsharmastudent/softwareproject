@@ -17,6 +17,7 @@ import java.awt.event.KeyListener;
  */
 public class KlantView extends StandardView {
     private JPanel klantPanel = new JPanel();
+    private JPanel gevondenKlantenPanel = new JPanel();
     private JLabel voornaamLabel = new JLabel("Voornaam");
     private JLabel achternaamLabel = new JLabel("Achternaam");
     private JLabel rijksregisterNummerLabel = new JLabel("Rijksregister-nummer");
@@ -66,16 +67,6 @@ public class KlantView extends StandardView {
     public JButton getSearchButtonLastname(){ return this.searchButtonLastname; }
     public JButton getSearchButtonRijksregisterNummer(){ return this.searchButtonRijksregisterNummer; }
 
-
-    public void showKlant(Klant klant){
-        //JTextField voornaam = new JTextField(klant.getVoornaam());
-        JLabel voornaam = new JLabel(klant.getVoornaam());
-        JLabel achternaam = new JLabel(klant.getAchternaam());
-        JLabel rijksregisterNummer = new JLabel(klant.getRijksregisterNummer());
-        JTextField text = new JTextField();
-
-        getWindow().setVisible(true);
-    }
     public void showKlantToevoegen(){
         klantPanel.setLayout(new GridLayout(7,1));
 
@@ -99,7 +90,7 @@ public class KlantView extends StandardView {
         showWindow();
     }
     public void showKlantZoeken(){
-        klantPanel.setLayout(new GridLayout(3,3));
+        klantPanel.setLayout(new GridLayout(4,3));
 
         klantPanel.add(rijksregisterNummerLabel);
         klantPanel.add(rijksregisterNummerText);
@@ -111,13 +102,15 @@ public class KlantView extends StandardView {
         klantPanel.add(achternaamText);
         klantPanel.add(searchButtonLastname);
 
-
+        mainPanel.add(klantPanel);
         addPath("Klant zoeken");
         showWindow();
     }
     public void showKlanten(List<Klant> klanten){
+        gevondenKlantenPanel.setLayout(new GridLayout(klanten.size(), 1));
         for (int i = 0;i < klanten.size();i++){
-            klantPanel.add(new JLabel(klanten.get(i).getVoornaam()));
+            gevondenKlantenPanel.add(new JLabel(klanten.get(i).getVoornaam() + " " + klanten.get(i).getAchternaam()));
         }
+       klantPanel.add(gevondenKlantenPanel);
     }
 }
