@@ -21,10 +21,21 @@ public class TimeParseController {
 
     public static String getDelay(LocalDateTime departure, LocalDateTime actual) {
 
-        if((departure == null) || (actual == null) || (departure.equals(actual)))
-            return "0";
-        else
-        return Duration.between(departure,actual).toString();
+        if((departure == null) || (actual == null) || (departure.equals(actual))) {
+            return "Geen vertraging";
+        }
+        else {
+            Duration duur = Duration.between(departure, actual);
+            long minuten;
+
+            minuten = duur.getSeconds() / 60;
+
+
+            String vertraging = minuten + " minuten";
+
+
+            return vertraging;
+        }
 
     }
 
