@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Iterator;
 
+import model.PasswordAuthentication;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,7 +19,8 @@ public class ManageLogin {
 
     /* Method to CREATE an Login in the database */
     public Integer addLogin(Login l){
-
+        PasswordAuthentication p = new PasswordAuthentication();
+        l.setLoginWachtwoord(p.hash(l.getLoginWachtwoord()));
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
@@ -46,7 +48,7 @@ public class ManageLogin {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-             logins = session.createQuery("FROM Login where active = true").list();
+            logins = session.createQuery("FROM Login where active = true").list();
 
             tx.commit();
         }catch (HibernateException e) {
@@ -60,16 +62,18 @@ public class ManageLogin {
 
     /* Look if the login is right */
     public boolean checkLogin(String loginNaam, String loginWachtwoord){
+        PasswordAuthentication p = new PasswordAuthentication();
+
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-        List logins = null;
+        List<Login> logins = null;
         Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "FROM Login WHERE loginNaam = :loginNaam AND loginWachtwoord = :loginWachtwoord";
+            String hql = "FROM Login WHERE loginNaam = :loginNaam";
             Query query = session.createQuery(hql);
             query.setParameter("loginNaam", loginNaam);
-            query.setParameter("loginWachtwoord", loginWachtwoord);
+            // query.setParameter("loginWachtwoord", loginWachtwoord);
             logins = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -77,7 +81,16 @@ public class ManageLogin {
         }finally {
             session.close();
         }
-        return !logins.isEmpty();
+        if (logins.isEmpty()){
+            return false;
+        }
+        else {
+            if(p.authenticate(loginWachtwoord,logins.get(0).getLoginWachtwoord()))
+                return true;
+            else{
+                return false;
+            }
+        }
     }
 
 
@@ -107,7 +120,7 @@ public class ManageLogin {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            l = session.get(Login.class, id);
+            l =  (Login) session.get(Login.class, id);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -125,7 +138,7 @@ public class ManageLogin {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            l = session.load(Login.class,id);
+            l = (Login)session.load(Login.class,id);
             session.delete(l);
             //This makes the pending delete to be done
             session.flush() ;

@@ -2,12 +2,13 @@ package model;
 
 import controller.TimeParseController;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by Ontlener on 14/11/2016.
  */
-public class Halte {
+public class Halte implements Serializable {
 
     private String name;
     private LocalDateTime Arrival;
@@ -15,6 +16,7 @@ public class Halte {
     private LocalDateTime Departure;
     private LocalDateTime ActualDeparture;
     private String departurePlatform;
+    private String aankomstPlatform;
     private String coordinaten;
 
     public Halte(){}
@@ -88,6 +90,14 @@ public class Halte {
 
     public void setActualDeparture(String actualDeparture) {
         ActualDeparture = TimeParseController.getTime(actualDeparture);
+    }
+
+    public String getAankomstPlatform() {
+        return aankomstPlatform;
+    }
+
+    public void setAankomstPlatform(String aankomstPlatform) {
+        this.aankomstPlatform = aankomstPlatform;
     }
 
     public String getDeparturePlatform ()

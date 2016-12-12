@@ -21,8 +21,8 @@ public class HomeView extends StandardView {
 
     private JPanel infoPanel = new JPanel();
     private JButton treinInfo = new JButton("Treininformatie opvragen");
-    private JButton routeInfo = new JButton("Stationsinformatie opvragen");
-    private JButton stationsInfo = new JButton("Route-informatie opvragen");
+    private JButton stationsInfo = new JButton("Stationsinformatie opvragen");
+    private JButton routeInfo = new JButton("Route-informatie opvragen");
     private JLabel infoLabel = new JLabel("Informatie");
 
     private JPanel klantPanel = new JPanel();
@@ -67,6 +67,7 @@ public class HomeView extends StandardView {
         return this.klantOpzoeken;
     }
 
+    public JButton getStationsInfo(){return this.stationsInfo; }
     public void showHomeScreen() {
         ticketPanel.setLayout(new GridLayout(8,1));
         infoPanel.setLayout(new GridLayout(5,1));

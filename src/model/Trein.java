@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,7 +11,7 @@ import controller.TimeParseController.*;
 /**
  * Created by Manish on 29/10/2016.
  */
-public class Trein {
+public class Trein implements Serializable {
 
     private int treinId;
     private int treinType;
