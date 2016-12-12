@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static java.awt.Frame.getFrames;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
@@ -50,6 +51,7 @@ public class StandardView {
             initWelkomBoard();
             initNavTree();
         }
+
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -81,6 +83,7 @@ public class StandardView {
         welkomPanel.add(tijdLabel);
         welkomPanel.add(datumLabel);
 
+
         welkomPanel.setPreferredSize(new Dimension(800,50));
         welkomPanel.setMaximumSize(welkomPanel.getPreferredSize());
         welkomPanel.setBorder(border);
@@ -90,7 +93,11 @@ public class StandardView {
     public void initNavTree(){
         mainNavPanel.setLayout(new BorderLayout(0,0));
         mainNavPanel.add(navigationPanel, BorderLayout.WEST);
-        mainNavPanel.add(terugButton, BorderLayout.EAST);
+        if (this.getWindow().getTitle() == "HomeS       ``````````````````````````````````````                                                                                                                      creen"){
+            mainNavPanel.remove(terugButton);
+        }else {
+            mainNavPanel.add(terugButton, BorderLayout.EAST);
+        }
 
         mainNavPanel.setBorder(border);
 
@@ -107,6 +114,15 @@ public class StandardView {
         getWindow().setLocationRelativeTo(null);
         window.add(mainPanel);
         window.setVisible(true);
+        mainPanel.setLayout(new BorderLayout(80,30));
+        panel.setLayout(new BorderLayout(0,0));
+
+        panel.add(mainNavPanel, BorderLayout.NORTH);
+        panel.add(interactiePanel, BorderLayout.CENTER);
+
+        mainPanel.add(welkomPanel, BorderLayout.NORTH);
+        mainPanel.add(panel, BorderLayout.CENTER);
+
     }
     public void addPath(String tekst){
         path.add(tekst);
