@@ -93,7 +93,7 @@ public class VoorwerpView extends StandardView {
         //voorwerpenPanel.add(typeLabel);
         //voorwerpenPanel.add(typeComboBox);
 
-        mainPanel.add(voorwerpenPanel);
+        interactiePanel.add(voorwerpenPanel);
         addPath("Voorwerp zoeken");
         showWindow();
     }
@@ -105,8 +105,8 @@ public class VoorwerpView extends StandardView {
         voorwerpenPanel.setLayout(new GridLayout(2,1));
         JScrollPane scrollPane = new JScrollPane(overviewVoorwerpen);
         voorwerpenPanel.add(scrollPane);
-        mainPanel.add(voorwerpenPanel);
-        mainPanel.add(voorwerpAfgehaald);
+        interactiePanel.add(voorwerpenPanel);
+        interactiePanel.add(voorwerpAfgehaald);
         deleteLastInPath();
         deleteLastInPath();
         addPath("Overzicht voorwerpen");
@@ -131,7 +131,7 @@ public class VoorwerpView extends StandardView {
         voorwerpenPanel.add(klantComboBox);
         voorwerpenPanel.add(toevoegenVoorwerpButton);
 
-        mainPanel.add(voorwerpenPanel);
+        interactiePanel.add(voorwerpenPanel);
 
         path.add("Voorwerp toevoegen");
         showWindow();

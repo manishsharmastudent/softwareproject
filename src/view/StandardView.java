@@ -28,7 +28,7 @@ public class StandardView {
 
     protected Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     protected JPanel welkomPanel = new JPanel();
-    protected JPanel interactiePanel = new JPanel(new SpringLayout());
+    protected JPanel interactiePanel = new JPanel();
     protected JPanel panel= new JPanel();
     protected JPanel navigationPanel = new JPanel(); //mainNavPanel //Tree structure
     protected JPanel mainNavPanel = new JPanel();//fullNavigationPanel
@@ -51,6 +51,8 @@ public class StandardView {
             initWelkomBoard();
             initNavTree();
         }
+
+        interactiePanel.setBorder(border);
 
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -118,7 +120,11 @@ public class StandardView {
         panel.setLayout(new BorderLayout(0,0));
 
         panel.add(mainNavPanel, BorderLayout.NORTH);
+
+
         panel.add(interactiePanel, BorderLayout.CENTER);
+
+
 
         mainPanel.add(welkomPanel, BorderLayout.NORTH);
         mainPanel.add(panel, BorderLayout.CENTER);

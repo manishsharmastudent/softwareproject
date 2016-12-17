@@ -141,14 +141,7 @@ public class KortingView extends StandardView {
 
         addPath("Instellingen Korting");
         showWindow();
-        ////
 
-
-
-        /////ik heb author name bij push geschreven
-
-        //////cocmsdkovnhaisduhfiobjszduirhxfg
-        ///dit
     }
     public static void main(String [] args){
 

@@ -80,6 +80,8 @@ public class KlantView extends StandardView {
     public JButton getSearchButtonRijksregisterNummer(){ return this.searchButtonRijksregisterNummer; }
     public JButton getKlantUpdateButton(){return this.klantUpdateButton;}
     public void showUpdateKlant(Klant klant){
+        this.showWindow();
+
         klantPanel.removeAll();
         klantPanel.updateUI();
         klantPanel.setLayout(new GridLayout(7,1));
@@ -104,13 +106,16 @@ public class KlantView extends StandardView {
         klantPanel.add(stadText);
         klantPanel.add(klantUpdateButton);
 
-        mainPanel.add(klantPanel);
+        interactiePanel.add(klantPanel);
+
+
         deleteLastInPath();
         deleteLastInPath();
         path.add("Klant Aanpassen");
-        showWindow();
     }
     public void showKlantToevoegen(){
+        showWindow();
+
         klantPanel.setLayout(new GridLayout(7,1));
 
         klantPanel.add(rijksregisterNummerLabel);
@@ -127,10 +132,10 @@ public class KlantView extends StandardView {
         klantPanel.add(stadText);
         klantPanel.add(klantToevoegenButton);
 
-        mainPanel.add(klantPanel);
+
+        interactiePanel.add(klantPanel);
 
         path.add("Klant Toevoegen");
-        showWindow();
     }
     public void showKlantZoeken(){
         klantPanel.setLayout(new GridLayout(4,3));
@@ -145,7 +150,7 @@ public class KlantView extends StandardView {
         klantPanel.add(achternaamText);
         klantPanel.add(searchButtonLastname);
 
-        mainPanel.add(klantPanel);
+        interactiePanel.add(klantPanel);
         addPath("Klant zoeken");
         showWindow();
     }

@@ -56,7 +56,7 @@ public class LoginView extends StandardView {
         panelGegevens.add(loginWachtwoordText);
         panelGegevens.add(aanmelden);
         panelGegevens.add(vergeetPaswoord);
-        mainPanel.add(panelGegevens);
+        interactiePanel.add(panelGegevens);
 
         window.pack();
         this.showWindow();

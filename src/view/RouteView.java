@@ -56,7 +56,7 @@ public class RouteView extends StandardView {
         routePanel.add(bestemmingStation);
         routePanel.add(getRouteButton);
 
-        mainPanel.add(routePanel);
+        interactiePanel.add(routePanel);
         addPath("Route opzoeken");
 
         showWindow();
