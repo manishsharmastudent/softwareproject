@@ -55,7 +55,7 @@ public class LiveboardParseController {
             trein.setVetrkPlatform(trein.getHaltes().get(0).getDeparturePlatform());
         }
 
-        lb = new Liveboard(station, false, LocalDateTime.now());
+        lb = new Liveboard(station, LocalDateTime.now());
         LiveboardParseController.writeLiveboardToCache(lb);
         lb.setLive(true);
         return lb;

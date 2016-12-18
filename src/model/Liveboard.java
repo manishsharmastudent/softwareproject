@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  */
 public class Liveboard implements Serializable {
     private Station station;
-    private Boolean live;
+    private Boolean live = false;
     private LocalDateTime timeVersion;
     private String exception;
     private String jsonException;
@@ -16,6 +16,11 @@ public class Liveboard implements Serializable {
     public Liveboard(Station station, Boolean live, LocalDateTime tv) {
         this.station = station;
         this.live = live;
+        this.timeVersion = tv;
+    }
+
+    public Liveboard(Station station, LocalDateTime tv) {
+        this.station = station;
         this.timeVersion = tv;
     }
 

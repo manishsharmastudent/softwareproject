@@ -33,11 +33,10 @@ public class ParseController {
     }
 
     private static String getCurlUrl(String from, String to) throws IOException {
-        String curlUrl = null;
         /** vervolledig het request hier **/
-        //String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
-        curlUrl = getStringFromJsonFile("\\\\dt-srv-file1\\Studentenhomes\\nofel.tiani\\Documents\\Holleken");
-        //String curlUrl = NetUtil.curlURL(finalURl);
+        String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
+        //curlUrl = getStringFromJsonFile("\\\\dt-srv-file1\\Studentenhomes\\nofel.tiani\\Documents\\Holleken");
+        String curlUrl = NetUtil.curlURL(finalURl);
 
         return curlUrl;
     }
@@ -63,7 +62,7 @@ public class ParseController {
  **/
 
     /**
-     * Deze methode behandeld de vraag naar een route tussen 2 stations
+     * Behandeld de vraag naar een route tussen 2 stations
      **/
     public static List<Traject> getTraject(String from, String to) throws Exception {
 
@@ -76,8 +75,7 @@ public class ParseController {
                 throw new Exception("API is down");
             }
 
-            JSONArray arrCon = jBase.getJSONArray("Routes");
-            traject = TrajectParseController.getTrajecten(arrCon);
+            traject = TrajectParseController.getTrajecten(jBase);
 
         } catch (IOException io) {
             System.err.println("Error");
@@ -87,10 +85,9 @@ public class ParseController {
     }
 
     /**
-     * Deze methode behandeld de vraag naar alle treinen die in een specifieke station aankomt
+     * Behandeld de vraag naar alle treinen die van een specifieke station vertrekt
      **/
     public static Liveboard getStationBoard(String stationNaam) throws Exception {
-        Station station = new Station();
         Liveboard lb;
 
         String curlUrl = getCurlUrl(stationNaam);
@@ -103,21 +100,5 @@ public class ParseController {
             lb.setJsonException(e.getMessage());
             return lb;
         }
-    }
-
-    public static void main(String[] args) {
-        try {
-             List<Traject> tra = getTraject("Liege-Guillemins", "Antwerpen-Centraal");
-
-            // tra.forEach(e -> System.out.print(e));
-
-           // Liveboard antw = getStationBoard("Merode");
-
-            System.out.println(tra.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.toString());
-        }
-
     }
 }

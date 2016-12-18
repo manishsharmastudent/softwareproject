@@ -17,6 +17,27 @@ import java.util.function.Consumer;
  */
 public class TrajectParseController {
 
+    private static void getTransferStations(Traject trj, JSONArray transferArray){
+        transferArray.forEach(new Consumer<Object>() {
+            @Override
+            public void accept(Object transfer) {
+                JSONObject ts = (JSONObject) transfer;
+
+                if (!ts.isNull("TransferAt")) {
+                    String transferStation = null;
+                    if(ts.has("TransferAt") && !ts.isNull("TransferAt"))
+                        transferStation = ts.getString("TransferAt");
+
+                    String transferPlatform = null;
+                    if(ts.has("DeparturePlatform") && !ts.isNull("DeparturePlatform"))
+                        transferPlatform = ts.getString("DeparturePlatform");
+
+                    trj.setTransferstations(transferStation, transferPlatform);
+                }
+            }
+        });
+
+    }
     private static void getRouteTimes(Traject trj) throws HalteNotFoundException {
 
         Halte hlte;
@@ -63,36 +84,19 @@ public class TrajectParseController {
 
             if (obj.getJSONArray("TransferStations").length() > 1) {
                 JSONArray arrTransfer = obj.getJSONArray("TransferStations");
-                arrTransfer.forEach(new Consumer<Object>() {
-                    @Override
-                    public void accept(Object transfer) {
-                        JSONObject ts = (JSONObject) transfer;
-
-                        if (!ts.isNull("TransferAt")) {
-                            String transferStation = null;
-                            if(ts.has("TransferAt") && !ts.isNull("TransferAt"))
-                                transferStation = ts.getString("TransferAt");
-
-                            String transferPlatform = null;
-                            if(ts.has("DeparturePlatform") && !ts.isNull("DeparturePlatform"))
-                                transferPlatform = ts.getString("DeparturePlatform");
-
-                            trj.setTransferstations(transferStation, transferPlatform);
-                        }
-                    }
-                });
+                getTransferStations(trj, arrTransfer);
             }
 
         } catch (HalteNotFoundException h) {
             throw new OnvolledigeTrajectException(h.getMessage());
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
 
         return trj;
     }
 
-    public static List<Traject> getTrajecten(JSONArray arrCon) {
+    public static List<Traject> getTrajecten(JSONObject jBase) {
         List<Traject> trajecten = new ArrayList<Traject>();
+        JSONArray arrCon = jBase.getJSONArray("Routes");
 
         arrCon.forEach(new Consumer<Object>() {
             @Override
@@ -107,7 +111,7 @@ public class TrajectParseController {
 
                     try {
                         trj = getTraject(obj);
-                        if (trj.getVertrekTijd() != null)
+                        if ((trj.getVertrekTijd() != null) && (trj.getAankomstTijd() != null))
                             trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
                     } catch (OnvolledigeTrajectException e) {
                         trj.setException(e.getMessage());
@@ -115,7 +119,6 @@ public class TrajectParseController {
                     trajecten.add(trj);
                 }
             }
-
         });
 
         return trajecten;
