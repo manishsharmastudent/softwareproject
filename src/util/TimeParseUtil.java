@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 /**
  * Created by Nofel on 11-11-16.
  */
-public class TimeParseController {
+public class TimeParseUtil {
 
     public static LocalDateTime getTime (String timeString)
     {

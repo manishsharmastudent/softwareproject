@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 import exceptions.HalteNotFoundException;
 import exceptions.OnvolledigeTrajectException;
@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 /**
  * Created by Nofel on 11-11-16.
  */
-public class TrajectParseController {
+public class TrajectParseUtil {
 
     private static void getTransferStations(Traject trj, JSONArray transferArray){
         transferArray.forEach(new Consumer<Object>() {
@@ -75,7 +75,7 @@ public class TrajectParseController {
         trj.setCancelled(obj.getBoolean("Cancelled"));
 
         JSONArray arrTrains = obj.getJSONArray("Trains");
-        trj.setTreinen(TreinParseController.getTrains(arrTrains));
+        trj.setTreinen(TreinParseUtil.getTrains(arrTrains));
 
         try {
             if (!(trj.getTreinen().isEmpty())) {

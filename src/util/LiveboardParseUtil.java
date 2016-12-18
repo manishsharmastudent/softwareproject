@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 import model.Liveboard;
 import model.Station;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * Created by Nofel on 05-12-16.
  */
-public class LiveboardParseController {
+public class LiveboardParseUtil {
 
     public static boolean writeLiveboardToCache(Liveboard lb) {
         String naam = lb.getStation().getNaam();
@@ -49,14 +49,14 @@ public class LiveboardParseController {
         Liveboard lb;
         Station station;
         
-        station = TreinParseController.getLiveBoard(jArray);
+        station = TreinParseUtil.getLiveBoard(jArray);
         station.setNaam(s);
         for (Trein trein:station.getTreinen()) {
             trein.setVetrkPlatform(trein.getHaltes().get(0).getDeparturePlatform());
         }
 
         lb = new Liveboard(station, LocalDateTime.now());
-        LiveboardParseController.writeLiveboardToCache(lb);
+        LiveboardParseUtil.writeLiveboardToCache(lb);
         lb.setLive(true);
         return lb;
     }

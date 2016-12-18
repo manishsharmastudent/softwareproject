@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Liveboard;
-import model.Station;
+import util.LiveboardParseUtil;
 import util.NetUtil;
-
-import java.time.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import model.Traject;
+import util.TrajectParseUtil;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -75,7 +74,7 @@ public class ParseController {
                 throw new Exception("API is down");
             }
 
-            traject = TrajectParseController.getTrajecten(jBase);
+            traject = TrajectParseUtil.getTrajecten(jBase);
 
         } catch (IOException io) {
             System.err.println("Error");
@@ -93,10 +92,10 @@ public class ParseController {
         String curlUrl = getCurlUrl(stationNaam);
         try{
             JSONArray jArray = new JSONArray(curlUrl);
-            lb = LiveboardParseController.getLiveBoard(jArray, stationNaam);
+            lb = LiveboardParseUtil.getLiveBoard(jArray, stationNaam);
             return lb;
         }catch (Exception e){
-            lb = LiveboardParseController.getLiveboardFromCache(stationNaam);
+            lb = LiveboardParseUtil.getLiveboardFromCache(stationNaam);
             lb.setJsonException(e.getMessage());
             return lb;
         }

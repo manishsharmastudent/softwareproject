@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 import model.Station;
 import model.Trein;
@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 /**
  * Created by Nofel on 11-11-16.
  */
-public class TreinParseController {
+public class TreinParseUtil {
 
     public static Station getLiveBoard(JSONArray jArray) {
         Station station = new Station();
@@ -49,8 +49,8 @@ public class TreinParseController {
             JSONObject tijd = obj.getJSONObject("Time");
             String vertrek = tijd.getString("Departure");
             String actueelVertrek = tijd.getString("ActualDeparture");
-            t.setDeparture(TimeParseController.getTime(vertrek));
-            t.setActualDeparture(TimeParseController.getTime(actueelVertrek));
+            t.setDeparture(TimeParseUtil.getTime(vertrek));
+            t.setActualDeparture(TimeParseUtil.getTime(actueelVertrek));
         }
 
         t.setBestemming(obj.getString("TerminusStation"));
@@ -98,10 +98,10 @@ public class TreinParseController {
 
         if(obj.has("Time") && !obj.isNull("Time")) {
             JSONObject halteTime = obj.getJSONObject("Time");
-            h.setArrival(TimeParseController.getTime(halteTime.getString("Arrival")));
-            h.setActualArrival(TimeParseController.getTime(halteTime.getString("ActualArrival")));
-            h.setDeparture(TimeParseController.getTime(halteTime.getString("Departure")));
-            h.setActualDeparture(TimeParseController.getTime(halteTime.getString("ActualDeparture")));
+            h.setArrival(TimeParseUtil.getTime(halteTime.getString("Arrival")));
+            h.setActualArrival(TimeParseUtil.getTime(halteTime.getString("ActualArrival")));
+            h.setDeparture(TimeParseUtil.getTime(halteTime.getString("Departure")));
+            h.setActualDeparture(TimeParseUtil.getTime(halteTime.getString("ActualDeparture")));
         }
 
         return h;
