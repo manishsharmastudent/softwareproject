@@ -1,12 +1,8 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import controller.TimeParseController;
-import controller.TimeParseController.*;
 
 /**
  * Created by Manish on 29/10/2016.

@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 /**
  * Created by Nofel on 11-11-16.
  */
-public class TimeParseController {
+public class TimeParseUtil {
 
     public static LocalDateTime getTime (String timeString)
     {
@@ -21,10 +21,21 @@ public class TimeParseController {
 
     public static String getDelay(LocalDateTime departure, LocalDateTime actual) {
 
-        if((departure == null) || (actual == null) || (departure.equals(actual)))
+        if((departure == null) || (actual == null) || (departure.equals(actual))) {
             return "Geen vertraging";
-        else
-            return Duration.between(departure,actual).toString();
+        }
+        else {
+            Duration duur = Duration.between(departure, actual);
+            int minuten;
+
+            minuten = (int) duur.getSeconds() / 60;
+
+
+            String vertraging = minuten + " minuten";
+
+
+            return vertraging;
+        }
 
     }
 
@@ -38,6 +49,21 @@ public class TimeParseController {
         seconden = tijd.getSecond();
 
         String formattedTijd = uur + ":" + minuten + ":" + seconden;
+        return formattedTijd;
+    }
+
+    public static String formatTimeDate(LocalDateTime tijd){
+        String uur = formatTime(tijd);
+
+        int dag;
+        int maand;
+        int jaar;
+
+        dag = tijd.getDayOfMonth();
+        maand = tijd.getMonthValue();
+        jaar = tijd.getYear();
+
+        String formattedTijd = dag + "/" + maand + "/" + jaar + " " + uur;
         return formattedTijd;
     }
 

@@ -1,6 +1,7 @@
-package controller;
+package util;
 
 import exceptions.HalteNotFoundException;
+import exceptions.OnvolledigeTrajectException;
 import model.Halte;
 import model.Traject;
 import org.json.JSONArray;
@@ -14,8 +15,29 @@ import java.util.function.Consumer;
 /**
  * Created by Nofel on 11-11-16.
  */
-public class TrajectParseController {
+public class TrajectParseUtil {
 
+    private static void getTransferStations(Traject trj, JSONArray transferArray){
+        transferArray.forEach(new Consumer<Object>() {
+            @Override
+            public void accept(Object transfer) {
+                JSONObject ts = (JSONObject) transfer;
+
+                if (!ts.isNull("TransferAt")) {
+                    String transferStation = null;
+                    if(ts.has("TransferAt") && !ts.isNull("TransferAt"))
+                        transferStation = ts.getString("TransferAt");
+
+                    String transferPlatform = null;
+                    if(ts.has("DeparturePlatform") && !ts.isNull("DeparturePlatform"))
+                        transferPlatform = ts.getString("DeparturePlatform");
+
+                    trj.setTransferstations(transferStation, transferPlatform);
+                }
+            }
+        });
+
+    }
     private static void getRouteTimes(Traject trj) throws HalteNotFoundException {
 
         Halte hlte;
@@ -45,7 +67,7 @@ public class TrajectParseController {
         }
     }
 
-    private static Traject getTraject(JSONObject obj) {
+    private static Traject getTraject(JSONObject obj) throws OnvolledigeTrajectException {
 
         Traject trj = new Traject();
         trj.setVetrekStation(obj.getString("Departure"));
@@ -53,35 +75,28 @@ public class TrajectParseController {
         trj.setCancelled(obj.getBoolean("Cancelled"));
 
         JSONArray arrTrains = obj.getJSONArray("Trains");
-        trj.setTreinen(TreinParseController.getTrains(arrTrains));
+        trj.setTreinen(TreinParseUtil.getTrains(arrTrains));
 
         try {
             if (!(trj.getTreinen().isEmpty())) {
                 getRouteTimes(trj);
             }
+
+            if (obj.getJSONArray("TransferStations").length() > 1) {
+                JSONArray arrTransfer = obj.getJSONArray("TransferStations");
+                getTransferStations(trj, arrTransfer);
+            }
+
         } catch (HalteNotFoundException h) {
-            trj.setException(h.getMessage());
-        } catch (Exception e) {
-        }
+            throw new OnvolledigeTrajectException(h.getMessage());
+        } catch (Exception e) {}
 
-        if (obj.getJSONArray("TransferStations").length() > 1) {
-            JSONArray arrTransfer = obj.getJSONArray("TransferStations");
-            arrTransfer.forEach(new Consumer<Object>() {
-                @Override
-                public void accept(Object transfer) {
-                    JSONObject ts = (JSONObject) transfer;
-
-                    if (!ts.isNull("TransferAt")) {
-                        //trj.setTransferstations(ts.getString("TransferAt"));
-                    }
-                }
-            });
-        }
         return trj;
     }
 
-    public static List<Traject> getTrajecten(JSONArray arrCon) {
+    public static List<Traject> getTrajecten(JSONObject jBase) {
         List<Traject> trajecten = new ArrayList<Traject>();
+        JSONArray arrCon = jBase.getJSONArray("Routes");
 
         arrCon.forEach(new Consumer<Object>() {
             @Override
@@ -94,15 +109,16 @@ public class TrajectParseController {
 
                     Traject trj = null;
 
-                    trj = getTraject(obj);
-                    if (trj.getVertrekTijd() != null)
-                        trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
-
-
+                    try {
+                        trj = getTraject(obj);
+                        if ((trj.getVertrekTijd() != null) && (trj.getAankomstTijd() != null))
+                            trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
+                    } catch (OnvolledigeTrajectException e) {
+                        trj.setException(e.getMessage());
+                    }
                     trajecten.add(trj);
                 }
             }
-
         });
 
         return trajecten;

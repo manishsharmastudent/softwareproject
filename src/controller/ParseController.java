@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Liveboard;
-import model.Station;
+import util.LiveboardParseUtil;
 import util.NetUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import model.Traject;
+import util.TrajectParseUtil;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,11 +32,10 @@ public class ParseController {
     }
 
     private static String getCurlUrl(String from, String to) throws IOException {
-        String curlUrl = null;
         /** vervolledig het request hier **/
-        //String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
-        curlUrl = getStringFromJsonFile("\\\\dt-srv-file1\\Studentenhomes\\nofel.tiani\\Documents\\Holleken");
-        //String curlUrl = NetUtil.curlURL(finalURl);
+        String finalURl = CONNECTIONS_URL + "Route/" + from + "/" + to;
+        //curlUrl = getStringFromJsonFile("\\\\dt-srv-file1\\Studentenhomes\\nofel.tiani\\Documents\\Holleken");
+        String curlUrl = NetUtil.curlURL(finalURl);
 
         return curlUrl;
     }
@@ -61,7 +61,7 @@ public class ParseController {
  **/
 
     /**
-     * Deze methode behandeld de vraag naar een route tussen 2 stations
+     * Behandeld de vraag naar een route tussen 2 stations
      **/
     public static List<Traject> getTraject(String from, String to) throws Exception {
 
@@ -74,8 +74,7 @@ public class ParseController {
                 throw new Exception("API is down");
             }
 
-            JSONArray arrCon = jBase.getJSONArray("Routes");
-            traject = TrajectParseController.getTrajecten(arrCon);
+            traject = TrajectParseUtil.getTrajecten(jBase);
 
         } catch (IOException io) {
             System.err.println("Error");
@@ -85,19 +84,18 @@ public class ParseController {
     }
 
     /**
-     * Deze methode behandeld de vraag naar alle treinen die in een specifieke station aankomt
+     * Behandeld de vraag naar alle treinen die van een specifieke station vertrekt
      **/
-    public static Liveboard getStationBoard(String s) {
-        Station station = new Station();
+    public static Liveboard getStationBoard(String stationNaam) throws Exception {
         Liveboard lb;
 
-        String curlUrl = getCurlUrl(s);
-        try {
+        String curlUrl = getCurlUrl(stationNaam);
+        try{
             JSONArray jArray = new JSONArray(curlUrl);
-            lb = LiveboardParseController.getLiveBoard(jArray, s);
+            lb = LiveboardParseUtil.getLiveBoard(jArray, stationNaam);
             return lb;
-        } catch (Exception e) {
-            lb = LiveboardParseController.getLiveboardFromCache(s);
+        }catch (Exception e){
+            lb = LiveboardParseUtil.getLiveboardFromCache(stationNaam);
             lb.setJsonException(e.getMessage());
             return lb;
         }

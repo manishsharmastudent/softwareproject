@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 import model.Liveboard;
 import model.Station;
@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 /**
  * Created by Nofel on 05-12-16.
  */
-public class LiveboardParseController {
+public class LiveboardParseUtil {
 
     public static boolean writeLiveboardToCache(Liveboard lb) {
         String naam = lb.getStation().getNaam();
         try {
-            ObjectOutputStream obos = new ObjectOutputStream(new FileOutputStream("cache\\cache_liveboard_" + naam + ".tmp"));
+            ObjectOutputStream obos = new ObjectOutputStream(new FileOutputStream("cache_liveboard_" + naam + ".tmp"));
             obos.writeObject(lb);
             obos.close();
         } catch (IOException e) {
@@ -30,7 +30,7 @@ public class LiveboardParseController {
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream("cache\\cache_liveboard_" + naam + ".tmp");
+            fis = new FileInputStream("cache_liveboard_" + naam + ".tmp");
             ObjectInputStream obis = new ObjectInputStream(fis);
             lb = (Liveboard) obis.readObject();
             obis.close();
@@ -39,8 +39,6 @@ public class LiveboardParseController {
         } catch (ClassNotFoundException e) {
             lb.setException(e.getMessage());
         } catch (IOException e) {
-            lb.setException(e.getMessage());
-        } catch (Exception e){
             lb.setException(e.getMessage());
         }
 
@@ -51,14 +49,14 @@ public class LiveboardParseController {
         Liveboard lb;
         Station station;
 
-        station = TreinParseController.getLiveBoard(jArray);
+        station = TreinParseUtil.getLiveBoard(jArray);
         station.setNaam(s);
         for (Trein trein:station.getTreinen()) {
             trein.setVetrkPlatform(trein.getHaltes().get(0).getDeparturePlatform());
         }
 
-        lb = new Liveboard(station, false, LocalDateTime.now());
-        LiveboardParseController.writeLiveboardToCache(lb);
+        lb = new Liveboard(station, LocalDateTime.now());
+        LiveboardParseUtil.writeLiveboardToCache(lb);
         lb.setLive(true);
         return lb;
     }
