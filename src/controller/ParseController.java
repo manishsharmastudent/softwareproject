@@ -89,35 +89,19 @@ public class ParseController {
     /**
      * Deze methode behandeld de vraag naar alle treinen die in een specifieke station aankomt
      **/
-    public static Liveboard getStationBoard(String s){
+    public static Liveboard getStationBoard(String s) {
         Station station = new Station();
         Liveboard lb;
 
         String curlUrl = getCurlUrl(s);
-        try{
+        try {
             JSONArray jArray = new JSONArray(curlUrl);
             lb = LiveboardParseController.getLiveBoard(jArray, s);
             return lb;
-        }catch (Exception e){
+        } catch (Exception e) {
             lb = LiveboardParseController.getLiveboardFromCache(s);
             lb.setJsonException(e.getMessage());
             return lb;
         }
-    }
-
-    public static void main(String[] args) {
-        try {
-            // List<Traject> tra = getTraject("Ternat", "Holleken");
-
-            // tra.forEach(e -> System.out.print(e));
-
-            Liveboard antw = getStationBoard("Merode");
-
-            System.out.println(antw.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.toString());
-        }
-
     }
 }

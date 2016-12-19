@@ -58,7 +58,6 @@ public class AbonnementController {
     public void setPrijs(Float prijs){ abonnementModel.setPrijs(prijs); }
     public void setActive(Boolean active){ abonnementModel.setActive(active); }
 
-    public void showAbonnement(Abonnement abonnement){ abonnementView.showAanpassenAbonnement(abonnement);}
     public void showToevoegenAbonnement(){
         abonnementView.showToevoegenAbonnement();
         initComboBoxes();
@@ -162,7 +161,7 @@ public class AbonnementController {
         abonnementView.getUpdateButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Abonnement abonnement = new Abonnement(abonnementView.getAboId(), new ManageKorting().getKortingByid(abonnementView.getKorting()), abonnementView.getBegindatum(), abonnementView.getEinddatum(),new ManageRoute().getRouteById(abonnementView.getRoute()), new ManageKlant().getKlantByRijksregister(abonnementView.getKlant()), 0.0f,  abonnementView.getAfsluiten());
+                Abonnement abonnement = new Abonnement(abonnementView.getAboId(), new ManageKorting().getKortingByid(abonnementView.getKorting()), new Date(), new Date(),new ManageRoute().getRouteById(abonnementView.getRoute()), new ManageKlant().getKlantByRijksregister(abonnementView.getKlant()), 0.0f,  abonnementView.isActive());
                 abonnementManage.updateAbonnement(abonnement);
             }
         });
