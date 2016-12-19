@@ -131,24 +131,13 @@ public class KortingView extends StandardView {
 
 
         interactiePanel.add(kortingPanel);
-//
-        //////////
 
-        //;/
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
 
         addPath("Instellingen Korting");
         showWindow();
-        ////
-
-
-
-        /////ik heb author name bij push geschreven
-
-        //////cocmsdkovnhaisduhfiobjszduirhxfg
-        ///dit
     }
     public static void main(String [] args){
 

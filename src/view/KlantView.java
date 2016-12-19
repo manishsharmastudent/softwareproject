@@ -133,7 +133,7 @@ public class KlantView extends StandardView {
         klantPanel.add(stadText);
         klantPanel.add(klantToevoegenButton);
 
-        mainPanel.add(klantPanel);
+        interactiePanel.add(klantPanel);
 
         path.add("Klant Toevoegen");
         showWindow();
@@ -151,7 +151,7 @@ public class KlantView extends StandardView {
         klantPanel.add(achternaamText);
         klantPanel.add(searchButtonLastname);
 
-        mainPanel.add(klantPanel);
+        interactiePanel.add(klantPanel);
         addPath("Klant zoeken");
         showWindow();
     }
@@ -163,7 +163,7 @@ public class KlantView extends StandardView {
         JScrollPane scrollPane = new JScrollPane(klantTable);
         gevondenKlantenPanel.add(scrollPane);
         gevondenKlantenPanel.add(aanpassenKlant);
-        klantPanel.add(gevondenKlantenPanel);
+        interactiePanel.add(gevondenKlantenPanel);
     }
     public void initTable(java.util.List<Klant> klantList){
         String[] headers = {"Rijksregister", "Voornaam", "Achternaam", "Adres", "Postcode", "Stad"};

@@ -84,7 +84,7 @@ public class StationView extends StandardView {
         stationPanel.add(stadText);
         stationPanel.add(zoekLiveboardButton);
 
-        mainPanel.add(stationPanel);
+        interactiePanel.add(stationPanel);
 
         addPath("Zoek liveboard");
         showWindow();
@@ -110,7 +110,7 @@ public class StationView extends StandardView {
         scrollPane.setAlignmentX(LEFT_ALIGNMENT);
         stationPanel.add(scrollPane);
 
-        mainPanel.add(stationPanel);
+        interactiePanel.add(stationPanel);
         showWindow();
     }
     public void initTable(List<Trein>treinList){

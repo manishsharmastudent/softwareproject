@@ -56,7 +56,7 @@ public class RouteView extends StandardView {
         routePanel.add(bestemmingStation);
         routePanel.add(getRouteButton);
 
-        mainPanel.add(routePanel);
+        interactiePanel.add(routePanel);
         addPath("Route opzoeken");
 
         showWindow();
@@ -95,9 +95,9 @@ public class RouteView extends StandardView {
         }
 
         addPath(trajectList.get(0).getVertrekStation() + " - " + trajectList.get(0).getAankomstStation());
-        mainPanel.removeAll();
-        mainPanel.add(searchedRoutes);
-        mainPanel.updateUI();
+        interactiePanel.removeAll();
+        interactiePanel.add(searchedRoutes);
+        interactiePanel.updateUI();
     }
 
     public void showError(){

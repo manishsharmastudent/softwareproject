@@ -143,7 +143,7 @@ public class AbonnementView extends StandardView {
         abonnementPanel.add(active);
         abonnementPanel.add(updateButton);
 
-        mainPanel.add(abonnementPanel);
+        interactiePanel.add(abonnementPanel);
         deleteLastInPath();
         deleteLastInPath();
         showWindow();
@@ -158,7 +158,7 @@ public class AbonnementView extends StandardView {
         abonnementPanel.add(abonnementNummerText);
         abonnementPanel.add(zoekAbonnementOpAboIdButton);
 
-        mainPanel.add(abonnementPanel);
+        interactiePanel.add(abonnementPanel);
         path.add("Abonnement zoeken");
         showWindow();
     }
@@ -168,7 +168,7 @@ public class AbonnementView extends StandardView {
             JScrollPane scrollPane = new JScrollPane(abonnementenTable);
             gevondenAbonnementen.add(scrollPane);
             gevondenAbonnementen.add(aanpasButton);
-            mainPanel.add(gevondenAbonnementen);
+            interactiePanel.add(gevondenAbonnementen);
             showWindow();
         }
     public void showToevoegenAbonnement(){
@@ -186,7 +186,7 @@ public class AbonnementView extends StandardView {
         abonnementPanel.add(datePickerEindDatum);
         abonnementPanel.add(toevoegenAbonnement);
 
-        mainPanel.add(abonnementPanel);
+        interactiePanel.add(abonnementPanel);
 
         path.add("Abonnement toevoegen");
 

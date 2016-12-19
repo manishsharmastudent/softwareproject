@@ -1,11 +1,8 @@
 package view;
 
 import com.google.maps.DistanceMatrixApi;
-import com.google.maps.DistanceMatrixApiRequest;
 import com.google.maps.GeoApiContext;
-import com.google.maps.errors.ApiException;
 import com.google.maps.model.*;
-import lu.tudor.santec.jtimechooser.JTimeChooser;
 
 import java.awt.*;
 
@@ -15,16 +12,13 @@ import java.awt.*;
 public class UserSettingsView extends StandardView {
 
 
-    private JTimeChooser loginTime = new JTimeChooser();
-
-
     UserSettingsView(String titel) {
         super(titel);
     }
 
     public void showUserSettingsView() throws Exception {
 
-        interactiePanel.add(loginTime);
+        //interactiePanel.add(loginTime);
 
 
 
