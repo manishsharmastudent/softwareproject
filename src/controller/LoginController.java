@@ -56,7 +56,6 @@ public class LoginController {
         controleerLogin();
         vergeetPasswoord();
     }
-
     public void controleerLogin(){
         loginView.getAanmeldButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
