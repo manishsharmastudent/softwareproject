@@ -1,5 +1,8 @@
 package view;
 
+import controller.LoginController;
+import hibernate.SessionFactorySingleton;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
@@ -26,6 +29,10 @@ public class StandardView {
     protected JPanel mainPanel = new JPanel();
     protected FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
 
+    private JMenuBar menuBar;
+    private JMenu menu;
+    private JMenuItem afmelden = new JMenuItem("Afmelden");
+
     protected Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     protected JPanel welkomPanel = new JPanel();
     protected JPanel interactiePanel = new JPanel();
@@ -50,8 +57,8 @@ public class StandardView {
             initTimeAndDate();
             initWelkomBoard();
             initNavTree();
+            initMenuBar();
         }
-
         interactiePanel.setBorder(border);
 
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -60,9 +67,24 @@ public class StandardView {
     public JFrame getWindow(){
         return this.window;
     }
-    public JPanel getMainPanel(){ return this.mainPanel; }
     public JButton getTerugButton(){return this.terugButton; }
 
+    public void initMenuBar(){
+        menuBar = new JMenuBar();
+        menu = new JMenu("Afmelden");
+        afmelden.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                window.dispose();
+                window.setVisible(false);
+                SessionFactorySingleton.getSessionFactory().close();
+                new LoginController().showLoginScreen();
+            }
+        });
+        menu.add(afmelden);
+        menuBar.add(menu);
+        window.setJMenuBar(menuBar);
+    }
     public void initTimeAndDate(){
         final Timer simpleTimer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -112,7 +134,7 @@ public class StandardView {
     public void showWindow(){
         showPath();
         window.setResizable(false);
-        getWindow().setSize(800,700);
+        getWindow().setSize(800,740);
         getWindow().setLocationRelativeTo(null);
         window.add(mainPanel);
         window.setVisible(true);

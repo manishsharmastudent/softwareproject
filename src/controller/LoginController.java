@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 
 import hibernate.ManageLogin;
+import hibernate.SessionFactorySingleton;
 import model.Login;
 import model.Rol;
 
