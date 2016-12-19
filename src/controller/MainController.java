@@ -43,8 +43,7 @@ public class MainController {
     public void toevoegenKlant(){
         home.getKlantToevoegenButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                home.getWindow().setVisible(false);
-                home.getWindow().dispose();
+                closeHomeWindow();
                 new KlantController().showToevoegenKlant();
             }
         });
@@ -52,9 +51,7 @@ public class MainController {
     public void koopTicket(){
         home.getButtonVoegTicketToe().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                home.getWindow().setVisible(false);
-                home.getWindow().dispose();
-                //logOutTimer.start();
+                closeHomeWindow();
                 new TicketController().showVoegTicketToe();
             }
         });
@@ -63,8 +60,6 @@ public class MainController {
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 closeHomeWindow();
-                home.getWindow().setVisible(false);
-                home.getWindow().dispose();
                 new AbonnementController().showToevoegenAbonnement();
             }
         });
@@ -81,8 +76,7 @@ public class MainController {
     public void voegStationToe(){
         home.getVerkoopAboButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                home.getWindow().setVisible(false);
-                home.getWindow().dispose();
+                closeHomeWindow();
                 //stationController.showToevoegenStation();
             }
         });
@@ -91,6 +85,7 @@ public class MainController {
         home.getShowVerlorenVoorwerpenButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                closeHomeWindow();
                 new VoorwerpController().showZoekVoorwerp();
             }
         });
@@ -98,8 +93,7 @@ public class MainController {
     public void voegVoorwerpToe(){
         home.getRvvButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                home.getWindow().setVisible(false);
-                home.getWindow().dispose();
+                closeHomeWindow();
                 new VoorwerpController().showVoorwerpToevoegen();
             }
         });
@@ -108,8 +102,7 @@ public class MainController {
         home.getTreinInfo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                home.getWindow().setVisible(false);
-                home.getWindow().dispose();
+                closeHomeWindow();
                 new RouteController().showZoekRoute();
             }
         });
@@ -118,6 +111,7 @@ public class MainController {
         home.getStationsInfo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                closeHomeWindow();
                 new StationController().showSearchLiveboard();
             }
         });
@@ -135,21 +129,11 @@ public class MainController {
         logOutTimer = new javax.swing.Timer(10000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "U wordt uitgelogd!");
-                home.getWindow().setVisible(false);
-                home.getWindow().dispose();
+                closeHomeWindow();
                 new LoginView("Login").showLoginScreen();
             }
         });
         }
-    public void initMouseMotionListener(){
-        l = new MouseMotionListener() {
-            public void mouseDragged(MouseEvent e) {
-            }
-            public void mouseMoved(MouseEvent e) {
-                logOutTimer.restart();
-            }
-        };
-    }
     private void closeHomeWindow(){
         home.getWindow().setVisible(false);
         home.getWindow().dispose();

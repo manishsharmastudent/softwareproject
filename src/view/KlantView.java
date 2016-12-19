@@ -84,8 +84,6 @@ public class KlantView extends StandardView {
     public JButton getSearchButtonRijksregisterNummer(){ return this.searchButtonRijksregisterNummer; }
     public JButton getKlantUpdateButton(){return this.klantUpdateButton;}
     public void showUpdateKlant(Klant klant){
-        this.showWindow();
-
         klantPanel.removeAll();
         klantPanel.updateUI();
         klantPanel.setLayout(new GridLayout(8,1));
@@ -112,16 +110,13 @@ public class KlantView extends StandardView {
         klantPanel.add(active);
         klantPanel.add(klantUpdateButton);
 
-        interactiePanel.add(klantPanel);
-
-
+        mainPanel.add(klantPanel);
         deleteLastInPath();
         deleteLastInPath();
         path.add("Klant Aanpassen");
+        showWindow();
     }
     public void showKlantToevoegen(){
-        showWindow();
-
         klantPanel.setLayout(new GridLayout(7,1));
 
         klantPanel.add(rijksregisterNummerLabel);
@@ -138,10 +133,10 @@ public class KlantView extends StandardView {
         klantPanel.add(stadText);
         klantPanel.add(klantToevoegenButton);
 
-
         interactiePanel.add(klantPanel);
 
         path.add("Klant Toevoegen");
+        showWindow();
     }
     public void showKlantZoeken(){
         klantPanel.setLayout(new GridLayout(4,3));
@@ -168,7 +163,7 @@ public class KlantView extends StandardView {
         JScrollPane scrollPane = new JScrollPane(klantTable);
         gevondenKlantenPanel.add(scrollPane);
         gevondenKlantenPanel.add(aanpassenKlant);
-        klantPanel.add(gevondenKlantenPanel);
+        interactiePanel.add(gevondenKlantenPanel);
     }
     public void initTable(java.util.List<Klant> klantList){
         String[] headers = {"Rijksregister", "Voornaam", "Achternaam", "Adres", "Postcode", "Stad"};

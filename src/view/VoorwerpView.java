@@ -105,8 +105,8 @@ public class VoorwerpView extends StandardView {
         voorwerpenPanel.setLayout(new GridLayout(2,1));
         JScrollPane scrollPane = new JScrollPane(overviewVoorwerpen);
         voorwerpenPanel.add(scrollPane);
-        interactiePanel.add(voorwerpenPanel);
         interactiePanel.add(voorwerpAfgehaald);
+        interactiePanel.add(voorwerpenPanel);
         deleteLastInPath();
         deleteLastInPath();
         addPath("Overzicht voorwerpen");

@@ -27,14 +27,9 @@ public class LoginView extends StandardView {
         panelGegevens.setLayout(new GridLayout(3, 3));
     }
 
-    public Login getLogin(){
-        return this.login;
-    }
-
     public JTextField getLoginNaamText(){
         return this.loginNaamText;
     }
-
     public JPasswordField getLoginWachtwoordText(){
         return this.loginWachtwoordText;
     }

@@ -47,6 +47,8 @@ public class HomeView extends StandardView {
         return this.verkoopTicketButton;
     }
 
+    public JButton getStationsInfo(){return this.stationsInfo;}
+
     public JButton getVerkoopAboButton() {
         return this.verkoopAboButton;
     }

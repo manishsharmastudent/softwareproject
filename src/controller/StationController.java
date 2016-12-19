@@ -65,7 +65,10 @@ public class StationController {
             public void actionPerformed(ActionEvent e) {
                     System.out.println(stationView.getStadText());
                     Liveboard liveboard = ParseController.getStationBoard(stationView.getStadText());
-                    stationView.showLiveboard(liveboard);
+                    if(liveboard.getStation().getTreinen().size() != 0){stationView.showLiveboard(liveboard);}
+                    else {
+                        stationView.liveboardNotFound();
+                    }
             }
         });
     }
