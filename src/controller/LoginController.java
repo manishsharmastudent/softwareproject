@@ -9,6 +9,8 @@ import model.Login;
 import model.Rol;
 
 import view.LoginView;
+import view.StandardView;
+
 /**
  * Created by Rik Van Belle on 01/11/2016.
  */

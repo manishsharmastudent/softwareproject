@@ -3,7 +3,6 @@ package controller;
 import model.Station;
 import model.Trein;
 import model.Halte;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,7 +24,7 @@ public class TreinParseController {
     }
 
     public static List<Trein> getTrains(JSONArray arr) {
-        final List<Trein> list = new ArrayList<Trein>();
+        List<Trein> list = new ArrayList<Trein>();
         arr.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {
@@ -45,6 +44,15 @@ public class TreinParseController {
         if (!obj.isNull("DepartureStation"))
             t.setVetrek(obj.getString("DepartureStation"));
 
+        if(obj.has("Time") && !obj.isNull("Time"))
+        {
+            JSONObject tijd = obj.getJSONObject("Time");
+            String vertrek = tijd.getString("Departure");
+            String actueelVertrek = tijd.getString("ActualDeparture");
+            t.setDeparture(TimeParseController.getTime(vertrek));
+            t.setActualDeparture(TimeParseController.getTime(actueelVertrek));
+        }
+
         t.setBestemming(obj.getString("TerminusStation"));
         t.setTreinType(obj.getInt("TrainType"));
 
@@ -57,13 +65,13 @@ public class TreinParseController {
     }
 
     public static List<Halte> getHaltes(JSONArray arrStations) {
-        final List<Halte> haltes = new ArrayList<Halte>();
+        List<Halte> haltes = new ArrayList<Halte>();
         arrStations.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {
                 JSONObject obj = (JSONObject) t;
                 haltes.add(getStop(obj));
-             }
+            }
         });
         return haltes;
     }
@@ -73,23 +81,29 @@ public class TreinParseController {
         h.setName(obj.getString("Name"));
         h.setCoordinaten(obj.getString("Coordinates"));
 
-       /* String arrivalPlatform = "0";
+        String arrivalPlatform = "0";
         if (obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
             arrivalPlatform = obj.getString("ArrivalPlatform");
         else if (!obj.isNull("DeparturePlatform"))
             arrivalPlatform = obj.getString("DeparturePlatform");
-        */
+
         String departurePlatform = "0";
         if (obj.has("DeparturePlatform") && !obj.isNull("DeparturePlatform"))
             departurePlatform = obj.getString("DeparturePlatform");
         else if (!obj.isNull("ArrivalPlatform"))
             departurePlatform = obj.getString("ArrivalPlatform");
-        JSONObject hTime = obj.getJSONObject("Time");
+
         h.setDeparturePlatform(departurePlatform);
-        h.setArrival(TimeParseController.getTime(hTime.getString("Arrival")));
-        h.setActualArrival(TimeParseController.getTime(hTime.getString("ActualArrival")));
-        h.setDeparture(TimeParseController.getTime(hTime.getString("Departure")));
-        h.setActualDeparture(TimeParseController.getTime(hTime.getString("ActualDeparture")));
+        h.setAankomstPlatform(arrivalPlatform);
+
+        if(obj.has("Time") && !obj.isNull("Time")) {
+            JSONObject halteTime = obj.getJSONObject("Time");
+            h.setArrival(TimeParseController.getTime(halteTime.getString("Arrival")));
+            h.setActualArrival(TimeParseController.getTime(halteTime.getString("ActualArrival")));
+            h.setDeparture(TimeParseController.getTime(halteTime.getString("Departure")));
+            h.setActualDeparture(TimeParseController.getTime(halteTime.getString("ActualDeparture")));
+        }
+
         return h;
     }
 }

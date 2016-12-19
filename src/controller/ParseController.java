@@ -3,11 +3,6 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.maps.DistanceMatrixApi;
-import com.google.maps.GeoApiContext;
-import com.google.maps.model.DistanceMatrix;
-import com.google.maps.model.TransitMode;
-import com.google.maps.model.TravelMode;
 import model.Station;
 import util.NetUtil;
 import java.io.IOException;
@@ -89,7 +84,9 @@ public class ParseController {
     /** Deze methode behandeld de vraag naar alle treinen die in een specifieke station aankomt **/
     public static Station getStationBoard(String s) throws Exception {
         Station station = new Station();
+        Liveboard lb;
 
+        String curlUrl = getCurlUrl(s);
         try {
             /** vervolledig het request hier **/
             String finalURl = CONNECTIONS_URL + "StationBoard/" + s;

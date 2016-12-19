@@ -1,11 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Manish on 29/10/2016.
  */
-public class Station {
+public class Station implements Serializable{
     private int stationId;
     private String naam;
     private String stad;
