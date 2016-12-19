@@ -63,16 +63,6 @@ public class StationView extends StandardView {
         interactiePanel.add(stadText);
         interactiePanel.add(toevoegButton);
 
-        mainPanel.setLayout(new BorderLayout(80,30));
-        getMainPanel().setLayout(new BorderLayout(80,30));
-        panel.setLayout(new BorderLayout(0,0));
-
-        panel.add(mainNavPanel, BorderLayout.NORTH);
-        panel.add(interactiePanel, BorderLayout.CENTER);
-        mainPanel.add(welkomPanel, BorderLayout.NORTH);
-        mainPanel.add(panel, BorderLayout.CENTER);
-        getMainPanel().add(welkomPanel, BorderLayout.NORTH);
-        getMainPanel().add(panel, BorderLayout.CENTER);
         addPath("Station toevoegen");
 
         showWindow();
