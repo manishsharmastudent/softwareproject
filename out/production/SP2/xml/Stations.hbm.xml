@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="model.Station" table="STATIONS">
+      <meta attribute="class-description">
+         This class contains the Abonnement detail.
+      </meta>
+      <id name="stationId" type="int" column="stationId">
+         <generator class="native"/>
+      </id>
+       <property name="naam" column="naam" type="string"/>
+       <property name="active" column="active" type="boolean"/>
+   </class>
+</hibernate-mapping>
