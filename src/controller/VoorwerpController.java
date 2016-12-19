@@ -127,7 +127,10 @@ public class VoorwerpController {
                 try {
                     id = voorwerpView.getSelectedRow();
                     if(id != -1) {
-                        voorwerpManage.deleteVoorwerpById(id);
+
+                        Voorwerp voorwerp = voorwerpManage.getVoorwerpById(id);
+                        voorwerp.setActive(false);
+                        voorwerpManage.updateVoorwerp(voorwerp);
                         voorwerpView.showSucceed(id);
                     }
                 } catch (Exception exc){

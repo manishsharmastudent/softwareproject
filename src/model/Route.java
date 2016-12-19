@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by Manish on 29/10/2016.
  */
-public class Route {
+public class Route implements Serializable {
     private int routeId;
     private Station routeVertrek;
     private Station routeBestemming;

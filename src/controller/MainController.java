@@ -34,6 +34,7 @@ public class MainController {
         zoekRoute();
         verlengAbonnement();
         showSearchVoorwerpen();
+        showSearchLiveBoard();
         //initLogOutTimer();
         //initMouseMotionListener();
         //home.getWindow().addMouseMotionListener(l);
@@ -110,6 +111,14 @@ public class MainController {
                 home.getWindow().setVisible(false);
                 home.getWindow().dispose();
                 new RouteController().showZoekRoute();
+            }
+        });
+    }
+    public void showSearchLiveBoard(){
+        home.getStationsInfo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new StationController().showSearchLiveboard();
             }
         });
     }

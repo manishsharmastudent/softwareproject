@@ -143,7 +143,7 @@ public class KlantController {
         klantView.getKlantUpdateButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                klantModel = new Klant(klantView.getRijksregisterNummer(), klantView.getVoornaam(), klantView.getAchternaam(), klantView.getAdres(), klantView.getPostcode(), klantView.getStad(), true);
+                klantModel = new Klant(klantView.getRijksregisterNummer(), klantView.getVoornaam(), klantView.getAchternaam(), klantView.getAdres(), klantView.getPostcode(), klantView.getStad(), klantView.isActive());
                 try {
                     manageKlant.updateKlant(klantModel);
                     klantView.klantUpdateSucceed();

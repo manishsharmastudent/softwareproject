@@ -34,6 +34,7 @@ public class KlantView extends StandardView {
     private JTextField adresText = new JTextField();
     private JTextField postcodeText = new JFormattedTextField(createFormatter("####"));
     private JTextField stadText = new JTextField();
+    private JCheckBox active = new JCheckBox("Actief");
 
     private JButton searchButtonRijksregisterNummer = new JButton("Zoeken");
     private JButton searchButtonSurname = new JButton("Zoeken");
@@ -68,6 +69,9 @@ public class KlantView extends StandardView {
         String[] klant = klantData[klantTable.getSelectedRow()];
         return klant[0];
     }
+    public boolean isActive(){
+        return active.isSelected();
+    }
 
     public JButton getAanpassenKlant(){
         return aanpassenKlant;
@@ -84,7 +88,7 @@ public class KlantView extends StandardView {
 
         klantPanel.removeAll();
         klantPanel.updateUI();
-        klantPanel.setLayout(new GridLayout(7,1));
+        klantPanel.setLayout(new GridLayout(8,1));
 
         klantPanel.add(rijksregisterNummerLabel);
         rijksregisterNummerText.setText(klant.getRijksregisterNummer());
@@ -104,6 +108,8 @@ public class KlantView extends StandardView {
         klantPanel.add(stadLabel);
         stadText.setText(klant.getStad());
         klantPanel.add(stadText);
+        if(klant.getActive()){active.setSelected(true);}
+        klantPanel.add(active);
         klantPanel.add(klantUpdateButton);
 
         interactiePanel.add(klantPanel);

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -7,7 +8,7 @@ import java.util.*;
 /**
  * Created by Nofel on 02-11-16.
  */
-public class Traject {
+public class Traject implements Serializable {
         private String vertrekStation;
         private String aankomstStation;
         private LocalDateTime vertrekTijd;

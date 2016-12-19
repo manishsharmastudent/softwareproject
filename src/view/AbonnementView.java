@@ -43,7 +43,7 @@ public class AbonnementView extends StandardView {
     private JTextField textAboId = new JTextField();
     private JTextField beginDatum = new JTextField();
     private JTextField eindDatum = new JTextField();
-    private JTextField afsluiten = new JTextField();
+    private JCheckBox active = new JCheckBox("Actief");
 
     private JButton zoekAbonnementOpKlantIdButton = new JButton("Zoeken");
     private JButton zoekAbonnementOpAboIdButton = new JButton("Zoeken");
@@ -90,7 +90,7 @@ public class AbonnementView extends StandardView {
         return Integer.parseInt(data[0]);
     }
     public String getKlant(){
-        return klantComboBox.getSelectedItem().toString();
+        return klantComboBox.getSelectedItem().toString().substring(0, 15);
     }
     public Date getBegindatum() {
         return (Date) datePickerBeginDatum.getModel().getValue();
@@ -104,8 +104,8 @@ public class AbonnementView extends StandardView {
     public int getAboId(){
         return Integer.parseInt(textAboId.getText());
     }
-    public boolean getAfsluiten(){
-        return afsluiten.getText() == "true";
+    public boolean isActive(){
+        return active.isSelected();
     }
     public JButton getZoekAbonnementByKlantIdButton(){ return this.zoekAbonnementOpKlantIdButton; }
     public JButton getZoekAbonnementByAboIdButton(){ return this.zoekAbonnementOpAboIdButton; }
@@ -122,7 +122,6 @@ public class AbonnementView extends StandardView {
         abonnementPanel.setLayout(new GridLayout(8,2));
         System.out.println(abonnement.getAbonnementId());
 
-        afsluiten.setText(Boolean.toString(abonnement.isActive()));
         eindDatum.setText("12-12-2015");
         beginDatum.setText("12-12-2015");
         textAboId.setText(Integer.toString(abonnement.getAbonnementId()));
@@ -140,8 +139,8 @@ public class AbonnementView extends StandardView {
         abonnementPanel.add(beginDatum);
         abonnementPanel.add(new JLabel("Einddatum: "));
         abonnementPanel.add(eindDatum);
-        abonnementPanel.add(new JLabel("Afsluiten: "));
-        abonnementPanel.add(afsluiten);
+        if(abonnement.isActive()){active.setSelected(true);}
+        abonnementPanel.add(active);
         abonnementPanel.add(updateButton);
 
         interactiePanel.add(abonnementPanel);
