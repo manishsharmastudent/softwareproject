@@ -1,6 +1,6 @@
 package model;
 
-import controller.TimeParseController;
+import util.TimeParseUtil;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -65,7 +65,7 @@ public class Halte implements Serializable {
     }
 
     public void setArrival(String arrival) {
-        Arrival = TimeParseController.getTime(arrival);
+        Arrival = TimeParseUtil.getTime(arrival);
     }
 
     public LocalDateTime getActualArrival() {
@@ -73,7 +73,7 @@ public class Halte implements Serializable {
     }
 
     public void setActualArrival(String actualArrival) {
-        ActualArrival = TimeParseController.getTime(actualArrival);
+        ActualArrival = TimeParseUtil.getTime(actualArrival);
     }
 
     public LocalDateTime getDeparture() {
@@ -81,7 +81,7 @@ public class Halte implements Serializable {
     }
 
     public void setDeparture(String departure) {
-        Departure = TimeParseController.getTime(departure);
+        Departure = TimeParseUtil.getTime(departure);
     }
 
     public LocalDateTime getActualDeparture() {
@@ -89,7 +89,7 @@ public class Halte implements Serializable {
     }
 
     public void setActualDeparture(String actualDeparture) {
-        ActualDeparture = TimeParseController.getTime(actualDeparture);
+        ActualDeparture = TimeParseUtil.getTime(actualDeparture);
     }
 
     public String getAankomstPlatform() {
@@ -111,7 +111,7 @@ public class Halte implements Serializable {
     }
 
     public String getDelay(){
-        return TimeParseController.getDelay(getDeparture(),getActualDeparture());
+        return TimeParseUtil.getDelay(getDeparture(),getActualDeparture());
     }
 
     @Override

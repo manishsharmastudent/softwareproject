@@ -1,15 +1,12 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import controller.TimeParseController;
 import model.Liveboard;
-import model.Station;
 import model.Trein;
+import util.TimeParseUtil;
 
 import static java.awt.Component.LEFT_ALIGNMENT;
 
@@ -127,7 +124,7 @@ public class StationView extends StandardView {
                         dataLiveboard[row][col] = trein.getDeparture().toString();
                         break;
                     case 5:
-                        dataLiveboard[row][col] = TimeParseController.getDelay(trein.getDeparture(),trein.getActualDeparture());
+                        dataLiveboard[row][col] = TimeParseUtil.getDelay(trein.getDeparture(),trein.getActualDeparture());
                         break;
                 }
             }

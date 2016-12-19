@@ -64,10 +64,14 @@ public class StationController {
             @Override
             public void actionPerformed(ActionEvent e) {
                     System.out.println(stationView.getStadText());
-                    Liveboard liveboard = ParseController.getStationBoard(stationView.getStadText());
-                    if(liveboard.getStation().getTreinen().size() != 0){stationView.showLiveboard(liveboard);}
-                    else {
-                        stationView.liveboardNotFound();
+                    try {
+                        Liveboard liveboard = ParseController.getStationBoard(stationView.getStadText());
+                        if(liveboard.getStation().getTreinen().size() > 0){stationView.showLiveboard(liveboard);}
+                        else {
+                            stationView.liveboardNotFound();
+                        }
+                    } catch (Exception exc){
+
                     }
             }
         });
