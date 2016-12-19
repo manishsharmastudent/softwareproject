@@ -1,8 +1,10 @@
 package controller;
 
 import hibernate.ManageStation;
+import model.Liveboard;
 import model.Station;
 import view.StationView;
+import controller.ParseController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,9 +32,9 @@ public class StationController {
         terugButton();
     }
     public void clickToevoegenStation(){
-        final Station station = new Station();
         stationView.getToevoegButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Station station = new Station();
                 if (stationManage.addStation(station) > 0){
                     JOptionPane.showMessageDialog(stationView.getWindow(), "Station " + station.getNaam() + " is toegevoegd!");
                     backToHomeScreen();
@@ -53,4 +55,22 @@ public class StationController {
         stationView.deleteLastInPath();
         new MainController().showHomeScreen();
     }
+    public void showSearchLiveboard(){
+        stationView.showSearchLiveboard();
+        searchLiveBoard();
+    }
+    public void searchLiveBoard(){
+        stationView.getZoekLiveboardButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    System.out.println(stationView.getStadText());
+                    Liveboard liveboard = ParseController.getStationBoard(stationView.getStadText());
+                    if(liveboard.getStation().getTreinen().size() != 0){stationView.showLiveboard(liveboard);}
+                    else {
+                        stationView.liveboardNotFound();
+                    }
+            }
+        });
+    }
+
 }
