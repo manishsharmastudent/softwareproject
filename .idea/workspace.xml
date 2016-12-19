@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bff8f78-7142-4544-a1df-4cd2e78f2868" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/PasswordAuthentication.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Hibernate_5_2_3_5_2_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Hibernate_5_2_3_5_2_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate/ManageLogin.java" afterPath="$PROJECT_DIR$/src/hibernate/ManageLogin.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gitignore/" />
@@ -38,79 +31,7 @@
     <favorites_list name="SP2" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="VoorwerpController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/VoorwerpController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="103" column="56" selection-start-line="103" selection-start-column="56" selection-end-line="103" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="method#toevoegenVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#showZoekVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="e#3747#3748#0" expanded="false" />
-                <element signature="e#3821#3822#0" expanded="false" />
-                <element signature="method#zoekVoorwerpOpNaam#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#showVoorwerpen#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#showVoorwerpToevoegen#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#verwijderAfgehaaldVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="e#5555#5556#0" expanded="false" />
-                <element signature="e#5608#5609#0" expanded="false" />
-                <element signature="method#initComboBox#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="method#terugButton#0;class#VoorwerpController#0" expanded="false" />
-                <element signature="e#7582#7583#0" expanded="false" />
-                <element signature="e#7632#7633#0" expanded="false" />
-                <element signature="method#backToHomeScreen#0;class#VoorwerpController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VoorwerpView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/view/VoorwerpView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.031512607">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="63" selection-end-column="5" />
-              <folding>
-                <element signature="method#showVoorwerpenZoeken#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showVoorwerp#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showVoorwerpen#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showVoorwerpenToevoegen#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#geenVoorwerpenGevonden#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#initTable#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showSucceed#0;class#VoorwerpView#0" expanded="false" />
-                <element signature="method#showError#0;class#VoorwerpView#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbonnementController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/AbonnementController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#zoekAbonnementWithKlantId#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#toevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#updatenAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#showChangeAbonnement#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#initComboBoxes#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#terugButton#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#backToHomeScreen#0;class#AbonnementController#0" expanded="false" />
-                <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -268,7 +189,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -321,8 +244,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,8 +254,9 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jdatepicker-1.3.4.jar!/" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -897,7 +819,9 @@
       <workItem from="1480960150899" duration="396000" />
       <workItem from="1481039636189" duration="820000" />
       <workItem from="1481281906386" duration="8332000" />
-      <workItem from="1481540226279" duration="426000" />
+      <workItem from="1481540226279" duration="1146000" />
+      <workItem from="1482091873544" duration="1663000" />
+      <workItem from="1482140348283" duration="286000" />
     </task>
     <task id="LOCAL-00001" summary="afstand wordt nu berekend bij trajecten">
       <created>1480370775699</created>
@@ -917,11 +841,17 @@
       <option name="project" value="LOCAL" />
       <updated>1480791694466</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Password hashing geimplementeerd">
+      <created>1481540668707</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1481540668707</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59030000" />
+    <option name="totallyTimeSpent" value="61699000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -934,17 +864,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32166892" sideWeight="0.47973472" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264" sideWeight="0.18275608" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22476447" sideWeight="0.81724393" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -954,6 +884,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6749729" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -961,11 +892,10 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6749729" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32166892" sideWeight="0.47973472" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22535211" sideWeight="0.81724393" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1007,6 +937,14 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -1014,7 +952,8 @@
     <MESSAGE value="afstand wordt nu berekend bij trajecten" />
     <MESSAGE value="view voor prijs instellingen gemaakt" />
     <MESSAGE value="korting view gemaakt" />
-    <option name="LAST_COMMIT_MESSAGE" value="korting view gemaakt" />
+    <MESSAGE value="Password hashing geimplementeerd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Password hashing geimplementeerd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1065,23 +1004,34 @@
     <entry file="file://$PROJECT_DIR$/src/controller/VoorwerpController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="56" selection-start-line="103" selection-start-column="56" selection-end-line="103" selection-end-column="56" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="method#toevoegenVoorwerp#0;class#VoorwerpController#0" expanded="false" />
             <element signature="method#showZoekVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="e#3747#3748#0" expanded="false" />
-            <element signature="e#3821#3822#0" expanded="false" />
             <element signature="method#zoekVoorwerpOpNaam#0;class#VoorwerpController#0" expanded="false" />
             <element signature="method#showVoorwerpen#0;class#VoorwerpController#0" expanded="false" />
             <element signature="method#showVoorwerpToevoegen#0;class#VoorwerpController#0" expanded="false" />
             <element signature="method#verwijderAfgehaaldVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="e#5555#5556#0" expanded="false" />
-            <element signature="e#5608#5609#0" expanded="false" />
             <element signature="method#initComboBox#0;class#VoorwerpController#0" expanded="false" />
             <element signature="method#terugButton#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="e#7582#7583#0" expanded="false" />
-            <element signature="e#7632#7633#0" expanded="false" />
+            <element signature="method#backToHomeScreen#0;class#VoorwerpController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/VoorwerpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="56" selection-start-line="103" selection-start-column="56" selection-end-line="103" selection-end-column="56" />
+          <folding>
+            <element signature="method#toevoegenVoorwerp#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#showZoekVoorwerp#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#zoekVoorwerpOpNaam#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#showVoorwerpen#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#showVoorwerpToevoegen#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#verwijderAfgehaaldVoorwerp#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#initComboBox#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#terugButton#0;class#VoorwerpController#0" expanded="false" />
             <element signature="method#backToHomeScreen#0;class#VoorwerpController#0" expanded="false" />
           </folding>
         </state>
@@ -1108,22 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getRoute#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getKorting#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getAanpasButton#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getSelectedRow#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showAanpassenAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showZoekAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showGevondenAbonnementen#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showToevoegenAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="class#7907:8526" expanded="false" />
-            <element signature="class#8623:9241" expanded="false" />
-            <element signature="method#showPrice#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#alreadyAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#initTable#0;class#AbonnementView#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1131,22 +1065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#zoekAbonnementWithKlantId#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#toevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#updatenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#showChangeAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#initComboBoxes#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#terugButton#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#backToHomeScreen#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1358,41 +1276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#753#754#0" expanded="false" />
-            <element signature="e#811#812#0" expanded="false" />
-            <element signature="e#844#845#0" expanded="false" />
-            <element signature="e#891#892#0" expanded="false" />
-            <element signature="e#926#927#0" expanded="false" />
-            <element signature="e#975#976#0" expanded="false" />
-            <element signature="e#1005#1006#0" expanded="false" />
-            <element signature="e#1049#1050#0" expanded="false" />
-            <element signature="e#1079#1080#0" expanded="false" />
-            <element signature="e#1126#1127#0" expanded="false" />
-            <element signature="e#1155#1156#0" expanded="false" />
-            <element signature="e#1198#1199#0" expanded="false" />
-            <element signature="e#1247#1248#0" expanded="false" />
-            <element signature="e#1302#1303#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1414#1415#0" expanded="false" />
-            <element signature="e#1457#1458#0" expanded="false" />
-            <element signature="e#1506#1507#0" expanded="false" />
-            <element signature="e#1552#1553#0" expanded="false" />
-            <element signature="e#1607#1608#0" expanded="false" />
-            <element signature="e#1648#1649#0" expanded="false" />
-            <element signature="e#1695#1696#0" expanded="false" />
-            <element signature="e#2020#2296#0" expanded="false" />
-            <element signature="e#2295#2296#0" expanded="false" />
-            <element signature="e#2406#2673#0" expanded="false" />
-            <element signature="e#2672#2673#0" expanded="false" />
-            <element signature="e#2785#3055#0" expanded="false" />
-            <element signature="e#3054#3055#0" expanded="false" />
-            <element signature="e#3518#4181#0" expanded="false" />
-            <element signature="e#4180#4181#0" expanded="false" />
-            <element signature="e#4353#4492#0" expanded="false" />
-            <element signature="e#4491#4492#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1407,11 +1290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
-          <folding>
-            <element signature="method#getRouteTimes#0;class#TrajectParseController#0" expanded="false" />
-            <element signature="method#getTraject#0;class#TrajectParseController#0" expanded="false" />
-            <element signature="method#getTrajecten#0;class#TrajectParseController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1419,7 +1297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1442,16 +1319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding>
-            <element signature="method#StandardView#0;class#StandardView#0" expanded="false" />
-            <element signature="method#initTimeAndDate#0;class#StandardView#0" expanded="false" />
-            <element signature="method#initWelkomBoard#0;class#StandardView#0" expanded="false" />
-            <element signature="method#initNavTree#0;class#StandardView#0" expanded="false" />
-            <element signature="method#showWindow#0;class#StandardView#0" expanded="false" />
-            <element signature="method#showPath#0;class#StandardView#0" expanded="false" />
-            <element signature="method#deleteLastInPath#0;class#StandardView#0" expanded="false" />
-            <element signature="method#createFormatter#0;class#StandardView#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1466,20 +1333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding>
-            <element signature="method#toevoegenKlant#0;class#MainController#0" expanded="false" />
-            <element signature="method#koopTicket#0;class#MainController#0" expanded="false" />
-            <element signature="method#voegAbonnementToe#0;class#MainController#0" expanded="false" />
-            <element signature="method#verlengAbonnement#0;class#MainController#0" expanded="false" />
-            <element signature="method#voegStationToe#0;class#MainController#0" expanded="false" />
-            <element signature="e#3020#3021#0" expanded="false" />
-            <element signature="e#3095#3096#0" expanded="false" />
-            <element signature="method#zoekRoute#0;class#MainController#0" expanded="false" />
-            <element signature="method#zoekKlanten#0;class#MainController#0" expanded="false" />
-            <element signature="method#initLogOutTimer#0;class#MainController#0" expanded="false" />
-            <element signature="method#initMouseMotionListener#0;class#MainController#0" expanded="false" />
-            <element signature="method#closeHomeWindow#0;class#MainController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1487,7 +1340,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1503,7 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1511,7 +1362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1519,17 +1369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-          <folding>
-            <element signature="method#addVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#listVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpenByNaam#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#updateVoorwerp#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpById#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpByTreinId#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpByRoute#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#getVoorwerpByKleur#0;class#ManageVoorwerp#0" expanded="false" />
-            <element signature="method#deleteVoorwerpById#0;class#ManageVoorwerp#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1541,28 +1380,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/VoorwerpController.java">
+    <entry file="file://$PROJECT_DIR$/src/view/AbonnementView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="56" selection-start-line="103" selection-start-column="56" selection-end-line="103" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#toevoegenVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="method#showZoekVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="e#3747#3748#0" expanded="false" />
-            <element signature="e#3821#3822#0" expanded="false" />
-            <element signature="method#zoekVoorwerpOpNaam#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="method#showVoorwerpen#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="method#showVoorwerpToevoegen#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="method#verwijderAfgehaaldVoorwerp#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="e#5555#5556#0" expanded="false" />
-            <element signature="e#5608#5609#0" expanded="false" />
-            <element signature="method#initComboBox#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="method#terugButton#0;class#VoorwerpController#0" expanded="false" />
-            <element signature="e#7582#7583#0" expanded="false" />
-            <element signature="e#7632#7633#0" expanded="false" />
-            <element signature="method#backToHomeScreen#0;class#VoorwerpController#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-1.6470588">
+          <caret line="21" column="7" selection-start-line="20" selection-start-column="3" selection-end-line="21" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1570,52 +1391,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#showToevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#showZoekAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#zoekAbonnementWithKlantId#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#zoekAbonnementWithAbonnementId#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#calculatePrice#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#toevoegenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#aanpassenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#updatenAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#showChangeAbonnement#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#initComboBoxes#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#terugButton#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#backToHomeScreen#0;class#AbonnementController#0" expanded="false" />
-            <element signature="method#checkIfEndDateIsAfterStartDate#0;class#AbonnementController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/AbonnementView.java">
+    <entry file="file://$PROJECT_DIR$/src/model/PasswordAuthentication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6470588">
-          <caret line="21" column="7" selection-start-line="20" selection-start-column="3" selection-end-line="21" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getRoute#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getKorting#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getAanpasButton#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#getSelectedRow#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showAanpassenAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showZoekAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showGevondenAbonnementen#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#showToevoegenAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="class#7907:8526" expanded="false" />
-            <element signature="class#8623:9241" expanded="false" />
-            <element signature="method#showPrice#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#alreadyAbonnement#0;class#AbonnementView#0" expanded="false" />
-            <element signature="method#initTable#0;class#AbonnementView#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.25174826">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/VoorwerpView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031512607">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="63" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.9902098">
+          <caret line="79" column="23" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
           <folding>
             <element signature="method#showVoorwerpenZoeken#0;class#VoorwerpView#0" expanded="false" />
             <element signature="method#showVoorwerp#0;class#VoorwerpView#0" expanded="false" />
@@ -1625,6 +1415,24 @@
             <element signature="method#initTable#0;class#VoorwerpView#0" expanded="false" />
             <element signature="method#showSucceed#0;class#VoorwerpView#0" expanded="false" />
             <element signature="method#showError#0;class#VoorwerpView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/VoorwerpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7062937">
+          <caret line="103" column="56" selection-start-line="103" selection-start-column="56" selection-end-line="103" selection-end-column="56" />
+          <folding>
+            <element signature="method#toevoegenVoorwerp#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#showZoekVoorwerp#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#zoekVoorwerpOpNaam#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#showVoorwerpen#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#showVoorwerpToevoegen#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#verwijderAfgehaaldVoorwerp#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#initComboBox#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#terugButton#0;class#VoorwerpController#0" expanded="false" />
+            <element signature="method#backToHomeScreen#0;class#VoorwerpController#0" expanded="false" />
           </folding>
         </state>
       </provider>
