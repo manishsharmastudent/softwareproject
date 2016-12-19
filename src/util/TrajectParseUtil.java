@@ -39,29 +39,31 @@ public class TrajectParseUtil {
 
     }
     private static void getRouteTimes(Traject trj) throws HalteNotFoundException {
-
-        Halte hlte;
+        String altVertrekStationNaam = trj.getVertrekStation();
+        String altAankomstStationNaam = trj.getAankomstStation();
+        Halte halte;
         try {
-            hlte = trj.getTreinen().get(0).getHaltes().stream()
-                    .filter(h -> h.getName().equalsIgnoreCase(trj.getVertrekStation()))
+            halte = trj.getTreinen().get(0).getHaltes().stream()
+                    .filter(h -> (h.getName().equalsIgnoreCase(trj.getVertrekStation())) || h.getName().equalsIgnoreCase(altAankomstStationNaam))
                     .findFirst()
                     .get();
 
-            trj.setActualVertrekTijd(hlte.getActualDeparture());
-            trj.setVertrekTijd(hlte.getDeparture());
-            trj.setVetrekPlatform(hlte.getDeparturePlatform());
+            trj.setActualVertrekTijd(halte.getActualDeparture());
+            trj.setVertrekTijd(halte.getDeparture());
+            trj.setVetrekPlatform(halte.getDeparturePlatform());
 
         } catch (Exception e) {
             throw new HalteNotFoundException(trj.getVertrekStation());
         }
 
         try {
-            hlte = trj.getTreinen().get(trj.getTreinen().size() - 1).getHaltes().stream()
-                    .filter(h -> h.getName().equalsIgnoreCase(trj.getAankomstStation()))
-                    .findFirst().get();
+            halte = trj.getTreinen().get(trj.getTreinen().size() - 1).getHaltes().stream()
+                    .filter(h ->(h.getName().equalsIgnoreCase(trj.getAankomstStation())) || h.getName().equalsIgnoreCase(altVertrekStationNaam))
+                    .findFirst()
+                    .get();
 
-            trj.setAankomstTijd(hlte.getArrival());
-            trj.setActualAankomstTijd(hlte.getActualArrival());
+            trj.setAankomstTijd(halte.getArrival());
+            trj.setActualAankomstTijd(halte.getActualArrival());
         } catch (Exception e) {
             throw new HalteNotFoundException(trj.getAankomstStation());
         }
