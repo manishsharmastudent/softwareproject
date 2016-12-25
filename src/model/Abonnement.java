@@ -16,6 +16,8 @@ public class Abonnement {
     private float prijs;
     private boolean active;
 
+    public Abonnement() {
+    }
 
     public Abonnement(int abonnementId, Korting korting, LocalDateTime beginDatum, LocalDateTime vervalDatum, Route route, Klant klant, float prijs, boolean active) {
         this.abonnementId = abonnementId;
@@ -86,6 +88,5 @@ public class Abonnement {
         this.active = active;
     }
 
-    public Abonnement() {
-    }
+
 }
