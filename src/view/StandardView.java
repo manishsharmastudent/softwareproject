@@ -78,6 +78,8 @@ public class StandardView {
                 window.dispose();
                 window.setVisible(false);
                 SessionFactorySingleton.getSessionFactory().close();
+
+               SessionFactorySingleton.closeInstance();
                 new LoginController().showLoginScreen();
             }
         });
