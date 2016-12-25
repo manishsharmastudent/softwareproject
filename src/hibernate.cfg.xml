@@ -4,6 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <property name="hibernate.dialect">
             org.hibernate.dialect.MySQLDialect
         </property>
@@ -24,11 +25,15 @@
 
         <!-- List of XML mapping files -->
         <mapping resource="xml/Login.hbm.xml"/>
+        <mapping resource="xml/Tickets.hbm.xml"/>
         <mapping resource="xml/Rollen.hbm.xml"/>
         <mapping resource="xml/Stations.hbm.xml"/>
         <mapping resource="xml/Korting.hbm.xml"/>
         <mapping resource="xml/Abonnementen.hbm.xml"/>
         <mapping resource="xml/Klanten.hbm.xml"/>
         <mapping resource="xml/Routes.hbm.xml"/>
+        <mapping resource="xml/TypeKaart.hbm.xml"/>
+        <mapping resource="xml/VerlorenVoorwerpen.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>

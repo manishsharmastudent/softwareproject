@@ -71,7 +71,7 @@ public class TreinParseUtil {
             public void accept(Object t) {
                 JSONObject obj = (JSONObject) t;
                 haltes.add(getStop(obj));
-             }
+            }
         });
         return haltes;
     }
@@ -81,7 +81,7 @@ public class TreinParseUtil {
         h.setName(obj.getString("Name"));
         h.setCoordinaten(obj.getString("Coordinates"));
 
-       String arrivalPlatform = "0";
+        String arrivalPlatform = "0";
         if (obj.has("ArrivalPlatform") && !obj.isNull("ArrivalPlatform"))
             arrivalPlatform = obj.getString("ArrivalPlatform");
         else if (!obj.isNull("DeparturePlatform"))

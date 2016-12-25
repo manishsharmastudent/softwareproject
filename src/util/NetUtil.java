@@ -1,13 +1,17 @@
 package util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class NetUtil {
+
+
 	public static String curlURL(String url) throws IOException {
 		ProcessBuilder pb = new ProcessBuilder("curl",url);
+
+
+
 		Process p = pb.start();
 		InputStream is = p.getInputStream();
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"))) {

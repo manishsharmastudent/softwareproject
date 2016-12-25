@@ -1,17 +1,29 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by Manish on 29/10/2016.
  */
-public class Route {
+public class Route implements Serializable {
     private int routeId;
     private Station routeVertrek;
     private Station routeBestemming;
+    private boolean active;
 
-    public Route(int routeId, Station routeVertrek, Station routeBestemming) {
+    public Route(int routeId, Station routeVertrek, Station routeBestemming, boolean active) {
         this.routeId = routeId;
         this.routeVertrek = routeVertrek;
         this.routeBestemming = routeBestemming;
+        this.active = active;
+    }
+
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Route() {

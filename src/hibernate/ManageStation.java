@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,20 +38,15 @@ public class ManageStation {
     }
 
 
-    public void listStations( ){
+    public List<Station> listStations( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = null;
+        List<Station> stations = new ArrayList<Station>();
         try{
             tx = session.beginTransaction();
-            List abonnementen = session.createQuery("FROM Station").list();
-            for (Iterator iterator =
-                 abonnementen.iterator(); iterator.hasNext();){
-                Station st = (Station) iterator.next();
-                System.out.println("Station id: " + st.getStationId());
-
-            }
+            stations = session.createQuery("FROM Station").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -59,5 +54,41 @@ public class ManageStation {
         }finally {
             session.close();
         }
+        return stations;
+    }
+    public Station getStationById(int id) {
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Station station = null;
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            station = session.get(Station.class, id);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return station;
+        }
+    }
+    public List<Station> getAllStationsBoxes() {
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List<Station> stations = new ArrayList<Station>();
+        try {
+            tx = session.beginTransaction();
+            stations = session.createQuery("FROM Station").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return stations;
     }
 }

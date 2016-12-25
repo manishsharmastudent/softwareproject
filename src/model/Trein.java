@@ -7,24 +7,17 @@ import java.util.List;
 /**
  * Created by Manish on 29/10/2016.
  */
-public class Trein implements Serializable{
+public class Trein implements Serializable {
 
     private int treinId;
     private int treinType;
     private String treinNaam;
     private boolean cancelled = false;
     private String vetrek, bestemming;
-    private String vetrekPlatform;
+    private String vetrkPlatform;
     private LocalDateTime departure;
     private LocalDateTime actualDeparture;
-    private List<Halte> haltes;
-
-    public Trein() {}
-
-    public Trein(int treinId, String treinNaam) {
-        this.treinId = treinId;
-        this.treinNaam = treinNaam;
-    }
+    private List<Halte> Haltes;
 
     public List<Halte> getHaltes() {
         return haltes;
@@ -32,6 +25,16 @@ public class Trein implements Serializable{
 
     public void setHaltes(List<Halte> haltes) {
         this.haltes = haltes;
+    }
+
+    private List<Halte> haltes;
+
+    public Trein(int treinId, String treinNaam) {
+        this.treinId = treinId;
+        this.treinNaam = treinNaam;
+    }
+
+    public Trein() {
     }
 
     public int getTreinId() {
@@ -85,12 +88,12 @@ public class Trein implements Serializable{
         this.cancelled = cancelled;
     }
 
-    public String getVetrekPlatform() {
-        return vetrekPlatform;
+    public String getVetrkPlatform() {
+        return vetrkPlatform;
     }
 
-    public void setVetrkPlatform(String vetrekPlatform) {
-        this.vetrekPlatform = vetrekPlatform;
+    public void setVetrkPlatform(String vetrkPlatform) {
+        this.vetrkPlatform = vetrkPlatform;
     }
 
     public LocalDateTime getDeparture() {
@@ -115,6 +118,6 @@ public class Trein implements Serializable{
         return "Trein " + treinNaam + '\n' +
                 "Vetrek: " + vetrek + '\n' +
                 "Bestemming: " + bestemming + '\n' +
-                "VetrkPlatform: " + vetrekPlatform + '\n';
+                "VetrkPlatform: " + vetrkPlatform + '\n';
     }
 }

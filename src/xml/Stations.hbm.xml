@@ -12,6 +12,6 @@
          <generator class="native"/>
       </id>
        <property name="naam" column="naam" type="string"/>
-       <property name="stad" column="stad" type="string"/>
+       <property name="active" column="active" type="boolean"/>
    </class>
 </hibernate-mapping>

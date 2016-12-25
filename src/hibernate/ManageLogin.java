@@ -1,8 +1,11 @@
 package hibernate;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Iterator;
 
+import model.PasswordAuthentication;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,7 +19,8 @@ public class ManageLogin {
 
     /* Method to CREATE an Login in the database */
     public Integer addLogin(Login l){
-
+        PasswordAuthentication p = new PasswordAuthentication();
+        l.setLoginWachtwoord(p.hash(l.getLoginWachtwoord()));
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
@@ -35,42 +39,41 @@ public class ManageLogin {
         }
         return LoginID;
     }
-    /* Method to  READ all the Logins */
-    public void listLogins( ){
-        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
+    /* Method to  READ all the Logins */
+    public List<Login> listLogins( ){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        List<Login> logins = new ArrayList<Login>();
         Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            List Logins = session.createQuery("FROM Login").list();
-            for (Iterator iterator =
-                 Logins.iterator(); iterator.hasNext();){
-                Login Login = (Login) iterator.next();
-                System.out.print("First Name: " + Login.getLoginNaam());
+            logins = session.createQuery("FROM Login where active = true").list();
 
-            }
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
         }finally {
             session.close();
+            return logins;
         }
     }
 
     /* Look if the login is right */
     public boolean checkLogin(String loginNaam, String loginWachtwoord){
+        PasswordAuthentication p = new PasswordAuthentication();
+
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-        List logins = null;
+        List<Login> logins = null;
         Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "FROM Login WHERE loginNaam = :loginNaam AND loginWachtwoord = :loginWachtwoord";
+            String hql = "FROM Login WHERE loginNaam = :loginNaam";
             Query query = session.createQuery(hql);
             query.setParameter("loginNaam", loginNaam);
-            query.setParameter("loginWachtwoord", loginWachtwoord);
+            // query.setParameter("loginWachtwoord", loginWachtwoord);
             logins = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -82,21 +85,22 @@ public class ManageLogin {
             return false;
         }
         else {
-            return true;
+            if(p.authenticate(loginWachtwoord,logins.get(0).getLoginWachtwoord()))
+                return true;
+            else{
+                return false;
+            }
         }
     }
 
 
-    /* Method to UPDATE wachtwoord for login */
-    public void updateWachtwoord(Integer loginId, String loginWachtwoord ){
+    /* Method to UPDATE login */
+    public void updateLogin(Login login){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            Login login =
-                    (Login)session.get(Login.class, loginId);
-            login.setLoginWachtwoord( loginWachtwoord );
             session.update(login);
             tx.commit();
         }catch (HibernateException e) {
@@ -105,5 +109,47 @@ public class ManageLogin {
         }finally {
             session.close();
         }
+    }
+
+
+    //Werkt, getest door Manish
+    public Login getLoginById(int id){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Login l = null;
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            l =  (Login) session.get(Login.class, id);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            return l;
+        }
+    }
+
+    public boolean deleteLoginById(int id){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Login l = null;
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            l = (Login)session.load(Login.class,id);
+            session.delete(l);
+            //This makes the pending delete to be done
+            session.flush() ;
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            return true;
+        }
+
     }
 }

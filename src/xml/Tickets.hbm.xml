@@ -11,11 +11,16 @@
       <id name="ticketId" type="int" column="ticketId">
          <generator class="native"/>
       </id>
-       <property name="aantalPersonen" column="aantalPersonen" type="int"/>
+
+       <many-to-one name="route" column="routeId" class="model.Route" />
        <property name="beginDatum" column="beginDatum" type="date"/>
        <property name="eindDatum" column="eindDatum" type="date"/>
+       <many-to-one name="typeKaart" column="typeId" class="model.TypeKaart" />
+       <property name="aantalPersonen" column="aantalPersonen" type="int"/>
+
        <property name="klasse" column="klasse" type="int"/>
-       <many-to-one name="route" column="routeId" class="model.Route" not-null="true"/>
-       <many-to-one name="typeKaart" column="typeId" class="model.TypeKaart" not-null="true"/>
+
    </class>
 </hibernate-mapping>
+
+

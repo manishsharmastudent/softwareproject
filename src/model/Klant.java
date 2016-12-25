@@ -12,10 +12,6 @@ public class Klant {
 	public Klant() {
 	}
 
-	public boolean isActive() {
-		return active;
-	}
-
 	public Klant(String rijksregisterNummer, String voornaam, String achternaam, String adres, int postcode, String stad, boolean active) {
 
 		this.rijksregisterNummer = rijksregisterNummer;
@@ -25,10 +21,11 @@ public class Klant {
 		this.postcode = postcode;
 		this.stad = stad;
 		this.active = active;
-
 	}
 
-	public String getRijksregisterNummer(){ return this.rijksregisterNummer; }
+	public String getRijksregisterNummer(){
+		return this.rijksregisterNummer;
+	}
 	public String getVoornaam(){
 		return this.voornaam;
 	}
@@ -45,7 +42,6 @@ public class Klant {
 		return this.stad;
 	}
 	public boolean getActive(){ return this.active; }
-
 	public boolean setRijksregisterNummer(String rijksregisterNummer){
 		this.rijksregisterNummer = rijksregisterNummer;
 		return true;
@@ -62,8 +58,7 @@ public class Klant {
 		this.adres = adres;
 		return true;
 	}
-	public boolean setPostcode(int post)
-	{
+	public boolean setPostcode(int post) {
 		this.postcode = post;
 		return true;
 	}
@@ -75,5 +70,4 @@ public class Klant {
 		this.active = active;
 		return true;
 	}
-	
 }

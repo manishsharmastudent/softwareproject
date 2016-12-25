@@ -12,7 +12,6 @@
          <generator class="native"/>
       </id>
        <many-to-one name="route" column="aboRouteId" class="model.Route" />
-
        <property name="active" column="active" type="boolean"/>
        <property name="beginDatum" column="beginDatum" type="date"/>
        <property name="vervalDatum" column="eindDatum" type="date"/>
