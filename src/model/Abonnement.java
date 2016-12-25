@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -8,15 +9,15 @@ import java.util.Date;
 public class Abonnement {
     private int abonnementId;
     private Korting korting;
-    private Date beginDatum;
-    private Date vervalDatum;
+    private LocalDateTime beginDatum;
+    private LocalDateTime vervalDatum;
     private Route route;
     private Klant klant;
-    private Float prijs;
+    private float prijs;
     private boolean active;
 
 
-    public Abonnement(int abonnementId, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs, boolean active) {
+    public Abonnement(int abonnementId, Korting korting, LocalDateTime beginDatum, LocalDateTime vervalDatum, Route route, Klant klant, float prijs, boolean active) {
         this.abonnementId = abonnementId;
         this.korting = korting;
         this.beginDatum = beginDatum;
@@ -27,7 +28,7 @@ public class Abonnement {
         this.active = active;
     }
 
-    public Abonnement(boolean active, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs) {
+    public Abonnement(boolean active, Korting korting, LocalDateTime beginDatum, LocalDateTime vervalDatum, Route route, Klant klant, float prijs) {
         this.active = active;
         this.korting = korting;
         this.beginDatum = beginDatum;
@@ -41,10 +42,10 @@ public class Abonnement {
         return abonnementId;
     }
     public Korting getKorting() {return korting; }
-    public Date getBeginDatum() {
+    public LocalDateTime getBeginDatum() {
         return beginDatum;
     }
-    public Date getVervalDatum() {
+    public LocalDateTime getVervalDatum() {
         return vervalDatum;
     }
     public Route getRoute() {
@@ -53,7 +54,7 @@ public class Abonnement {
     public Klant getKlant() {
         return klant;
     }
-    public Float getPrijs() {
+    public float getPrijs() {
         return prijs;
     }
     public boolean isActive() {
@@ -66,10 +67,10 @@ public class Abonnement {
     public void setKorting(Korting korting) {
         this.korting = korting;
     }
-    public void setBeginDatum(Date beginDatum) {
+    public void setBeginDatum(LocalDateTime beginDatum) {
         this.beginDatum = beginDatum;
     }
-    public void setVervalDatum(Date vervalDatum) {
+    public void setVervalDatum(LocalDateTime vervalDatum) {
         this.vervalDatum = vervalDatum;
     }
     public void setRoute(Route route) {
@@ -78,7 +79,7 @@ public class Abonnement {
     public void setKlant(Klant klant) {
         this.klant = klant;
     }
-    public void setPrijs(Float prijs) {
+    public void setPrijs(float prijs) {
         this.prijs = prijs;
     }
     public void setActive(boolean active) {

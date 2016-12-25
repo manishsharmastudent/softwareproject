@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -8,14 +9,14 @@ import java.util.Date;
 public class Ticket {
     private int ticketId;
     private Route route;
-    private Date beginDatum;
-    private Date eindDatum;
+    private LocalDateTime beginDatum;
+    private LocalDateTime eindDatum;
     private TypeKaart typeKaart;
     private int aantalPersonen;
     private float prijs;
     private int klasse;
 
-    public Ticket(int ticketId, Route route, Date beginDatum, Date eindDatum, TypeKaart typeKaart, int aantalPersonen, float prijs, int klasse) {
+    public Ticket(int ticketId, Route route, LocalDateTime beginDatum, LocalDateTime eindDatum, TypeKaart typeKaart, int aantalPersonen, float prijs, int klasse) {
         this.ticketId = ticketId;
         this.route = route;
         this.beginDatum = beginDatum;
@@ -45,19 +46,19 @@ public class Ticket {
         this.route = route;
     }
 
-    public Date getBeginDatum() {
+    public LocalDateTime getBeginDatum() {
         return beginDatum;
     }
 
-    public void setBeginDatum(Date beginDatum) {
+    public void setBeginDatum(LocalDateTime beginDatum) {
         this.beginDatum = beginDatum;
     }
 
-    public Date getEindDatum() {
+    public LocalDateTime getEindDatum() {
         return eindDatum;
     }
 
-    public void setEindDatum(Date eindDatum) {
+    public void setEindDatum(LocalDateTime eindDatum) {
         this.eindDatum = eindDatum;
     }
 
