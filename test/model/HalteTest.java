@@ -3,6 +3,7 @@ package model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
@@ -15,10 +16,10 @@ public class HalteTest {
     private Halte halteSetters;
     private Halte halteGetters;
     private String name;
-    private LocalDateTime Arrival;
-    private LocalDateTime ActualArrival;
-    private LocalDateTime Departure;
-    private LocalDateTime ActualDeparture;
+    private LocalDateTime arrival;
+    private LocalDateTime actualArrival;
+    private LocalDateTime departure;
+    private LocalDateTime actualDeparture;
     private String departurePlatform;
     private String aankomstPlatform;
     private String coordinaten;
@@ -30,108 +31,174 @@ public class HalteTest {
     }
 
     @Test
-    public void setArrival() throws Exception {
+    public void halteConstructor() throws  Exception{
+        halteConstructor = new Halte("halteConstructor","1");
+
+        assertEquals("halteConstructor" , halteConstructor.getName());
+        assertEquals("1", halteConstructor.getDeparturePlatform());
+    }
+
+    @Test
+    public void setArrivalLocalDateTime() throws Exception {
+        arrival = LocalDateTime.of(2016,12,26,23,15);
+        halteSetters.setArrival(arrival);
+
+        assertTrue(arrival.equals(halteSetters.getArrival()));
 
     }
 
     @Test
-    public void setActualArrival() throws Exception {
+    public void setArrivalString() throws Exception {
+        String arrivalString = "2016-12-26T23:23:00";
 
+        halteSetters.setArrival(arrivalString);
+
+        assertEquals("2016-12-26T23:23:00", halteSetters.getArrival().toString());
     }
 
     @Test
-    public void setDeparture() throws Exception {
+    public void setActualArrivalLocalDateTime() throws Exception {
+        actualArrival = LocalDateTime.of(2016,12,26,23,15);
+        halteSetters.setActualArrival(actualArrival);
 
+        assertTrue(actualArrival.equals(halteSetters.getActualArrival()));
     }
 
     @Test
-    public void setActualDeparture() throws Exception {
+    public void setDepartureLocalDateTime() throws Exception {
+        departure = LocalDateTime.of(2016,12,26,23,15);
+        halteSetters.setArrival(arrival);
 
+        assertTrue(departure.equals(halteSetters.getDeparture()));
+    }
+
+    @Test
+    public void setActualDepartureLocalDateTime() throws Exception {
+        actualDeparture = LocalDateTime.of(2016,12,26,23,15);
+        halteSetters.setActualDeparture(actualDeparture);
+
+        assertTrue(actualDeparture.equals(halteSetters.getActualDeparture()));
+    }
+
+    @Test
+    public void setDepartureString() throws Exception {
+        String departureString = "2016-12-26T23:23:00";
+
+        halteSetters.setDeparture(departureString);
+
+        assertEquals("2016-12-26T23:23:00", halteSetters.getDeparture().toString());
+    }
+
+    @Test
+    public void setActualDepartureString() throws Exception {
+        String actualDepartureString = "2016-12-26T23:23:00";
+
+        halteSetters.setDeparture(actualDepartureString);
+
+        assertEquals("2016-12-26T23:23:00", halteSetters.getActualDeparture().toString());
     }
 
     @Test
     public void getCoordinaten() throws Exception {
+        halteGetters.setCoordinaten("00335566");
+
+        assertEquals("00335566", halteGetters.getCoordinaten());
 
     }
 
     @Test
     public void setCoordinaten() throws Exception {
+        halteSetters.setCoordinaten("00335566");
 
+        assertEquals("00335566", halteSetters.getCoordinaten());
     }
 
     @Test
     public void getName() throws Exception {
+        halteGetters.setName("Jeff");
 
+        assertEquals("Jeff", halteGetters.getName());
     }
 
     @Test
     public void setName() throws Exception {
+        halteSetters.setName("Jeff");
 
+        assertEquals("Jeff", halteSetters.getName());
     }
 
     @Test
     public void getArrival() throws Exception {
+        arrival = LocalDateTime.of(2016,12,26,23,15);
+        halteGetters.setArrival(arrival);
 
-    }
-
-    @Test
-    public void setArrival1() throws Exception {
-
+        assertTrue(arrival.equals(halteGetters.getArrival()));
     }
 
     @Test
     public void getActualArrival() throws Exception {
+        actualArrival = LocalDateTime.of(2016,12,26,23,15);
+        halteGetters.setActualArrival(actualArrival);
 
-    }
-
-    @Test
-    public void setActualArrival1() throws Exception {
-
+        assertTrue(actualArrival.equals(halteGetters.getActualArrival()));
     }
 
     @Test
     public void getDeparture() throws Exception {
+        departure = LocalDateTime.of(2016,12,26,23,15);
+        halteGetters.setDeparture(departure);
 
+        assertTrue(departure.equals(halteGetters.getDeparture()));
     }
 
-    @Test
-    public void setDeparture1() throws Exception {
-
-    }
 
     @Test
     public void getActualDeparture() throws Exception {
+        actualDeparture = LocalDateTime.of(2016,12,26,23,15);
+        halteGetters.setActualDeparture(actualDeparture);
 
-    }
-
-    @Test
-    public void setActualDeparture1() throws Exception {
-
+        assertTrue(actualDeparture.equals(halteGetters.getActualDeparture()));
     }
 
     @Test
     public void getAankomstPlatform() throws Exception {
+        halteGetters.setAankomstPlatform("13");
 
+        assertEquals("13", halteGetters.getAankomstPlatform());
     }
 
     @Test
     public void setAankomstPlatform() throws Exception {
+        halteSetters.setAankomstPlatform("13");
 
+        assertEquals("13", halteSetters.getAankomstPlatform());
     }
 
     @Test
     public void getDeparturePlatform() throws Exception {
+        halteGetters.setDeparturePlatform("12");
 
+        assertEquals("12",halteGetters.getDeparturePlatform());
     }
 
     @Test
     public void setDeparturePlatform() throws Exception {
+        halteSetters.setDeparturePlatform("12");
 
+        assertEquals("12",halteSetters.getDeparturePlatform());
     }
 
     @Test
     public void getDelay() throws Exception {
+        departure = LocalDateTime.of(2016,12,26,23,10);
+        actualDeparture = LocalDateTime.of(2016,12,26,23,15);
 
+        halteGetters.setDeparture(departure);
+        halteGetters.setActualDeparture(actualDeparture);
+
+        Duration duration = Duration.between(departure,actualDeparture);
+
+        assertTrue(duration.equals(halteGetters.getDelay()));
     }
 
 }
