@@ -20,6 +20,7 @@ public class Halte implements Serializable {
     private String coordinaten;
 
     public Halte(){}
+
     public Halte(String name, String departurePlatform) {
         super();
         this.name = name;
