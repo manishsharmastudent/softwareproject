@@ -44,8 +44,9 @@ public class TrajectParseUtil {
                     GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");
 
                     long distanceInMeters = 0L;
+
                     try{
-                        DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins("from").destinations("to").language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
+                        DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins(trj.getVertrekStation()).destinations(trj.getAankomstStation()).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
                         distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
                     } catch (Exception exc){
 

@@ -1,6 +1,9 @@
 package controller;
 
-import com.google.maps.GeoApiContext;
+import com.google.maps.*;
+import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.TransitMode;
+import com.google.maps.model.TravelMode;
 import hibernate.ManageStation;
 import model.Route;
 import model.Station;
@@ -32,6 +35,8 @@ public class RouteController {
         zoekRouteInAPI();
         terugButton();
     }
+
+
     public void zoekRouteInAPI(){
         view.getRouteButton().addActionListener(new ActionListener() {
             @Override
@@ -41,6 +46,9 @@ public class RouteController {
             }
         });
     }
+
+
+
     public void searchRoutes(String vertrek, String bestemming){
         List<Traject> trajecten = null;
 
@@ -48,7 +56,7 @@ public class RouteController {
             trajecten = new ParseController().getTraject(vertrek, bestemming);
         } catch (Exception e){
             e.getStackTrace();
-            JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!!!! godverdomme zoekt ne keer een deftige route");
+            JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevondenen");
         }
         if(trajecten == null){
             view.showError();
