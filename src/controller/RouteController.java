@@ -33,7 +33,7 @@ public class RouteController {
         view.getRouteButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchRoutes(view.getVertrekStation(), "Oostende");
+                searchRoutes(view.getVertrekStation(), view.getBestemmingStation());
                 terugButton();
             }
         });
@@ -46,14 +46,13 @@ public class RouteController {
         } catch (Exception e){
             e.getStackTrace();
             JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!!!! godverdomme zoekt ne keer een deftige route");
-
         }
         if(trajecten == null){
             view.showError();
         }
         else {
             view.showSearchedRoutes(trajecten);
-
+            terugButton();
         }
     }
     public void initComboBoxes(){

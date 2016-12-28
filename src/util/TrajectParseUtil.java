@@ -1,5 +1,10 @@
 package util;
 
+import com.google.maps.DistanceMatrixApi;
+import com.google.maps.GeoApiContext;
+import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.TransitMode;
+import com.google.maps.model.TravelMode;
 import exceptions.HalteNotFoundException;
 import exceptions.OnvolledigeTrajectException;
 import model.Halte;
@@ -11,6 +16,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import static javafx.scene.input.KeyCode.L;
 
 /**
  * Created by Nofel on 11-11-16.
@@ -33,6 +40,21 @@ public class TrajectParseUtil {
                         transferPlatform = ts.getString("DeparturePlatform");
 
                     trj.setTransferstations(transferStation, transferPlatform);
+
+                    GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");
+
+                    long distanceInMeters = 0L;
+                    try{
+                        DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins("from").destinations("to").language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
+                        distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
+                    } catch (Exception exc){
+
+                    }
+
+                    double distanceInKilometers = (double)distanceInMeters / 1000;
+
+                    System.out.println("De afstand is " + distanceInKilometers + "km");
+                    trj.setAantalKilometers(distanceInKilometers);
                 }
             }
         });
@@ -108,9 +130,10 @@ public class TrajectParseUtil {
                 if (arrTrains.length() != 0) {
 
                     Traject trj = null;
-
                     try {
                         trj = getTraject(obj);
+
+
                         if ((trj.getVertrekTijd() != null) && (trj.getAankomstTijd() != null))
                             trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
                     } catch (OnvolledigeTrajectException e) {

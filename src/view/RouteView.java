@@ -12,23 +12,17 @@ import java.util.List;
 public class RouteView extends StandardView {
     private JPanel routePanel = new JPanel();
 
-    private JLabel datumLabel = new JLabel("Datum: ");
-    private JTextField datum = new JTextField();
     private JLabel vertrekLabel = new JLabel("Vertrek: ");
     private JComboBox vertrekStation = new JComboBox();
     private JComboBox bestemmingStation = new JComboBox();
     private JLabel bestemmingLabel = new JLabel("Bestemming: ");
     private JButton getRouteButton = new JButton("Opzoeken");
 
-    public JPanel getRoutePanel(){ return this.routePanel; }
     public JComboBox getVertrekStationBox(){
         return vertrekStation;
     }
     public JComboBox getBestemmingStationBox(){
         return bestemmingStation;
-    }
-    public String getDatum(){
-        return this.datum.getText();
     }
     public String getVertrekStation(){
         return vertrekStation.getSelectedItem().toString();
@@ -46,10 +40,8 @@ public class RouteView extends StandardView {
 
     public void showRoute(){
 
-        routePanel.setLayout(new GridLayout(4,2));
+        routePanel.setLayout(new GridLayout(3,2));
 
-        routePanel.add(datumLabel);
-        routePanel.add(datum);
         routePanel.add(vertrekLabel);
         routePanel.add(vertrekStation);
         routePanel.add(bestemmingLabel);

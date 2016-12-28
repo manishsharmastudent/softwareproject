@@ -8,7 +8,7 @@
       <meta attribute="class-description">
          This class contains the Abonnement detail.
       </meta>
-      <id name="stationId" type="int" column="stationId">
+      <id name="stationId" type="int" column="id">
          <generator class="native"/>
       </id>
        <property name="naam" column="naam" type="string"/>

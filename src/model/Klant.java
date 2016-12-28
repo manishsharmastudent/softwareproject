@@ -42,32 +42,25 @@ public class Klant {
 		return this.stad;
 	}
 	public boolean getActive(){ return this.active; }
-	public boolean setRijksregisterNummer(String rijksregisterNummer){
+	public void setRijksregisterNummer(String rijksregisterNummer){
 		this.rijksregisterNummer = rijksregisterNummer;
-		return true;
 	}
-	public boolean setVoornaam(String voornaam){
+	public void setVoornaam(String voornaam){
 		this.voornaam = voornaam;
-		return true;
 	}
-	public boolean setAchternaam(String achternaam){
+	public void setAchternaam(String achternaam){
 		this.achternaam = achternaam;
-		return true;
 	}
-	public boolean setAdres(String adres){
+	public void setAdres(String adres){
 		this.adres = adres;
-		return true;
 	}
-	public boolean setPostcode(int post) {
+	public void setPostcode(int post) {
 		this.postcode = post;
-		return true;
 	}
-	public boolean setStad(String stad){
+	public void setStad(String stad){
 		this.stad = stad;
-		return true;
 	}
-	public boolean setActive(boolean active){
+	public void setActive(boolean active){
 		this.active = active;
-		return true;
 	}
 }

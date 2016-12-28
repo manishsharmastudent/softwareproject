@@ -1,7 +1,6 @@
 package controller;
 
 import hibernate.ManageKlant;
-import hibernate.ManageRoute;
 import hibernate.ManageStation;
 import hibernate.ManageVoorwerp;
 import model.*;
@@ -37,28 +36,15 @@ public class VoorwerpController {
     public int getVoorwerpId(){ return voorwerpModel.getVoorwerpId(); }
     public String getKleur(){ return voorwerpModel.getKleur(); }
     public String getType(){ return voorwerpModel.getType(); }
-    public Route getRoute(){ return voorwerpModel.getRoute(); }
-    public Station getStation(){ return voorwerpModel.getStation(); }
 
     public void setVoorwerpId(int voorwerpid){ voorwerpModel.setVoorwerpId(voorwerpid); }
     public void setKleur(String kleur){ voorwerpModel.setKleur(kleur); }
     public void setType(String type){ voorwerpModel.setType(type); }
-    public void setRoute(Route route){ voorwerpModel.setRoute(route); }
-    public void setStation(Station station){ voorwerpModel.setStation(station); }
     public void toevoegenVoorwerp(){
         voorwerpView.getToevoegenVoorwerpButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Route route = null;
                 Klant klant = null;
                 Station station = null;
-
-                //Route
-                try{
-                    List<Route> routes = new ManageRoute().listRoute();
-                    route = new ManageRoute().getRouteById(routes.get(voorwerpView.getKlantComboBox().getSelectedIndex()).getRouteId());
-                } catch(Exception exc){
-                    JOptionPane.showMessageDialog(null, exc.getMessage() + "\nRoute is niet gevonden");
-                }
 
                 //Klant
                 try {
@@ -68,15 +54,11 @@ public class VoorwerpController {
                     JOptionPane.showMessageDialog(null, exc.getMessage() + "\nKlant is niet gevonden");
                 }
 
-                //Station
-                try {
-                    List<Station> stations = new ManageStation().listStations();
-                    station = new ManageStation().getStationById(stations.get(voorwerpView.getKlantComboBox().getSelectedIndex()).getStationId());
-                } catch (Exception exc){
-                    JOptionPane.showMessageDialog(null, exc.getMessage() + "\nStation is niet gevonden");
-                }
 
-                voorwerpModel = new Voorwerp(0, voorwerpView.getTrein(), voorwerpView.getKleur(), voorwerpView.getType(), voorwerpView.getVoorwerp(), route, station, klant, true);
+                Station vertrekStation = new ManageStation().getStationById(voorwerpView.getVertrekStationId());
+                Station bestemmingStation = new ManageStation().getStationById(voorwerpView.getBestemmingStationId());
+
+                voorwerpModel = new Voorwerp(0, voorwerpView.getTrein(), voorwerpView.getKleur(), voorwerpView.getType(), voorwerpView.getVoorwerp(), vertrekStation, bestemmingStation, klant, true);
                 voorwerpManage.addVoorwerp(voorwerpModel);
             }
         });
@@ -86,9 +68,6 @@ public class VoorwerpController {
         initComboBox();
         zoekVoorwerpOpNaam();
         terugButton();
-    }
-    public void showAllVoorwerpen(){
-        voorwerpView.showVoorwerpen(voorwerpManage.listVoorwerp());
     }
     public void zoekVoorwerpOpNaam(){
         voorwerpView.getZoekButtonNaam().addActionListener(new ActionListener() {
@@ -100,7 +79,6 @@ public class VoorwerpController {
             }
         });
     }
-    public void showVoorwerp(Voorwerp voorwerp){ voorwerpView.showVoorwerp(voorwerp);}
     public void showVoorwerpen(List<Voorwerp>voorwerpen){
         if(voorwerpen.size() == 0){
             showGeenVoorwerpenGevonden();
@@ -110,6 +88,7 @@ public class VoorwerpController {
             voorwerpView.getVoorwerpenPanel().updateUI();
             voorwerpView.showVoorwerpen(voorwerpen);
             verwijderAfgehaaldVoorwerp();
+            terugButton();
         }
 
     }
@@ -145,21 +124,12 @@ public class VoorwerpController {
     }
     public void initComboBox(){
         AutoCompleteDecorator.decorate(voorwerpView.getKlantComboBox());
-        AutoCompleteDecorator.decorate(voorwerpView.getRouteComboBox());
         AutoCompleteDecorator.decorate(voorwerpView.getKleurComboBox());
-        AutoCompleteDecorator.decorate(voorwerpView.getStationComboBox());
+        AutoCompleteDecorator.decorate(voorwerpView.getVertrekStationComboBox());
+        AutoCompleteDecorator.decorate(voorwerpView.getBestemmingStationComboBox());
         AutoCompleteDecorator.decorate(voorwerpView.getTypeComboBox());
 
-        voorwerpView.getRouteComboBox().addItem("N/A");
         voorwerpView.getKlantComboBox().addItem("N/A");
-        ManageRoute manageRoute = new ManageRoute();
-        final List<Route> routes = manageRoute.listRoute();
-
-        for (int i = 0; i < routes.size();i++){
-            String route = routes.get(i).getRouteVertrek().getNaam() + " - " + routes.get(i).getRouteBestemming().getNaam();
-        voorwerpView.getRouteComboBox().addItem(route);
-    }
-
         String[]typeVoorwerpen = {"N/A", "Smartphone", "GSM", "Paraplu", "Laptop", "Handtas", "Portomonnee"};
         for (int i = 0; i < typeVoorwerpen.length;i++){
             voorwerpView.getTypeComboBox().addItem(typeVoorwerpen[i]);
@@ -176,10 +146,11 @@ public class VoorwerpController {
             voorwerpView.getKleurComboBox().addItem(kleuren[i]);
         }
 
-        /*List<Station> stations = new ManageStation().listStations();
+        List<Station> stations = new ManageStation().listStations();
         for (int i = 0; i < stations.size();i++){
-            voorwerpView.getStationComboBox().addItem(stations.get(i).getStad());
-        }*/
+            voorwerpView.getVertrekStationComboBox().addItem(stations.get(i).getStationId() + "." + stations.get(i).getNaam());
+            voorwerpView.getBestemmingStationComboBox().addItem(stations.get(i).getStationId() + "." + stations.get(i).getNaam());
+        }
     }
     public void terugButton(){
         voorwerpView.getTerugButton().addActionListener(new ActionListener() {
