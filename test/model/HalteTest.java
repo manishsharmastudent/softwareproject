@@ -2,6 +2,7 @@ package model;
 
 import org.junit.Before;
 import org.junit.Test;
+import util.TimeParseUtil;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -50,10 +51,10 @@ public class HalteTest {
     @Test
     public void setArrivalString() throws Exception {
         String arrivalString = "2016-12-26T23:23:00";
-
+        LocalDateTime tijd = TimeParseUtil.getTime(arrivalString);
         halteSetters.setArrival(arrivalString);
 
-        assertEquals("2016-12-26T23:23:00", halteSetters.getArrival().toString());
+        assertTrue(tijd.equals(halteSetters.getArrival()));
     }
 
     @Test
@@ -67,7 +68,7 @@ public class HalteTest {
     @Test
     public void setDepartureLocalDateTime() throws Exception {
         departure = LocalDateTime.of(2016,12,26,23,15);
-        halteSetters.setArrival(arrival);
+        halteSetters.setDeparture(departure);
 
         assertTrue(departure.equals(halteSetters.getDeparture()));
     }
@@ -83,19 +84,20 @@ public class HalteTest {
     @Test
     public void setDepartureString() throws Exception {
         String departureString = "2016-12-26T23:23:00";
+        LocalDateTime tijd = TimeParseUtil.getTime(departureString);
 
         halteSetters.setDeparture(departureString);
-
-        assertEquals("2016-12-26T23:23:00", halteSetters.getDeparture().toString());
+        assertTrue(tijd.equals(halteSetters.getDeparture()));
     }
 
     @Test
     public void setActualDepartureString() throws Exception {
         String actualDepartureString = "2016-12-26T23:23:00";
+        LocalDateTime tijd = TimeParseUtil.getTime(actualDepartureString);
 
-        halteSetters.setDeparture(actualDepartureString);
+        halteSetters.setActualDeparture(actualDepartureString);
 
-        assertEquals("2016-12-26T23:23:00", halteSetters.getActualDeparture().toString());
+        assertTrue(tijd.equals(halteSetters.getActualDeparture()));
     }
 
     @Test
@@ -196,9 +198,9 @@ public class HalteTest {
         halteGetters.setDeparture(departure);
         halteGetters.setActualDeparture(actualDeparture);
 
-        Duration duration = Duration.between(departure,actualDeparture);
+        String delay = TimeParseUtil.getDelay(departure,actualDeparture);
 
-        assertTrue(duration.equals(halteGetters.getDelay()));
+        assertTrue(delay.equals(halteGetters.getDelay()));
     }
 
 }

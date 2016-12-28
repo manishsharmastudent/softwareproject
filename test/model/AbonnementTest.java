@@ -26,7 +26,6 @@ public class AbonnementTest {
         korting = new Korting();
         route = new Route();
         klant = new Klant();
-
         beginDatum = LocalDate.of(2016,12,26);
         vervalDatum = beginDatum.plusYears(1);
         korting.setOmschrijving("kortingGetter");
@@ -41,7 +40,7 @@ public class AbonnementTest {
     @Test
     public void getAbonnementId() throws Exception {
         abonnementGetters.setAbonnementId(6);
-        assertEquals(6,abonnementSetters.getAbonnementId());
+        assertEquals(6,abonnementGetters.getAbonnementId());
 
     }
 
@@ -62,7 +61,7 @@ public class AbonnementTest {
 
     @Test
     public void getRoute() throws Exception {
-        assertEquals("1",abonnementGetters.getRoute().getRouteId());
+        assertEquals(1,abonnementGetters.getRoute().getRouteId());
     }
 
     @Test
@@ -101,7 +100,7 @@ public class AbonnementTest {
         beginDatum = LocalDate.of(2016,8,12);
         abonnementSetters.setBeginDatum(beginDatum);
 
-        assertTrue(beginDatum.equals(abonnement.getBeginDatum()));
+        assertTrue(beginDatum.equals(abonnementSetters.getBeginDatum()));
     }
 
     @Test
@@ -117,7 +116,7 @@ public class AbonnementTest {
         route.setRouteId(654);
         abonnementSetters.setRoute(route);
 
-        assertEquals(654,abonnementSetters.getRoute());
+        assertEquals(654,abonnementSetters.getRoute().getRouteId());
     }
 
     @Test

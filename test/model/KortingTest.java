@@ -18,9 +18,9 @@ public class KortingTest {
 
     @Before
     public void setUp() throws Exception {
+        begindatum = LocalDate.of(2016,02,23);
         kortingGetters = new Korting(5,3,begindatum,"Senior",true,0.25);
         kortingSetters = new Korting();
-        begindatum = LocalDate.of(2016,02,23);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class KortingTest {
         assertTrue(begindatum.equals(korting.getBeginDatum()));
         assertEquals("Senior", korting.getOmschrijving());
         assertTrue(korting.isActive());
-        assertEquals(25,korting.getProcent(),0.01);
+        assertEquals(0.25,korting.getProcent(),0.01);
     }
 
     @Test
@@ -72,14 +72,13 @@ public class KortingTest {
 
     @Test
     public void getBeginDatum() throws Exception {
-        assertTrue(kortingGetters.equals(korting.getBeginDatum()));
+        assertTrue(begindatum.equals(kortingGetters.getBeginDatum()));
     }
 
     @Test
     public void setBeginDatum() throws Exception {
-        begindatum = LocalDate.of(2015,3,20);
         kortingSetters.setBeginDatum(begindatum);
-        assertTrue(kortingSetters.equals(korting.getBeginDatum()));
+        assertTrue(begindatum.equals(kortingSetters.getBeginDatum()));
     }
 
     @Test
