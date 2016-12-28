@@ -10,6 +10,7 @@ import view.VoorwerpView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class VoorwerpController {
     private Voorwerp voorwerpModel;
     private VoorwerpView voorwerpView;
     private ManageVoorwerp voorwerpManage;
+
+    private ArrayList<Integer> stationIds = new ArrayList<>();
+    private ArrayList<String> rijkregisterNummers = new ArrayList<>();
 
     public VoorwerpController(){
         voorwerpView = new VoorwerpView("Voorwerp");
@@ -43,23 +47,18 @@ public class VoorwerpController {
     public void toevoegenVoorwerp(){
         voorwerpView.getToevoegenVoorwerpButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Klant klant = null;
-                Station station = null;
-
-                //Klant
-                try {
-                    List<Klant> klanten = new ManageKlant().listKlanten();
-                    klant = new ManageKlant().getKlantByRijksregister(klanten.get(voorwerpView.getKlantComboBox().getSelectedIndex()).getRijksregisterNummer());
-                } catch (Exception exc){
-                    JOptionPane.showMessageDialog(null, exc.getMessage() + "\nKlant is niet gevonden");
-                }
-
-
-                Station vertrekStation = new ManageStation().getStationById(voorwerpView.getVertrekStationId());
-                Station bestemmingStation = new ManageStation().getStationById(voorwerpView.getBestemmingStationId());
+                Klant klant = new ManageKlant().getKlantByRijksregister(rijkregisterNummers.get(voorwerpView.getKlantIndex()));
+                Station vertrekStation = new ManageStation().getStationById(stationIds.get(voorwerpView.getVertrekStationIndex()));
+                Station bestemmingStation = new ManageStation().getStationById(stationIds.get(voorwerpView.getBestemmingStationIndex()));
 
                 voorwerpModel = new Voorwerp(0, voorwerpView.getTrein(), voorwerpView.getKleur(), voorwerpView.getType(), voorwerpView.getVoorwerp(), vertrekStation, bestemmingStation, klant, true);
-                voorwerpManage.addVoorwerp(voorwerpModel);
+                try {
+                    voorwerpManage.addVoorwerp(voorwerpModel);
+                    voorwerpView.addVoorwerpSucceed(voorwerpModel.getVoorwerp());
+                } catch(Exception exc){
+                    voorwerpView.addVoorwerpFailed();
+                }
+
             }
         });
     }
@@ -137,6 +136,7 @@ public class VoorwerpController {
 
         List<Klant> klanten = new ManageKlant().listKlanten();
         for (int i = 0; i < klanten.size();i++){
+            rijkregisterNummers.add(klanten.get(i).getRijksregisterNummer());
             String klant = klanten.get(i).getVoornaam() + " " + klanten.get(i).getAchternaam();
             voorwerpView.getKlantComboBox().addItem(klant);
         }
@@ -148,8 +148,9 @@ public class VoorwerpController {
 
         List<Station> stations = new ManageStation().listStations();
         for (int i = 0; i < stations.size();i++){
-            voorwerpView.getVertrekStationComboBox().addItem(stations.get(i).getStationId() + "." + stations.get(i).getNaam());
-            voorwerpView.getBestemmingStationComboBox().addItem(stations.get(i).getStationId() + "." + stations.get(i).getNaam());
+            stationIds.add(stations.get(i).getStationId());
+            voorwerpView.getVertrekStationComboBox().addItem(stations.get(i).getNaam());
+            voorwerpView.getBestemmingStationComboBox().addItem(stations.get(i).getNaam());
         }
     }
     public void terugButton(){

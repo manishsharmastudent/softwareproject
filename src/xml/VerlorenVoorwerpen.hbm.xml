@@ -18,5 +18,6 @@
       <property name="trein" column="treinId" type="int"/>
       <property name="type" column="type" type="string"/>
       <property name="voorwerpstr" column="voorwerp" type="string"/>
+      <many-to-one name="klant" column="klantId" class="model.Klant"/>
    </class>
 </hibernate-mapping>

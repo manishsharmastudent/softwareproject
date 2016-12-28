@@ -93,9 +93,15 @@ public class AbonnementController {
                public void actionPerformed(ActionEvent e) {
                    abonnementView.getGevondenAbonnementPanel().removeAll();
                    abonnementView.getGevondenAbonnementPanel().updateUI();
-                   Abonnement abo = abonnementManage.getAbonnementById(Integer.parseInt(abonnementView.getAbonnementNummerText()));
                    List<Abonnement> abonnements = new ArrayList<Abonnement>();
-                   abonnements.add(abo);
+                   try {
+                       Abonnement abo = abonnementManage.getAbonnementById(Integer.parseInt(abonnementView.getAbonnementNummerText()));
+                       abonnements.add(abo);
+                   } catch (Exception exc){
+                       abonnements = abonnementManage.listAbonnementen();
+                   }
+
+
                    abonnementView.showGevondenAbonnementen(abonnements);
                    aanpassenAbonnement();
                }

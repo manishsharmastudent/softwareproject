@@ -64,13 +64,11 @@ public class VoorwerpView extends StandardView {
         return Integer.parseInt(voorwerp[0]);
     }
 
-    public int getVertrekStationId(){
-        String[] data = vertrekStationComboBox.getSelectedItem().toString().split("\\.");
-        return Integer.parseInt(data[0]);
+    public int getVertrekStationIndex(){
+        return vertrekStationComboBox.getSelectedIndex();
     }
-    public int getBestemmingStationId(){
-        String[] data = bestemmingStationComboBox.getSelectedItem().toString().split("\\.");
-        return Integer.parseInt(data[0]);
+    public int getBestemmingStationIndex(){
+        return bestemmingStationComboBox.getSelectedIndex();
     }
     public int getTrein(){
         return Integer.parseInt(this.treinText.getText());
@@ -83,7 +81,7 @@ public class VoorwerpView extends StandardView {
     }
     public String getKleur(){ return kleurComboBox.getSelectedItem().toString();}
     public String getType(){ return typeComboBox.getSelectedItem().toString();}
-    public String getKlant(){ return klantComboBox.getSelectedItem().toString();}
+    public int getKlantIndex(){ return klantComboBox.getSelectedIndex()-1; }
     public JButton getToevoegenVoorwerpButton(){
         return toevoegenVoorwerpButton;
     }
@@ -181,5 +179,11 @@ public class VoorwerpView extends StandardView {
     }
     public void showError(int id){
         JOptionPane.showMessageDialog(null, "Er is iets foutgelopen bij het verwijderen van voorwerp met id: " + id + ".");
+    }
+    public void addVoorwerpSucceed(String voorwerp){
+        JOptionPane.showMessageDialog(null, "Voorwerp " + voorwerp + " is toegevoegd!");
+    }
+    public void addVoorwerpFailed(){
+        JOptionPane.showMessageDialog(null, "Er is iets foutgelopen bij het toevoegen van het voorwerp.");
     }
 }

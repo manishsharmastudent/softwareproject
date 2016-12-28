@@ -9,13 +9,17 @@ import java.util.List;
 public class Station implements Serializable{
     private int stationId;
     private String naam;
+    private String naamFrans;
+    private String naamAfkorting;
     private String stad;
     private List<Trein> treinen;
     private boolean active;
 
-    public Station(int stationId, String naam, String stad) {
+    public Station(int stationId, String naam, String frans, String afk, String stad) {
         this.stationId = stationId;
         this.naam = naam;
+        this.naamFrans = frans;
+        this.naamAfkorting = afk;
         this.stad = stad;
     }
     public Station() {}
@@ -31,12 +35,10 @@ public class Station implements Serializable{
     public void setStationId(int stationId){
         this.stationId = stationId;
     }
-    public String getStad() {
-        return stad;
-    }
-    public void setStad(String stad) {
-        this.stad = stad;
-    }
+    public String getNaamFrans(){return naamFrans; }
+    public void setNaamFrans(String naam){ this.naamFrans = naam;}
+    public String getNaamAfkorting(){return naamAfkorting; }
+    public void setNaamAfkorting(String naam){this.naamAfkorting = naam;}
     public String getNaam() {
         return naam;
     }
