@@ -73,22 +73,4 @@ public class ManageStation {
             return station;
         }
     }
-    public List<Station> getAllStationsBoxes() {
-        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-
-        Session session = factory.openSession();
-        Transaction tx = null;
-        List<Station> stations = new ArrayList<Station>();
-        try {
-            tx = session.beginTransaction();
-            stations = session.createQuery("FROM Station").list();
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return stations;
-    }
 }

@@ -30,11 +30,13 @@ public class AbonnementView extends StandardView {
     private JTextField abonnementNummerText = new JTextField();
 
     private JLabel klantLabel = new JLabel("Klant");
-    private JLabel routeLabel = new JLabel("Route");
+    private JLabel vertrekLabel = new JLabel("Vertrek");
+    private JLabel bestemmingLabel = new JLabel("Bestemming");
     private JLabel kortingLabel = new JLabel("Korting");
     private JLabel begindatumLabel = new JLabel("Begindatum");
     private JLabel einddatumLabel = new JLabel("Einddatum");
-    private JComboBox routeComboBox = new JComboBox();
+    private JComboBox vertrekComboBox = new JComboBox();
+    private JComboBox bestemmingComboBox = new JComboBox();
     private JComboBox klantComboBox = new JComboBox();
     private JComboBox kortingComboBox = new JComboBox();
     private JTable abonnementenTable = null;
@@ -75,22 +77,24 @@ public class AbonnementView extends StandardView {
     public JComboBox getKlantComboBox(){
         return this.klantComboBox;
     }
-    public JComboBox getRouteComboBox(){
-        return this.routeComboBox;
+    public JComboBox getVertrekComboBox(){
+        return this.vertrekComboBox;
     }
+    public JComboBox getBestemmingComboBox(){return this.bestemmingComboBox; }
     public JComboBox getKortingComboBox(){
         return this.kortingComboBox;
     }
-    public int getRoute() {
-        String[] data = routeComboBox.getSelectedItem().toString().split("\\.");
-        return Integer.parseInt(data[0]);
+    public int getVertrekStationIndex() {
+        return vertrekComboBox.getSelectedIndex();
     }
-    public int getKorting(){
-        String[] data = kortingComboBox.getSelectedItem().toString().split("\\.");
-        return Integer.parseInt(data[0]);
+    public int getBestemmingStationIndex() {
+        return bestemmingComboBox.getSelectedIndex();
     }
-    public String getKlant(){
-        return klantComboBox.getSelectedItem().toString().substring(0, 15);
+    public int getKortingIndex(){
+        return kortingComboBox.getSelectedIndex();
+    }
+    public int getKlantIndex(){
+        return klantComboBox.getSelectedIndex();
     }
     public Date getBegindatum() {
         return (Date) datePickerBeginDatum.getModel().getValue();
@@ -119,7 +123,7 @@ public class AbonnementView extends StandardView {
         return Integer.parseInt(abonnement[0]);
     }
     public void showAanpassenAbonnement(Abonnement abonnement){
-        abonnementPanel.setLayout(new GridLayout(8,2));
+        abonnementPanel.setLayout(new GridLayout(9,2));
         System.out.println(abonnement.getAbonnementId());
 
         eindDatum.setText("12-12-2015");
@@ -131,8 +135,10 @@ public class AbonnementView extends StandardView {
         abonnementPanel.add(textAboId);
         abonnementPanel.add(new JLabel("Korting: "));
         abonnementPanel.add(kortingComboBox);
-        abonnementPanel.add(new JLabel("Route: "));
-        abonnementPanel.add(routeComboBox);
+        abonnementPanel.add(new JLabel("Vertrek: "));
+        abonnementPanel.add(vertrekComboBox);
+        abonnementPanel.add(new JLabel("Bestemming: "));
+        abonnementPanel.add(bestemmingComboBox);
         abonnementPanel.add(new JLabel("Klant: "));
         abonnementPanel.add(klantComboBox);
         abonnementPanel.add(new JLabel("Begindatum: "));
@@ -172,12 +178,14 @@ public class AbonnementView extends StandardView {
             showWindow();
         }
     public void showToevoegenAbonnement(){
-        abonnementPanel.setLayout(new GridLayout(6,2));
+        abonnementPanel.setLayout(new GridLayout(7,2));
 
         abonnementPanel.add(klantLabel);
         abonnementPanel.add(klantComboBox);
-        abonnementPanel.add(routeLabel);
-        abonnementPanel.add(routeComboBox);
+        abonnementPanel.add(vertrekLabel);
+        abonnementPanel.add(vertrekComboBox);
+        abonnementPanel.add(bestemmingLabel);
+        abonnementPanel.add(bestemmingComboBox);
         abonnementPanel.add(kortingLabel);
         abonnementPanel.add(kortingComboBox);
         abonnementPanel.add(begindatumLabel);
@@ -285,6 +293,10 @@ public class AbonnementView extends StandardView {
             }
         }
 
-        abonnementenTable = new JTable(dataAbonnementen, headers);
+        abonnementenTable = new JTable(dataAbonnementen, headers){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
     }
 }

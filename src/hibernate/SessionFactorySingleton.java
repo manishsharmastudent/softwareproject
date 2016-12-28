@@ -27,7 +27,9 @@ public class SessionFactorySingleton {
         }
         return instance;
     }
-
+    public static void closeInstance(){
+        instance = null;
+    }
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }

@@ -113,28 +113,6 @@ public class ManageAbonnement {
             return a;
         }
     }
-
-    public List<Abonnement> getAbonnementByRoute(Route r){
-        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-        Session session = factory.openSession();
-        Transaction tx = null;
-        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
-        try{
-            tx = session.beginTransaction();
-            String hql = "FROM Abonnement WHERE route = :route AND active = true";
-            Query query = session.createQuery(hql);
-            query.setParameter("route", r);
-
-            abonnementen = query.list();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-        return abonnementen;
-
-    }
     public Abonnement getAbonnementByKlantId(String rijksregisterNummer){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 

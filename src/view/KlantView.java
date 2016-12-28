@@ -158,6 +158,7 @@ public class KlantView extends StandardView {
     public void showKlanten(List<Klant> klanten){
         klantPanel.removeAll();
         klantPanel.updateUI();
+
         gevondenKlantenPanel.setLayout(new GridLayout(1, 2));
         initTable(klanten);
         JScrollPane scrollPane = new JScrollPane(klantTable);
@@ -195,7 +196,11 @@ public class KlantView extends StandardView {
             }
         }
 
-        klantTable = new JTable(klantData, headers);
+        klantTable = new JTable(klantData, headers){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
     }
     public void klantNotFound(){
         JOptionPane.showMessageDialog(null, "Klant is niet gevonden");

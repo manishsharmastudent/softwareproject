@@ -26,10 +26,15 @@ public class StationView extends StandardView {
     private JButton zoekLiveboardButton = new JButton("Zoeken");
     private JTextField naamText = new JTextField();
     private JTextField stadText = new JTextField();
+    private JComboBox stadComboBox = new JComboBox();
 
     public StationView(String titel){
         super(titel);
     }
+
+    public JComboBox getStadComboBox(){return this.stadComboBox; }
+
+    public String getStation(){return stadComboBox.getSelectedItem().toString(); }
 
     public JButton getZoekLiveboardButton(){ return this.zoekLiveboardButton; }
 
@@ -39,10 +44,6 @@ public class StationView extends StandardView {
 
     public String getNaamText(){
         return this.naamText.getText();
-    }
-
-    public String getStadText(){
-        return this.stadText.getText();
     }
 
     public void showVoegStationToe(){
@@ -66,9 +67,11 @@ public class StationView extends StandardView {
     }
 
     public void showSearchLiveboard(){
+        //Autocomplete
+
         stationPanel.setLayout(new GridLayout(1,3));
         stationPanel.add(stadLabel);
-        stationPanel.add(stadText);
+        stationPanel.add(stadComboBox);
         stationPanel.add(zoekLiveboardButton);
 
         interactiePanel.add(stationPanel);
@@ -112,7 +115,7 @@ public class StationView extends StandardView {
                         dataLiveboard[row][col] = Integer.toString(trein.getTreinType());
                         break;
                     case 1:
-                        dataLiveboard[row][col] = this.getStadText();
+                        dataLiveboard[row][col] = this.stadComboBox.getSelectedItem().toString();
                         break;
                     case 2:
                         dataLiveboard[row][col] = trein.getBestemming();

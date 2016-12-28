@@ -31,6 +31,4 @@ public class TypeKaartController {
     public void SetNaam(String naam){ typeKaartModel.setOmschrijving(naam); }
     public void setOmschrijving(String omschrijving){ typeKaartModel.setOmschrijving(omschrijving); }
     public void setKorting(Korting korting){ typeKaartModel.setKorting(korting); }
-
-
 }

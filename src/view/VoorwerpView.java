@@ -13,8 +13,8 @@ import java.util.Vector;
 public class VoorwerpView extends StandardView {
     JPanel voorwerpenPanel = new JPanel();
     JLabel treinLabel = new JLabel("Trein");
-    JLabel stationLabel = new JLabel("Station");
-    JLabel routeLabel = new JLabel("Route");
+    JLabel vertrekStationLabel = new JLabel("Vertrek");
+    JLabel bestemmingStationLabel = new JLabel("Bestemming");
     JLabel voorwerpLabel = new JLabel("Voorwerp");
     JLabel kleurLabel = new JLabel("Kleur");
     JLabel typeLabel = new JLabel("Type");
@@ -24,7 +24,8 @@ public class VoorwerpView extends StandardView {
     String[][] voorwerpenTable = null;
 
     JTextField treinText = new JTextField();
-    JComboBox stationComboBox = new JComboBox();
+    JComboBox vertrekStationComboBox = new JComboBox();
+    JComboBox bestemmingStationComboBox = new JComboBox();
     JComboBox routeComboBox = new JComboBox();
     JTextField voorwerpText = new JTextField();
     JComboBox kleurComboBox = new JComboBox();
@@ -43,11 +44,11 @@ public class VoorwerpView extends StandardView {
         return this.voorwerpenPanel;
     }
 
-    public JComboBox getStationComboBox(){
-        return this.stationComboBox;
+    public JComboBox getVertrekStationComboBox(){
+        return this.vertrekStationComboBox;
     }
-    public JComboBox getRouteComboBox(){
-        return routeComboBox;
+    public JComboBox getBestemmingStationComboBox(){
+        return this.bestemmingStationComboBox;
     }
     public JComboBox getKleurComboBox(){
         return kleurComboBox;
@@ -63,8 +64,11 @@ public class VoorwerpView extends StandardView {
         return Integer.parseInt(voorwerp[0]);
     }
 
-    public String getStation(){
-        return this.stationComboBox.getSelectedItem().toString();
+    public int getVertrekStationIndex(){
+        return vertrekStationComboBox.getSelectedIndex();
+    }
+    public int getBestemmingStationIndex(){
+        return bestemmingStationComboBox.getSelectedIndex();
     }
     public int getTrein(){
         return Integer.parseInt(this.treinText.getText());
@@ -77,7 +81,7 @@ public class VoorwerpView extends StandardView {
     }
     public String getKleur(){ return kleurComboBox.getSelectedItem().toString();}
     public String getType(){ return typeComboBox.getSelectedItem().toString();}
-    public String getKlant(){ return klantComboBox.getSelectedItem().toString();}
+    public int getKlantIndex(){ return klantComboBox.getSelectedIndex()-1; }
     public JButton getToevoegenVoorwerpButton(){
         return toevoegenVoorwerpButton;
     }
@@ -90,15 +94,10 @@ public class VoorwerpView extends StandardView {
         voorwerpenPanel.add(voorwerpLabel);
         voorwerpenPanel.add(voorwerpText);
         voorwerpenPanel.add(zoekButtonNaam);
-        //voorwerpenPanel.add(typeLabel);
-        //voorwerpenPanel.add(typeComboBox);
 
         interactiePanel.add(voorwerpenPanel);
         addPath("Voorwerp zoeken");
         showWindow();
-    }
-    public void showVoorwerp(Voorwerp voorwerp){
-
     }
     public void showVoorwerpen(java.util.List<Voorwerp> voorwerpen){
         initTable(voorwerpen);
@@ -113,14 +112,14 @@ public class VoorwerpView extends StandardView {
         showWindow();
     }
     public void showVoorwerpenToevoegen(){
-        voorwerpenPanel.setLayout(new GridLayout(7,2));
+        voorwerpenPanel.setLayout(new GridLayout(8,2));
 
         voorwerpenPanel.add(treinLabel);
         voorwerpenPanel.add(treinText);
-        //voorwerpenPanel.add(stationLabel);
-        //voorwerpenPanel.add(stationComboBox);
-        voorwerpenPanel.add(routeLabel);
-        voorwerpenPanel.add(routeComboBox);
+        voorwerpenPanel.add(vertrekStationLabel);
+        voorwerpenPanel.add(vertrekStationComboBox);
+        voorwerpenPanel.add(bestemmingStationLabel);
+        voorwerpenPanel.add(bestemmingStationComboBox);
         voorwerpenPanel.add(voorwerpLabel);
         voorwerpenPanel.add(voorwerpText);
         voorwerpenPanel.add(kleurLabel);
@@ -158,7 +157,7 @@ public class VoorwerpView extends StandardView {
                         voorwerpenTable[row][col] = Integer.toString(vw.getTrein());
                         break;
                     case 3:
-                        voorwerpenTable[row][col] = vw.getRoute().getRouteVertrek().getNaam() + "-" + vw.getRoute().getRouteBestemming().getNaam();
+                        voorwerpenTable[row][col] = vw.getVertrekStation().getNaam() + "-" + vw.getBestemmingStation().getNaam();
                         break;
                     case 4:
                         voorwerpenTable[row][col] = vw.getType();
@@ -173,12 +172,22 @@ public class VoorwerpView extends StandardView {
             }
         }
 
-        overviewVoorwerpen = new JTable(voorwerpenTable, headers);
+        overviewVoorwerpen = new JTable(voorwerpenTable, headers){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
     }
     public void showSucceed(int id){
         JOptionPane.showMessageDialog(null, "Voorwerp met id: " + id + " is verwijderd");
     }
     public void showError(int id){
         JOptionPane.showMessageDialog(null, "Er is iets foutgelopen bij het verwijderen van voorwerp met id: " + id + ".");
+    }
+    public void addVoorwerpSucceed(String voorwerp){
+        JOptionPane.showMessageDialog(null, "Voorwerp " + voorwerp + " is toegevoegd!");
+    }
+    public void addVoorwerpFailed(){
+        JOptionPane.showMessageDialog(null, "Er is iets foutgelopen bij het toevoegen van het voorwerp.");
     }
 }

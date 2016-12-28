@@ -25,11 +25,6 @@ public class LoginController {
         loginManage = new ManageLogin();
         loginView = new LoginView("Login");
     }
-    public LoginController(Login login, LoginView view, ManageLogin manage){
-        this.loginModel = login;
-        this.loginView = view;
-        this.loginManage = manage;
-    }
 
     public String getLoginNaam(){
         return loginModel.getLoginNaam();

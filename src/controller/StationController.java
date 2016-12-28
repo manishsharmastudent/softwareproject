@@ -3,12 +3,14 @@ package controller;
 import hibernate.ManageStation;
 import model.Liveboard;
 import model.Station;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import view.StationView;
 import controller.ParseController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Created by Rik Van Belle on 14/11/2016.
@@ -57,16 +59,17 @@ public class StationController {
     }
     public void showSearchLiveboard(){
         stationView.showSearchLiveboard();
+        initComboBox();
         searchLiveBoard();
+        terugButton();
     }
     public void searchLiveBoard(){
         stationView.getZoekLiveboardButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    System.out.println(stationView.getStadText());
                     try {
-                        Liveboard liveboard = ParseController.getStationBoard(stationView.getStadText());
-                        if(liveboard.getStation().getTreinen().size() > 0){stationView.showLiveboard(liveboard);}
+                        Liveboard liveboard = ParseController.getStationBoard(stationView.getStation());
+                        if(liveboard.getStation().getTreinen().size() > 0){stationView.showLiveboard(liveboard);terugButton();}
                         else {
                             stationView.liveboardNotFound();
                         }
@@ -76,5 +79,13 @@ public class StationController {
             }
         });
     }
+    public void initComboBox(){
+        AutoCompleteDecorator.decorate(stationView.getStadComboBox());
 
+        ManageStation manageStation = new ManageStation();
+        final List<Station> stations = manageStation.listStations();
+        for (int i = 0; i < stations.size(); i++) {
+            stationView.getStadComboBox().addItem(stations.get(i).getNaam());
+        }
+    }
 }

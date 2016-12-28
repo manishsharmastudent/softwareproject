@@ -12,8 +12,8 @@
       <property name="achternaam" column="achternaam" type="string"/>
       <property name="active" column="active" type="boolean"/>
       <property name="adres" column="adres" type="string"/>
-	<property name="postcode" column="postcode" type="int"/>
-	<property name="stad" column="stad" type="string"/>
-	<property name="voornaam" column="voornaam" type="string"/>
+      <property name="postcode" column="postcode" type="int"/>
+	  <property name="stad" column="stad" type="string"/>
+	  <property name="voornaam" column="voornaam" type="string"/>
    </class>
 </hibernate-mapping>
