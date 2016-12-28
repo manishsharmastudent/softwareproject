@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.maps.GeoApiContext;
 import hibernate.ManageStation;
 import model.Route;
 import model.Station;
@@ -19,6 +20,8 @@ public class RouteController {
     RouteView view;
     TicketView ticketView;
     Route routeModel;
+
+    GeoApiContext q;
 
     public RouteController(){
         view = new RouteView("Route opzoeken");
