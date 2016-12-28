@@ -136,8 +136,8 @@ public class TicketController {
                         ticketModel.setBeginDatum(Calendar.getInstance().getTime());
                     }
 
-                    ticketModel.setBeginDatum(new Date());
-                    ticketModel.setEindDatum(new Date());
+                    ticketModel.setBeginDatum(ticketView.getBeginDatum());
+                    ticketModel.setEindDatum(ticketView.getBeginDatum());
                     ticketModel.setTypeKaart(typeKaart);
                     ticketModel.setAantalPersonen(ticketView.getAantalPersonen());
                     if (ticketView.getKlasse().toString() == "Eerste klasse") {

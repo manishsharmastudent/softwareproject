@@ -172,7 +172,11 @@ public class VoorwerpView extends StandardView {
             }
         }
 
-        overviewVoorwerpen = new JTable(voorwerpenTable, headers);
+        overviewVoorwerpen = new JTable(voorwerpenTable, headers){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
     }
     public void showSucceed(int id){
         JOptionPane.showMessageDialog(null, "Voorwerp met id: " + id + " is verwijderd");

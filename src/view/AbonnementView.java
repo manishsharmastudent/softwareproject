@@ -293,6 +293,10 @@ public class AbonnementView extends StandardView {
             }
         }
 
-        abonnementenTable = new JTable(dataAbonnementen, headers);
+        abonnementenTable = new JTable(dataAbonnementen, headers){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
     }
 }

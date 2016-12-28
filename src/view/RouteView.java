@@ -18,6 +18,9 @@ public class RouteView extends StandardView {
     private JLabel bestemmingLabel = new JLabel("Bestemming: ");
     private JButton getRouteButton = new JButton("Opzoeken");
 
+    JTable trajectTable = null;
+    String[][] dataTraject = null;
+
     public JComboBox getVertrekStationBox(){
         return vertrekStation;
     }
@@ -55,43 +58,47 @@ public class RouteView extends StandardView {
     }
 
     public void showSearchedRoutes(List<Traject> trajectList){
-        JPanel searchedRoutes = new JPanel();
-        GridLayout layout = new GridLayout(trajectList.size(), 5);
-
-        layout.setHgap(35);
-        layout.setVgap(50);
-
-        searchedRoutes.setLayout(layout);
-        for(int i = 0; i < trajectList.size();i++){
-            JLabel vertrekStation = new JLabel(trajectList.get(i).getVertrekStation());
-            JLabel bestemmingStation = new JLabel(trajectList.get(i).getAankomstStation());
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-            String tijd = trajectList.get(i).getAankomstTijd().format(formatter);
-            JLabel vertrekTijd = new JLabel(tijd);
-            tijd = trajectList.get(i).getVertrekTijd().format(formatter);
-            JLabel aankomstTijd = new JLabel(tijd);
-            JLabel aantalOverstappen = null;
-            if (trajectList.get(i).getTransferstations() == null){
-                aantalOverstappen = new JLabel("0");
-            }
-            else {
-                aantalOverstappen = new JLabel(Integer.toString(trajectList.get(i).getTransferstations().size()));
-            }
-
-
-            searchedRoutes.add(vertrekStation);
-            searchedRoutes.add(bestemmingStation);
-            searchedRoutes.add(vertrekTijd);
-            searchedRoutes.add(aankomstTijd);
-            searchedRoutes.add(aantalOverstappen);
-        }
+        initTable(trajectList);
+        JScrollPane scrollPane = new JScrollPane(trajectTable);
 
         addPath(trajectList.get(0).getVertrekStation() + " - " + trajectList.get(0).getAankomstStation());
         interactiePanel.removeAll();
-        interactiePanel.add(searchedRoutes);
+        interactiePanel.add(scrollPane);
         interactiePanel.updateUI();
     }
+    public void initTable(java.util.List<Traject> trajectList){
+        String[] headers = {"Vertrek", "Bestemming", "Vertrektijd", "Aankomstijd", "Aantal overstappen"};
+        dataTraject = new String[trajectList.size()][5];
 
+        for (int row = 0; row < trajectList.size(); row++) {
+            for (int col = 0; col < 6; col++) {
+                Traject trj = trajectList.get(row);
+                switch (col) {
+                    case 0:
+                        dataTraject[row][col] = trj.getVertrekStation();
+                        break;
+                    case 1:
+                        dataTraject[row][col] = trj.getAankomstStation();
+                        break;
+                    case 2:
+                        dataTraject[row][col] = trj.getVertrekTijd().toString();
+                        break;
+                    case 3:
+                        dataTraject[row][col] = trj.getAankomstTijd().toString();
+                        break;
+                    case 4:
+                        dataTraject[row][col] = Integer.toString(trj.getTransferstations().size());
+                        break;
+                }
+            }
+        }
+
+        trajectTable = new JTable(dataTraject, headers){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+    }
     public void showError(){
         JOptionPane.showMessageDialog(null, "Er is iets foutgelopen bij het opzoeken van de route!");
     }

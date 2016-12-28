@@ -90,6 +90,10 @@ public class TicketView extends StandardView {
 
     public JDatePickerImpl getDatePicker(){return datePicker;}
 
+    public Date getBeginDatum(){
+        return (Date) datePicker.getModel().getValue();
+    }
+
     public void showVoegTicketToe(){
         AutoCompleteDecorator.decorate(vertrekStationCombobox);
         AutoCompleteDecorator.decorate(bestemmingStationCombobox);
