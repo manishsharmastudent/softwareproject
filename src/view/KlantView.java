@@ -102,11 +102,12 @@ public class KlantView extends StandardView {
         klantPanel.removeAll();
         klantPanel.updateUI();
 
+
         c.gridy = 0;
         c.gridx = 0;
         klantPanel.add(rijksregisterNummerLabel, c);
         rijksregisterNummerText.setText(klant.getRijksregisterNummer());
-        c.gridy = 1;
+        c.gridx = 1;
         klantPanel.add(rijksregisterNummerText, c);
         c.gridy = 1;
         c.gridx = 0;
@@ -282,8 +283,8 @@ public class KlantView extends StandardView {
         c.gridy = 1;
         c.fill = GridBagConstraints.NONE;
         gevondenKlantenPanel.add(aanpassenKlant, c);
-        interactiePanel.add(gevondenKlantenPanel);
         c.fill = GridBagConstraints.HORIZONTAL;
+        interactiePanel.add(gevondenKlantenPanel);
 
 
     }
