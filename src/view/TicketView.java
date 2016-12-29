@@ -1,16 +1,15 @@
 package view;
 
-import model.Ticket;
-import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 /**
@@ -91,7 +90,9 @@ public class TicketView extends StandardView {
     public JDatePickerImpl getDatePicker(){return datePicker;}
 
     public Date getBeginDatum(){
-        return (Date) datePicker.getModel().getValue();
+            Date date = (Date)datePicker.getModel().getValue();
+            //LocalDate lDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            return date;
     }
 
     public void showVoegTicketToe(){

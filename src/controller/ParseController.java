@@ -4,6 +4,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.maps.DistanceMatrixApi;
+import com.google.maps.GeoApiContext;
+import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.TransitMode;
+import com.google.maps.model.TravelMode;
 import model.Liveboard;
 import util.LiveboardParseUtil;
 import util.NetUtil;
@@ -75,7 +80,7 @@ public class ParseController {
             }
 
             traject = TrajectParseUtil.getTrajecten(jBase);
-
+            getAantalKilometers(traject.get(0));
         } catch (IOException io) {
             System.err.println("Error");
             io.printStackTrace();
@@ -99,5 +104,21 @@ public class ParseController {
             lb.setJsonException(e.getMessage());
             return lb;
         }
+    }
+    public static void getAantalKilometers(Traject trj){
+        GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");
+
+        long distanceInMeters = 0L;
+        try{
+            DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins(trj.getVertrekStation()).destinations(trj.getAankomstStation()).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
+            distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
+        } catch (Exception exc){
+
+        }
+
+        double distanceInKilometers = (double)distanceInMeters / 1000;
+
+        System.out.println("De afstand is " + distanceInKilometers + "km");
+        trj.setAantalKilometers(distanceInKilometers);
     }
 }

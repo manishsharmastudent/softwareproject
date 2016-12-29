@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -29,7 +30,6 @@ public class Abonnement {
         this.prijs = prijs;
         this.active = active;
     }
-
     public Abonnement(boolean active, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs) {
         this.active = active;
         this.korting = korting;
