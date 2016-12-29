@@ -47,6 +47,13 @@ public class KlantView extends StandardView {
 
     public KlantView(String titel){
         super(titel);
+        klantPanel.setLayout(new GridBagLayout());
+        c.insets = new Insets(1, 20 , 1 ,0);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        rijksregisterNummerText.setPreferredSize(new Dimension(110,20));
+        rijksregisterNummerText.setMinimumSize(rijksregisterNummerText.getPreferredSize());
+        rijksregisterNummerText.setMaximumSize(rijksregisterNummerText.getPreferredSize());
+
     }
 
     public String getRijksregisterNummer(){
@@ -88,7 +95,6 @@ public class KlantView extends StandardView {
     public void showUpdateKlant(Klant klant){
         klantPanel.removeAll();
         klantPanel.updateUI();
-        klantPanel.setLayout(new GridLayout(8,1));
 
         klantPanel.add(rijksregisterNummerLabel);
         rijksregisterNummerText.setText(klant.getRijksregisterNummer());
@@ -119,21 +125,41 @@ public class KlantView extends StandardView {
         showWindow();
     }
     public void showKlantToevoegen(){
-        klantPanel.setLayout(new GridLayout(7,1));
+        c.gridy = 0;
+        c.gridx = 0;
+        klantPanel.add(rijksregisterNummerLabel, c);
+        c.gridx = 1;
+        klantPanel.add(rijksregisterNummerText, c);
+        c.gridy = 1;
+        c.gridx = 0;
+        klantPanel.add(voornaamLabel, c);
+        c.gridx = 1;
+        klantPanel.add(voornaamText, c);
+        c.gridy = 2;
+        c.gridx = 0;
+        klantPanel.add(achternaamLabel, c);
+        c.gridx = 1;
+        klantPanel.add(achternaamText, c);
+        c.gridy = 3;
+        c.gridx = 0;
+        klantPanel.add(adresLabel, c);
+        c.gridx = 1;
+        klantPanel.add(adresText, c);
+        c.gridy = 4;
+        c.gridx = 0;
+        klantPanel.add(postcodeLabel, c);
+        c.gridx = 1;
+        klantPanel.add(postcodeText, c);
+        c.gridy = 5;
+        c.gridx = 0;
+        klantPanel.add(stadLabel, c);
+        c.gridx = 1;
+        klantPanel.add(stadText, c);
+        c.gridy = 6;
+        c.gridx = 0;
+        klantPanel.add(klantToevoegenButton, c);
+        klantPanel.setPreferredSize(klantPanel.getMinimumSize());
 
-        klantPanel.add(rijksregisterNummerLabel);
-        klantPanel.add(rijksregisterNummerText);
-        klantPanel.add(voornaamLabel);
-        klantPanel.add(voornaamText);
-        klantPanel.add(achternaamLabel);
-        klantPanel.add(achternaamText);
-        klantPanel.add(adresLabel);
-        klantPanel.add(adresText);
-        klantPanel.add(postcodeLabel);
-        klantPanel.add(postcodeText);
-        klantPanel.add(stadLabel);
-        klantPanel.add(stadText);
-        klantPanel.add(klantToevoegenButton);
 
         interactiePanel.add(klantPanel);
 
@@ -141,16 +167,10 @@ public class KlantView extends StandardView {
         showWindow();
     }
     public void showKlantZoeken(){
-        klantPanel.setLayout(new GridBagLayout());
-        c.insets = new Insets(1, 20 , 1 ,0);
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridy = 0;
         c.gridx = 0;
         klantPanel.add(rijksregisterNummerLabel, c);
         c.gridx = 1;
-        rijksregisterNummerText.setPreferredSize(new Dimension(110,20));
-        rijksregisterNummerText.setMinimumSize(rijksregisterNummerText.getPreferredSize());
-        rijksregisterNummerText.setMaximumSize(rijksregisterNummerText.getPreferredSize());
         klantPanel.add(rijksregisterNummerText, c);
         c.gridx =2;
         klantPanel.add(searchButtonRijksregisterNummer, c);
@@ -169,6 +189,7 @@ public class KlantView extends StandardView {
         c.gridx = 2;
         klantPanel.add(searchButtonLastname, c);
         klantPanel.setPreferredSize(klantPanel.getMinimumSize());
+
         interactiePanel.add(klantPanel);
         addPath("Klant zoeken");
         showWindow();
