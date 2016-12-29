@@ -12,11 +12,11 @@ public class StationTest {
 
     @Test
     public void stationConstructor(){
-        station = new Station(42,"Brussel-Centraal", "Brussel");
-
-        assertEquals(42, station.getStationId());
-        assertEquals("Brussel-Centraal",station.getNaam());
-        assertEquals("Brussel",station.getStad());
+        fail();
+        //station = new Station(42,"Brussel-Centraal", "Brussel");
+        //assertEquals(42, station.getStationId());
+        //assertEquals("Brussel-Centraal",station.getNaam());
+        //assertEquals("Brussel",station.getStad());
     }
 
 }
