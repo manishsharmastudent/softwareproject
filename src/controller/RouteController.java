@@ -19,6 +19,7 @@ public class RouteController {
     RouteView view;
     TicketView ticketView;
     Route routeModel;
+    List<Traject> trajecten = null;
 
     public RouteController(){
         view = new RouteView("Route opzoeken");
@@ -39,21 +40,30 @@ public class RouteController {
         });
     }
     public void searchRoutes(String vertrek, String bestemming){
-        List<Traject> trajecten = null;
 
         try {
             trajecten = new ParseController().getTraject(vertrek, bestemming);
         } catch (Exception e){
             e.getStackTrace();
-            JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!!!! godverdomme zoekt ne keer een deftige route");
+            JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!");
         }
         if(trajecten == null){
             view.showError();
         }
         else {
             view.showSearchedRoutes(trajecten);
+            showMoreInfo();
             terugButton();
         }
+    }
+    public void showMoreInfo(){
+        view.getMoreInfoButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Geselecteerde rij: " + view.getSelectedRow());
+                view.showDetailedRoute(trajecten.get(view.getSelectedRow()));
+            }
+        });
     }
     public void initComboBoxes(){
         List<Station> stations = new ManageStation().listStations();

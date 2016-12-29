@@ -159,6 +159,7 @@ public class TicketController {
             trj = ParseController.getTraject(ticketModel.getVertrekStation().getNaam(), ticketModel.getBestemmingStation().getNaam());
         } catch(Exception exc){}
         double aantalKilometers = trj.get(0).getAantalKilometers();
+        if(aantalKilometers > 45){aantalKilometers = 45;}
         if (ticketModel.getKlasse() == 1) {
              if(percentage != 0){
                  prijs = (((aantalKilometers / 2) * percentage) + 6) * aantalPersonen;
@@ -176,6 +177,9 @@ public class TicketController {
             }
         }
         prijs = Math.floor(prijs);
-        ticketModel.setPrijs((float)prijs);
+        if(ticketModel.getTypeKaart().getId() == 15){
+            ticketModel.setPrijs((float)prijs*2);
+        }
+        else {ticketModel.setPrijs((float)prijs);}
     }
 }

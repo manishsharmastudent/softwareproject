@@ -99,12 +99,13 @@ public class AbonnementController {
                    List<Abonnement> abonnements = new ArrayList<Abonnement>();
                    try {
                        Abonnement abo = abonnementManage.getAbonnementById(Integer.parseInt(abonnementView.getAbonnementNummerText()));
-                       abonnements.add(abo);
+                       if(abo != null){abonnements.add(abo);}
                    } catch (Exception exc){
                        abonnements = abonnementManage.listAbonnementen();
                    }
-
-
+                    if(abonnements.size() == 0){
+                       abonnements = abonnementManage.listAbonnementen();
+                    }
                    abonnementView.showGevondenAbonnementen(abonnements);
                    aanpassenAbonnement();
                }
@@ -123,6 +124,7 @@ public class AbonnementController {
             trj = ParseController.getTraject(abonnementModel.getVertrekStation().getNaam(), abonnementModel.getBestemmingStation().getNaam());
         } catch(Exception exc){}
         double aantalKilometers = trj.get(0).getAantalKilometers();
+        if(aantalKilometers > 45){aantalKilometers = 45;}
             if(percentage != 0){
                 prijs += aantalKilometers * percentage;
             }
