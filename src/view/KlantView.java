@@ -24,6 +24,8 @@ public class KlantView extends StandardView {
     private JLabel adresLabel = new JLabel("Adres");
     private JLabel postcodeLabel = new JLabel("Postcode");
     private JLabel stadLabel = new JLabel("Stad");
+    private GridBagConstraints c = new GridBagConstraints();
+
 
     private JTable klantTable = null;
     private String[][] klantData = null;
@@ -139,18 +141,34 @@ public class KlantView extends StandardView {
         showWindow();
     }
     public void showKlantZoeken(){
-        klantPanel.setLayout(new GridLayout(4,3));
-
-        klantPanel.add(rijksregisterNummerLabel);
-        klantPanel.add(rijksregisterNummerText);
-        klantPanel.add(searchButtonRijksregisterNummer);
-        klantPanel.add(voornaamLabel);
-        klantPanel.add(voornaamText);
-        klantPanel.add(searchButtonSurname);
-        klantPanel.add(achternaamLabel);
-        klantPanel.add(achternaamText);
-        klantPanel.add(searchButtonLastname);
-
+        klantPanel.setLayout(new GridBagLayout());
+        c.insets = new Insets(1, 20 , 1 ,0);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridy = 0;
+        c.gridx = 0;
+        klantPanel.add(rijksregisterNummerLabel, c);
+        c.gridx = 1;
+        rijksregisterNummerText.setPreferredSize(new Dimension(110,20));
+        rijksregisterNummerText.setMinimumSize(rijksregisterNummerText.getPreferredSize());
+        rijksregisterNummerText.setMaximumSize(rijksregisterNummerText.getPreferredSize());
+        klantPanel.add(rijksregisterNummerText, c);
+        c.gridx =2;
+        klantPanel.add(searchButtonRijksregisterNummer, c);
+        c.gridy = 1;
+        c.gridx = 0;
+        klantPanel.add(voornaamLabel, c);
+        c.gridx = 1;
+        klantPanel.add(voornaamText, c);
+        c.gridx = 2;
+        klantPanel.add(searchButtonSurname, c);
+        c.gridy = 2;
+        c.gridx = 0;
+        klantPanel.add(achternaamLabel, c);
+        c.gridx = 1;
+        klantPanel.add(achternaamText, c);
+        c.gridx = 2;
+        klantPanel.add(searchButtonLastname, c);
+        klantPanel.setPreferredSize(klantPanel.getMinimumSize());
         interactiePanel.add(klantPanel);
         addPath("Klant zoeken");
         showWindow();
