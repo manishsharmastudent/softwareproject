@@ -154,3 +154,4 @@ public class RouteView extends StandardView {
         JOptionPane.showMessageDialog(null, "Er is iets foutgelopen bij het opzoeken van de route!");
     }
 }
+

@@ -263,6 +263,7 @@ public class AbonnementView extends StandardView {
         return this.datePickerBeginDatum;
     }
     public void showSuccesfullAdd(Klant klant){ JOptionPane.showMessageDialog(null, "Abonnement voor " + klant.getAchternaam() + " " + klant.getVoornaam() + " is toegevoegd!");}
+
     public int showPrice(double price){
         if (JOptionPane.showConfirmDialog(null, "Het bedrag van € " + price + " betalen?") == JOptionPane.YES_OPTION){
             return 1;

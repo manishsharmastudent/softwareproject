@@ -1,5 +1,9 @@
 package controller;
 
+import com.google.maps.*;
+import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.TransitMode;
+import com.google.maps.model.TravelMode;
 import hibernate.ManageStation;
 import model.Route;
 import model.Station;
@@ -19,7 +23,8 @@ public class RouteController {
     RouteView view;
     TicketView ticketView;
     Route routeModel;
-    List<Traject> trajecten = null;
+
+    GeoApiContext q;
 
     public RouteController(){
         view = new RouteView("Route opzoeken");
@@ -30,6 +35,8 @@ public class RouteController {
         zoekRouteInAPI();
         terugButton();
     }
+
+
     public void zoekRouteInAPI(){
         view.getRouteButton().addActionListener(new ActionListener() {
             @Override
@@ -39,31 +46,25 @@ public class RouteController {
             }
         });
     }
+
+
+
     public void searchRoutes(String vertrek, String bestemming){
+        List<Traject> trajecten = null;
 
         try {
             trajecten = new ParseController().getTraject(vertrek, bestemming);
         } catch (Exception e){
             e.getStackTrace();
-            JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevonden!");
+            JOptionPane.showMessageDialog(ticketView.getWindow(), "Geen geldige route gevondenen");
         }
         if(trajecten == null){
             view.showError();
         }
         else {
             view.showSearchedRoutes(trajecten);
-            showMoreInfo();
             terugButton();
         }
-    }
-    public void showMoreInfo(){
-        view.getMoreInfoButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Geselecteerde rij: " + view.getSelectedRow());
-                view.showDetailedRoute(trajecten.get(view.getSelectedRow()));
-            }
-        });
     }
     public void initComboBoxes(){
         List<Station> stations = new ManageStation().listStations();

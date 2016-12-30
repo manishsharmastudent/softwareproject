@@ -40,6 +40,22 @@ public class TrajectParseUtil {
                         transferPlatform = ts.getString("DeparturePlatform");
 
                     trj.setTransferstations(transferStation, transferPlatform);
+
+                    GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");
+
+                    long distanceInMeters = 0L;
+
+                    try{
+                        DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins(trj.getVertrekStation()).destinations(trj.getAankomstStation()).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
+                        distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
+                    } catch (Exception exc){
+
+                    }
+
+                    double distanceInKilometers = (double)distanceInMeters / 1000;
+
+                    System.out.println("De afstand is " + distanceInKilometers + "km");
+                    trj.setAantalKilometers(distanceInKilometers);
                 }
             }
         });

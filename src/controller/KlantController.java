@@ -130,6 +130,7 @@ public class KlantController {
                 klantModel = new Klant(klantView.getRijksregisterNummer(), klantView.getVoornaam(), klantView.getAchternaam(), klantView.getAdres(), klantView.getPostcode(), klantView.getStad(), true);
                 try {
                     manageKlant.addKlant(klantModel);
+                    klantView.klantInsertSucceed();
                     backToHomeScreen();
                 } catch (Exception ex){
                     ex.getStackTrace();

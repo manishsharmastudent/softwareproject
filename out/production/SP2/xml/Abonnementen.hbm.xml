@@ -18,6 +18,5 @@
        <property name="vervalDatum" column="eindDatum" type="date"/>
        <many-to-one name="klant" column="klantId" class="model.Klant"/>
        <many-to-one name="korting" column="kortingId" class="model.Korting" unique="true" not-null="true"/>
-       <property name="prijs" column="prijs" type="float"/>
    </class>
 </hibernate-mapping>

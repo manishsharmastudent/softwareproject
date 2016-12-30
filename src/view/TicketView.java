@@ -150,6 +150,7 @@ public class TicketView extends StandardView {
             return -1;
         }
     }
+
     public void noTicketAdded(){
         JOptionPane.showMessageDialog(null, "Ticket is niet toegevoegd!");
     }
