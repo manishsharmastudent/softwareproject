@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -8,17 +8,20 @@ import java.util.Date;
  */
 public class Ticket {
     private int ticketId;
+    private Station vertrekStation;
+    private Station bestemmingStation;
     private Route route;
-    private LocalDateTime beginDatum;
-    private LocalDateTime eindDatum;
+    private Date beginDatum;
+    private Date eindDatum;
     private TypeKaart typeKaart;
     private int aantalPersonen;
     private float prijs;
     private int klasse;
 
-    public Ticket(int ticketId, Route route, LocalDateTime beginDatum, LocalDateTime eindDatum, TypeKaart typeKaart, int aantalPersonen, float prijs, int klasse) {
+    public Ticket(int ticketId, Station vertrekStation, Station bestemmingStation, Date beginDatum, Date eindDatum, TypeKaart typeKaart, int aantalPersonen, float prijs, int klasse) {
         this.ticketId = ticketId;
-        this.route = route;
+        this.vertrekStation = vertrekStation;
+        this.bestemmingStation = bestemmingStation;
         this.beginDatum = beginDatum;
         this.eindDatum = eindDatum;
         this.typeKaart = typeKaart;
@@ -38,27 +41,27 @@ public class Ticket {
         this.ticketId = ticketId;
     }
 
-    public Route getRoute() {
-        return route;
-    }
+    public Station getVertrekStation(){return vertrekStation;}
 
-    public void setRoute(Route route) {
-        this.route = route;
-    }
+    public void setVertrekStation(Station station){vertrekStation = station;}
 
-    public LocalDateTime getBeginDatum() {
+    public Station getBestemmingStation(){return bestemmingStation;}
+
+    public void setBestemmingStation(Station station){bestemmingStation = station;}
+
+    public Date getBeginDatum() {
         return beginDatum;
     }
 
-    public void setBeginDatum(LocalDateTime beginDatum) {
+    public void setBeginDatum(Date beginDatum) {
         this.beginDatum = beginDatum;
     }
 
-    public LocalDateTime getEindDatum() {
+    public Date getEindDatum() {
         return eindDatum;
     }
 
-    public void setEindDatum(LocalDateTime eindDatum) {
+    public void setEindDatum(Date eindDatum) {
         this.eindDatum = eindDatum;
     }
 

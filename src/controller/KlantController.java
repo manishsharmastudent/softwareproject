@@ -45,20 +45,20 @@ public class KlantController {
     public String getStad(){
         return klantModel.getStad();
     }
-    public boolean setVoornaam(String voornaam){
-        return klantModel.setVoornaam(voornaam);
+    public void setVoornaam(String voornaam){
+        klantModel.setVoornaam(voornaam);
     }
-    public boolean setAchternaam(String achternaam){
-        return klantModel.setAchternaam(achternaam);
+    public void setAchternaam(String achternaam){
+        klantModel.setAchternaam(achternaam);
     }
-    public boolean setAdres(String adres){
-        return klantModel.setAdres(adres);
+    public void setAdres(String adres){
+        klantModel.setAdres(adres);
     }
-    public boolean setPostcode(int postcode){
-        return klantModel.setPostcode(postcode);
+    public void setPostcode(int postcode){
+        klantModel.setPostcode(postcode);
     }
-    public boolean setStad(String stad){
-        return klantModel.setStad(stad);
+    public void setStad(String stad){
+        klantModel.setStad(stad);
     }
 
     public void getKlantByName(String name){

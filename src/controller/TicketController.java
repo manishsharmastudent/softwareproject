@@ -2,8 +2,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-import javax.swing.plaf.synth.SynthTextAreaUI;
+
 import hibernate.ManageStation;
 import hibernate.ManageTicket;
 import hibernate.ManageTypeKaart;
@@ -14,22 +16,14 @@ public class TicketController {
     private TicketView ticketView;
     private ManageTicket ticketManage;
 
+    private ArrayList<Integer> stationIds = new ArrayList<>();
+    private ArrayList<Integer> typeKaartIds = new ArrayList<>();
+
     public TicketController() {
         ticketModel = new Ticket();
         ticketManage = new ManageTicket();
         ticketView = new TicketView("Ticket");
     }
-
-    public TicketController(Ticket model, TicketView view, ManageTicket manage) {
-        this.ticketModel = model;
-        this.ticketView = view;
-        this.ticketManage = manage;
-    }
-
-    public TicketView getTicketView() {
-        return this.ticketView;
-    }
-
     public void disableOptionsOnType() {
         ticketView.getTypeKaartenComboBox().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -62,7 +56,6 @@ public class TicketController {
             }
         });
     }
-
     public void showVoegTicketToe() {
         ticketView.showVoegTicketToe();
         //Initialization
@@ -71,7 +64,6 @@ public class TicketController {
         voegTicketToe();
         terugButton();
     }
-
     public void terugButton() {
         ticketView.getTerugButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -79,14 +71,12 @@ public class TicketController {
             }
         });
     }
-
     public void backToHomeScreen() {
         ticketView.getWindow().setVisible(false);
         ticketView.getWindow().dispose();
         ticketView.deleteLastInPath();
         new MainController().showHomeScreen();
     }
-
     private void initComboBoxes() {
         List<Station> stations = new ManageStation().listStations();
         ManageStation ms = new ManageStation();
@@ -101,80 +91,95 @@ public class TicketController {
         });
 
         for (int i = 0; i < typeKaarten.size(); i++) {
-            System.out.print(typeKaarten.get(i).getNaam());
+            typeKaartIds.add(typeKaarten.get(i).getId());
             ticketView.getTypeKaartenComboBox().addItem(typeKaarten.get(i).getNaam());
         }
 
         for (int i = 0; i < stations.size(); i++) {
+            stationIds.add(stations.get(i).getStationId());
             ticketView.getVertrekStationComboBox().addItem(stations.get(i).getNaam());
             ticketView.getBestemmingsStationComboBox().addItem(stations.get(i).getNaam());
         }
 
-        ticketView.getKlasseCombobox().addItem("Eerste klasse");
         ticketView.getKlasseCombobox().addItem("Tweede klasse");
+        ticketView.getKlasseCombobox().addItem("Eerste klasse");
+
         disableOptionsOnType();
     }
-
     private void voegTicketToe() {
         ticketView.getZoekButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<Traject> trajecten = null;
-                ParseController pC = new ParseController();
-                try {
-                    trajecten = pC.getTraject(ticketView.getVertrekStation(), ticketView.getBestemmingsStation());
-                } catch (Exception exc){
-                    exc.getStackTrace();
-                }
-                for (int i = 0; i < trajecten.size(); i++) {
-                    System.out.println(trajecten.get(i).toString());
-                }
+                Station vertrekStation = new ManageStation().getStationById(stationIds.get(ticketView.getVertrekStationIndex()));
+                Station bestemmingStation = new ManageStation().getStationById(stationIds.get(ticketView.getBestemmingsStationIndex()));
 
-                /*Station stationVertrek = new Station(0, "Station " + ticketView.getBestemmingsStation(), ticketView.getBestemmingsStation(), true);
-                Station stationAankomst = new Station(0, "Station" + ticketView.getVertrekStation(), ticketView.getVertrekStation(), true);
-                Route route = new Route(1, stationVertrek, stationAankomst, true);
-
-                ManageTypeKaart mTK = new ManageTypeKaart();
-                List<TypeKaart> typeKaarten = mTK.listTypeKaarten();
-
-                ticketModel.setTicketId(0);
-                ticketModel.setRoute(route);
-                ticketModel.setBeginDatum(new Date());
-                ticketModel.setEindDatum(new Date());
-                ticketModel.setTypeKaart(typeKaarten.get(ticketView.getTypeKaartIndex()));
-                ticketModel.setAantalPersonen(ticketView.getAantalPersonen());
-                if (ticketView.getKlasse().toString() == "Eerste klasse") {
-                    ticketModel.setKlasse(1);
+                if (vertrekStation == bestemmingStation) {
+                    ticketView.stationsAreTheSame();
                 } else {
-                    ticketModel.setKlasse(2);
-                }
-                if (ticketView.showPrice(calculatePrice(typeKaarten.get(ticketView.getTypeKaartIndex()), ticketModel.getKlasse())) == 1) {
+
+                    TypeKaart typeKaart = new ManageTypeKaart().getTypeKaartById(typeKaartIds.get(ticketView.getTypeKaartIndex()));
+
+                    ticketModel.setTicketId(0);
+
+
+                    ticketModel.setVertrekStation(vertrekStation);
+                    ticketModel.setBestemmingStation(bestemmingStation);
+                    String datum = ticketView.getDatePicker().getJFormattedTextField().getText();
+
+                    LocalDate date = LocalDate.parse(datum);
+                    System.out.println(date);
+                    ticketModel.setBeginDatum(ticketView.getBeginDatum());
+                    ticketModel.setEindDatum(ticketView.getBeginDatum());
+                    ticketModel.setTypeKaart(typeKaart);
+                    ticketModel.setAantalPersonen(ticketView.getAantalPersonen());
+                    if (ticketView.getKlasse().toString() == "Eerste klasse") {
+                        ticketModel.setKlasse(1);
+                    } else {
+                        ticketModel.setKlasse(2);
+                    }
+                    calculatePrice();
                     if (ticketManage.addTicket(ticketModel) > 0) {
-                        JOptionPane.showMessageDialog(ticketView.getWindow(), "Ticket toevgevoegd!");
+                        ticketView.addSucceed();
                     } else {
                         ticketView.noTicketAdded();
                     }
-                }*/
+                }
             }
         });
     }
-    public double calculatePrice(TypeKaart typeKaart, int klasse) {
-                Korting korting = null;
+    public void calculatePrice() {
+        Korting korting = ticketModel.getTypeKaart().getKorting();
+        List<Traject> trj = null;
 
-                switch (typeKaart.getId()) {
-                    case 1:
-                        korting = typeKaart.getKorting();
-                        break;
-                    case 2:
-                        return 6;
-                    case 3:
-                        return 0;
-                    case 4:
-                        return 50;
-                }
-                if (klasse == 1) {
-                    return ((10 - (10 * korting.getProcent())) + 6) * ticketView.getAantalPersonen();
-                }
-                return (10 - (10 * korting.getProcent())) * ticketView.getAantalPersonen();
+        double percentage = korting.getProcent();
+        int aantalPersonen= ticketView.getAantalPersonen();
+        double prijs = 0.0;
+
+        try{
+            trj = ParseController.getTraject(ticketModel.getVertrekStation().getNaam(), ticketModel.getBestemmingStation().getNaam());
+        } catch(Exception exc){}
+        double aantalKilometers = trj.get(0).getAantalKilometers();
+        if(aantalKilometers > 45){aantalKilometers = 45;}
+        if (ticketModel.getKlasse() == 1) {
+             if(percentage != 0){
+                 prijs = (((aantalKilometers / 2) * percentage) + 6) * aantalPersonen;
+             }
+             else {
+                 prijs =((aantalKilometers / 2) + 6) * aantalPersonen;
+             }
+        }
+        else {
+            if(percentage != 0){
+                prijs = ((aantalKilometers / 2) * percentage) * aantalPersonen;
             }
+            else {
+                prijs = (aantalKilometers / 2) * aantalPersonen;
+            }
+        }
+        prijs = Math.floor(prijs);
+        if(ticketModel.getTypeKaart().getId() == 15){
+            ticketModel.setPrijs((float)prijs*2);
+        }
+        else {ticketModel.setPrijs((float)prijs);}
+    }
 }

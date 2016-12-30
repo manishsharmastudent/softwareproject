@@ -1,16 +1,17 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Korting {
 	private int kortingId;
 	private int kortingType;
-	private Date beginDatum;
+	private LocalDate beginDatum;
 	private String omschrijving;
 	private double procent;
 	private boolean active;
 
-	public Korting(int kortingId, int kortingType, Date beginDatum, String omschrijving, boolean active, double procent) {
+	public Korting(int kortingId, int kortingType, LocalDate beginDatum, String omschrijving, boolean active, double procent) {
 		this.kortingId = kortingId;
 		this.kortingType = kortingType;
 		this.beginDatum = beginDatum;
@@ -39,11 +40,11 @@ public class Korting {
 		this.kortingType = kortingType;
 	}
 
-	public Date getBeginDatum() {
+	public LocalDate getBeginDatum() {
 		return beginDatum;
 	}
 
-	public void setBeginDatum(Date beginDatum) {
+	public void setBeginDatum(LocalDate beginDatum) {
 		this.beginDatum = beginDatum;
 	}
 

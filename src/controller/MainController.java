@@ -99,7 +99,7 @@ public class MainController {
         });
     }
     public void zoekRoute(){
-        home.getTreinInfo().addActionListener(new ActionListener() {
+        home.getRouteInfo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 closeHomeWindow();

@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -8,29 +8,29 @@ import java.util.Date;
  */
 public class Abonnement {
     private int abonnementId;
+    private Station vertrekStation;
+    private Station bestemmingStation;
     private Korting korting;
-    private LocalDateTime beginDatum;
-    private LocalDateTime vervalDatum;
+    private Date beginDatum;
+    private Date vervalDatum;
     private Route route;
     private Klant klant;
-    private float prijs;
+    private Float prijs;
     private boolean active;
 
-    public Abonnement() {
-    }
 
-    public Abonnement(int abonnementId, Korting korting, LocalDateTime beginDatum, LocalDateTime vervalDatum, Route route, Klant klant, float prijs, boolean active) {
+    public Abonnement(int abonnementId, Korting korting, Date beginDatum, Date vervalDatum, Station vertrek, Station bestemming, Klant klant, Float prijs, boolean active) {
         this.abonnementId = abonnementId;
         this.korting = korting;
         this.beginDatum = beginDatum;
         this.vervalDatum = vervalDatum;
-        this.route = route;
+        this.vertrekStation = vertrek;
+        this.bestemmingStation = bestemming;
         this.klant = klant;
         this.prijs = prijs;
         this.active = active;
     }
-
-    public Abonnement(boolean active, Korting korting, LocalDateTime beginDatum, LocalDateTime vervalDatum, Route route, Klant klant, float prijs) {
+    public Abonnement(boolean active, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs) {
         this.active = active;
         this.korting = korting;
         this.beginDatum = beginDatum;
@@ -43,11 +43,13 @@ public class Abonnement {
     public int getAbonnementId() {
         return abonnementId;
     }
+    public Station getVertrekStation(){ return vertrekStation; }
+    public Station getBestemmingStation(){ return bestemmingStation; }
     public Korting getKorting() {return korting; }
-    public LocalDateTime getBeginDatum() {
+    public Date getBeginDatum() {
         return beginDatum;
     }
-    public LocalDateTime getVervalDatum() {
+    public Date getVervalDatum() {
         return vervalDatum;
     }
     public Route getRoute() {
@@ -56,7 +58,7 @@ public class Abonnement {
     public Klant getKlant() {
         return klant;
     }
-    public float getPrijs() {
+    public Float getPrijs() {
         return prijs;
     }
     public boolean isActive() {
@@ -66,13 +68,15 @@ public class Abonnement {
     public void setAbonnementId(int abonnementId) {
         this.abonnementId = abonnementId;
     }
+    public void setVertrekStation(Station station){this.vertrekStation = station;}
+    public void setBestemmingStation(Station station){this.bestemmingStation = station; }
     public void setKorting(Korting korting) {
         this.korting = korting;
     }
-    public void setBeginDatum(LocalDateTime beginDatum) {
+    public void setBeginDatum(Date beginDatum) {
         this.beginDatum = beginDatum;
     }
-    public void setVervalDatum(LocalDateTime vervalDatum) {
+    public void setVervalDatum(Date vervalDatum) {
         this.vervalDatum = vervalDatum;
     }
     public void setRoute(Route route) {
@@ -81,12 +85,13 @@ public class Abonnement {
     public void setKlant(Klant klant) {
         this.klant = klant;
     }
-    public void setPrijs(float prijs) {
+    public void setPrijs(Float prijs) {
         this.prijs = prijs;
     }
     public void setActive(boolean active) {
         this.active = active;
     }
 
-
+    public Abonnement() {
+    }
 }
