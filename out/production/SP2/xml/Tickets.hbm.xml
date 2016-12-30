@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="model.Ticket" table="TICKETS">
+      <meta attribute="class-description">
+         This class contains the Abonnement detail.
+      </meta>
+      <id name="ticketId" type="int" column="ticketId">
+         <generator class="native"/>
+      </id>
+
+       <many-to-one name="vertrekStation" column="vertrekStation" class="model.Station" />
+       <many-to-one name="bestemmingStation" column="BestemmingStation" class="model.Station" />
+       <property name="beginDatum" column="beginDatum" type="date"/>
+       <property name="eindDatum" column="eindDatum" type="date"/>
+       <many-to-one name="typeKaart" column="typeId" class="model.TypeKaart" />
+       <property name="aantalPersonen" column="aantalPersonen" type="int"/>
+       <property name="klasse" column="klasse" type="int"/>
+       <property name="prijs" column="prijs" type="float"/>
+   </class>
+</hibernate-mapping>
+
+
