@@ -14,7 +14,7 @@ public class HomeView extends StandardView {
     private JButton reservButton = new JButton("Reservaties");
     private JButton verlengAboButton = new JButton("Abonnement verlengen/aanpassen");
     private JPanel voorwerpPanel = new JPanel();
-    private JButton vvvasButton = new JButton("Verloren voorwerpen zoeken");
+    private JButton vvvasButton = new JButton("Verloren voorwerpen zoeken/aanpassen/verwijderen");
     private JButton rvvButton = new JButton("Registreer verloren voorwerp");
     private JButton vvvButton = new JButton("Verwijder verloren voorwerp");
     private JLabel verlorenVoorLabel = new JLabel("Verloren voorwerpen",  SwingConstants.CENTER);
@@ -22,17 +22,14 @@ public class HomeView extends StandardView {
     private JPanel infoPanel = new JPanel();
     private GridBagConstraints c = new GridBagConstraints();
 
-
-    private JButton treinInfo = new JButton("Treininformatie opvragen");
-    private JButton routeInfo = new JButton("Stationsinformatie opvragen");
-    private JButton stationsInfo = new JButton("Route-informatie opvragen");
+    private JButton routeInfo = new JButton("Routeinformatie opvragen");
+    private JButton stationsInfo = new JButton("Stationsinformatie opvragen");
     private JLabel infoLabel = new JLabel("Informatie",  SwingConstants.CENTER);
 
     private JPanel klantPanel = new JPanel();
     private JLabel klantLabel = new JLabel("Klantenadministratie",  SwingConstants.CENTER);
-    private JButton klantOpzoeken = new JButton("Opzoeken klant");
+    private JButton klantOpzoeken = new JButton("Klant zoeken/aanpassen/verwijderen");
     private JButton klantToevoegen = new JButton("Klant Toevoegen");
-    private JButton klantVerwijderen = new JButton("Klant verwijderen");
 
     public HomeView(String titel) {
         super(titel);
@@ -49,6 +46,8 @@ public class HomeView extends StandardView {
 
     public JButton getStationsInfo(){return this.stationsInfo;}
 
+    public JButton getRouteInfo(){return this.routeInfo;}
+
     public JButton getVerkoopAboButton() {
         return this.verkoopAboButton;
     }
@@ -62,9 +61,6 @@ public class HomeView extends StandardView {
     }
 
     public JFrame getView() { return (JFrame) SwingUtilities.getWindowAncestor(this.getWindow());}
-    public JButton getTreinInfo() {
-        return this.treinInfo;
-    }
 
     public JButton getVerlengAboButton() {
         return this.verlengAboButton;
@@ -111,7 +107,6 @@ public class HomeView extends StandardView {
         infoLabel.setBackground(Color.black);
         infoLabel.setForeground(Color.white);
         infoPanel.add(infoLabel);
-        infoPanel.add(treinInfo);
         infoPanel.add(stationsInfo);
         infoPanel.add(routeInfo);
 
@@ -131,7 +126,6 @@ public class HomeView extends StandardView {
         klantPanel.add(klantLabel);
         klantPanel.add(klantOpzoeken);
         klantPanel.add(klantToevoegen);
-        klantPanel.add(klantVerwijderen);
         interactiePanel.setLayout(new GridBagLayout());
 
         c.gridx = 0;
