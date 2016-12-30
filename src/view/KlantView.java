@@ -3,16 +3,20 @@ package view;
 import com.sun.xml.internal.bind.api.impl.NameConverter;
 import model.Klant;
 
+import controller.MyDocumentFilter;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.JTextComponent;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.regex.Pattern;
 
 import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 
@@ -57,6 +61,13 @@ public class KlantView extends StandardView {
         rijksregisterNummerText.setPreferredSize(new Dimension(110,20));
         rijksregisterNummerText.setMinimumSize(rijksregisterNummerText.getPreferredSize());
         rijksregisterNummerText.setMaximumSize(rijksregisterNummerText.getPreferredSize());
+
+
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) adresText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+
 
     }
 
@@ -332,7 +343,10 @@ public class KlantView extends StandardView {
         JOptionPane.showMessageDialog(null, "Klant is niet gevonden");
     }
     public void klantUpdateSucceed(){
-        JOptionPane.showMessageDialog(null, "Klant is geupdate");
+        JOptionPane.showMessageDialog(null, "Klant is geupdated");
+    }
+    public void klantInsertSucceed(){
+        JOptionPane.showMessageDialog(null, "Klant is toegevoegd!");
     }
     public void klantUpdateFailure(){
         JOptionPane.showMessageDialog(null, "Er is iets misgelopen tijdens het updaten.");
