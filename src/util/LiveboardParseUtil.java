@@ -63,7 +63,7 @@ public class LiveboardParseUtil {
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream("cache_liveboard_.tmp");
+            fis = new FileInputStream("cache_liveboard.tmp");
             ObjectInputStream obis = new ObjectInputStream(fis);
             liveboardList = (Map<String,Liveboard>) obis.readObject();
             obis.close();
