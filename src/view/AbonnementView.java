@@ -26,6 +26,7 @@ public class AbonnementView extends StandardView {
     private JPanel gevondenAbonnementen = new JPanel();
     Abonnement abonnement = new Abonnement();
 
+    private GridBagConstraints c = new GridBagConstraints();
     private JLabel rijksregisterLabel = new JLabel("Rijksregisternummer: ");
     private JLabel abonnementIdLabel = new JLabel("Abonnementnummer: ");
     private JTextField rijksregisterNummerText = new JFormattedTextField(createFormatter("##.##.##-###.##"));
@@ -64,6 +65,13 @@ public class AbonnementView extends StandardView {
 
     public AbonnementView(String titel){
         super(titel);
+        abonnementPanel.setLayout(new GridBagLayout());
+        c.insets = new Insets(10, 20 , 1 ,0);
+        abonnementNummerText.setPreferredSize(new Dimension(110,20));
+        abonnementNummerText.setMinimumSize(rijksregisterNummerText.getPreferredSize());
+        abonnementNummerText.setMaximumSize(rijksregisterNummerText.getPreferredSize());
+
+        c.fill = GridBagConstraints.HORIZONTAL;
     }
 
     public Abonnement getAbonnement(){ return this.abonnement;}
@@ -125,7 +133,6 @@ public class AbonnementView extends StandardView {
         return Integer.parseInt(abonnement[0]);
     }
     public void showAanpassenAbonnement(Abonnement abonnement){
-        abonnementPanel.setLayout(new GridLayout(9,2));
         System.out.println(abonnement.getAbonnementId());
 
         eindDatum.setEnabled(false);
@@ -135,27 +142,52 @@ public class AbonnementView extends StandardView {
         textAboId.setText(Integer.toString(abonnement.getAbonnementId()));
         textAboId.setEnabled(false);
 
-        abonnementPanel.add(new JLabel("Abonnementnummer: "));
-        abonnementPanel.add(textAboId);
-        abonnementPanel.add(new JLabel("Korting: "));
+        c.gridx = 0;
+        c.gridy = 0;
+        abonnementPanel.add(new JLabel("Abonnementnummer: "), c);
+        c.gridx = 1;
+        abonnementPanel.add(textAboId, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        abonnementPanel.add(new JLabel("Korting: "),c);
         kortingComboBox.getModel().setSelectedItem(abonnement.getKorting().getOmschrijving());
-        abonnementPanel.add(kortingComboBox);
-        abonnementPanel.add(new JLabel("Vertrek: "));
+        c.gridx = 1;
+        abonnementPanel.add(kortingComboBox, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        abonnementPanel.add(new JLabel("Vertrek: "), c);
         vertrekComboBox.getModel().setSelectedItem(abonnement.getVertrekStation().getNaam());
-        abonnementPanel.add(vertrekComboBox);
-        abonnementPanel.add(new JLabel("Bestemming: "));
+        c.gridx = 1;
+        abonnementPanel.add(vertrekComboBox, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        abonnementPanel.add(new JLabel("Bestemming: "), c);
         bestemmingComboBox.getModel().setSelectedItem(abonnement.getBestemmingStation().getNaam());
-        abonnementPanel.add(bestemmingComboBox);
-        abonnementPanel.add(new JLabel("Klant: "));
+        c.gridx = 1;
+        abonnementPanel.add(bestemmingComboBox, c);
+        c.gridx = 0;
+        c.gridy = 4;
+        abonnementPanel.add(new JLabel("Klant: "), c);
         klantComboBox.getModel().setSelectedItem(abonnement.getKlant().getVoornaam() + " " + abonnement.getKlant().getAchternaam());
-        abonnementPanel.add(klantComboBox);
-        abonnementPanel.add(new JLabel("Begindatum: "));
-        abonnementPanel.add(beginDatum);
-        abonnementPanel.add(new JLabel("Einddatum: "));
-        abonnementPanel.add(eindDatum);
+        c.gridx = 1;
+        abonnementPanel.add(klantComboBox, c);
+        c.gridx = 0;
+        c.gridy = 5;
+        abonnementPanel.add(new JLabel("Begindatum: "), c);
+        c.gridx = 1;
+        abonnementPanel.add(beginDatum, c);
+        c.gridx = 0;
+        c.gridy = 6;
+        abonnementPanel.add(new JLabel("Einddatum: "), c);
+        c.gridx = 1;
+        abonnementPanel.add(eindDatum, c);
         if(abonnement.isActive()){active.setSelected(true);}
-        abonnementPanel.add(active);
-        abonnementPanel.add(updateButton);
+        c.gridx = 0;
+        c.gridy = 7;
+        abonnementPanel.add(active, c);
+        c.gridx = 0;
+        c.gridy = 8;
+        abonnementPanel.add(updateButton, c);
 
         interactiePanel.add(abonnementPanel);
         deleteLastInPath();
@@ -163,46 +195,77 @@ public class AbonnementView extends StandardView {
         showWindow();
     }
     public void showZoekAbonnement(){
-        abonnementPanel.setLayout(new GridLayout(2,3));
 
-        abonnementPanel.add(rijksregisterLabel);
-        abonnementPanel.add(rijksregisterNummerText);
-        abonnementPanel.add(zoekAbonnementOpKlantIdButton);
-        abonnementPanel.add(abonnementIdLabel);
-        abonnementPanel.add(abonnementNummerText);
-        abonnementPanel.add(zoekAbonnementOpAboIdButton);
+        c.gridx = 0;
+        c.gridy = 0;
+        abonnementPanel.add(rijksregisterLabel, c);
+        c.gridx = 1;
+        abonnementPanel.add(rijksregisterNummerText,c);
+        c.gridx = 2;
+        abonnementPanel.add(zoekAbonnementOpKlantIdButton,c);
+        c.gridx = 0;
+        c.gridy = 1;
+        abonnementPanel.add(abonnementIdLabel,c);
+        c.gridx = 1;
+        abonnementPanel.add(abonnementNummerText,c);
+        c.gridx = 2;
+        abonnementPanel.add(zoekAbonnementOpAboIdButton,c);
 
         interactiePanel.add(abonnementPanel);
         path.add("Abonnement zoeken");
         showWindow();
     }
     public void showGevondenAbonnementen(java.util.List<Abonnement>abonnementen){
-            gevondenAbonnementen.setLayout(new GridLayout(1,2));
-            initTable(abonnementen);
-            JScrollPane scrollPane = new JScrollPane(abonnementenTable);
-            gevondenAbonnementen.add(scrollPane);
-            gevondenAbonnementen.add(aanpasButton);
-            interactiePanel.add(gevondenAbonnementen);
-            showWindow();
-        }
+        initTable(abonnementen);
+        gevondenAbonnementen.setLayout(new GridBagLayout());
+        JScrollPane scrollPane = new JScrollPane(abonnementenTable);
+        c.gridx = 0;
+        c.gridy = 0;
+        gevondenAbonnementen.add(scrollPane, c);
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        gevondenAbonnementen.add(aanpasButton, c);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        interactiePanel.add(gevondenAbonnementen);
+        showWindow();
+    }
     public void showToevoegenAbonnement(){
-        abonnementPanel.setLayout(new GridLayout(7,2));
 
-        abonnementPanel.add(klantLabel);
-        abonnementPanel.add(klantComboBox);
-        abonnementPanel.add(vertrekLabel);
-        abonnementPanel.add(vertrekComboBox);
-        abonnementPanel.add(bestemmingLabel);
-        abonnementPanel.add(bestemmingComboBox);
-        abonnementPanel.add(kortingLabel);
-        abonnementPanel.add(kortingComboBox);
-        abonnementPanel.add(begindatumLabel);
-        abonnementPanel.add(datePickerBeginDatum);
-        abonnementPanel.add(einddatumLabel);
-        abonnementPanel.add(datePickerEindDatum);
-        abonnementPanel.add(toevoegenAbonnement);
+        c.gridy = 0;
+        c.gridx = 0;
+        abonnementPanel.add(klantLabel, c);
+        c.gridx = 1;
+        abonnementPanel.add(klantComboBox, c);
+        c.gridy = 1;
+        c.gridx = 0;
+        abonnementPanel.add(vertrekLabel, c);
+        c.gridx = 1;
+        abonnementPanel.add(vertrekComboBox, c);
+        c.gridy = 2;
+        c.gridx = 0;
+        abonnementPanel.add(bestemmingLabel, c);
+        c.gridx = 1;
+        abonnementPanel.add(bestemmingComboBox, c);
+        c.gridy = 3;
+        c.gridx = 0;
+        abonnementPanel.add(kortingLabel, c);
+        c.gridx = 1;
+        abonnementPanel.add(kortingComboBox, c);
+        c.gridy = 4;
+        c.gridx = 0;
+        abonnementPanel.add(begindatumLabel, c);
+        c.gridx = 1;
+        abonnementPanel.add(datePickerBeginDatum, c);
+        c.gridy = 5;
+        c.gridx = 0;
+        abonnementPanel.add(einddatumLabel, c);
+        c.gridx = 1;
+        abonnementPanel.add(datePickerEindDatum, c);
+        c.gridy = 6;
+        c.gridx = 0;
+        abonnementPanel.add(toevoegenAbonnement, c);
 
-        interactiePanel.add(abonnementPanel);
+        interactiePanel.add(abonnementPanel, c);
 
         path.add("Abonnement toevoegen");
 
