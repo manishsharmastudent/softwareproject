@@ -31,7 +31,7 @@ public class LiveboardParseUtil {
 
         liveboardsList.put(naam,lb);
         try {
-            ObjectOutputStream obos = new ObjectOutputStream(new FileOutputStream("cache_liveboard.tmp"));
+            ObjectOutputStream obos = new ObjectOutputStream(new FileOutputStream("cache/cache_liveboard.tmp"));
             obos.writeObject(liveboardsList);
             obos.close();
         } catch (IOException e) {
@@ -46,7 +46,7 @@ public class LiveboardParseUtil {
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream("cache_liveboard.tmp");
+            fis = new FileInputStream("cache/cache_liveboard.tmp");
             ObjectInputStream obis = new ObjectInputStream(fis);
             lb = (Map<String,Liveboard>) obis.readObject();
             obis.close();
@@ -63,7 +63,7 @@ public class LiveboardParseUtil {
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream("cache_liveboard.tmp");
+            fis = new FileInputStream("cache/cache_liveboard.tmp");
             ObjectInputStream obis = new ObjectInputStream(fis);
             liveboardList = (Map<String,Liveboard>) obis.readObject();
             obis.close();
