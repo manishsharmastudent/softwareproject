@@ -10,6 +10,7 @@ import hibernate.ManageStation;
 import hibernate.ManageTicket;
 import hibernate.ManageTypeKaart;
 import model.*;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import view.TicketView;
 public class TicketController {
     private Ticket ticketModel;
@@ -78,6 +79,10 @@ public class TicketController {
         new MainController().showHomeScreen();
     }
     private void initComboBoxes() {
+        AutoCompleteDecorator.decorate(ticketView.getTypeKaartenComboBox());
+        AutoCompleteDecorator.decorate(ticketView.getBestemmingsStationComboBox());
+        AutoCompleteDecorator.decorate(ticketView.getVertrekStationComboBox());
+
         List<Station> stations = new ManageStation().listStations();
         ManageStation ms = new ManageStation();
 
@@ -140,6 +145,7 @@ public class TicketController {
                     calculatePrice();
                     if (ticketManage.addTicket(ticketModel) > 0) {
                         ticketView.addSucceed();
+                        backToHomeScreen();
                     } else {
                         ticketView.noTicketAdded();
                     }
@@ -157,7 +163,7 @@ public class TicketController {
 
         try{
             trj = ParseController.getTraject(ticketModel.getVertrekStation().getNaam(), ticketModel.getBestemmingStation().getNaam());
-        } catch(Exception exc){}
+        } catch(Exception exc){exc.getStackTrace();}
         double aantalKilometers = trj.get(0).getAantalKilometers();
         if(aantalKilometers > 45){aantalKilometers = 45;}
         if (ticketModel.getKlasse() == 1) {

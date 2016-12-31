@@ -61,12 +61,6 @@ public class KlantController {
         klantModel.setStad(stad);
     }
 
-    public void getKlantByName(String name){
-        /*List kl = MK.getKlantByName(name);
-        for (int i = 0; i < kl.size();i++){
-            klantView.showKlant((Klant)kl.get(i));
-        }*/
-    }
     public void searchKlantByRijksregister(){
         klantView.getSearchButtonRijksregisterNummer().addActionListener(new ActionListener() {
             @Override
