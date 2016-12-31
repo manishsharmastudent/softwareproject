@@ -12,6 +12,8 @@ import java.awt.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -98,6 +100,20 @@ public class AbonnementView extends StandardView {
     }
     public Date getBegindatum() {
         return (Date) datePickerBeginDatum.getModel().getValue();
+    }
+    public ArrayList<Integer> getBeginDatas(){
+        ArrayList<Integer> begindatas = new ArrayList<>();
+        begindatas.add(datePanelBeginDatum.getModel().getDay());
+        begindatas.add(datePanelBeginDatum.getModel().getMonth());
+        begindatas.add(datePanelBeginDatum.getModel().getYear());
+        return begindatas;
+    }
+    public ArrayList<Integer> getEindDatas(){
+        ArrayList<Integer> einddatas = new ArrayList<>();
+        einddatas.add(datePanelEindDatum.getModel().getDay());
+        einddatas.add(datePanelEindDatum.getModel().getMonth());
+        einddatas.add(datePanelEindDatum.getModel().getYear());
+        return einddatas;
     }
     public Date getEinddatum() {
         return (Date) datePickerEindDatum.getModel().getValue();
@@ -256,9 +272,6 @@ public class AbonnementView extends StandardView {
             return -1;
         }
     }
-    public void alreadyAbonnement(int id){
-        JOptionPane.showMessageDialog(null, "Klant heeft al een abonnement" + "Id: " + id);
-    }
     public void showAbonnementNotFound(){
         JOptionPane.showMessageDialog(null, "Abonnement niet gevonden");
     }
@@ -277,7 +290,7 @@ public class AbonnementView extends StandardView {
                         dataAbonnementen[row][col] = abo.getKlant().getVoornaam() + " " + abo.getKlant().getAchternaam();
                         break;
                     case 2:
-                        dataAbonnementen[row][col] = abo.getRoute().getRouteVertrek().getNaam() + "-" + abo.getRoute().getRouteBestemming().getNaam();
+                        dataAbonnementen[row][col] = abo.getVertrekStation().getNaam() + "-" + abo.getBestemmingStation().getNaam();
                         break;
                     case 3:
                         dataAbonnementen[row][col] = Double.toString(abo.getKorting().getProcent());

@@ -2,9 +2,12 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import hibernate.*;
 import model.*;
@@ -96,48 +99,54 @@ public class AbonnementController {
                    List<Abonnement> abonnements = new ArrayList<Abonnement>();
                    try {
                        Abonnement abo = abonnementManage.getAbonnementById(Integer.parseInt(abonnementView.getAbonnementNummerText()));
-                       abonnements.add(abo);
+                       if(abo != null){abonnements.add(abo);}
                    } catch (Exception exc){
                        abonnements = abonnementManage.listAbonnementen();
                    }
-
-
+                    if(abonnements.size() == 0){
+                       abonnements = abonnementManage.listAbonnementen();
+                    }
                    abonnementView.showGevondenAbonnementen(abonnements);
                    aanpassenAbonnement();
                }
            });
        }
-    public double calculatePrice(Korting korting){
-        double price = 120;
-        double procent = korting.getProcent();
-        double kortingsPrijs = price * procent;
-        price = price - kortingsPrijs;
+    public void calculatePrice(Korting korting){
+        long diff = abonnementModel.getBeginDatum().getTime() - abonnementModel.getBeginDatum().getTime();
+        long aantalDagen = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-        return price;
+        List<Traject> trj = null;
+
+        double percentage = korting.getProcent();
+        double prijs = aantalDagen / 3;
+
+        try{
+            trj = ParseController.getTraject(abonnementModel.getVertrekStation().getNaam(), abonnementModel.getBestemmingStation().getNaam());
+        } catch(Exception exc){}
+        double aantalKilometers = trj.get(0).getAantalKilometers();
+        if(aantalKilometers > 45){aantalKilometers = 45;}
+            if(percentage != 0){
+                prijs += aantalKilometers * percentage;
+            }
+            else {
+                prijs += aantalKilometers;
+            }
+        prijs = Math.floor(prijs);
+        abonnementModel.setPrijs((float)prijs);
     }
     public void toevoegenAbonnement(){
         abonnementView.getToevoegenAbonnementButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Korting korting = null;
-                Station vertrekStation = null;
-                Station bestemmingStation = null;
-                Klant klant = null;
-                Abonnement abonnement = null;
-                    korting = new ManageKorting().getKortingByid(kortingIds.get(abonnementView.getKortingIndex()));
-                    vertrekStation = new ManageStation().getStationById(stationIds.get(abonnementView.getVertrekStationIndex()));
-                    bestemmingStation = new ManageStation().getStationById(stationIds.get(abonnementView.getBestemmingStationIndex()));
-                    klant = new ManageKlant().getKlantByRijksregister(rijkregisterNummers.get(abonnementView.getKlantIndex()));
+                Korting korting = new ManageKorting().getKortingByid(kortingIds.get(abonnementView.getKortingIndex()));
+                Station vertrekStation = new ManageStation().getStationById(stationIds.get(abonnementView.getVertrekStationIndex()));
+                Station bestemmingStation = new ManageStation().getStationById(stationIds.get(abonnementView.getBestemmingStationIndex()));
+                Klant klant = new ManageKlant().getKlantByRijksregister(rijkregisterNummers.get(abonnementView.getKlantIndex()));
 
-                    abonnementModel = new Abonnement(0, korting, abonnementView.getBegindatum(), abonnementView.getEinddatum(), vertrekStation, bestemmingStation, klant, 12.5f, true);
-
-                    if (abonnement == null) {
-                        if(abonnementView.showPrice(calculatePrice(korting)) == 1){
-                            abonnementManage.addAbonnement(abonnementModel);
-                            abonnementView.showSuccesfullAdd(abonnementModel.getKlant());
-                        }
-                    }
-                    else {
-                            abonnementView.alreadyAbonnement(abonnement.getAbonnementId());
+                abonnementModel = new Abonnement(0, korting, abonnementView.getBegindatum(), abonnementView.getEinddatum(), vertrekStation, bestemmingStation, klant, 12.5f, true);
+                calculatePrice(korting);
+                    if(abonnementView.showPrice(abonnementModel.getPrijs()) == 1){
+                        abonnementManage.addAbonnement(abonnementModel);
+                        abonnementView.showSuccesfullAdd(abonnementModel.getKlant());
                     }
                 backToHomeScreen();
             }
@@ -160,7 +169,7 @@ public class AbonnementController {
         abonnementView.getUpdateButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Abonnement abonnement = new Abonnement(abonnementView.getAboId(), new ManageKorting().getKortingByid(kortingIds.get(abonnementView.getKortingIndex())), new Date(), new Date(),new ManageStation().getStationById(stationIds.get(abonnementView.getVertrekStationIndex())), new ManageStation().getStationById(stationIds.get(abonnementView.getBestemmingStationIndex())), new ManageKlant().getKlantByRijksregister(rijkregisterNummers.get(abonnementView.getKlantIndex())), 0.0f,  abonnementView.isActive());
+                Abonnement abonnement = new Abonnement(abonnementView.getAboId(), new ManageKorting().getKortingByid(kortingIds.get(abonnementView.getKortingIndex())), abonnementView.getBegindatum(), abonnementView.getEinddatum(),new ManageStation().getStationById(stationIds.get(abonnementView.getVertrekStationIndex())), new ManageStation().getStationById(stationIds.get(abonnementView.getBestemmingStationIndex())), new ManageKlant().getKlantByRijksregister(rijkregisterNummers.get(abonnementView.getKlantIndex())), 0.0f,  abonnementView.isActive());
                 abonnementManage.updateAbonnement(abonnement);
             }
         });

@@ -2,12 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import hibernate.ManageStation;
@@ -105,8 +101,9 @@ public class TicketController {
             ticketView.getBestemmingsStationComboBox().addItem(stations.get(i).getNaam());
         }
 
-        ticketView.getKlasseCombobox().addItem("Eerste klasse");
         ticketView.getKlasseCombobox().addItem("Tweede klasse");
+        ticketView.getKlasseCombobox().addItem("Eerste klasse");
+
         disableOptionsOnType();
     }
     private void voegTicketToe() {
@@ -128,14 +125,9 @@ public class TicketController {
                     ticketModel.setVertrekStation(vertrekStation);
                     ticketModel.setBestemmingStation(bestemmingStation);
                     String datum = ticketView.getDatePicker().getJFormattedTextField().getText();
-                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-                    try {
-                        Date date = format.parse(datum);
-                        ticketModel.setBeginDatum(date);
-                    } catch (ParseException exc) {
-                        ticketModel.setBeginDatum(Calendar.getInstance().getTime());
-                    }
 
+                    LocalDate date = LocalDate.parse(datum);
+                    System.out.println(date);
                     ticketModel.setBeginDatum(ticketView.getBeginDatum());
                     ticketModel.setEindDatum(ticketView.getBeginDatum());
                     ticketModel.setTypeKaart(typeKaart);
@@ -145,7 +137,7 @@ public class TicketController {
                     } else {
                         ticketModel.setKlasse(2);
                     }
-                    //calculatePrice();
+                    calculatePrice();
                     if (ticketManage.addTicket(ticketModel) > 0) {
                         ticketView.addSucceed();
                     } else {
@@ -155,17 +147,39 @@ public class TicketController {
             }
         });
     }
-    public double calculatePrice() {
-                Korting korting = ticketModel.getTypeKaart().getKorting();
-                List<Traject> trj = null;
-                try{
-                    System.out.println(ticketModel.getVertrekStation().getNaam());
-                    trj = ParseController.getTraject(ticketModel.getVertrekStation().getNaam(), ticketModel.getBestemmingStation().getNaam());
-                } catch(Exception exc){
-                }
-                if (ticketModel.getKlasse() == 1) {
-                    return ((trj.get(0).getAantalKilometers() - (10 * korting.getProcent())) + 6) * ticketView.getAantalPersonen();
-                }
-                return (trj.get(0).getAantalKilometers() - (10 * korting.getProcent())) * ticketView.getAantalPersonen();
+    public void calculatePrice() {
+        Korting korting = ticketModel.getTypeKaart().getKorting();
+        List<Traject> trj = null;
+
+        double percentage = korting.getProcent();
+        int aantalPersonen= ticketView.getAantalPersonen();
+        double prijs = 0.0;
+
+        try{
+            trj = ParseController.getTraject(ticketModel.getVertrekStation().getNaam(), ticketModel.getBestemmingStation().getNaam());
+        } catch(Exception exc){}
+        double aantalKilometers = trj.get(0).getAantalKilometers();
+        if(aantalKilometers > 45){aantalKilometers = 45;}
+        if (ticketModel.getKlasse() == 1) {
+             if(percentage != 0){
+                 prijs = (((aantalKilometers / 2) * percentage) + 6) * aantalPersonen;
+             }
+             else {
+                 prijs =((aantalKilometers / 2) + 6) * aantalPersonen;
+             }
+        }
+        else {
+            if(percentage != 0){
+                prijs = ((aantalKilometers / 2) * percentage) * aantalPersonen;
             }
+            else {
+                prijs = (aantalKilometers / 2) * aantalPersonen;
+            }
+        }
+        prijs = Math.floor(prijs);
+        if(ticketModel.getTypeKaart().getId() == 15){
+            ticketModel.setPrijs((float)prijs*2);
+        }
+        else {ticketModel.setPrijs((float)prijs);}
+    }
 }
