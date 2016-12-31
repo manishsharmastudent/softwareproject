@@ -113,19 +113,19 @@ public class ManageAbonnement {
             return a;
         }
     }
-    public Abonnement getAbonnementByKlantId(String rijksregisterNummer){
+    public List<Abonnement> getAbonnementByKlantId(Klant klant){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = null;
-        Abonnement abonnement = null;
+        List<Abonnement> abonnement = new ArrayList<>();
         Query query= null;
         try{
             tx = session.beginTransaction();
             String hql = "FROM Abonnement WHERE klant = :klant AND active = true";
             query = session.createQuery(hql);
-            query.setParameter("klant", rijksregisterNummer);
-            abonnement = (Abonnement)query.uniqueResult();
+            query.setParameter("klant", klant);
+            abonnement = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();

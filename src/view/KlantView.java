@@ -64,9 +64,8 @@ public class KlantView extends StandardView {
 
 
         ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
-        ((AbstractDocument) adresText.getDocument()).setDocumentFilter(new MyDocumentFilter());
         ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
-        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        //((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
 
     }

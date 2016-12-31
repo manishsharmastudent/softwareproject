@@ -101,20 +101,6 @@ public class AbonnementView extends StandardView {
     public Date getBegindatum() {
         return (Date) datePickerBeginDatum.getModel().getValue();
     }
-    public ArrayList<Integer> getBeginDatas(){
-        ArrayList<Integer> begindatas = new ArrayList<>();
-        begindatas.add(datePanelBeginDatum.getModel().getDay());
-        begindatas.add(datePanelBeginDatum.getModel().getMonth());
-        begindatas.add(datePanelBeginDatum.getModel().getYear());
-        return begindatas;
-    }
-    public ArrayList<Integer> getEindDatas(){
-        ArrayList<Integer> einddatas = new ArrayList<>();
-        einddatas.add(datePanelEindDatum.getModel().getDay());
-        einddatas.add(datePanelEindDatum.getModel().getMonth());
-        einddatas.add(datePanelEindDatum.getModel().getYear());
-        return einddatas;
-    }
     public Date getEinddatum() {
         return (Date) datePickerEindDatum.getModel().getValue();
     }
@@ -142,20 +128,26 @@ public class AbonnementView extends StandardView {
         abonnementPanel.setLayout(new GridLayout(9,2));
         System.out.println(abonnement.getAbonnementId());
 
-        eindDatum.setText("12-12-2015");
-        beginDatum.setText("12-12-2015");
+        eindDatum.setEnabled(false);
+        beginDatum.setEnabled(false);
+        eindDatum.setText(abonnement.getBeginDatum().toString());
+        beginDatum.setText(abonnement.getVervalDatum().toString());
         textAboId.setText(Integer.toString(abonnement.getAbonnementId()));
         textAboId.setEnabled(false);
 
         abonnementPanel.add(new JLabel("Abonnementnummer: "));
         abonnementPanel.add(textAboId);
         abonnementPanel.add(new JLabel("Korting: "));
+        kortingComboBox.getModel().setSelectedItem(abonnement.getKorting().getOmschrijving());
         abonnementPanel.add(kortingComboBox);
         abonnementPanel.add(new JLabel("Vertrek: "));
+        vertrekComboBox.getModel().setSelectedItem(abonnement.getVertrekStation().getNaam());
         abonnementPanel.add(vertrekComboBox);
         abonnementPanel.add(new JLabel("Bestemming: "));
+        bestemmingComboBox.getModel().setSelectedItem(abonnement.getBestemmingStation().getNaam());
         abonnementPanel.add(bestemmingComboBox);
         abonnementPanel.add(new JLabel("Klant: "));
+        klantComboBox.getModel().setSelectedItem(abonnement.getKlant().getVoornaam() + " " + abonnement.getKlant().getAchternaam());
         abonnementPanel.add(klantComboBox);
         abonnementPanel.add(new JLabel("Begindatum: "));
         abonnementPanel.add(beginDatum);

@@ -16,7 +16,6 @@ public class HomeView extends StandardView {
     private JPanel voorwerpPanel = new JPanel();
     private JButton vvvasButton = new JButton("Verloren voorwerpen zoeken/aanpassen/verwijderen");
     private JButton rvvButton = new JButton("Registreer verloren voorwerp");
-    private JButton vvvButton = new JButton("Verwijder verloren voorwerp");
     private JLabel verlorenVoorLabel = new JLabel("Verloren voorwerpen",  SwingConstants.CENTER);
 
     private JPanel infoPanel = new JPanel();
@@ -117,7 +116,6 @@ public class HomeView extends StandardView {
         voorwerpPanel.add(verlorenVoorLabel);
         voorwerpPanel.add(vvvasButton);
         voorwerpPanel.add(rvvButton);
-        voorwerpPanel.add(vvvButton);
 
         klantLabel.setBorder(border);
         klantLabel.setOpaque(true);

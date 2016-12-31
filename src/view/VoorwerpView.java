@@ -12,7 +12,6 @@ import java.util.Vector;
  */
 public class VoorwerpView extends StandardView {
     JPanel voorwerpenPanel = new JPanel();
-    JLabel treinLabel = new JLabel("Trein");
     JLabel vertrekStationLabel = new JLabel("Vertrek");
     JLabel bestemmingStationLabel = new JLabel("Bestemming");
     JLabel voorwerpLabel = new JLabel("Voorwerp");
@@ -23,7 +22,6 @@ public class VoorwerpView extends StandardView {
     JTable overviewVoorwerpen = null;
     String[][] voorwerpenTable = null;
 
-    JTextField treinText = new JTextField();
     JComboBox vertrekStationComboBox = new JComboBox();
     JComboBox bestemmingStationComboBox = new JComboBox();
     JComboBox routeComboBox = new JComboBox();
@@ -70,9 +68,6 @@ public class VoorwerpView extends StandardView {
     public int getBestemmingStationIndex(){
         return bestemmingStationComboBox.getSelectedIndex();
     }
-    public int getTrein(){
-        return Integer.parseInt(this.treinText.getText());
-    }
     public String getRoute(){
         return routeComboBox.getSelectedItem().toString();
     }
@@ -112,10 +107,8 @@ public class VoorwerpView extends StandardView {
         showWindow();
     }
     public void showVoorwerpenToevoegen(){
-        voorwerpenPanel.setLayout(new GridLayout(8,2));
+        voorwerpenPanel.setLayout(new GridLayout(7,2));
 
-        voorwerpenPanel.add(treinLabel);
-        voorwerpenPanel.add(treinText);
         voorwerpenPanel.add(vertrekStationLabel);
         voorwerpenPanel.add(vertrekStationComboBox);
         voorwerpenPanel.add(bestemmingStationLabel);
@@ -140,11 +133,11 @@ public class VoorwerpView extends StandardView {
         JOptionPane.showMessageDialog(null, "Er zijn geen voorwerpen gevonden met dit zoekcriteria");
     }
     public void initTable(java.util.List<Voorwerp> voorwerpen) {
-        String[] headers = {"ID", "Voorwerp", "Trein", "Route", "Voorwerp type", "Kleur", "Klant"};
+        String[] headers = {"ID", "Voorwerp", "Route", "Voorwerp type", "Kleur", "Klant"};
         voorwerpenTable = new String[voorwerpen.size()][7];
 
         for (int row = 0; row < voorwerpen.size(); row++) {
-            for (int col = 0; col < 6; col++) {
+            for (int col = 0; col < 5; col++) {
                 Voorwerp vw = voorwerpen.get(row);
                 switch (col) {
                     case 0:
@@ -154,18 +147,15 @@ public class VoorwerpView extends StandardView {
                         voorwerpenTable[row][col] = vw.getVoorwerp();
                         break;
                     case 2:
-                        voorwerpenTable[row][col] = Integer.toString(vw.getTrein());
-                        break;
-                    case 3:
                         voorwerpenTable[row][col] = vw.getVertrekStation().getNaam() + "-" + vw.getBestemmingStation().getNaam();
                         break;
-                    case 4:
+                    case 3:
                         voorwerpenTable[row][col] = vw.getType();
                         break;
-                    case 5:
+                    case 4:
                         voorwerpenTable[row][col] = vw.getKleur();
                         break;
-                    case 6:
+                    case 5:
                         voorwerpenTable[row][col] = vw.getKlant().getVoornaam() + " " + vw.getKlant().getAchternaam();
                         break;
                 }

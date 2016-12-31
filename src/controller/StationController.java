@@ -69,7 +69,7 @@ public class StationController {
             public void actionPerformed(ActionEvent e) {
                     try {
                         Liveboard liveboard = ParseController.getStationBoard(stationView.getStation());
-                        if(liveboard.getStation().getTreinen().size() > 0){stationView.showLiveboard(liveboard);terugButton();}
+                        if(liveboard.getStation().getTreinen().size() > 0){stationView.showLiveboard(liveboard);}
                         else {
                             stationView.liveboardNotFound();
                         }

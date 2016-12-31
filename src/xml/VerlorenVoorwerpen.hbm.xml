@@ -15,7 +15,6 @@
       <property name="kleur" column="kleur" type="string"/>
       <many-to-one name="vertrekStation" column="vertrekStation" class="model.Station"/>
       <many-to-one name="bestemmingStation" column="bestemmingStation" class="model.Station"/>
-      <property name="trein" column="treinId" type="int"/>
       <property name="type" column="type" type="string"/>
       <property name="voorwerpstr" column="voorwerp" type="string"/>
       <many-to-one name="klant" column="klantId" class="model.Klant"/>

@@ -117,6 +117,9 @@ public class RouteView extends StandardView {
             }
         };
     }*/
+    public void showGeenGeldigeRoute(){
+        JOptionPane.showMessageDialog(null, "Geen geldige route gevondenen");
+    }
     public void initTable(java.util.List<Traject> trajectList){
         String[] headers = {"Vertrek", "Bestemming", "Vertrektijd", "Aankomstijd", "Aantal overstappen"};
         dataTraject = new String[trajectList.size()][5];

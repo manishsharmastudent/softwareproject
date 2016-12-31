@@ -5,7 +5,6 @@ package model;
  */
 public class Voorwerp {
     private int voorwerpId;
-    private int trein;
     private String kleur;
     private String type;
     private String voorwerpstr;
@@ -16,9 +15,8 @@ public class Voorwerp {
 
 
     public Voorwerp() {}
-    public Voorwerp(int voorwerpId, int trein, String kleur, String type, String voorwerpstr, Station vertrekStation, Station bestemmingStation, Klant klant, boolean active) {
+    public Voorwerp(int voorwerpId,String kleur, String type, String voorwerpstr, Station vertrekStation, Station bestemmingStation, Klant klant, boolean active) {
         this.voorwerpId = voorwerpId;
-        this.trein = trein;
         this.kleur = kleur;
         this.type = type;
         this.voorwerpstr = voorwerpstr;
@@ -38,12 +36,6 @@ public class Voorwerp {
         return this.voorwerpId;
     }
     public void setVoorwerpId(int voorwerpId) { this.voorwerpId = voorwerpId;}
-    public int getTrein() {
-        return trein;
-    }
-    public void setTrein(int trein) {
-        this.trein = trein;
-    }
     public String getKleur() {
         return kleur;
     }

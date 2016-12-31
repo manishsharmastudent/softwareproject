@@ -77,9 +77,8 @@ public class AbonnementController {
             public void actionPerformed(ActionEvent e) {
                 abonnementView.getGevondenAbonnementPanel().removeAll();
                 abonnementView.getGevondenAbonnementPanel().updateUI();
-                Abonnement abonnement = abonnementManage.getAbonnementByKlantId(abonnementView.getRijksregisterNummerText());
-                List<Abonnement> abonnements = new ArrayList<Abonnement>();
-                abonnements.add(abonnement);
+                Klant klant = new ManageKlant().getKlantByRijksregister(abonnementView.getRijksregisterNummerText());
+                List<Abonnement> abonnements = abonnementManage.getAbonnementByKlantId(klant);
                 if(abonnements.get(0) == null){
                     abonnementView.showAbonnementNotFound();
                 }
