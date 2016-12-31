@@ -1,6 +1,7 @@
 package view;
 
 import com.sun.xml.internal.bind.api.impl.NameConverter;
+import controller.StadDocumentFilter;
 import model.Klant;
 
 import controller.MyDocumentFilter;
@@ -113,7 +114,7 @@ public class KlantView extends StandardView {
         achternaamText = new JTextField();
         stadText = new JTextField();
 
-        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StadDocumentFilter());
         ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
         ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
@@ -182,7 +183,7 @@ public class KlantView extends StandardView {
         achternaamText = new JTextField();
         stadText = new JTextField();
 
-        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StadDocumentFilter());
         ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
         ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
@@ -239,7 +240,7 @@ public class KlantView extends StandardView {
         achternaamText = new JTextField();
         stadText = new JTextField();
 
-        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StadDocumentFilter());
         ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
         ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
