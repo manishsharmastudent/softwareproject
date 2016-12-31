@@ -11,6 +11,7 @@ import java.util.Vector;
  * Created by Rik Van Belle on 01/11/2016.
  */
 public class VoorwerpView extends StandardView {
+    private GridBagConstraints c = new GridBagConstraints();
     JPanel voorwerpenPanel = new JPanel();
     JLabel treinLabel = new JLabel("Trein");
     JLabel vertrekStationLabel = new JLabel("Vertrek");
@@ -38,6 +39,8 @@ public class VoorwerpView extends StandardView {
 
     public VoorwerpView(String titel){
         super(titel);
+        c.insets = new Insets(10, 20 , 1 ,20);
+        c.fill = GridBagConstraints.HORIZONTAL;
     }
 
     public JPanel getVoorwerpenPanel(){
@@ -89,11 +92,19 @@ public class VoorwerpView extends StandardView {
     public JButton getVoorwerpAfgehaald(){return this.voorwerpAfgehaald; }
 
     public void showVoorwerpenZoeken(){
-        voorwerpenPanel.setLayout(new GridLayout(1,3));
+        voorwerpenPanel.setLayout(new GridBagLayout());
 
-        voorwerpenPanel.add(voorwerpLabel);
-        voorwerpenPanel.add(voorwerpText);
-        voorwerpenPanel.add(zoekButtonNaam);
+        c.gridy = 0;
+        c.gridx = 0;
+        voorwerpenPanel.add(voorwerpLabel, c);
+
+        voorwerpText.setPreferredSize(new Dimension(110,25));
+        voorwerpText.setMinimumSize(voorwerpText.getPreferredSize());
+        voorwerpText.setMaximumSize(voorwerpText.getPreferredSize());
+        c.gridx =1;
+        voorwerpenPanel.add(voorwerpText, c);
+        c.gridx = 2;
+        voorwerpenPanel.add(zoekButtonNaam, c);
 
         interactiePanel.add(voorwerpenPanel);
         addPath("Voorwerp zoeken");
