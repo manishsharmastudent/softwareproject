@@ -38,7 +38,7 @@ public class KlantView extends StandardView {
     private JTable klantTable = null;
     private String[][] klantData = null;
 
-    private JTextField voornaamText = new JTextField();
+    private JTextField voornaamText = new JTextField("");
     private JTextField achternaamText = new JTextField();
     private JTextField rijksregisterNummerText = new JFormattedTextField(createFormatter("##.##.##-###.##"));
     private JTextField adresText = new JTextField();
@@ -57,16 +57,12 @@ public class KlantView extends StandardView {
         super(titel);
         klantPanel.setLayout(new GridBagLayout());
         c.insets = new Insets(10, 20 , 1 ,0);
-        c.fill = GridBagConstraints.HORIZONTAL;
         rijksregisterNummerText.setPreferredSize(new Dimension(110,20));
         rijksregisterNummerText.setMinimumSize(rijksregisterNummerText.getPreferredSize());
         rijksregisterNummerText.setMaximumSize(rijksregisterNummerText.getPreferredSize());
+        c.fill = GridBagConstraints.HORIZONTAL;
 
 
-        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
-        ((AbstractDocument) adresText.getDocument()).setDocumentFilter(new MyDocumentFilter());
-        ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
-        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
 
     }
@@ -113,6 +109,14 @@ public class KlantView extends StandardView {
         klantPanel.removeAll();
         klantPanel.updateUI();
 
+        voornaamText = new JTextField("");
+        achternaamText = new JTextField();
+        stadText = new JTextField();
+
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+
 
         c.gridy = 0;
         c.gridx = 0;
@@ -123,9 +127,11 @@ public class KlantView extends StandardView {
         c.gridy = 1;
         c.gridx = 0;
         klantPanel.add(voornaamLabel, c);
-        voornaamText.setText(klant.getVoornaam());
+
+
         c.gridx = 1;
         klantPanel.add(voornaamText, c);
+        voornaamText.setText(klant.getVoornaam());
         c.gridy = 2;
         c.gridx = 0;
         klantPanel.add(achternaamLabel, c);
@@ -171,6 +177,15 @@ public class KlantView extends StandardView {
         interactiePanel.updateUI();
         klantPanel.removeAll();
         klantPanel.updateUI();
+
+        voornaamText = new JTextField();
+        achternaamText = new JTextField();
+        stadText = new JTextField();
+
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+
 
 
         c.gridy = 0;
@@ -220,6 +235,14 @@ public class KlantView extends StandardView {
         klantPanel.removeAll();
         klantPanel.updateUI();
 
+        voornaamText = new JTextField();
+        achternaamText = new JTextField();
+        stadText = new JTextField();
+
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+
 
         c.gridy = 0;
         c.gridx = 0;
@@ -253,6 +276,7 @@ public class KlantView extends StandardView {
         interactiePanel.updateUI();
         klantPanel.removeAll();
         klantPanel.updateUI();
+
 
         gevondenKlantenPanel.setLayout(new GridBagLayout());
         initTable(klanten);

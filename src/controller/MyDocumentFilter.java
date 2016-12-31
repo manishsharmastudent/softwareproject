@@ -20,6 +20,7 @@ public class MyDocumentFilter extends DocumentFilter {
                 JOptionPane.showMessageDialog(null, "Geen geldige invoer!", "Invoer error", JOptionPane.ERROR_MESSAGE);
             }
         }
+
     }
 
     @Override
@@ -29,7 +30,9 @@ public class MyDocumentFilter extends DocumentFilter {
 
     @Override
     public void insertString(FilterBypass fb, int i, String string, AttributeSet as) throws BadLocationException {
+
         super.insertString(fb, i, string, as);
+
 
     }
 }
