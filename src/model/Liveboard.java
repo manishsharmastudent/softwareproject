@@ -14,6 +14,10 @@ public class Liveboard implements Serializable {
 
 
 
+
+
+
+    //test
     private String jsonException;
 
     public Liveboard(Station station, Boolean live, LocalDateTime tv) {
