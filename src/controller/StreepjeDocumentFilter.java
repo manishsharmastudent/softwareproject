@@ -7,6 +7,11 @@ import javax.swing.text.DocumentFilter;
 
 /**
  * Created by User on 31/12/2016.
+ *
+ *  * THIS CODE IS NOT MY CODE I COPIED FROM http://stackoverflow.com/questions/14058505/jtextfield-accept-only-alphabet-and-white-space
+ * I ADJUSTED SOME THINGS ON THE CODE
+ *
+ * CREDITS: David Kroukamp (StackOverflow)
  */
 public class StreepjeDocumentFilter extends DocumentFilter {
 
