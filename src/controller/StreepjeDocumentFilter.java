@@ -8,7 +8,7 @@ import javax.swing.text.DocumentFilter;
 /**
  * Created by User on 31/12/2016.
  */
-public class StadDocumentFilter extends DocumentFilter {
+public class StreepjeDocumentFilter extends DocumentFilter {
 
     @Override
     public void replace(DocumentFilter.FilterBypass fb, int i, int i1, String string, AttributeSet as) throws BadLocationException {

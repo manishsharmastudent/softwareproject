@@ -1,7 +1,6 @@
 package view;
 
-import com.sun.xml.internal.bind.api.impl.NameConverter;
-import controller.StadDocumentFilter;
+import controller.StreepjeDocumentFilter;
 import model.Klant;
 
 import controller.MyDocumentFilter;
@@ -10,16 +9,7 @@ import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.text.AbstractDocument;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.MaskFormatter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.regex.Pattern;
-
-import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 
 /**
  * Created by Rik Van Belle on 01/11/2016.
@@ -114,8 +104,8 @@ public class KlantView extends StandardView {
         achternaamText = new JTextField();
         stadText = new JTextField();
 
-        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StadDocumentFilter());
-        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StreepjeDocumentFilter());
+        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new StreepjeDocumentFilter());
         ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
 
@@ -183,8 +173,8 @@ public class KlantView extends StandardView {
         achternaamText = new JTextField();
         stadText = new JTextField();
 
-        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StadDocumentFilter());
-        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StreepjeDocumentFilter());
+        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new StreepjeDocumentFilter());
         ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
 
@@ -240,8 +230,8 @@ public class KlantView extends StandardView {
         achternaamText = new JTextField();
         stadText = new JTextField();
 
-        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StadDocumentFilter());
-        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
+        ((AbstractDocument) stadText.getDocument()).setDocumentFilter(new StreepjeDocumentFilter());
+        ((AbstractDocument) voornaamText.getDocument()).setDocumentFilter(new StreepjeDocumentFilter());
         ((AbstractDocument) achternaamText.getDocument()).setDocumentFilter(new MyDocumentFilter());
 
 
