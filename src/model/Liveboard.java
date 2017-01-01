@@ -11,6 +11,9 @@ public class Liveboard implements Serializable {
     private Boolean live = false;
     private LocalDateTime timeVersion;
     private String exception;
+
+
+
     private String jsonException;
 
     public Liveboard(Station station, Boolean live, LocalDateTime tv) {
