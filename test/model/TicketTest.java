@@ -27,6 +27,8 @@ public class TicketTest {
     @Before
     public void setUp() throws Exception {
         route = new Route();
+        vertrek = new Station();
+        aankomst = new Station();
         route.setRouteId(42);
 
         beginLocal = LocalDate.of(2016,12,25);
@@ -40,12 +42,13 @@ public class TicketTest {
         vertrek.setNaam("Luik");
         aankomst.setNaam("Gent");
 
+        ticket = new Ticket(21,vertrek,aankomst,beginDatum,vervalDatum,typeKaart,22,54,1);
+
+
     }
 
     @Test
     public void ticketConstructor() throws Exception{
-        ticket = new Ticket(21,vertrek,aankomst,beginDatum,vervalDatum,typeKaart,22,54,1);
-
         assertEquals(21,ticket.getTicketId());
         assertTrue(beginDatum.equals(ticket.getBeginDatum()));
         assertTrue(vervalDatum.equals(ticket.getEindDatum()));

@@ -17,6 +17,9 @@ public class VoorwerpTest {
     @Before
     public void setUp() throws Exception {
         klant = new Klant();
+        vertrek = new Station();
+        aankomst = new Station();
+
         klant.setVoornaam("Jef");
         vertrek.setNaam("Luik");
         aankomst.setNaam("Gent");
