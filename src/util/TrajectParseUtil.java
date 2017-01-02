@@ -22,9 +22,9 @@ public class TrajectParseUtil {
 
     private static boolean isStationEqual(Halte h, Station s){
         String halteNaam = h.getName().replace(" ","");
-        String stationNaam = s.getNaam();
-        String stationNaamFrans = s.getNaamFrans();
-        String stationNaamAlt = s.getNaamAfkorting();
+        String stationNaam = s.getNaam().replace(" ","");
+        String stationNaamFrans = s.getNaamFrans().replace(" ","");
+        String stationNaamAlt = s.getNaamAfkorting().replace(" ","");
 
         if((h == null) || (s == null))
             return false;
