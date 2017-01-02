@@ -15,6 +15,7 @@ public class Traject {
     private LocalDateTime actualVertrekTijd;
     private LocalDateTime aankomstTijd;
     private LocalDateTime actualAankomstTijd;
+    private double aantalKilometers;
     private Duration duur;
     private boolean cancelled;
     private Map<String,String> transferstations;
@@ -53,6 +54,9 @@ public class Traject {
         return aankomstStation;
     }
 
+    public double getAantalKilometers(){return this.aantalKilometers; }
+
+    public void setAantalKilometers(double aantalKilometers){this.aantalKilometers = aantalKilometers; }
     public List<Trein> getTreinen() {
         return treinen;
     }
