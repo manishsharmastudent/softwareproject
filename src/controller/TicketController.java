@@ -154,6 +154,7 @@ public class TicketController {
         });
     }
     public void calculatePrice() {
+
         Korting korting = ticketModel.getTypeKaart().getKorting();
         List<Traject> trj = null;
 
@@ -167,12 +168,12 @@ public class TicketController {
         double aantalKilometers = trj.get(0).getAantalKilometers();
         if(aantalKilometers > 45){aantalKilometers = 45;}
         if (ticketModel.getKlasse() == 1) {
-             if(percentage != 0){
-                 prijs = (((aantalKilometers / 2) * percentage) + 6) * aantalPersonen;
-             }
-             else {
-                 prijs =((aantalKilometers / 2) + 6) * aantalPersonen;
-             }
+            if(percentage != 0){
+                prijs = (((aantalKilometers / 2) * percentage) + 6) * aantalPersonen;
+            }
+            else {
+                prijs =((aantalKilometers / 2) + 6) * aantalPersonen;
+            }
         }
         else {
             if(percentage != 0){
@@ -187,5 +188,6 @@ public class TicketController {
             ticketModel.setPrijs((float)prijs*2);
         }
         else {ticketModel.setPrijs((float)prijs);}
+        System.out.println(ticketModel.getPrijs());
     }
 }
