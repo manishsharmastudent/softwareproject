@@ -11,31 +11,17 @@ public class OptionLoginView extends JDialog{
     JFrame frame = new JFrame();
 
     public OptionLoginView(){
-        showOptionPaneLogin();
-
     }
 
-    public void showOptionPaneLogin(){
+    public boolean showOptionPaneLogin(){
 
-
-        final JOptionPane optionPane = new JOptionPane(
-                "Wilt u inloggen als admin?\n",
-                JOptionPane.QUESTION_MESSAGE,
-                JOptionPane.YES_NO_OPTION);
-
-        JTextField t = new JTextField();
-
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.add(optionPane);
-        frame.setVisible(true);
+        int reply = JOptionPane.showConfirmDialog(null,"Wilt u inloggen als admin?", "Inloggen als admin", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
-
-    public static void main(String[] args){
-        OptionLoginView t = new OptionLoginView();
-        t.showOptionPaneLogin();
-    }
-
 
 }

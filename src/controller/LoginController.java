@@ -14,6 +14,7 @@ import model.Login;
 import model.Rol;
 
 import view.LoginView;
+import view.OptionLoginView;
 import view.StandardView;
 
 /**
@@ -66,8 +67,8 @@ public class LoginController {
                     loginView.getWindow().dispose();
                     List<Login>logins = loginManage.getLoginByName(loginView.getLoginNaamText().getText());
                     if(logins != null){
-                        if(logins.get(0).getRol().getRolId() == 1){
-                            new MainController().showAdminScreen();
+                        if(logins.get(0).getRol().getRolId() == 1 && new OptionLoginView().showOptionPaneLogin() == true){
+                                new MainController().showAdminScreen();
                         }
                         else {
                             new MainController().showHomeScreen();

@@ -11,7 +11,7 @@ public class Korting {
 	private double procent;
 	private boolean active;
 
-	public Korting(int kortingId, int kortingType, Date beginDatum, String omschrijving, boolean active, double procent) {
+	public Korting(int kortingId, int kortingType, Date beginDatum, String omschrijving, 	boolean active, double procent) {
 		this.kortingId = kortingId;
 		this.kortingType = kortingType;
 		this.beginDatum = beginDatum;

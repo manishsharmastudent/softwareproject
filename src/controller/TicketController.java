@@ -149,7 +149,11 @@ public class TicketController {
                     } else {
                         ticketModel.setKlasse(2);
                     }
-                    calculatePrice();
+                    if(ticketModel.getTypeKaart().getId() != 2 && ticketModel.getTypeKaart().getId() != 4) {
+                        calculatePrice();
+                    }
+                    else if(ticketModel.getTypeKaart().getId() == 2){ticketModel.setPrijs(6);}
+                    else if(ticketModel.getTypeKaart().getId()== 4){ticketModel.setPrijs(50);}
                     if (ticketManage.addTicket(ticketModel) > 0) {
                         ticketView.showPrice(ticketModel.getPrijs());
                         ticketView.addSucceed();

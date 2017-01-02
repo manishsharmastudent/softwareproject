@@ -92,7 +92,10 @@ public class RouteView extends StandardView {
                         dataTraject[row][col] = trj.getAankomstTijd().toString();
                         break;
                     case 4:
-                        dataTraject[row][col] = Integer.toString(trj.getTransferstations().size());
+                        if(trj.getTransferstations() == null){
+                            dataTraject[row][col] = "0";
+                        }
+                        else { dataTraject[row][col] = Integer.toString(trj.getTransferstations().size());}
                         break;
                 }
             }
