@@ -1,6 +1,7 @@
 package controller;
 
 import model.Voorwerp;
+import view.AdminView;
 import view.HomeView;
 import view.LoginView;
 import view.TicketView;
@@ -16,13 +17,26 @@ import javax.swing.event.MouseInputAdapter;
  */
 public class MainController {
     HomeView home = new HomeView("Homescreen");
-
-    protected Timer logOutTimer;
-    protected MouseMotionListener l;
+    AdminView admin = new AdminView("Homescreen");
 
     public MainController(){
         home = new HomeView("HomeScreen");
     }
+    protected void showAdminScreen(){
+        admin.showAdminOptions();
+        showAddLogin();
+    }
+
+    public void showAddLogin(){
+        admin.getUserToevoegenButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new LoginController().showAddLogin();
+                closeAdminWindow();
+            }
+        });
+    }
+
     protected void showHomeScreen(){
         home.showHomeScreen();
         koopTicket();
@@ -35,6 +49,8 @@ public class MainController {
         verlengAbonnement();
         showSearchVoorwerpen();
         showSearchLiveBoard();
+        showAddReservatie();
+        showZoekReservatie();
         //initLogOutTimer();
         //initMouseMotionListener();
         //home.getWindow().addMouseMotionListener(l);
@@ -116,6 +132,24 @@ public class MainController {
             }
         });
     }
+    public void showAddReservatie(){
+        home.getReservatieButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                closeHomeWindow();
+                new ReservatieController().showVoegReservatieToe();
+            }
+        });
+    }
+    public void showZoekReservatie(){
+        home.getReservatieAanpasButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                closeHomeWindow();
+                new ReservatieController().showZoekReservatie();
+            }
+        });
+    }
     public void zoekKlanten(){
         home.getKlantOpzoeken().addActionListener(new ActionListener() {
             @Override
@@ -125,17 +159,12 @@ public class MainController {
             }
         });
     }
-    public void initLogOutTimer(){
-        logOutTimer = new javax.swing.Timer(10000, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "U wordt uitgelogd!");
-                closeHomeWindow();
-                new LoginView("Login").showLoginScreen();
-            }
-        });
-        }
     private void closeHomeWindow(){
         home.getWindow().setVisible(false);
         home.getWindow().dispose();
+    }
+    private void closeAdminWindow(){
+        admin.getWindow().setVisible(false);
+        admin.getWindow().dispose();
     }
 }

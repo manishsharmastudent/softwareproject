@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Iterator;
 
 import model.PasswordAuthentication;
+import model.Rol;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -93,6 +94,28 @@ public class ManageLogin {
         }
     }
 
+    public List<Login> getLoginByName(String loginNaam){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        List<Login> logins = null;
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Login WHERE loginNaam = :loginNaam";
+            Query query = session.createQuery(hql);
+            query.setParameter("loginNaam", loginNaam);
+            logins = query.list();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        if(logins.size() == 1){
+            return logins;
+        }
+        else {return null;}
+    }
 
     /* Method to UPDATE login */
     public void updateLogin(Login login){
@@ -150,6 +173,40 @@ public class ManageLogin {
             session.close();
             return true;
         }
+    }
+    public List<Rol> listRols(){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        List<Rol> rols = new ArrayList<Rol>();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            rols = session.createQuery("FROM Rol where active = true").list();
 
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            return rols;
+        }
+    }
+    public Rol getRolById(int id){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+        Session session = factory.openSession();
+        Rol rol = null;
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            rol =  (Rol) session.get(Rol.class, id);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            return rol;
+        }
     }
 }

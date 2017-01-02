@@ -2,9 +2,13 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import hibernate.ManageLogin;
+import hibernate.ManageStation;
 import hibernate.SessionFactorySingleton;
 import model.Login;
 import model.Rol;
@@ -19,6 +23,8 @@ public class LoginController {
     private Login loginModel;
     private LoginView loginView;
     private ManageLogin loginManage;
+
+    private List<Integer> rolIds = new ArrayList<>();
 
     public LoginController(){
         loginModel = new Login();
@@ -58,7 +64,17 @@ public class LoginController {
                 if (loginManage.checkLogin(loginView.getLoginNaamText().getText(), loginView.getLoginWachtwoordText().getText()) == true){
                     loginView.getWindow().setVisible(false);
                     loginView.getWindow().dispose();
-                    new MainController().showHomeScreen();
+                    List<Login>logins = loginManage.getLoginByName(loginView.getLoginNaamText().getText());
+                    if(logins != null){
+                        if(logins.get(0).getRol().getRolId() == 1){
+                            new MainController().showAdminScreen();
+                        }
+                        else {
+                            new MainController().showHomeScreen();
+                        }
+                    } else {
+                        new MainController().showHomeScreen();
+                    }
                 }
                 else
                 {
@@ -73,9 +89,42 @@ public class LoginController {
             public void actionPerformed(ActionEvent e) {
                 email = loginView.showForgetPassword();
                 System.out.println(email);
-
             }
         });
+    }
+    public void showAddLogin(){
+        loginView.showAddLogin();
+        initComboBox();
+        addLogin();
+    }
+    public void addLogin(){
+        loginView.getLoginAanmakenButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginModel.setLoginNaam(loginView.getLoginNaamText().getText());
+                System.out.println(loginView.getLoginWachtwoordText().getText());
+                System.out.println(loginView.getLoginWachtwoordTextRepeat().getText());
+                //if(loginView.getLoginWachtwoordText().getText() == loginView.getLoginWachtwoordTextRepeat().getText()){
+                    loginModel.setLoginWachtwoord(loginView.getLoginWachtwoordText().getText());
+                //}
+                loginModel.setRol(loginManage.getRolById(rolIds.get(loginView.getRolIndex())));
+                loginModel.setActive(true);
+                loginModel.setLastChanged(Calendar.getInstance().getTime());
+                loginModel.setStation(new ManageStation().getStationById(1));
+                if(loginManage.addLogin(loginModel) > 0){
+                    loginView.showAddLoginSucceed();
+                }else {
+                    loginView.showAddLoginFailed();
+                }
+            }
+        });
+    }
+    public void initComboBox(){
+        List<Rol> rollen = loginManage.listRols();
+        for(int i = 0; i < rollen.size();i++){
+            rolIds.add(rollen.get(i).getRolId());
+            loginView.getRolComboBox().addItem(rollen.get(i).getRolBeschrijving());
+        }
     }
 }
 

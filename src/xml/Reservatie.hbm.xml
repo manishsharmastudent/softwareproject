@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="model.Reservatie" table="RESERVATIES">
+      <meta attribute="class-description">
+         This class contains the Abonnement detail.
+      </meta>
+      <id name="" type="int" column="reservatieId">
+         <generator class="native"/>
+      </id>
+        <property name="groepsnaam" column="groepsnaam" type="string"/>
+       <many-to-one name="vertrekStation" column="vertrekStation" class="model.Station" />
+       <many-to-one name="aankomstStation" column="BestemmingStation" class="model.Station" />
+       <property name="reservatieDatum" column="reservatieDatum" type="date"/>
+       <property name="aantalPersonen" column="aantalPersonen" type="int"/>
+       <property name="active" column="active" type="boolean"/>
+   </class>
+</hibernate-mapping>
+
+

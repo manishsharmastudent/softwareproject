@@ -139,10 +139,4 @@ public class KortingView extends StandardView {
         addPath("Instellingen Korting");
         showWindow();
     }
-    public static void main(String [] args){
-
-        KortingView v = new KortingView("korting");
-        Korting k = new Korting();
-        v.showKorting(k);
-    }
 }

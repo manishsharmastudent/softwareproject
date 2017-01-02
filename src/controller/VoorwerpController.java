@@ -44,6 +44,7 @@ public class VoorwerpController {
     public void setVoorwerpId(int voorwerpid){ voorwerpModel.setVoorwerpId(voorwerpid); }
     public void setKleur(String kleur){ voorwerpModel.setKleur(kleur); }
     public void setType(String type){ voorwerpModel.setType(type); }
+
     public void toevoegenVoorwerp(){
         voorwerpView.getToevoegenVoorwerpButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

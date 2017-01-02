@@ -45,16 +45,5 @@ public class UserSettingsView extends StandardView {
 
 
     }
-
-
-
-
-    public static void main(String [] args) throws Exception {
-        UserSettingsView s = new UserSettingsView("iets");
-        s.showUserSettingsView();
-    }
-
-
-
 }
 

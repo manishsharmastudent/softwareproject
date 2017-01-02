@@ -26,8 +26,6 @@ public class RouteController {
         zoekRouteInAPI();
         terugButton();
     }
-
-
     public void zoekRouteInAPI(){
         view.getRouteButton().addActionListener(new ActionListener() {
             @Override
@@ -36,9 +34,6 @@ public class RouteController {
             }
         });
     }
-
-
-
     public void searchRoutes(String vertrek, String bestemming){
         List<Traject> trajecten = null;
 
