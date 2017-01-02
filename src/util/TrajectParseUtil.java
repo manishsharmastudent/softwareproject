@@ -152,6 +152,7 @@ public class TrajectParseUtil {
         ManageStation manageStation = new ManageStation();
         List<Station> lijstStation = manageStation.getAllStationsBoxes();
 
+
         arrCon.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {
