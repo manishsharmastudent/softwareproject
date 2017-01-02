@@ -143,7 +143,7 @@ public class TicketView extends StandardView {
     }
 
     public int showPrice(double prijs){
-        if (JOptionPane.showConfirmDialog(null, "Het ticket kost € " + prijs + " .") == JOptionPane.YES_OPTION){
+        if (JOptionPane.showConfirmDialog(null, "Het ticket kost € " + prijs + " .\nDoorgaan met betaling?") == JOptionPane.YES_OPTION){
             return 1;
         }
         else{
