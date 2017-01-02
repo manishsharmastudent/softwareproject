@@ -13,7 +13,7 @@ public class TimeParseUtil {
         LocalDateTime d = null;
 
         if((timeString != "0001-01-01T00:00:00")) {
-            if (!(timeString.substring(11).equals("00:00:00+01:00")))
+           if (!(timeString.substring(11).equals("00:00:00+01:00")))
                 d = LocalDateTime.parse(timeString);
         }
         return d;
@@ -48,7 +48,7 @@ public class TimeParseUtil {
         minuten = tijd.getMinute();
         seconden = tijd.getSecond();
 
-        String formattedTijd = uur + ":" + minuten + ":" + seconden;
+        String formattedTijd = (uur<10?("0"+uur):uur) + ":" + (minuten<10?("0"+minuten):minuten) + ":" + (seconden<10?("0"+seconden):seconden);
         return formattedTijd;
     }
 
@@ -63,7 +63,7 @@ public class TimeParseUtil {
         maand = tijd.getMonthValue();
         jaar = tijd.getYear();
 
-        String formattedTijd = dag + "/" + maand + "/" + jaar + " " + uur;
+        String formattedTijd = (dag<10?("0"+dag):dag) +"/" + (maand<10?"0"+maand:maand) + "/" + jaar + " " + uur;
         return formattedTijd;
     }
 

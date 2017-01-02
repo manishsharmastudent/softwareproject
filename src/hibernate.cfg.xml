@@ -22,7 +22,6 @@
         <property name="hibernate.connection.password">
             ipR6Y1
         </property>
-
         <!-- List of XML mapping files -->
         <mapping resource="xml/Login.hbm.xml"/>
         <mapping resource="xml/Tickets.hbm.xml"/>
@@ -34,6 +33,6 @@
         <mapping resource="xml/Routes.hbm.xml"/>
         <mapping resource="xml/TypeKaart.hbm.xml"/>
         <mapping resource="xml/VerlorenVoorwerpen.hbm.xml"/>
-
+        <mapping resource="xml/Reservatie.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

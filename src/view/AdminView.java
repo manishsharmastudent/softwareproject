@@ -8,42 +8,53 @@ import java.awt.*;
  */
 public class AdminView extends StandardView {
 
+    private JPanel adminPanel = new JPanel(new GridLayout(6,1));
+
+    private JLabel adminLabel = new JLabel("Admin opties");
+    private JButton userToevoegenButton = new JButton("User toevoegen");
     private JButton userSettingsButton = new JButton("Instellingen users");
     private JButton companySettingsButton = new JButton("Instellingen bedrijf");
     private JButton ticketsSettingsButton = new JButton("Instellingen tickets");
     private JButton verlorenVoorwerpButton = new JButton("Instellingen verloren voorwerpen");
     private GridBagConstraints c = new GridBagConstraints();
 
-    AdminView(String titel) {
+    public AdminView(String titel) {
         super(titel);
     }
 
-    public void showAdminOptions(){
+    public JButton getUserToevoegenButton(){return userToevoegenButton;}
+    public JButton getUserSettingsButton(){return userSettingsButton;}
+    public JButton getCompanySettingsButton(){return companySettingsButton;}
+    public JButton getTicketsSettingsButton(){return ticketsSettingsButton; }
+    public JButton getVerlorenVoorwerpButton() {return verlorenVoorwerpButton; }
 
-        showWindow();
+    public void showAdminOptions() {
+        if (path.size() == 0) {
+            addPath("Home");
+        }
+        adminPanel.setBorder(border);
+        adminPanel.setOpaque(true);
+        adminPanel.setBackground(Color.black);
+        adminPanel.setForeground(Color.white);
+        adminPanel.add(adminLabel);
 
-        welkomLabel.setText("Welkom Admin");
+        adminPanel.add(userToevoegenButton);
+        adminPanel.add(userSettingsButton);
+        adminPanel.add(companySettingsButton);
+        adminPanel.add(ticketsSettingsButton);
+        adminPanel.add(verlorenVoorwerpButton);
 
         interactiePanel.setLayout(new GridBagLayout());
 
-        c.insets = (new Insets(40,0,40,0));
-        c.fill = 1;
-        c.gridy = 0;
-        interactiePanel.add(userSettingsButton, c);
-
-        c.gridy = 1;
-        interactiePanel.add(companySettingsButton, c);
-
-        c.gridy = 2;
-        interactiePanel.add(ticketsSettingsButton, c);
-
+        c.gridx = 0;
         c.gridy = 3;
-        interactiePanel.add(verlorenVoorwerpButton, c);
 
+        c.insets = (new Insets(5, 10, 0, 10));
+        c.fill = 2;
 
+        interactiePanel.add(adminPanel, c);
 
+        showWindow();
 
     }
-
-
 }
