@@ -83,7 +83,6 @@ public class LoginView extends StandardView {
         initWelkomBoard();
         initNavTree();
         initMenuBar();
-        addPath("Login");
         c.weightx =1;
         c.weighty =1;
         loginNaamText.setPreferredSize(new Dimension(110,20));

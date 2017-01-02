@@ -75,6 +75,15 @@ public class HomeView extends StandardView {
 
     public void showHomeScreen() {
         if (path.size() == 0){
+            deleteLastInPath();
+            deleteLastInPath();
+            deleteLastInPath();
+            addPath("Home");
+        } else {
+
+            deleteLastInPath();
+            deleteLastInPath();
+            deleteLastInPath();
             addPath("Home");
         }
         showWindow();

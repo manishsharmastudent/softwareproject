@@ -107,10 +107,20 @@ public class VoorwerpView extends StandardView {
     }
     public void showVoorwerpen(java.util.List<Voorwerp> voorwerpen){
         initTable(voorwerpen);
-        voorwerpenPanel.setLayout(new GridLayout(2,1));
+        voorwerpenPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5,5,5,5);
+
         JScrollPane scrollPane = new JScrollPane(overviewVoorwerpen);
-        voorwerpenPanel.add(scrollPane);
-        interactiePanel.add(voorwerpAfgehaald);
+        c.gridx = 0;
+        c.gridy = 0;
+        voorwerpenPanel.add(scrollPane, c);
+
+        c.fill = GridBagConstraints.NONE;
+
+        c.gridy = 1 ;
+        voorwerpAfgehaald.setHorizontalAlignment(0);
+        voorwerpenPanel.add(voorwerpAfgehaald, c);
         interactiePanel.add(voorwerpenPanel);
         deleteLastInPath();
         deleteLastInPath();
