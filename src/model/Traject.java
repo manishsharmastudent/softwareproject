@@ -15,7 +15,6 @@ public class Traject implements Serializable {
     private LocalDateTime actualVertrekTijd;
     private LocalDateTime aankomstTijd;
     private LocalDateTime actualAankomstTijd;
-    private double aantalKilometers;
     private Duration duur;
     private boolean cancelled;
     private Map<String,String> transferstations;
@@ -34,14 +33,6 @@ public class Traject implements Serializable {
 
     public boolean isCancelled() {
         return cancelled;
-    }
-
-    public double getAantalKilometers(){
-        return this.aantalKilometers;
-    }
-
-    public void setAantalKilometers(double kilometers){
-        this.aantalKilometers = kilometers;
     }
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
