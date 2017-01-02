@@ -6,12 +6,12 @@ import java.util.Date;
 public class Korting {
 	private int kortingId;
 	private int kortingType;
-	private LocalDate beginDatum;
+	private Date beginDatum;
 	private String omschrijving;
 	private double procent;
 	private boolean active;
 
-	public Korting(int kortingId, int kortingType, LocalDate beginDatum, String omschrijving, boolean active, double procent) {
+	public Korting(int kortingId, int kortingType, Date beginDatum, String omschrijving, boolean active, double procent) {
 		this.kortingId = kortingId;
 		this.kortingType = kortingType;
 		this.beginDatum = beginDatum;
@@ -40,11 +40,11 @@ public class Korting {
 		this.kortingType = kortingType;
 	}
 
-	public LocalDate getBeginDatum() {
+	public Date getBeginDatum() {
 		return beginDatum;
 	}
 
-	public void setBeginDatum(LocalDate beginDatum) {
+	public void setBeginDatum(Date beginDatum) {
 		this.beginDatum = beginDatum;
 	}
 

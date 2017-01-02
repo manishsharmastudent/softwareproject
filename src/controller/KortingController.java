@@ -18,13 +18,13 @@ public class KortingController {
 
     public int getKortingId(){ return kortingModel.getKortingId(); }
     public int getKortingType(){ return kortingModel.getKortingType(); }
-    public LocalDate getBeginDatum(){ return kortingModel.getBeginDatum(); }
+    public Date getBeginDatum(){ return kortingModel.getBeginDatum(); }
     public String getOmschrijving(){ return kortingModel.getOmschrijving(); }
     public Boolean isActive(){ return kortingModel.isActive(); }
 
     public void setKortingId(int kortingId){ kortingModel.setKortingId(kortingId); }
     public void setKortingType(int kortingType){ kortingModel.setKortingType(kortingType); }
-    public void setBeginDatum(LocalDate datum){ kortingModel.setBeginDatum(datum); }
+    public void setBeginDatum(Date datum){ kortingModel.setBeginDatum(datum); }
     public void setOmschrijving(String omschrijving){ kortingModel.setOmschrijving(omschrijving); }
     public void setActive(Boolean active){ kortingModel.setActive(active); }
 
