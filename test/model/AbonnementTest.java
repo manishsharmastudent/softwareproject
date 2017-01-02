@@ -29,6 +29,8 @@ public class AbonnementTest {
         korting = new Korting();
         route = new Route();
         klant = new Klant();
+        vertrek = new Station();
+        aankomst = new Station();
 
         beginLocal = LocalDate.of(2016,12,25);
         vervalLocal = beginLocal.plusYears(1);
@@ -77,7 +79,9 @@ public class AbonnementTest {
         assertTrue(beginDatum.equals(abonnement.getBeginDatum()));
         assertTrue(vervalDatum.equals(abonnement.getVervalDatum()));
 
-        assertEquals(6,abonnement.getRoute().getRouteId());
+        assertEquals("Luik", abonnement.getVertrekStation().getNaam());
+        assertEquals("Gent", abonnement.getBestemmingStation().getNaam());
+
         assertEquals("Jef",abonnement.getKlant().getAchternaam());
 
         assertEquals(23,abonnement.getPrijs().intValue());

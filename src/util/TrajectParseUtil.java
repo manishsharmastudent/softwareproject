@@ -121,6 +121,7 @@ public class TrajectParseUtil {
         List<Traject> trajecten = new ArrayList<Traject>();
         JSONArray arrCon = jBase.getJSONArray("Routes");
 
+
         arrCon.forEach(new Consumer<Object>() {
             @Override
             public void accept(Object t) {

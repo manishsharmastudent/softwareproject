@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -7,8 +8,7 @@ import java.util.*;
 /**
  * Created by Nofel on 02-11-16.
  */
-public class Traject {
-
+public class Traject implements Serializable {
     private String vertrekStation;
     private String aankomstStation;
     private LocalDateTime vertrekTijd;
@@ -22,6 +22,8 @@ public class Traject {
     private List<Trein> treinen;
     private String vetrekPlatform;
     private String exception;
+    private double aantalKilometers;
+
 
     public Traject(){}
 
@@ -34,6 +36,13 @@ public class Traject {
         return cancelled;
     }
 
+    public double getAantalKilometers(){
+        return this.aantalKilometers;
+    }
+
+    public void setAantalKilometers(double kilometers){
+        this.aantalKilometers = kilometers;
+    }
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
@@ -145,7 +154,7 @@ public class Traject {
 
         for (Trein e:treinen) {
             if(treinen.indexOf(e) > 0)
-            s += "Transfer at: "+transferstations.get(treinen.indexOf(e) - 1 ) + '\n';
+                s += "Transfer at: "+ transferstations.get(treinen.indexOf(e) - 1 ) + "\n";
             s += e.toString() + '\n';
         }
 

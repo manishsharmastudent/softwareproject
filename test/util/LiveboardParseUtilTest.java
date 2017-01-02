@@ -46,4 +46,10 @@ public class LiveboardParseUtilTest {
         assertEquals("Station 3", liveboard.getStation().getNaam());
     }
 
+    @Test
+    public void getLiveboardFromCacheLiveboardString() throws Exception {
+        liveboard = LiveboardParseUtil.getLiveboardFromCache("Station 3");
+        assertEquals("Station 3", liveboard.getStation().getNaam());
+    }
+
 }
