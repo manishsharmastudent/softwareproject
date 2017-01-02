@@ -122,7 +122,7 @@ public class TicketController {
                 Station vertrekStation = new ManageStation().getStationById(stationIds.get(ticketView.getVertrekStationIndex()));
                 Station bestemmingStation = new ManageStation().getStationById(stationIds.get(ticketView.getBestemmingsStationIndex()));
 
-                if (vertrekStation == bestemmingStation) {
+                if (ticketView.getVertrekStationIndex() == ticketView.getBestemmingsStationIndex()) {
                     ticketView.stationsAreTheSame();
                 } else {
 
@@ -151,6 +151,7 @@ public class TicketController {
                     }
                     calculatePrice();
                     if (ticketManage.addTicket(ticketModel) > 0) {
+                        ticketView.showPrice(ticketModel.getPrijs());
                         ticketView.addSucceed();
                         backToHomeScreen();
                     } else {
@@ -171,9 +172,23 @@ public class TicketController {
 
         try{
             trj = ParseController.getTraject(ticketModel.getVertrekStation().getNaam(), ticketModel.getBestemmingStation().getNaam());
-        } catch(Exception exc){exc.getStackTrace();}
+        } catch(Exception exc){exc.getStackTrace();
+
+            if (ticketModel.getBeginDatum() == null){
+                ticketView.noDateSelected();
+            }else {
+
+                ticketView.noTicketAdded();
+            }
+
+
+
+
+        }
         double aantalKilometers = trj.get(0).getAantalKilometers();
+
         if(aantalKilometers > 45){aantalKilometers = 45;}
+
         if (ticketModel.getKlasse() == 1) {
             if(percentage != 0){
                 prijs = (((aantalKilometers / 2) * percentage) + 6) * aantalPersonen;

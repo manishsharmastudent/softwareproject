@@ -152,10 +152,11 @@ public class TicketView extends StandardView {
     }
 
     public void noTicketAdded(){
-        JOptionPane.showMessageDialog(null, "Ticket is niet toegevoegd!");
+        JOptionPane.showMessageDialog(null, "Jammer. Er is geen geldige route gevonden.");
     }
     public void stationsAreTheSame(){JOptionPane.showMessageDialog(null, "Stations mogen niet hetzelfde zijn.");}
-    public void addSucceed(){JOptionPane.showMessageDialog(null, "Ticket is toegevoegd");}
+    public void noDateSelected() {JOptionPane.showMessageDialog(null, "Selecteer aub een datum.");}
+    public void addSucceed(){JOptionPane.showMessageDialog(null, "Bedankt met je aankoop en tot ziens!");}
 
     private JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new JFormattedTextField.AbstractFormatter() {
 
