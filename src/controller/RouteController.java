@@ -42,7 +42,9 @@ public class RouteController {
         } catch (Exception e){
             view.showGeenGeldigeRoute();
         }
-            view.showSearchedRoutes(trajecten);
+            if(trajecten == null){view.showGeenGeldigeRoute();}
+            else {view.showSearchedRoutes(trajecten);}
+
     }
     public void initComboBoxes(){
         AutoCompleteDecorator.decorate(view.getVertrekStationBox());
