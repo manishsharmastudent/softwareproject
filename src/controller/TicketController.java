@@ -2,8 +2,12 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import hibernate.ManageStation;
@@ -130,11 +134,14 @@ public class TicketController {
                     ticketModel.setVertrekStation(vertrekStation);
                     ticketModel.setBestemmingStation(bestemmingStation);
                     String datum = ticketView.getDatePicker().getJFormattedTextField().getText();
+                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+                    try{
+                        Date date = format.parse(datum);
+                        ticketModel.setBeginDatum(ticketView.getBeginDatum());
+                        ticketModel.setEindDatum(ticketView.getBeginDatum());
+                    } catch (ParseException pExc){}
 
-                    LocalDate date = LocalDate.parse(datum);
-                    System.out.println(date);
-                    ticketModel.setBeginDatum(ticketView.getBeginDatum());
-                    ticketModel.setEindDatum(ticketView.getBeginDatum());
+
                     ticketModel.setTypeKaart(typeKaart);
                     ticketModel.setAantalPersonen(ticketView.getAantalPersonen());
                     if (ticketView.getKlasse().toString() == "Eerste klasse") {
