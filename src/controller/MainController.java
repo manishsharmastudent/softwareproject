@@ -33,6 +33,7 @@ public class MainController {
             public void actionPerformed(ActionEvent e) {
                 new LoginController().showAddLogin();
                 closeAdminWindow();
+
             }
         });
     }

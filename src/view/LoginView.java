@@ -1,5 +1,6 @@
 package view;
 
+import com.fasterxml.classmate.types.TypePlaceHolder;
 import controller.LoginController;
 import model.Login;
 
@@ -18,9 +19,9 @@ public class LoginView extends StandardView {
     private JPanel panelGegevens = new JPanel();
     private JLabel loginNaam = new JLabel("Naam: ");
     private JLabel loginWachtwoord = new JLabel("Wachtwoord: ");
-    private JTextField loginNaamText = new JTextField("Manish");
-    private JPasswordField loginWachtwoordText = new JPasswordField("Changed!");
-    private JPasswordField loginWachtwoordTextRepeat = new JPasswordField("Changed!");
+    private JTextField loginNaamText = new JTextField();
+    private JPasswordField loginWachtwoordText = new JPasswordField();
+    private JPasswordField loginWachtwoordTextRepeat = new JPasswordField();
     private JComboBox rolComboBox = new JComboBox();
     private JButton aanmelden = new JButton("Aanmelden");
     private JButton vergeetPaswoord = new JButton("Passwoord vergeten");
@@ -52,9 +53,13 @@ public class LoginView extends StandardView {
     public JButton getLoginAanmakenButton(){return this.loginAanmakenButton; }
 
     public void showLoginScreen() {
+
+
+        panelGegevens.setBorder(null);
         loginNaamText.setColumns(6);
         loginWachtwoordText.setColumns(6);
         panelGegevens.add(loginNaam);
+        loginNaamText.setMinimumSize(loginNaamText.getPreferredSize());
         panelGegevens.add(loginNaamText);
         panelGegevens.add(loginWachtwoord);
         panelGegevens.add(loginWachtwoordText);
@@ -71,6 +76,23 @@ public class LoginView extends StandardView {
         panelGegevens.removeAll();
         panelGegevens.updateUI();
 
+        panelGegevens.setLayout(new GridBagLayout());
+        c.insets = new Insets(10, 20 , 1 ,0);
+
+        initTimeAndDate();
+        initWelkomBoard();
+        initNavTree();
+        initMenuBar();
+        addPath("Login");
+        c.weightx =1;
+        c.weighty =1;
+        loginNaamText.setPreferredSize(new Dimension(110,20));
+        loginNaamText.setMinimumSize(loginNaamText.getPreferredSize());
+        loginNaamText.setMaximumSize(loginNaamText.getPreferredSize());
+        getLoginWachtwoordTextRepeat().setPreferredSize(new Dimension(110,20));
+        getLoginWachtwoordTextRepeat().setMinimumSize(getLoginWachtwoordTextRepeat().getPreferredSize());
+        loginWachtwoordTextRepeat.setMaximumSize(loginWachtwoordTextRepeat.getPreferredSize());
+        c.fill = GridBagConstraints.HORIZONTAL;
 
         c.gridy = 0;
         c.gridx = 0;
@@ -82,20 +104,16 @@ public class LoginView extends StandardView {
         panelGegevens.add(loginWachtwoord, c);
         c.gridx = 1;
         panelGegevens.add(loginWachtwoordText, c);
-        c.gridy = 2;
-        c.gridx = 0;
-        panelGegevens.add(loginWachtwoord, c);
-        c.gridx = 1;
+        c.gridx = 2;
         panelGegevens.add(loginWachtwoordTextRepeat, c);
-        c.gridy = 3;
+        c.gridy = 2;
         c.gridx = 0;
         panelGegevens.add(new JLabel("Rol"), c);
         c.gridx = 1;
         panelGegevens.add(rolComboBox, c);
-        c.gridy = 4;
+        c.gridy = 3;
         c.gridx = 0;
         panelGegevens.add(loginAanmakenButton, c);
-        panelGegevens.setPreferredSize(panelGegevens.getMinimumSize());
 
 
         interactiePanel.add(panelGegevens);

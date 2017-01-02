@@ -1,13 +1,11 @@
 package util;
 
-import com.google.maps.DistanceMatrixApi;
-import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
-import com.google.maps.model.TransitMode;
-import com.google.maps.model.TravelMode;
 import exceptions.HalteNotFoundException;
 import exceptions.OnvolledigeTrajectException;
+import hibernate.ManageStation;
 import model.Halte;
+import model.Station;
 import model.Traject;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,12 +15,53 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static javafx.scene.input.KeyCode.L;
-
 /**
  * Created by Nofel on 11-11-16.
  */
 public class TrajectParseUtil {
+
+    private static boolean isStationEqual(Halte h, Station s){
+        String halteNaam = h.getName().replace(" ","");
+        String stationNaam = s.getNaam();
+        String stationNaamFrans = s.getNaamFrans();
+        String stationNaamAlt = s.getNaamAfkorting();
+
+        if((h == null) || (s == null))
+            return false;
+
+        if(halteNaam.equalsIgnoreCase(stationNaam))
+            return true;
+
+        if(stationNaamFrans != null)
+            if(halteNaam.equalsIgnoreCase(stationNaamFrans))
+                return true;
+
+        if(stationNaamAlt != null)
+            if (halteNaam.equalsIgnoreCase(stationNaamAlt))
+                return true;
+
+        if(((stationNaamFrans != null) && (stationNaam != null)) &&((stationNaamFrans != "") && stationNaam != "")){
+            String str = stationNaam + " / " + stationNaamFrans;
+            if(halteNaam.equalsIgnoreCase(str))
+                return true;
+
+            String strAlt = stationNaamFrans + " / " + stationNaam;
+            if(halteNaam.equalsIgnoreCase(strAlt))
+                return true;
+        }
+
+
+        return false;
+    }
+
+    private static Station geefStation (List<Station> lijstStation, String naam){
+        Station station = null;
+        for(Station s : lijstStation) {
+            if ((s.getNaam().equalsIgnoreCase(naam) || s.getNaamFrans() == naam))
+                return s;
+        }
+        return station;
+    }
 
     private static void getTransferStations(Traject trj, JSONArray transferArray){
         transferArray.forEach(new Consumer<Object>() {
@@ -40,59 +79,48 @@ public class TrajectParseUtil {
                         transferPlatform = ts.getString("DeparturePlatform");
 
                     trj.setTransferstations(transferStation, transferPlatform);
-
-                    GeoApiContext a = new GeoApiContext().setApiKey("AIzaSyD6BTwnpskFD9GSRjQOB_h673HflZ6sb1c");
-
-                    long distanceInMeters = 0L;
-                    String org = (trj.getVertrekStation() + "(Belgium)");
-                    String dest = (trj.getAankomstStation() + "(Belgium)");
-
-                    try{
-                        DistanceMatrix matrix= DistanceMatrixApi.newRequest(a).origins(org).destinations(dest).language("nl-BE").mode(TravelMode.TRANSIT).transitModes(TransitMode.TRAIN).await();
-                        distanceInMeters = matrix.rows[0].elements[0].distance.inMeters;
-                    } catch (Exception exc){
-
-                    }
-
-                    double distanceInKilometers = (double)distanceInMeters / 1000;
-
-                    System.out.println("De afstand is " + distanceInKilometers + "km");
-                    trj.setAantalKilometers(distanceInKilometers);
                 }
             }
         });
 
     }
-    private static void getRouteTimes(Traject trj) throws HalteNotFoundException {
 
-        Halte hlte;
+    private static void getRouteTimes(Traject trj, List<Station> lijstStation) throws HalteNotFoundException {
+        String vertrekStationNaam = trj.getVertrekStation();
+        String aankomstStationNaam = trj.getAankomstStation();
+        Station vertrekStation = geefStation(lijstStation, vertrekStationNaam);
+        Station aankomstStation = geefStation(lijstStation,aankomstStationNaam);
+        Halte halte;
+
         try {
-            hlte = trj.getTreinen().get(0).getHaltes().stream()
-                    .filter(h -> h.getName().equalsIgnoreCase(trj.getVertrekStation()))
+
+            halte = trj.getTreinen().get(0).getHaltes().stream()
+                    .filter(h -> (isStationEqual(h,vertrekStation)))
                     .findFirst()
                     .get();
 
-            trj.setActualVertrekTijd(hlte.getActualDeparture());
-            trj.setVertrekTijd(hlte.getDeparture());
-            trj.setVetrekPlatform(hlte.getDeparturePlatform());
+            trj.setActualVertrekTijd(halte.getActualDeparture());
+            trj.setVertrekTijd(halte.getDeparture());
+            trj.setVetrekPlatform(halte.getDeparturePlatform());
 
         } catch (Exception e) {
             throw new HalteNotFoundException(trj.getVertrekStation());
         }
 
         try {
-            hlte = trj.getTreinen().get(trj.getTreinen().size() - 1).getHaltes().stream()
-                    .filter(h -> h.getName().equalsIgnoreCase(trj.getAankomstStation()))
-                    .findFirst().get();
+            halte = trj.getTreinen().get(trj.getTreinen().size() - 1).getHaltes().stream()
+                    .filter(h ->(isStationEqual(h,aankomstStation)))
+                    .findFirst()
+                    .get();
 
-            trj.setAankomstTijd(hlte.getArrival());
-            trj.setActualAankomstTijd(hlte.getActualArrival());
+            trj.setAankomstTijd(halte.getArrival());
+            trj.setActualAankomstTijd(halte.getActualArrival());
         } catch (Exception e) {
             throw new HalteNotFoundException(trj.getAankomstStation());
         }
     }
 
-    private static Traject getTraject(JSONObject obj) throws OnvolledigeTrajectException {
+    private static Traject getTraject(JSONObject obj, List<Station> lijstStation) throws OnvolledigeTrajectException {
 
         Traject trj = new Traject();
         trj.setVetrekStation(obj.getString("Departure"));
@@ -104,7 +132,7 @@ public class TrajectParseUtil {
 
         try {
             if (!(trj.getTreinen().isEmpty())) {
-                getRouteTimes(trj);
+                getRouteTimes(trj, lijstStation);
             }
 
             if (obj.getJSONArray("TransferStations").length() > 1) {
@@ -122,6 +150,8 @@ public class TrajectParseUtil {
     public static List<Traject> getTrajecten(JSONObject jBase) {
         List<Traject> trajecten = new ArrayList<Traject>();
         JSONArray arrCon = jBase.getJSONArray("Routes");
+        ManageStation manageStation = new ManageStation();
+        List<Station> lijstStation = manageStation.listStations();
 
 
         arrCon.forEach(new Consumer<Object>() {
@@ -133,15 +163,15 @@ public class TrajectParseUtil {
 
                 if (arrTrains.length() != 0) {
 
-                    Traject trj = null;
+                    Traject trj = new Traject();
+
                     try {
-                        trj = getTraject(obj);
-
-
+                        trj = getTraject(obj, lijstStation);
                         if ((trj.getVertrekTijd() != null) && (trj.getAankomstTijd() != null))
                             trj.setDuur(Duration.between(trj.getVertrekTijd(), trj.getAankomstTijd()));
                     } catch (OnvolledigeTrajectException e) {
                         trj.setException(e.getMessage());
+                    } catch (Exception e) {
                     }
                     trajecten.add(trj);
                 }

@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class AdminView extends StandardView {
 
-    private JPanel adminPanel = new JPanel(new GridLayout(6,1));
+    private JPanel adminPanel = new JPanel(new GridBagLayout());
 
     private JLabel adminLabel = new JLabel("Admin opties");
     private JButton userToevoegenButton = new JButton("User toevoegen");
@@ -20,6 +20,10 @@ public class AdminView extends StandardView {
 
     public AdminView(String titel) {
         super(titel);
+        c.insets = (new Insets(5, 5, 5, 5));
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 1;
+        c.weighty =1;
     }
 
     public JButton getUserToevoegenButton(){return userToevoegenButton;}
@@ -33,26 +37,29 @@ public class AdminView extends StandardView {
             addPath("Home");
         }
         adminPanel.setBorder(border);
-        adminPanel.setOpaque(true);
-        adminPanel.setBackground(Color.black);
-        adminPanel.setForeground(Color.white);
-        adminPanel.add(adminLabel);
-
-        adminPanel.add(userToevoegenButton);
-        adminPanel.add(userSettingsButton);
-        adminPanel.add(companySettingsButton);
-        adminPanel.add(ticketsSettingsButton);
-        adminPanel.add(verlorenVoorwerpButton);
-
-        interactiePanel.setLayout(new GridBagLayout());
+        adminLabel.setOpaque(true);
+        adminLabel.setBackground(Color.black);
+        adminLabel.setForeground(Color.white);
 
         c.gridx = 0;
+        c.gridy = 0;
+        c.gridheight = 3;
+        adminLabel.setHorizontalAlignment(JLabel.CENTER);
+        c.gridheight = 1;
+        adminPanel.add(adminLabel, c);
+        c.gridy = 1;
+        adminPanel.add(userToevoegenButton, c);
+        c.gridy = 2;
+        adminPanel.add(userSettingsButton, c);
         c.gridy = 3;
+        adminPanel.add(companySettingsButton, c);
+        c.gridy = 4;
+        adminPanel.add(ticketsSettingsButton, c);
+        c.gridy = 5;
+        adminPanel.add(verlorenVoorwerpButton, c);
 
-        c.insets = (new Insets(5, 10, 0, 10));
-        c.fill = 2;
 
-        interactiePanel.add(adminPanel, c);
+        interactiePanel.add(adminPanel);
 
         showWindow();
 

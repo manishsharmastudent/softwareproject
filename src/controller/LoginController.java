@@ -97,6 +97,7 @@ public class LoginController {
         loginView.showAddLogin();
         initComboBox();
         addLogin();
+
     }
     public void addLogin(){
         loginView.getLoginAanmakenButton().addActionListener(new ActionListener() {
