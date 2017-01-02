@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -14,11 +15,11 @@ public class KortingTest {
     Korting korting;
     Korting kortingGetters;
     Korting kortingSetters;
-    LocalDate begindatum;
+    Date begindatum;
 
     @Before
     public void setUp() throws Exception {
-        begindatum = LocalDate.of(2016,02,23);
+        begindatum = new Date();
         kortingGetters = new Korting(5,3,begindatum,"Senior",true,0.25);
         kortingSetters = new Korting();
     }
