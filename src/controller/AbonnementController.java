@@ -84,26 +84,26 @@ public class AbonnementController extends MainController {
         });
     }
     public void zoekAbonnementWithAbonnementId(){
-           abonnementView.getZoekAbonnementByAboIdButton().addActionListener(new ActionListener() {
-               @Override
-               public void actionPerformed(ActionEvent e) {
-                   abonnementView.getGevondenAbonnementPanel().removeAll();
-                   abonnementView.getGevondenAbonnementPanel().updateUI();
-                   List<Abonnement> abonnements = new ArrayList<Abonnement>();
-                   try {
-                       Abonnement abo = abonnementManage.getAbonnementById(Integer.parseInt(abonnementView.getAbonnementNummerText()));
-                       if(abo != null){abonnements.add(abo);}
-                   } catch (Exception exc){
-                       abonnements = abonnementManage.listAbonnementen();
-                   }
-                    if(abonnements.size() == 0){
-                       abonnements = abonnementManage.listAbonnementen();
-                    }
-                   abonnementView.showGevondenAbonnementen(abonnements);
-                   aanpassenAbonnement();
-               }
-           });
-       }
+        abonnementView.getZoekAbonnementByAboIdButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abonnementView.getGevondenAbonnementPanel().removeAll();
+                abonnementView.getGevondenAbonnementPanel().updateUI();
+                List<Abonnement> abonnements = new ArrayList<Abonnement>();
+                try {
+                    Abonnement abo = abonnementManage.getAbonnementById(Integer.parseInt(abonnementView.getAbonnementNummerText()));
+                    if(abo != null){abonnements.add(abo);}
+                } catch (Exception exc){
+                    abonnements = abonnementManage.listAbonnementen();
+                }
+                if(abonnements.size() == 0){
+                    abonnements = abonnementManage.listAbonnementen();
+                }
+                abonnementView.showGevondenAbonnementen(abonnements);
+                aanpassenAbonnement();
+            }
+        });
+    }
     public void calculatePrice(Korting korting){
         long diff = abonnementModel.getBeginDatum().getTime() - abonnementModel.getBeginDatum().getTime();
         long aantalDagen = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
@@ -118,12 +118,12 @@ public class AbonnementController extends MainController {
         } catch(Exception exc){}
         double aantalKilometers = trj.get(0).getAantalKilometers();
         if(aantalKilometers > 45){aantalKilometers = 45;}
-            if(percentage != 0){
-                prijs += aantalKilometers * percentage;
-            }
-            else {
-                prijs += aantalKilometers;
-            }
+        if(percentage != 0){
+            prijs += aantalKilometers * percentage;
+        }
+        else {
+            prijs += aantalKilometers;
+        }
         prijs = Math.floor(prijs);
         abonnementModel.setPrijs((float)prijs);
     }
@@ -137,10 +137,10 @@ public class AbonnementController extends MainController {
 
                 abonnementModel = new Abonnement(0, korting, abonnementView.getBegindatum(), abonnementView.getEinddatum(), vertrekStation, bestemmingStation, klant, 12.5f, true);
                 calculatePrice(korting);
-                    if(abonnementView.showPrice(abonnementModel.getPrijs()) == 1){
-                        abonnementManage.addAbonnement(abonnementModel);
-                        abonnementView.showSuccesfullAdd(abonnementModel.getKlant());
-                    }
+                if(abonnementView.showPrice(abonnementModel.getPrijs()) == 1){
+                    abonnementManage.addAbonnement(abonnementModel);
+                    abonnementView.showSuccesfullAdd(abonnementModel.getKlant());
+                }
                 backToHomeScreen();
             }
         });

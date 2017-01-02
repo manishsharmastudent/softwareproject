@@ -63,14 +63,9 @@ public class ReservatieView extends StandardView {
         super(titel);
         reservatiePanel.setLayout(new GridBagLayout());
         c.insets = new Insets(10, 20 , 1 ,10);
+        groepsnaamLabel.setPreferredSize(new Dimension(90,20));
         groepsnaamLabel.setMinimumSize(groepsnaamLabel.getPreferredSize());
-        vertrekStationLabel.setMinimumSize(vertrekStationLabel.getPreferredSize());
-        aankomstStationLabel.setMinimumSize(aankomstStationLabel.getPreferredSize());
-        reservatienrLabel.setMinimumSize(reservatienrLabel.getPreferredSize());
-        aantalPersonenLabel.setMinimumSize(aantalPersonenLabel.getPreferredSize());
-        datumLabel.setMinimumSize(datumLabel.getPreferredSize());
-        actiefLabel.setMinimumSize(datumLabel.getPreferredSize());
-        reservatieToevoegenButton.setMinimumSize(reservatieToevoegenButton.getPreferredSize());
+        groepsnaamLabel.setMaximumSize(groepsnaamLabel.getPreferredSize());
         c.fill = GridBagConstraints.HORIZONTAL;
     }
 
@@ -121,6 +116,7 @@ public class ReservatieView extends StandardView {
         reservatiePanel.removeAll();
         reservatiePanel.updateUI();
 
+
         c.gridy = 0;
         c.gridx = 0;
         reservatiePanel.add(groepsnaamLabel, c);
@@ -161,8 +157,6 @@ public class ReservatieView extends StandardView {
         c.gridy = 6;
         c.gridx = 0;
         reservatiePanel.add(reservatieUpdateButton, c);
-        reservatiePanel.setPreferredSize(reservatiePanel.getMinimumSize());
-
 
         interactiePanel.add(reservatiePanel);
         deleteLastInPath();
@@ -211,7 +205,6 @@ public class ReservatieView extends StandardView {
         c.gridy = 6;
         c.gridx = 0;
         reservatiePanel.add(reservatieToevoegenButton, c);
-        reservatiePanel.setPreferredSize(reservatiePanel.getMinimumSize());
 
 
         interactiePanel.add(reservatiePanel);
@@ -249,7 +242,6 @@ public class ReservatieView extends StandardView {
         reservatiePanel.add(bestemmingStationCombobox, c);
         c.gridx = 2;
         reservatiePanel.add(searchButtonBestemmingStation, c);
-        reservatiePanel.setPreferredSize(reservatiePanel.getMinimumSize());
 
         interactiePanel.add(reservatiePanel);
         addPath("Reservatie zoeken");
