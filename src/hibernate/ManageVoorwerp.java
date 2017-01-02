@@ -59,6 +59,28 @@ public class ManageVoorwerp {
         }
         return vw;
     }
+    public List<Voorwerp> getVoorwerpenByNaam(String naam){
+        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
+
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List<Voorwerp> voorwerpen = new ArrayList<Voorwerp>();
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Voorwerp WHERE voorwerpstr LIKE :name AND active = true";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", "%" + naam + "%");
+
+            voorwerpen = query.list();
+
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return voorwerpen;
+    }
     public void updateVoorwerp(Voorwerp a){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -82,7 +104,7 @@ public class ManageVoorwerp {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            v =  (Voorwerp) session.get(Voorwerp.class, id);
+            v = session.get(Voorwerp.class, id);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -92,7 +114,6 @@ public class ManageVoorwerp {
             return v;
         }
     }
-
     public List<Voorwerp> getVoorwerpByTreinId(int id){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
@@ -114,7 +135,6 @@ public class ManageVoorwerp {
         }
         return voorwerpen;
     }
-
     public List<Voorwerp> getVoorwerpByRoute(Route r){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
@@ -137,7 +157,6 @@ public class ManageVoorwerp {
         return voorwerpen;
 
     }
-
     public List<Voorwerp> getVoorwerpByKleur(String kleur){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
@@ -160,8 +179,6 @@ public class ManageVoorwerp {
         return voorwerpen;
 
     }
-
-
     public boolean deleteVoorwerpById(int id){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -169,7 +186,7 @@ public class ManageVoorwerp {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            v = (Voorwerp)session.load(Voorwerp.class,id);
+            v = session.load(Voorwerp.class,id);
             session.delete(v);
             //This makes the pending delete to be done
             session.flush() ;

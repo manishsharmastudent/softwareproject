@@ -1,5 +1,8 @@
 package view;
 
+import controller.LoginController;
+import hibernate.SessionFactorySingleton;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static java.awt.Frame.getFrames;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
@@ -23,13 +27,15 @@ public class StandardView {
 
     protected JFrame window;
     protected JPanel mainPanel = new JPanel();
-    protected JButton standardButton = new JButton("StandaarButton");
-    protected BorderLayout layout = new BorderLayout();
     protected FlowLayout navigationPanelLayout = new FlowLayout(FlowLayout.LEFT);
+
+    private JMenuBar menuBar;
+    private JMenu menu;
+    private JMenuItem afmelden = new JMenuItem("Afmelden");
 
     protected Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     protected JPanel welkomPanel = new JPanel();
-    protected JPanel interactiePanel = new JPanel(new SpringLayout());
+    protected JPanel interactiePanel = new JPanel();
     protected JPanel panel= new JPanel();
     protected JPanel navigationPanel = new JPanel(); //mainNavPanel //Tree structure
     protected JPanel mainNavPanel = new JPanel();//fullNavigationPanel
@@ -39,35 +45,48 @@ public class StandardView {
     protected JLabel welkomLabel = new JLabel();
     protected JButton terugButton = new JButton("Terug");
 
-    private JMenuBar menuBar;
-    private JMenu menu;
 
     StandardView(String titel){
         window = new JFrame(titel);
 
         java.net.URL url = ClassLoader.getSystemResource("");
         Toolkit kit = Toolkit.getDefaultToolkit();
-        Image img = kit.createImage(url);
+        Image img = kit.createImage("resources\\nmbs.png");
         window.setIconImage(img);
         if (titel != "Login") {
             initTimeAndDate();
-            initMenuBar();
             initWelkomBoard();
             initNavTree();
+            initMenuBar();
         }
-        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
+        interactiePanel.setBorder(border);
 
-    public void setWelkomLabel(String tekst){
-        this.welkomLabel.setText(tekst);
+        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public JFrame getWindow(){
         return this.window;
     }
-    public JPanel getMainPanel(){ return this.mainPanel; }
     public JButton getTerugButton(){return this.terugButton; }
 
+    public void initMenuBar(){
+        menuBar = new JMenuBar();
+        menu = new JMenu("Afmelden");
+        afmelden.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                window.dispose();
+                window.setVisible(false);
+                SessionFactorySingleton.getSessionFactory().close();
+
+               SessionFactorySingleton.closeInstance();
+                new LoginController().showLoginScreen();
+            }
+        });
+        menu.add(afmelden);
+        menuBar.add(menu);
+        window.setJMenuBar(menuBar);
+    }
     public void initTimeAndDate(){
         final Timer simpleTimer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -80,16 +99,6 @@ public class StandardView {
         });
         simpleTimer.start();
     }
-
-    public void initMenuBar(){
-        menuBar = new JMenuBar();
-        menu = new JMenu("Test");
-        menuBar.add(menu);
-
-        JMenuItem menuItem = new JMenuItem("A test");
-        menu.add(menuItem);
-        window.setJMenuBar(menuBar);
-    }
     public void initWelkomBoard(){
         welkomPanel.setLayout(new GridLayout(1,3));
         welkomLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -100,6 +109,7 @@ public class StandardView {
         welkomPanel.add(tijdLabel);
         welkomPanel.add(datumLabel);
 
+
         welkomPanel.setPreferredSize(new Dimension(800,50));
         welkomPanel.setMaximumSize(welkomPanel.getPreferredSize());
         welkomPanel.setBorder(border);
@@ -109,7 +119,11 @@ public class StandardView {
     public void initNavTree(){
         mainNavPanel.setLayout(new BorderLayout(0,0));
         mainNavPanel.add(navigationPanel, BorderLayout.WEST);
-        mainNavPanel.add(terugButton, BorderLayout.EAST);
+        if (this.getWindow().getTitle() == "HomeS       ``````````````````````````````````````                                                                                                                      creen"){
+            mainNavPanel.remove(terugButton);
+        }else {
+            mainNavPanel.add(terugButton, BorderLayout.EAST);
+        }
 
         mainNavPanel.setBorder(border);
 
@@ -122,10 +136,23 @@ public class StandardView {
     public void showWindow(){
         showPath();
         window.setResizable(false);
-        getWindow().setSize(800,700);
+        getWindow().setSize(800,740);
         getWindow().setLocationRelativeTo(null);
         window.add(mainPanel);
         window.setVisible(true);
+        mainPanel.setLayout(new BorderLayout(80,30));
+        panel.setLayout(new BorderLayout(0,0));
+
+        panel.add(mainNavPanel, BorderLayout.NORTH);
+
+
+        panel.add(interactiePanel, BorderLayout.CENTER);
+
+
+
+        mainPanel.add(welkomPanel, BorderLayout.NORTH);
+        mainPanel.add(panel, BorderLayout.CENTER);
+
     }
     public void addPath(String tekst){
         path.add(tekst);

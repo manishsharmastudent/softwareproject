@@ -5,25 +5,23 @@ package model;
  */
 public class Voorwerp {
     private int voorwerpId;
-    private int trein;
     private String kleur;
     private String type;
     private String voorwerpstr;
-    private Route route;
-    private Station station;
+    private Station vertrekStation;
+    private Station bestemmingStation;
     private Klant klant;
     private boolean active;
 
 
     public Voorwerp() {}
-    public Voorwerp(int voorwerpId, int trein, String kleur, String type, String voorwerpstr, Route route, Station station, Klant klant, boolean active) {
+    public Voorwerp(int voorwerpId,String kleur, String type, String voorwerpstr, Station vertrekStation, Station bestemmingStation, Klant klant, boolean active) {
         this.voorwerpId = voorwerpId;
-        this.trein = trein;
         this.kleur = kleur;
         this.type = type;
         this.voorwerpstr = voorwerpstr;
-        this.route = route;
-        this.station = station;
+        this.vertrekStation = vertrekStation;
+        this.bestemmingStation = bestemmingStation;
         this.klant = klant;
         this.active = active;
     }
@@ -38,12 +36,6 @@ public class Voorwerp {
         return this.voorwerpId;
     }
     public void setVoorwerpId(int voorwerpId) { this.voorwerpId = voorwerpId;}
-    public int getTrein() {
-        return trein;
-    }
-    public void setTrein(int trein) {
-        this.trein = trein;
-    }
     public String getKleur() {
         return kleur;
     }
@@ -62,16 +54,14 @@ public class Voorwerp {
     public void setVoorwerp(String voorwerpstr) {
         this.voorwerpstr = voorwerpstr;
     }
-    public Route getRoute() {return route;}
-    public void setRoute(Route route) {
-        this.route = route;
+    public Station getVertrekStation() {
+        return this.vertrekStation;
     }
-    public Station getStation() {
-        return station;
+    public void setVertrekStation(Station station) {
+        this.vertrekStation = station;
     }
-    public void setStation(Station station) {
-        this.station = station;
-    }
+    public Station getBestemmingStation(){return this.bestemmingStation;}
+    public void setBestemmingStation(Station station){this.bestemmingStation = station;}
     public Klant getKlant() {
         return klant;
     }

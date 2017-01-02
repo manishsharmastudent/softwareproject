@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -7,6 +8,8 @@ import java.util.Date;
  */
 public class Abonnement {
     private int abonnementId;
+    private Station vertrekStation;
+    private Station bestemmingStation;
     private Korting korting;
     private Date beginDatum;
     private Date vervalDatum;
@@ -16,17 +19,17 @@ public class Abonnement {
     private boolean active;
 
 
-    public Abonnement(int abonnementId, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs, boolean active) {
+    public Abonnement(int abonnementId, Korting korting, Date beginDatum, Date vervalDatum, Station vertrek, Station bestemming, Klant klant, Float prijs, boolean active) {
         this.abonnementId = abonnementId;
         this.korting = korting;
         this.beginDatum = beginDatum;
         this.vervalDatum = vervalDatum;
-        this.route = route;
+        this.vertrekStation = vertrek;
+        this.bestemmingStation = bestemming;
         this.klant = klant;
         this.prijs = prijs;
         this.active = active;
     }
-
     public Abonnement(boolean active, Korting korting, Date beginDatum, Date vervalDatum, Route route, Klant klant, Float prijs) {
         this.active = active;
         this.korting = korting;
@@ -40,6 +43,8 @@ public class Abonnement {
     public int getAbonnementId() {
         return abonnementId;
     }
+    public Station getVertrekStation(){ return vertrekStation; }
+    public Station getBestemmingStation(){ return bestemmingStation; }
     public Korting getKorting() {return korting; }
     public Date getBeginDatum() {
         return beginDatum;
@@ -63,6 +68,8 @@ public class Abonnement {
     public void setAbonnementId(int abonnementId) {
         this.abonnementId = abonnementId;
     }
+    public void setVertrekStation(Station station){this.vertrekStation = station;}
+    public void setBestemmingStation(Station station){this.bestemmingStation = station; }
     public void setKorting(Korting korting) {
         this.korting = korting;
     }

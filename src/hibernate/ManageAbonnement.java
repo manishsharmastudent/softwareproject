@@ -82,7 +82,7 @@ public class ManageAbonnement {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            a = (Abonnement)session.load(Abonnement.class,id);
+            a = session.load(Abonnement.class,id);
             session.delete(a);
             //This makes the pending delete to be done
             session.flush() ;
@@ -103,7 +103,7 @@ public class ManageAbonnement {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            a =  (Abonnement) session.get(Abonnement.class, id);
+            a = session.get(Abonnement.class, id);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -113,49 +113,25 @@ public class ManageAbonnement {
             return a;
         }
     }
-
-    public List<Abonnement> getAbonnementByRoute(Route r){
-        SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
-
-        Session session = factory.openSession();
-        Transaction tx = null;
-        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
-        try{
-            tx = session.beginTransaction();
-            String hql = "FROM Abonnement WHERE route = :route AND active = true";
-            Query query = session.createQuery(hql);
-            query.setParameter("route", r);
-
-            abonnementen = query.list();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-        return abonnementen;
-
-    }
-
     public List<Abonnement> getAbonnementByKlantId(Klant klant){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
 
         Session session = factory.openSession();
         Transaction tx = null;
-        List<Abonnement> abonnementen = new ArrayList<Abonnement>();
+        List<Abonnement> abonnement = new ArrayList<>();
         Query query= null;
         try{
             tx = session.beginTransaction();
             String hql = "FROM Abonnement WHERE klant = :klant AND active = true";
             query = session.createQuery(hql);
             query.setParameter("klant", klant);
-            abonnementen = query.list();
+            abonnement = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
         }finally {
             session.close();
         }
-        return abonnementen;
+        return abonnement;
     }
 }

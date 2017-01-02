@@ -1,15 +1,15 @@
 package view;
 
-import model.Ticket;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 /**
@@ -24,8 +24,8 @@ public class TicketView extends StandardView {
     private JLabel klasseLabel = new JLabel("Klasse");
     private JLabel typeKaartOmschrijving = new JLabel();
     private JButton zoekButton = new JButton("Zoek");
-    private JComboBox stationCombobox = new JComboBox();
-    private JComboBox stationTweeCombobox = new JComboBox();
+    private JComboBox vertrekStationCombobox = new JComboBox();
+    private JComboBox bestemmingStationCombobox = new JComboBox();
     private JComboBox klasseCombobox = new JComboBox();
     private JComboBox typeKaartenComboBox = new JComboBox();
     private Properties p = new Properties();
@@ -48,16 +48,18 @@ public class TicketView extends StandardView {
     public JComboBox getTypeKaartenComboBox(){ return this.typeKaartenComboBox; }
 
     public JComboBox getVertrekStationComboBox(){
-        return this.stationCombobox;
+        return this.vertrekStationCombobox;
     }
 
     public JComboBox getBestemmingsStationComboBox(){
-        return this.stationTweeCombobox;
+        return this.bestemmingStationCombobox;
     }
 
     public JComboBox getKlasseCombobox() { return this.klasseCombobox; }
 
-    public int getTypeKaartIndex(){ return typeKaartenComboBox.getSelectedIndex();}
+    public int getTypeKaartIndex(){
+        return typeKaartenComboBox.getSelectedIndex();
+    }
 
     public JSpinner getSpinnerAantalPersonen(){
         return this.spinner1;
@@ -65,12 +67,12 @@ public class TicketView extends StandardView {
 
     public int getAantalPersonen(){ return modelSp.getNumber().intValue(); }
 
-    public String getVertrekStation(){
-        return stationCombobox.getSelectedItem().toString();
+    public int getVertrekStationIndex(){
+        return vertrekStationCombobox.getSelectedIndex();
     }
 
-    public String getBestemmingsStation(){
-        return stationTweeCombobox.getSelectedItem().toString();
+    public int getBestemmingsStationIndex(){
+        return bestemmingStationCombobox.getSelectedIndex();
     }
 
     public String getKlasse(){
@@ -85,18 +87,26 @@ public class TicketView extends StandardView {
         this.typeKaartOmschrijving.setText(omschrijving);
     }
 
+    public JDatePickerImpl getDatePicker(){return datePicker;}
+
+    public Date getBeginDatum(){
+            Date date = (Date)datePicker.getModel().getValue();
+            //LocalDate lDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            return date;
+    }
+
     public void showVoegTicketToe(){
-        AutoCompleteDecorator.decorate(stationCombobox);
-        AutoCompleteDecorator.decorate(stationTweeCombobox);
+        AutoCompleteDecorator.decorate(vertrekStationCombobox);
+        AutoCompleteDecorator.decorate(bestemmingStationCombobox);
 
         interactiePanel.setLayout(null);
         kaartLabel.setBounds(30,140,180,25);
         typeKaartenComboBox.setBounds(200,140,180,25);
         typeKaartOmschrijving.setBounds(450,140,180,25);
         vertrekLabel.setBounds(30, 180, 180, 25);
-        stationCombobox.setBounds(200, 180, 180, 25);
+        vertrekStationCombobox.setBounds(200, 180, 180, 25);
         aankomstLabel.setBounds(30, 220, 180, 25);
-        stationTweeCombobox.setBounds(200, 220, 180, 25);
+        bestemmingStationCombobox.setBounds(200, 220, 180, 25);
         datePicker.setBounds(200, 260, 180, 25);
         datumticketLabel.setBounds(30, 260, 180, 25);
         aantalLabel.setBounds(30, 300, 180, 25);
@@ -109,9 +119,9 @@ public class TicketView extends StandardView {
         interactiePanel.add(kaartLabel);
         interactiePanel.add(typeKaartenComboBox);
         interactiePanel.add(typeKaartOmschrijving);
-        interactiePanel.add(stationTweeCombobox);
+        interactiePanel.add(vertrekStationCombobox);
         interactiePanel.add(vertrekLabel);
-        interactiePanel.add(stationCombobox);
+        interactiePanel.add(bestemmingStationCombobox);
         interactiePanel.add(aankomstLabel);
         interactiePanel.add(datumticketLabel);
         interactiePanel.add(datePicker);
@@ -123,14 +133,6 @@ public class TicketView extends StandardView {
         interactiePanel.add(zoekButton);
         interactiePanel.setBorder(border);
 
-        getMainPanel().setLayout(new BorderLayout(80,30));
-        panel.setLayout(new BorderLayout(0,0));
-
-        panel.add(mainNavPanel, BorderLayout.NORTH);
-        panel.add(interactiePanel, BorderLayout.CENTER);
-
-        getMainPanel().add(welkomPanel, BorderLayout.NORTH);
-        getMainPanel().add(panel, BorderLayout.CENTER);
 
         p.put("text.today", "Today");
         p.put("text.month", "Month");
@@ -148,13 +150,12 @@ public class TicketView extends StandardView {
             return -1;
         }
     }
+
     public void noTicketAdded(){
         JOptionPane.showMessageDialog(null, "Ticket is niet toegevoegd!");
     }
-
-    public void showTickets(Ticket[][] tickets){
-
-    }
+    public void stationsAreTheSame(){JOptionPane.showMessageDialog(null, "Stations mogen niet hetzelfde zijn.");}
+    public void addSucceed(){JOptionPane.showMessageDialog(null, "Ticket is toegevoegd");}
 
     private JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new JFormattedTextField.AbstractFormatter() {
 

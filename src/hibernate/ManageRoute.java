@@ -61,7 +61,7 @@ public class ManageRoute {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            Route route =(Route) session.get(Route.class, integer);
+            Route route = session.get(Route.class, integer);
             route.setRouteId(integer);
             session.update(route);
             tx.commit();
@@ -80,7 +80,7 @@ public class ManageRoute {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            route =  (Route) session.get(Route.class, id);
+            route = session.get(Route.class, id);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

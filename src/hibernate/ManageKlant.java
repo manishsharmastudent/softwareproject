@@ -38,8 +38,6 @@ public class ManageKlant {
         }
         return klantId;
     }
-
-
     public List<Klant> listKlanten( ){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         List<Klant> klanten = new ArrayList<Klant>();
@@ -59,8 +57,6 @@ public class ManageKlant {
             return klanten;
         }
     }
-
-
     public Klant getKlantByRijksregister(String rijksregisterNummer){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -68,13 +64,6 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            /*
-            tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE rijksregisterNummer = :rrn";
-            Klant klant = (Klant) session.createQuery(hql).uniqueResult();
-            query.setParameter("rrn",rijksregisterNummer);
-            klanten = query.list();
-*/
             klant = (Klant) session.createQuery("FROM Klant WHERE rijksregisterNummer = :rrn and active = true").setParameter("rrn", rijksregisterNummer).uniqueResult();
             tx.commit();
         }catch (HibernateException e) {
@@ -85,7 +74,6 @@ public class ManageKlant {
         }
         return klant;
     }
-
     public void updateKlant(Klant k){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -108,7 +96,7 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            k = (Klant) session.load(Klant.class,rijksregister);
+            k = session.load(Klant.class,rijksregister);
             session.delete(k);
             //This makes the pending delete to be done
             session.flush() ;
@@ -122,7 +110,6 @@ public class ManageKlant {
         }
 
     }
-
     public List<Klant> getKlantByLastname(String lastname){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -130,9 +117,9 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE achternaam = :achternaam AND active = true";
+            String hql = "FROM Klant WHERE achternaam LIKE :achternaam AND active = true";
             Query query = session.createQuery(hql);
-            query.setParameter("achternaam", lastname);
+            query.setParameter("achternaam", "%" + lastname + "%");
             klanten = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -142,7 +129,6 @@ public class ManageKlant {
         }
         return klanten;
     }
-
     public List<Klant> getKlantBySurname(String surname){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();
@@ -150,9 +136,9 @@ public class ManageKlant {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "FROM Klant WHERE voornaam = :voornaam AND active = true";
+            String hql = "FROM Klant WHERE voornaam LIKE :voornaam AND active = true";
             Query query = session.createQuery(hql);
-            query.setParameter("voornaam", surname);
+            query.setParameter("voornaam", "%" + surname + "%");
             klanten = query.list();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -162,7 +148,6 @@ public class ManageKlant {
         }
         return klanten;
     }
-
     public List<Klant> getKlantByPostcode(int postcode){
         SessionFactory factory = SessionFactorySingleton.getInstance().getSessionFactory();
         Session session = factory.openSession();

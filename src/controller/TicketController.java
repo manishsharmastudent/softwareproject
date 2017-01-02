@@ -2,72 +2,62 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.swing.*;
 
 import hibernate.ManageStation;
 import hibernate.ManageTicket;
 import hibernate.ManageTypeKaart;
 import model.*;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import view.TicketView;
-//import view.LoginView;
-/**
- * Created by Rik Van Belle on 01/11/2016.
- */
 public class TicketController {
     private Ticket ticketModel;
     private TicketView ticketView;
     private ManageTicket ticketManage;
 
-    public TicketController(){
+    private ArrayList<Integer> stationIds = new ArrayList<>();
+    private ArrayList<Integer> typeKaartIds = new ArrayList<>();
+
+    public TicketController() {
         ticketModel = new Ticket();
         ticketManage = new ManageTicket();
         ticketView = new TicketView("Ticket");
     }
-    public TicketController(Ticket model, TicketView view, ManageTicket manage){
-        this.ticketModel = model;
-        this.ticketView = view;
-        this.ticketManage = manage;
-    }
-
-    public TicketView getTicketView(){
-        return this.ticketView;
-    }
-
-    public void disableOptionsOnType(){
+    public void disableOptionsOnType() {
         ticketView.getTypeKaartenComboBox().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                switch (ticketView.getTypeKaartenComboBox().getSelectedIndex()){
-                    case 0: ticketView.getVertrekStationComboBox().setEnabled(true);
-                            ticketView.getBestemmingsStationComboBox().setEnabled(true);
-                            ticketView.getKlasseCombobox().setEnabled(true);
-                            ticketView.getSpinnerAantalPersonen().setEnabled(true);
+                switch (ticketView.getTypeKaartenComboBox().getSelectedIndex()) {
+                    case 0:
+                        ticketView.getVertrekStationComboBox().setEnabled(true);
+                        ticketView.getBestemmingsStationComboBox().setEnabled(true);
+                        ticketView.getKlasseCombobox().setEnabled(true);
+                        ticketView.getSpinnerAantalPersonen().setEnabled(true);
                         break;
-                    case 1: ticketView.getVertrekStationComboBox().setEnabled(false);
-                            ticketView.getBestemmingsStationComboBox().setEnabled(false);
-                            ticketView.getKlasseCombobox().setEnabled(false);
-                            ticketView.getSpinnerAantalPersonen().setEnabled(false);
+                    case 1:
+                        ticketView.getVertrekStationComboBox().setEnabled(false);
+                        ticketView.getBestemmingsStationComboBox().setEnabled(false);
+                        ticketView.getKlasseCombobox().setEnabled(false);
+                        ticketView.getSpinnerAantalPersonen().setEnabled(false);
                         break;
-                    case 2: ticketView.getVertrekStationComboBox().setEnabled(true);
-                            ticketView.getBestemmingsStationComboBox().setEnabled(true);
-                            ticketView.getKlasseCombobox().setEnabled(true);
-                            ticketView.getSpinnerAantalPersonen().setEnabled(true);
+                    case 2:
+                        ticketView.getVertrekStationComboBox().setEnabled(true);
+                        ticketView.getBestemmingsStationComboBox().setEnabled(true);
+                        ticketView.getKlasseCombobox().setEnabled(true);
+                        ticketView.getSpinnerAantalPersonen().setEnabled(true);
                         break;
-                    case 4: ticketView.getVertrekStationComboBox().setEnabled(false);
-                            ticketView.getBestemmingsStationComboBox().setEnabled(false);
-                            ticketView.getKlasseCombobox().setEnabled(false);
-                            ticketView.getSpinnerAantalPersonen().setEnabled(false);
+                    case 4:
+                        ticketView.getVertrekStationComboBox().setEnabled(false);
+                        ticketView.getBestemmingsStationComboBox().setEnabled(false);
+                        ticketView.getKlasseCombobox().setEnabled(false);
+                        ticketView.getSpinnerAantalPersonen().setEnabled(false);
                         break;
                 }
             }
         });
     }
-    public void showVoegTicketToe(){
+    public void showVoegTicketToe() {
         ticketView.showVoegTicketToe();
         //Initialization
         initComboBoxes();
@@ -75,9 +65,26 @@ public class TicketController {
         voegTicketToe();
         terugButton();
     }
-    private void initComboBoxes(){
+    public void terugButton() {
+        ticketView.getTerugButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                backToHomeScreen();
+            }
+        });
+    }
+    public void backToHomeScreen() {
+        ticketView.getWindow().setVisible(false);
+        ticketView.getWindow().dispose();
+        ticketView.deleteLastInPath();
+        new MainController().showHomeScreen();
+    }
+    private void initComboBoxes() {
+        AutoCompleteDecorator.decorate(ticketView.getTypeKaartenComboBox());
+        AutoCompleteDecorator.decorate(ticketView.getBestemmingsStationComboBox());
+        AutoCompleteDecorator.decorate(ticketView.getVertrekStationComboBox());
+
+        List<Station> stations = new ManageStation().listStations();
         ManageStation ms = new ManageStation();
-        List<Station> stations = ms.listStations();
 
         ManageTypeKaart mTK = new ManageTypeKaart();
         final List<TypeKaart> typeKaarten = mTK.listTypeKaarten();
@@ -88,78 +95,97 @@ public class TicketController {
             }
         });
 
-        for (int i = 0; i < typeKaarten.size();i++){
-            System.out.print(typeKaarten.get(i).getNaam());
+        for (int i = 0; i < typeKaarten.size(); i++) {
+            typeKaartIds.add(typeKaarten.get(i).getId());
             ticketView.getTypeKaartenComboBox().addItem(typeKaarten.get(i).getNaam());
         }
 
-        for(int i = 0; i < stations.size();i++){
+        for (int i = 0; i < stations.size(); i++) {
+            stationIds.add(stations.get(i).getStationId());
             ticketView.getVertrekStationComboBox().addItem(stations.get(i).getNaam());
             ticketView.getBestemmingsStationComboBox().addItem(stations.get(i).getNaam());
         }
 
-        ticketView.getKlasseCombobox().addItem("Eerste klasse");
         ticketView.getKlasseCombobox().addItem("Tweede klasse");
+        ticketView.getKlasseCombobox().addItem("Eerste klasse");
+
         disableOptionsOnType();
     }
-    private void voegTicketToe(){
+    private void voegTicketToe() {
         ticketView.getZoekButton().addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
-                Station stationVertrek = new Station(0,"Station " + ticketView.getBestemmingsStation(),ticketView.getBestemmingsStation(), true);
-                Station stationAankomst = new Station(0,"Station" + ticketView.getVertrekStation(),ticketView.getVertrekStation(), true);
-                Route route = new Route(1,stationVertrek,stationAankomst, true);
+                Station vertrekStation = new ManageStation().getStationById(stationIds.get(ticketView.getVertrekStationIndex()));
+                Station bestemmingStation = new ManageStation().getStationById(stationIds.get(ticketView.getBestemmingsStationIndex()));
 
-                ManageTypeKaart mTK = new ManageTypeKaart();
-                List<TypeKaart> typeKaarten = mTK.listTypeKaarten();
+                if (vertrekStation == bestemmingStation) {
+                    ticketView.stationsAreTheSame();
+                } else {
 
-                ticketModel.setTicketId(0);
-                ticketModel.setRoute(route);
-                ticketModel.setBeginDatum(new Date());
-                ticketModel.setEindDatum(new Date());
-                ticketModel.setTypeKaart(typeKaarten.get(ticketView.getTypeKaartIndex()));
-                ticketModel.setAantalPersonen(ticketView.getAantalPersonen());
-                if (ticketView.getKlasse().toString() == "Eerste klasse"){
-                    ticketModel.setKlasse(1);
-                }
-                else {ticketModel.setKlasse(2);}
-                if (ticketView.showPrice(calculatePrice(typeKaarten.get(ticketView.getTypeKaartIndex()), ticketModel.getKlasse())) == 1){
-                    if (ticketManage.addTicket(ticketModel) > 0){
-                        JOptionPane.showMessageDialog(ticketView.getWindow(), "Ticket toevgevoegd!");
+                    TypeKaart typeKaart = new ManageTypeKaart().getTypeKaartById(typeKaartIds.get(ticketView.getTypeKaartIndex()));
+
+                    ticketModel.setTicketId(0);
+
+
+                    ticketModel.setVertrekStation(vertrekStation);
+                    ticketModel.setBestemmingStation(bestemmingStation);
+                    String datum = ticketView.getDatePicker().getJFormattedTextField().getText();
+
+                    LocalDate date = LocalDate.parse(datum);
+                    System.out.println(date);
+                    ticketModel.setBeginDatum(ticketView.getBeginDatum());
+                    ticketModel.setEindDatum(ticketView.getBeginDatum());
+                    ticketModel.setTypeKaart(typeKaart);
+                    ticketModel.setAantalPersonen(ticketView.getAantalPersonen());
+                    if (ticketView.getKlasse().toString() == "Eerste klasse") {
+                        ticketModel.setKlasse(1);
+                    } else {
+                        ticketModel.setKlasse(2);
                     }
-                    else {
+                    calculatePrice();
+                    if (ticketManage.addTicket(ticketModel) > 0) {
+                        ticketView.addSucceed();
+                        backToHomeScreen();
+                    } else {
                         ticketView.noTicketAdded();
                     }
                 }
             }
         });
     }
-    public void terugButton(){
-        ticketView.getTerugButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            backToHomeScreen();
-            }
-        });
-    }
-    public void backToHomeScreen() {
-        ticketView.getWindow().setVisible(false);
-        ticketView.getWindow().dispose();
-        ticketView.deleteLastInPath();
-        new MainController().showHomeScreen();
-    }
-    public double calculatePrice(TypeKaart typeKaart, int klasse){
-        Korting korting = null;
+    public void calculatePrice() {
+        Korting korting = ticketModel.getTypeKaart().getKorting();
+        List<Traject> trj = null;
 
-        switch (typeKaart.getId()){
-            case 1: korting = typeKaart.getKorting();
-                break;
-            case 2: return 6;
-            case 3: return 0;
-            case 4: return 50;
+        double percentage = korting.getProcent();
+        int aantalPersonen= ticketView.getAantalPersonen();
+        double prijs = 0.0;
+
+        try{
+            trj = ParseController.getTraject(ticketModel.getVertrekStation().getNaam(), ticketModel.getBestemmingStation().getNaam());
+        } catch(Exception exc){exc.getStackTrace();}
+        double aantalKilometers = trj.get(0).getAantalKilometers();
+        if(aantalKilometers > 45){aantalKilometers = 45;}
+        if (ticketModel.getKlasse() == 1) {
+             if(percentage != 0){
+                 prijs = (((aantalKilometers / 2) * percentage) + 6) * aantalPersonen;
+             }
+             else {
+                 prijs =((aantalKilometers / 2) + 6) * aantalPersonen;
+             }
         }
-        if (klasse == 1){
-            return ((10 - (10 * korting.getProcent())) + 6) * ticketView.getAantalPersonen();
+        else {
+            if(percentage != 0){
+                prijs = ((aantalKilometers / 2) * percentage) * aantalPersonen;
+            }
+            else {
+                prijs = (aantalKilometers / 2) * aantalPersonen;
+            }
         }
-        return (10 - (10 * korting.getProcent())) * ticketView.getAantalPersonen();
+        prijs = Math.floor(prijs);
+        if(ticketModel.getTypeKaart().getId() == 15){
+            ticketModel.setPrijs((float)prijs*2);
+        }
+        else {ticketModel.setPrijs((float)prijs);}
     }
 }
-

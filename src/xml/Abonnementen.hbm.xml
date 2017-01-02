@@ -11,11 +11,13 @@
       <id name="abonnementId" type="int" column="abonnementId">
          <generator class="native"/>
       </id>
-       <many-to-one name="route" column="aboRouteId" class="model.Route" />
+       <many-to-one name="vertrekStation" column="vertrekStation" class="model.Station" />
+       <many-to-one name="bestemmingStation" column="bestemmingStation" class="model.Station" />
        <property name="active" column="active" type="boolean"/>
        <property name="beginDatum" column="beginDatum" type="date"/>
        <property name="vervalDatum" column="eindDatum" type="date"/>
-       <many-to-one name="klant" column="klantId" class="model.Klant" unique="true" cascade="save-update"/>
+       <many-to-one name="klant" column="klantId" class="model.Klant"/>
        <many-to-one name="korting" column="kortingId" class="model.Korting" unique="true" not-null="true"/>
+       <property name="prijs" column="prijs" type="float"/>
    </class>
 </hibernate-mapping>

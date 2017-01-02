@@ -13,9 +13,9 @@ public class TypeKaart {
 		this.omschrijving=omschrijving;
         this.active = true;
 	}
-	public TypeKaart(){};
+	public TypeKaart(){}
 
-	public TypeKaart(int id,String naam,String omschrijving,Korting korting)
+    public TypeKaart(int id,String naam,String omschrijving,Korting korting)
 	{
 		this.id=id;
 		this.naam=naam;

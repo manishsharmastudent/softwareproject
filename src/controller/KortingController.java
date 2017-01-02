@@ -15,7 +15,6 @@ public class KortingController {
         this.kortingView = kortingView;
     }
 
-
     public int getKortingId(){ return kortingModel.getKortingId(); }
     public int getKortingType(){ return kortingModel.getKortingType(); }
     public Date getBeginDatum(){ return kortingModel.getBeginDatum(); }

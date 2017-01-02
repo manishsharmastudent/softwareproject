@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -7,6 +8,8 @@ import java.util.Date;
  */
 public class Ticket {
     private int ticketId;
+    private Station vertrekStation;
+    private Station bestemmingStation;
     private Route route;
     private Date beginDatum;
     private Date eindDatum;
@@ -15,9 +18,10 @@ public class Ticket {
     private float prijs;
     private int klasse;
 
-    public Ticket(int ticketId, Route route, Date beginDatum, Date eindDatum, TypeKaart typeKaart, int aantalPersonen, float prijs, int klasse) {
+    public Ticket(int ticketId, Station vertrekStation, Station bestemmingStation, Date beginDatum, Date eindDatum, TypeKaart typeKaart, int aantalPersonen, float prijs, int klasse) {
         this.ticketId = ticketId;
-        this.route = route;
+        this.vertrekStation = vertrekStation;
+        this.bestemmingStation = bestemmingStation;
         this.beginDatum = beginDatum;
         this.eindDatum = eindDatum;
         this.typeKaart = typeKaart;
@@ -37,13 +41,13 @@ public class Ticket {
         this.ticketId = ticketId;
     }
 
-    public Route getRoute() {
-        return route;
-    }
+    public Station getVertrekStation(){return vertrekStation;}
 
-    public void setRoute(Route route) {
-        this.route = route;
-    }
+    public void setVertrekStation(Station station){vertrekStation = station;}
+
+    public Station getBestemmingStation(){return bestemmingStation;}
+
+    public void setBestemmingStation(Station station){bestemmingStation = station;}
 
     public Date getBeginDatum() {
         return beginDatum;

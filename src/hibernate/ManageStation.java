@@ -1,6 +1,5 @@
 package hibernate;
 
-import model.Login;
 import model.Station;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -8,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -65,7 +63,7 @@ public class ManageStation {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            station = (Station) session.get(Station.class, id);
+            station = session.get(Station.class, id);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -75,5 +73,4 @@ public class ManageStation {
             return station;
         }
     }
-
 }
