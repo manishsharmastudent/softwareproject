@@ -105,7 +105,7 @@ public class LoginController {
                 System.out.println(loginView.getLoginWachtwoordText().getText());
                 System.out.println(loginView.getLoginWachtwoordTextRepeat().getText());
                 //if(loginView.getLoginWachtwoordText().getText() == loginView.getLoginWachtwoordTextRepeat().getText()){
-                    loginModel.setLoginWachtwoord(loginView.getLoginWachtwoordText().getText());
+                loginModel.setLoginWachtwoord(loginView.getLoginWachtwoordText().getText());
                 //}
                 loginModel.setRol(loginManage.getRolById(rolIds.get(loginView.getRolIndex())));
                 loginModel.setActive(true);
@@ -127,4 +127,3 @@ public class LoginController {
         }
     }
 }
-

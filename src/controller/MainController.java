@@ -84,7 +84,7 @@ public class MainController {
         home.getVerlengAboButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               closeHomeWindow();
+                closeHomeWindow();
                 new AbonnementController().showZoekAbonnement();
             }
         });
