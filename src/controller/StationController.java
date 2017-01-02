@@ -28,22 +28,6 @@ public class StationController {
     public StationView getView(){
         return this.stationView;
     }
-    public void showToevoegenStation(){
-        stationView.showVoegStationToe();
-        clickToevoegenStation();
-        terugButton();
-    }
-    public void clickToevoegenStation(){
-        stationView.getToevoegButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Station station = new Station();
-                if (stationManage.addStation(station) > 0){
-                    JOptionPane.showMessageDialog(stationView.getWindow(), "Station " + station.getNaam() + " is toegevoegd!");
-                    backToHomeScreen();
-                }
-            }
-        });
-    }
     public void terugButton(){
         stationView.getTerugButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -69,7 +53,7 @@ public class StationController {
             public void actionPerformed(ActionEvent e) {
                     try {
                         Liveboard liveboard = ParseController.getStationBoard(stationView.getStation());
-                        if(liveboard.getStation().getTreinen().size() > 0){stationView.showLiveboard(liveboard);terugButton();}
+                        if(liveboard.getStation().getTreinen().size() > 0){stationView.showLiveboard(liveboard);}
                         else {
                             stationView.liveboardNotFound();
                         }

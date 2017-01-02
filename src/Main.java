@@ -23,7 +23,7 @@ public class Main {
     }
     private static boolean checkInternetConnection(){
         try {
-            final URL url = new URL("http://www.google.com");
+            final URL url = new URL("https://dt5.ehb.be/phpmyadmin/");
             final URLConnection conn = url.openConnection();
             conn.connect();
             return true;

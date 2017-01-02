@@ -61,12 +61,6 @@ public class KlantController {
         klantModel.setStad(stad);
     }
 
-    public void getKlantByName(String name){
-        /*List kl = MK.getKlantByName(name);
-        for (int i = 0; i < kl.size();i++){
-            klantView.showKlant((Klant)kl.get(i));
-        }*/
-    }
     public void searchKlantByRijksregister(){
         klantView.getSearchButtonRijksregisterNummer().addActionListener(new ActionListener() {
             @Override
@@ -130,6 +124,7 @@ public class KlantController {
                 klantModel = new Klant(klantView.getRijksregisterNummer(), klantView.getVoornaam(), klantView.getAchternaam(), klantView.getAdres(), klantView.getPostcode(), klantView.getStad(), true);
                 try {
                     manageKlant.addKlant(klantModel);
+                    klantView.klantInsertSucceed();
                     backToHomeScreen();
                 } catch (Exception ex){
                     ex.getStackTrace();

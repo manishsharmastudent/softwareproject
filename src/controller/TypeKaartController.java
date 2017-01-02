@@ -1,5 +1,6 @@
 package controller;
 
+import hibernate.ManageTypeKaart;
 import model.TypeKaart;
 import model.Korting;
 import view.TypeKaartView;
@@ -9,6 +10,12 @@ import view.TypeKaartView;
 public class TypeKaartController {
     private TypeKaart typeKaartModel;
     private TypeKaartView typeKaartView;
+    private ManageTypeKaart manageTypeKaart;
+
+    public TypeKaartController(){
+        this.typeKaartView = new TypeKaartView("Type kaarten");
+        this.manageTypeKaart = new ManageTypeKaart();
+    }
 
     public TypeKaartController(TypeKaart typeKaart, TypeKaartView typeKaartView){
         this.typeKaartModel = typeKaart;

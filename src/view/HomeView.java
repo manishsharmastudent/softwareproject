@@ -11,12 +11,12 @@ public class HomeView extends StandardView {
     private JLabel ticketLabel = new JLabel("Tickets & Abonnementen", SwingConstants.CENTER);
     private JButton verkoopTicketButton = new JButton("Verkoop Ticket");
     private JButton verkoopAboButton = new JButton("Abonnement aanmaken");
-    private JButton reservButton = new JButton("Reservaties");
+    private JButton reservButton = new JButton("Reservatie toevoegen");
+    private JButton reservAanpasButton = new JButton("Reservaties aanpassen/verwijderen/opzoeken");
     private JButton verlengAboButton = new JButton("Abonnement verlengen/aanpassen");
     private JPanel voorwerpPanel = new JPanel();
     private JButton vvvasButton = new JButton("Verloren voorwerpen zoeken/aanpassen/verwijderen");
     private JButton rvvButton = new JButton("Registreer verloren voorwerp");
-    private JButton vvvButton = new JButton("Verwijder verloren voorwerp");
     private JLabel verlorenVoorLabel = new JLabel("Verloren voorwerpen",  SwingConstants.CENTER);
 
     private JPanel infoPanel = new JPanel();
@@ -34,7 +34,6 @@ public class HomeView extends StandardView {
     public HomeView(String titel) {
         super(titel);
     }
-    String text = "";
 
     public JButton getShowVerlorenVoorwerpenButton(){
         return this.vvvasButton;
@@ -70,17 +69,19 @@ public class HomeView extends StandardView {
         return this.klantOpzoeken;
     }
 
+    public JButton getReservatieButton(){return this.reservButton; }
+
+    public JButton getReservatieAanpasButton(){return this.reservAanpasButton;}
+
     public void showHomeScreen() {
         if (path.size() == 0){
             addPath("Home");
         }
-
-
         showWindow();
 
 
 
-        ticketPanel.setLayout(new GridLayout(5,1));
+        ticketPanel.setLayout(new GridLayout(6,1));
         infoPanel.setLayout(new GridLayout(5,1));
         voorwerpPanel.setLayout(new GridLayout(5,1));
         klantPanel.setLayout(new GridLayout(5,1));
@@ -97,6 +98,8 @@ public class HomeView extends StandardView {
         ticketPanel.add(verkoopAboButton);
 
         ticketPanel.add(reservButton);
+
+        ticketPanel.add(reservAanpasButton);
 
         ticketPanel.add(verlengAboButton);
 
@@ -117,7 +120,6 @@ public class HomeView extends StandardView {
         voorwerpPanel.add(verlorenVoorLabel);
         voorwerpPanel.add(vvvasButton);
         voorwerpPanel.add(rvvButton);
-        voorwerpPanel.add(vvvButton);
 
         klantLabel.setBorder(border);
         klantLabel.setOpaque(true);
@@ -141,11 +143,5 @@ public class HomeView extends StandardView {
         interactiePanel.add(infoPanel,c);
         c.gridy = 0;
         interactiePanel.add(klantPanel, c);
-
-
-
-
-
-
     }
 }

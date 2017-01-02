@@ -34,7 +34,7 @@ public class UserSettingsView extends StandardView {
 
         double distanceInKilometers = (double)distanceInMeters / 1000;
 
-        System.out.println("De afstand is " + distanceInKilometers + "km");
+        System.out.println("De afstand is " + distanceInKilometers + "kmmm");
 
 
 
@@ -45,16 +45,5 @@ public class UserSettingsView extends StandardView {
 
 
     }
-
-
-
-
-    public static void main(String [] args) throws Exception {
-        UserSettingsView s = new UserSettingsView("iets");
-        s.showUserSettingsView();
-    }
-
-
-
 }
 

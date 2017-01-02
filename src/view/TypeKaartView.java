@@ -150,15 +150,4 @@ public class TypeKaartView extends StandardView {
         showWindow();
 
     }
-
-
-
-
-    public static void main(String[] args) {
-
-        TypeKaartView t = new TypeKaartView("iets");
-
-        t.showTicketten();
-    }
-
 }

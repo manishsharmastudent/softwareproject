@@ -19,7 +19,7 @@ import javax.swing.*;
 /**
  * Created by Robbe on 06/11/2016.
  */
-public class AbonnementController {
+public class AbonnementController extends MainController {
     private Abonnement abonnementModel;
     private AbonnementView abonnementView;
     private ManageAbonnement abonnementManage;
@@ -33,12 +33,6 @@ public class AbonnementController {
         abonnementView = new AbonnementView("Abonnement");
         abonnementManage = new ManageAbonnement();
     }
-
-    public AbonnementController(Abonnement abonnement, AbonnementView abonnementView){
-        this.abonnementModel = abonnement;
-        this.abonnementView = abonnementView;
-    }
-
 
     public int getAbonnementId(){ return abonnementModel.getAbonnementId(); }
     public Korting getKorting(){ return abonnementModel.getKorting(); }
@@ -77,9 +71,8 @@ public class AbonnementController {
             public void actionPerformed(ActionEvent e) {
                 abonnementView.getGevondenAbonnementPanel().removeAll();
                 abonnementView.getGevondenAbonnementPanel().updateUI();
-                Abonnement abonnement = abonnementManage.getAbonnementByKlantId(abonnementView.getRijksregisterNummerText());
-                List<Abonnement> abonnements = new ArrayList<Abonnement>();
-                abonnements.add(abonnement);
+                Klant klant = new ManageKlant().getKlantByRijksregister(abonnementView.getRijksregisterNummerText());
+                List<Abonnement> abonnements = abonnementManage.getAbonnementByKlantId(klant);
                 if(abonnements.get(0) == null){
                     abonnementView.showAbonnementNotFound();
                 }

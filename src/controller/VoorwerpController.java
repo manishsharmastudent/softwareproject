@@ -44,17 +44,22 @@ public class VoorwerpController {
     public void setVoorwerpId(int voorwerpid){ voorwerpModel.setVoorwerpId(voorwerpid); }
     public void setKleur(String kleur){ voorwerpModel.setKleur(kleur); }
     public void setType(String type){ voorwerpModel.setType(type); }
+
     public void toevoegenVoorwerp(){
         voorwerpView.getToevoegenVoorwerpButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Klant klant = new ManageKlant().getKlantByRijksregister(rijkregisterNummers.get(voorwerpView.getKlantIndex()));
+                Klant klant = null;
+                if(voorwerpView.getKlantIndex() != -1){
+                    klant = new ManageKlant().getKlantByRijksregister(rijkregisterNummers.get(voorwerpView.getKlantIndex()));
+                }
                 Station vertrekStation = new ManageStation().getStationById(stationIds.get(voorwerpView.getVertrekStationIndex()));
                 Station bestemmingStation = new ManageStation().getStationById(stationIds.get(voorwerpView.getBestemmingStationIndex()));
 
-                voorwerpModel = new Voorwerp(0, voorwerpView.getTrein(), voorwerpView.getKleur(), voorwerpView.getType(), voorwerpView.getVoorwerp(), vertrekStation, bestemmingStation, klant, true);
+                voorwerpModel = new Voorwerp(0, voorwerpView.getKleur(), voorwerpView.getType(), voorwerpView.getVoorwerp(), vertrekStation, bestemmingStation, klant, true);
                 try {
                     voorwerpManage.addVoorwerp(voorwerpModel);
                     voorwerpView.addVoorwerpSucceed(voorwerpModel.getVoorwerp());
+                    backToHomeScreen();
                 } catch(Exception exc){
                     voorwerpView.addVoorwerpFailed();
                 }
@@ -74,7 +79,6 @@ public class VoorwerpController {
             public void actionPerformed(ActionEvent e) {
                 List<Voorwerp>voorwerpen = voorwerpManage.getVoorwerpenByNaam(voorwerpView.getVoorwerp());
                 showVoorwerpen(voorwerpen);
-                terugButton();
             }
         });
     }
@@ -87,7 +91,6 @@ public class VoorwerpController {
             voorwerpView.getVoorwerpenPanel().updateUI();
             voorwerpView.showVoorwerpen(voorwerpen);
             verwijderAfgehaaldVoorwerp();
-            terugButton();
         }
 
     }
