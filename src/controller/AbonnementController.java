@@ -58,7 +58,6 @@ public class AbonnementController extends MainController {
         toevoegenAbonnement();
         terugButton();
         checkIfEndDateIsAfterStartDate();
-        initLogOutTimer(abonnementView);
     }
     public void showZoekAbonnement(){
         abonnementView.showZoekAbonnement();

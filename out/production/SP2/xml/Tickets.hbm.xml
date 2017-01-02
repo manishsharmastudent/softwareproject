@@ -19,6 +19,7 @@
        <many-to-one name="typeKaart" column="typeId" class="model.TypeKaart" />
        <property name="aantalPersonen" column="aantalPersonen" type="int"/>
        <property name="klasse" column="klasse" type="int"/>
+       <property name="prijs" column="prijs" type="float"/>
    </class>
 </hibernate-mapping>
 
