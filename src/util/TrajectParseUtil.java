@@ -41,14 +41,16 @@ public class TrajectParseUtil {
                 return true;
 
         if(((stationNaamFrans != null) && (stationNaam != null)) &&((stationNaamFrans != "") && stationNaam != "")){
-            String str = stationNaam + " / " + stationNaamFrans;
+            String str = stationNaam + "/" + stationNaamFrans;
             if(halteNaam.equalsIgnoreCase(str))
                 return true;
 
-            String strAlt = stationNaamFrans + " / " + stationNaam;
+            String strAlt = stationNaamFrans + "/" + stationNaam;
             if(halteNaam.equalsIgnoreCase(strAlt))
                 return true;
+
         }
+
 
 
         return false;
